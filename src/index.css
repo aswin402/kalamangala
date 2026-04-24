@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-background: #fdfbf7; /* Off-white cream */
+  --color-foreground: #162a22; /* Dark Green */
+  --color-primary: #e6b981; /* Accent color from some buttons */
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-script: 'Great Vibes', cursive;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+}
+
