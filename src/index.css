@@ -2,10 +2,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #fdfbf7; /* Off-white cream */
-  --color-foreground: #162a22; /* Dark Green */
-  --color-primary: #e6b981; /* Accent color from some buttons */
-  
+  --color-background: #f3f1e4;
+  --color-foreground: #162a22;
+  --color-primary: #e8a87c;
+
   --font-sans: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
   --font-script: 'Great Vibes', cursive;
@@ -13,17 +13,26 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+    @apply text-foreground font-sans antialiased overflow-x-hidden;
+    background-color: #f3f1e4;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='46' viewBox='0 0 80 46'%3E%3Cpath d='M40 0L80 23L40 46L0 23Z' fill='none' stroke='%23dedad0' stroke-width='0.65'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='46' viewBox='0 0 80 46'%3E%3Cpath d='M40 0L80 23L40 46L0 23Z' fill='none' stroke='%23dedad0' stroke-width='0.65'/%3E%3C/svg%3E");
+    background-size: 80px 46px, 80px 46px;
+    background-position: 0 0, 40px 23px;
+    background-repeat: repeat, repeat;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;
   }
 }
 
-/* Custom Utilities */
 @layer utilities {
   .text-shadow-sm {
     text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 

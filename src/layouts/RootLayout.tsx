@@ -4,7 +4,7 @@ import { Footer } from '../components/layout/Footer';
 
 export function RootLayout() {
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300 overflow-x-hidden w-full">
+    <div className="min-h-screen text-foreground overflow-x-hidden w-full">
       <Navbar />
       <main className="w-full">
         <Outlet />

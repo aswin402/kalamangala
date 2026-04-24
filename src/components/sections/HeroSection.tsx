@@ -11,9 +11,9 @@ export const HeroSection = () => {
   useEffect(() => {
     const tl = gsap.timeline();
 
-    tl.fromTo(textRef1.current, 
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    tl.fromTo(textRef1.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }
     )
     .fromTo(textRef2.current,
       { y: 50, opacity: 0, rotate: -2 },
@@ -21,46 +21,48 @@ export const HeroSection = () => {
       '-=0.5'
     )
     .fromTo(videoRef.current,
-      { scale: 0.9, opacity: 0, y: 50 },
-      { scale: 1, opacity: 1, y: 0, duration: 1.5, ease: 'power3.inOut' },
-      '-=0.8'
+      { scale: 0.95, opacity: 0, y: 40 },
+      { scale: 1, opacity: 1, y: 0, duration: 1.4, ease: 'power3.inOut' },
+      '-=0.7'
     );
   }, []);
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      className="relative min-h-screen pt-32 pb-16 px-6 flex flex-col items-center overflow-hidden"
+      className="relative min-h-screen pt-28 pb-10 flex flex-col overflow-hidden"
     >
-      <div className="w-full max-w-7xl mx-auto flex flex-col items-start lg:items-start z-10 mb-12 lg:ml-12">
-        <h2 
+      {/* Hero text — left-aligned with page padding */}
+      <div className="w-full px-8 md:px-14 z-10 mb-8">
+        <h2
           ref={textRef1}
-          className="text-2xl md:text-3xl font-sans tracking-widest text-foreground/80 mb-2"
+          className="text-lg md:text-xl font-sans tracking-[0.18em] text-foreground/65 mb-1"
         >
           Redefining
         </h2>
-        <h1 
+        <h1
           ref={textRef2}
-          className="text-6xl md:text-8xl lg:text-[10rem] font-script text-foreground leading-none -ml-2"
+          className="text-[4.5rem] md:text-[6.5rem] lg:text-[8rem] font-script text-foreground leading-none"
         >
           Luxury Living
         </h1>
       </div>
 
-      <div 
+      {/* Video — full bleed with small side padding */}
+      <div
         ref={videoRef}
-        className="w-full max-w-[95%] lg:max-w-[90%] mx-auto aspect-video rounded-[2rem] overflow-hidden shadow-2xl relative"
+        className="w-full px-4 md:px-6"
       >
-        <video 
-          src={herovideo} 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="w-full h-full object-cover"
-        />
-        {/* Subtle overlay for better blending if needed */}
-        <div className="absolute inset-0 bg-foreground/5 mix-blend-overlay pointer-events-none"></div>
+        <div className="w-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl relative" style={{ aspectRatio: '16/7' }}>
+          <video
+            src={herovideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </section>
   );
