@@ -1,3 +1,4 @@
+// src/components/Home/ReviewsSection.tsx
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -5,6 +6,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const reviews = [
+  {
+    name: 'Ashok K.',
+    role: 'Business Owner',
+    text: 'Living here feels like a daily retreat. The greenery, fresh air, and quiet surroundings make such a difference—I never knew how much I needed this until now.',
+  },
   {
     name: 'Vignesh R.',
     role: 'Doctor',
@@ -20,84 +26,89 @@ const reviews = [
     role: 'CEO',
     text: "Kalamangala gives me the best of both worlds—close enough to the city for convenience, yet far enough to enjoy some peace and quiet. It's the kind of place that just makes life easier.",
   },
-  {
-    name: 'Ashok K.',
-    role: 'Business Owner',
-    text: "Living here feels like a daily retreat. The greenery, fresh air, and quiet surroundings make such a difference—I never knew how much I needed this until now.",
-  },
-  {
-    name: 'Meena V.',
-    role: 'Homeowner',
-    text: "The community here is warm and the infrastructure is excellent. Kalamangala truly understands what a family needs—safety, space, and a sense of belonging.",
-  },
-  {
-    name: 'Suresh B.',
-    role: 'Investor',
-    text: "Every detail has been thoughtfully planned. The quality of construction, the greenery, the roads—it all reflects the promise of a premium living experience.",
-  },
 ];
 
 export const ReviewsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = sectionRef.current;
-
-    gsap.fromTo(headingRef.current,
-      { y: 80, opacity: 0 },
-      {
-        y: 0, opacity: 1, duration: 1.2, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 78%' },
-      }
-    );
-
-    if (cardsRef.current?.children) {
-      gsap.fromTo(
-        Array.from(cardsRef.current.children),
-        { y: 40, opacity: 0 },
+    const ctx = gsap.context(() => {
+      // Heading animation
+      gsap.fromTo(headingRef.current,
+        { y: 70, opacity: 0 },
         {
-          y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: 'power3.out',
-          scrollTrigger: { trigger: cardsRef.current, start: 'top 82%' },
+          y: 0,
+          opacity: 1,
+          duration: 1.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+          }
         }
       );
-    }
+      
+      // Staggered card animation
+      if (cardsContainerRef.current?.children) {
+        gsap.fromTo(Array.from(cardsContainerRef.current.children),
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: cardsContainerRef.current,
+              start: 'top 85%',
+            }
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 px-8 md:px-14 relative overflow-hidden" id="reviews">
-      <div className="max-w-7xl mx-auto">
+    <section
+      ref={sectionRef}
+      id="reviews"
+      className="relative overflow-hidden pb-[80px] md:pb-[105px]"
+    >
+      <div className="page-x">
+        <div className="mb-[32px] ml-[30px] md:ml-[80px] lg:ml-[92px] xl:ml-[105px]">
+          <span className="section-label mb-0">● Guest Words</span>
 
-        <span className="text-[9px] font-semibold tracking-[0.25em] text-foreground/45 uppercase mb-4 block">
-          ● Guest Words
-        </span>
+          <h2
+            ref={headingRef}
+            className="display-heading text-[90px] md:text-[130px] lg:text-[160px] xl:text-[180px]"
+          >
+            Reviews
+          </h2>
+        </div>
 
-        <h2
-          ref={headingRef}
-          className="text-[13vw] md:text-[11vw] leading-none font-heading font-bold text-foreground mb-14 tracking-[-0.04em]"
-        >
-          Reviews
-        </h2>
-
-        {/* Horizontal scroll */}
         <div
-          ref={cardsRef}
-          className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          ref={cardsContainerRef}
+          className="scrollbar-hide flex w-full gap-0 overflow-x-auto pb-4"
         >
-          {reviews.map((review, i) => (
+          {reviews.map((review, index) => (
             <div
-              key={i}
-              className="min-w-[280px] md:min-w-[340px] snap-start flex flex-col gap-5 shrink-0"
+              key={index}
+              className="min-h-[320px] min-w-[260px] border-r border-foreground/10 bg-[#f5f2e7] px-[18px] py-[22px] md:min-w-[290px] lg:min-w-[305px]"
             >
-              <div>
-                <h4 className="font-heading font-semibold text-[15px] text-foreground">{review.name}</h4>
-                <span className="text-[9.5px] text-foreground/40 uppercase tracking-[0.18em] mt-0.5 block">
+              <div className="mb-[38px]">
+                <h4 className="font-heading text-[12px] font-extrabold leading-none tracking-[-0.02em] text-foreground">
+                  {review.name}
+                </h4>
+                <span className="mt-1.5 block text-[7px] font-bold uppercase tracking-[0.18em] text-foreground/70">
                   {review.role}
                 </span>
               </div>
-              <p className="text-foreground/65 font-sans text-[13.5px] leading-[1.85]">
+
+              <p className="text-[12px] font-medium leading-[1.55] tracking-[-0.025em] text-foreground">
                 "{review.text}"
               </p>
             </div>

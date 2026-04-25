@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight } from 'lucide-react';
 import img3 from '../../assets/homepage/img3.avif';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,35 +9,54 @@ gsap.registerPlugin(ScrollTrigger);
 const accordionItems = [
   {
     title: 'Client-Centric Approach',
-    content: "Our clients' needs and preferences are at the heart of everything we do, guiding our process and decisions.",
+    content:
+      "Our clients' needs and preferences are at the heart of everything we do, guiding our process and decisions.",
   },
   {
     title: 'Quality',
-    content: 'We use premium materials and partner with top-tier contractors to deliver structures that stand the test of time.',
+    content:
+      'We use premium materials and partner with top-tier contractors to deliver structures that stand the test of time.',
   },
   {
     title: 'Innovation',
-    content: 'We continuously integrate the latest architectural trends and smart technologies to create future-ready living spaces.',
+    content:
+      'We continuously integrate the latest architectural trends and smart technologies to create future-ready living spaces.',
   },
   {
     title: 'Sustainable Practices',
-    content: 'Our projects feature energy-efficient designs, water conservation systems, and eco-friendly materials.',
+    content:
+      'Our projects feature energy-efficient designs, water conservation systems, and eco-friendly materials.',
   },
   {
     title: 'Collaboration',
-    content: 'We work closely with world-renowned architects, designers, and urban planners to bring visionary concepts to life.',
+    content:
+      'We work closely with world-renowned architects, designers, and urban planners to bring visionary concepts to life.',
   },
   {
     title: 'Integrity',
-    content: 'Transparency and honesty are the pillars of every relationship we build—with clients, partners, and communities.',
+    content:
+      'Transparency and honesty are the pillars of every relationship we build—with clients, partners, and communities.',
   },
 ];
 
-const KalaIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
-    <path d="M8 1L15 8L8 15L1 8Z" stroke="#e8a87c" strokeWidth="1.4" fill="none" />
-    <path d="M8 4.5L11.5 8L8 11.5L4.5 8Z" fill="#e8a87c" fillOpacity="0.35" />
-  </svg>
+const DiamondIcon = () => (
+  <span className="flex h-[28px] w-[28px] shrink-0 items-center justify-center rounded-[4px] bg-primary/10">
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7 1L13 7L7 13L1 7Z"
+        stroke="#f2aa80"
+        strokeWidth="1.3"
+        fill="none"
+      />
+      <path d="M7 4L10 7L7 10L4 7Z" fill="#f2aa80" fillOpacity="0.45" />
+    </svg>
+  </span>
 );
 
 interface ItemProps {
@@ -51,32 +70,54 @@ const AccordionItem = ({ title, content, isOpen, onClick }: ItemProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isOpen) {
-      gsap.to(contentRef.current, { height: 'auto', opacity: 1, duration: 0.35, ease: 'power2.out' });
-    } else {
-      gsap.to(contentRef.current, { height: 0, opacity: 0, duration: 0.25, ease: 'power2.in' });
-    }
+    gsap.to(contentRef.current, {
+      height: isOpen ? 'auto' : 0,
+      opacity: isOpen ? 1 : 0,
+      duration: isOpen ? 0.32 : 0.22,
+      ease: isOpen ? 'power2.out' : 'power2.in',
+    });
   }, [isOpen]);
 
   return (
-    <div className="border-b border-white/10 last:border-0 py-0.5">
+    <div className="border-b border-white/[0.07] last:border-0">
       <button
-        className="w-full py-4 flex items-center gap-3 text-left focus:outline-none group"
+        type="button"
         onClick={onClick}
+        className="group flex w-full items-center gap-3 py-[14px] text-left outline-none"
       >
-        <KalaIcon />
-        <span className={`flex-1 font-heading font-medium text-[15px] transition-colors ${isOpen ? 'text-white' : 'text-white/70 group-hover:text-white'}`}>
+        <DiamondIcon />
+
+        <span
+          className={`flex-1 font-sans text-[12.5px] font-medium transition-colors ${
+            isOpen ? 'text-white' : 'text-white/70 group-hover:text-white'
+          }`}
+        >
           {title}
         </span>
+
         <svg
-          width="16" height="16" viewBox="0 0 16 16" fill="none"
-          className={`shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          width="12"
+          height="12"
+          viewBox="0 0 14 14"
+          fill="none"
+          className={`shrink-0 transition-transform duration-300 ${
+            isOpen ? 'rotate-180' : ''
+          }`}
         >
-          <path d="M3 6L8 11L13 6" stroke={isOpen ? '#e8a87c' : 'rgba(255,255,255,0.35)'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M2.5 5L7 9.5L11.5 5"
+            stroke={isOpen ? '#f2aa80' : 'rgba(255,255,255,0.42)'}
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
+
       <div ref={contentRef} className="h-0 overflow-hidden opacity-0">
-        <p className="pb-4 text-white/55 text-[13.5px] leading-relaxed pl-7">{content}</p>
+        <p className="pb-[15px] pl-[41px] text-[11px] font-medium leading-[1.55] text-white/55">
+          {content}
+        </p>
       </div>
     </div>
   );
@@ -91,70 +132,99 @@ export const WhyChooseSection = () => {
   useEffect(() => {
     const el = sectionRef.current;
 
-    gsap.fromTo(leftColRef.current,
-      { opacity: 0, x: -40 },
+    gsap.fromTo(
+      leftColRef.current,
+      { opacity: 0, x: -32 },
       {
-        opacity: 1, x: 0, duration: 1.1, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 70%' },
+        opacity: 1,
+        x: 0,
+        duration: 1.05,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 74%' },
       }
     );
 
-    gsap.fromTo(rightColRef.current,
-      { opacity: 0, x: 40 },
+    gsap.fromTo(
+      rightColRef.current,
+      { opacity: 0, x: 32 },
       {
-        opacity: 1, x: 0, duration: 1.1, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 70%' },
+        opacity: 1,
+        x: 0,
+        duration: 1.05,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 74%' },
       }
     );
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 px-6" id="why-choose">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-5 items-stretch">
-
-        {/* Left Column — image with overlay */}
+    <section
+      ref={sectionRef}
+      id="why-choose"
+      className="page-x pb-[92px] pt-[48px]"
+    >
+      <div className="mx-auto grid max-w-[1220px] grid-cols-1 gap-[14px] lg:grid-cols-[550px_1fr]">
+        {/* Left Image */}
         <div
           ref={leftColRef}
-          className="w-full lg:w-[48%] relative rounded-[1.75rem] overflow-hidden min-h-[480px] lg:min-h-0 group"
+          className="relative min-h-[435px] overflow-hidden rounded-[7px]"
         >
           <img
             src={img3}
             alt="Kalamangala Building"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/10" />
-          <div className="absolute inset-0 flex flex-col justify-end p-10 md:p-12">
-            <h3 className="text-white text-[22px] md:text-[26px] font-sans font-medium leading-snug mb-4">
-              Our specialty lies in transforming spaces<br />into harmonious environments
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
+
+          <div className="absolute inset-0 flex flex-col justify-end p-[26px]">
+            <h3 className="mb-2 max-w-[460px] text-[22px] font-medium leading-[1.1] tracking-[-0.045em] text-white md:text-[26px]">
+              Our specialty lies in transforming spaces into harmonious
+              environments
             </h3>
-            <p className="text-white/55 text-[13.5px] leading-relaxed mb-8 max-w-md">
-              Our craft is a harmony of space and nature, shaping communities where timeless elegance
-              meets modern comfort, creating homes that inspire and endure.
+
+            <p className="mb-5 max-w-[430px] text-[11.5px] font-medium leading-[1.5] text-white/65">
+              Our craft is a harmony of space and nature, shaping communities
+              where timeless elegance meets modern comfort.
             </p>
-            <button className="flex items-center gap-2.5 bg-primary text-foreground pl-5 pr-1.5 py-1.5 rounded-full w-fit text-sm font-medium hover:bg-white transition-colors duration-300">
+
+            <Link
+              to="/contact"
+              className="inline-flex w-fit items-center gap-1 rounded-full bg-white py-1 pl-3 pr-1 text-[10px] font-semibold text-foreground transition-colors hover:bg-primary"
+            >
               <span>Contact Us</span>
-              <span className="w-7 h-7 rounded-full bg-foreground/15 flex items-center justify-center">
-                <ArrowRight size={13} className="text-foreground" />
+
+              <span className="flex h-[28px] w-[32px] items-center justify-center rounded-[7px] bg-primary">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                  <path
+                    d="M2 9L9 2M9 2H3.5M9 2V7.5"
+                    stroke="#102d25"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </span>
-            </button>
+            </Link>
           </div>
         </div>
 
-        {/* Right Column — accordion panel */}
+        {/* Right Accordion */}
         <div
           ref={rightColRef}
-          className="w-full lg:w-[52%] bg-[#162a22] rounded-[1.75rem] p-10 md:p-12 flex flex-col justify-start"
+          className="flex min-h-[435px] flex-col rounded-[7px] bg-foreground px-[28px] py-[24px] md:px-[34px]"
         >
-          <div className="mb-8">
-            <span className="text-[10px] font-semibold tracking-[0.22em] text-white/40 uppercase block mb-3">
+          <div className="mb-[12px]">
+            <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.22em] text-white/55">
               ● Our Speciality
             </span>
-            <h2 className="text-[28px] md:text-[34px] font-heading font-bold text-white leading-tight">
+
+            <h2 className="font-heading text-[31px] font-extrabold leading-none tracking-[-0.055em] text-white md:text-[38px]">
               Why choose Kalamangala
             </h2>
           </div>
 
-          <div className="w-full">
+          <div className="mt-2 w-full">
             {accordionItems.map((item, index) => (
               <AccordionItem
                 key={index}
@@ -166,7 +236,6 @@ export const WhyChooseSection = () => {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

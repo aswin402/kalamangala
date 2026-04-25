@@ -1,8 +1,9 @@
+// src/components/Home/ProjectsSection.tsx
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import img2 from '../../assets/homepage/img2.webp';
-import { ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,90 +11,125 @@ export const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = sectionRef.current;
+    const ctx = gsap.context(() => {
+      // Heading animation
+      gsap.fromTo(headingRef.current,
+        { y: 80, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+          }
+        }
+      );
+      
+      // Card animation
+      gsap.fromTo(cardRef.current,
+        { y: 45, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: 'top 70%',
+          }
+        }
+      );
+      
+      // Button animation
+      gsap.fromTo(btnRef.current,
+        { y: 25, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: 'top 80%',
+          }
+        }
+      );
+    }, sectionRef);
 
-    gsap.fromTo(headingRef.current,
-      { y: 90, opacity: 0 },
-      {
-        y: 0, opacity: 1, duration: 1.2, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 80%' },
-      }
-    );
-
-    gsap.fromTo(cardRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0, opacity: 1, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: headingRef.current, start: 'top 65%' },
-      }
-    );
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 px-8 md:px-14 flex flex-col items-center" id="projects">
-
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="relative flex flex-col items-center overflow-hidden pt-[56px] pb-[96px] md:pb-[106px]"
+    >
       {/* Heading */}
-      <div className="text-center mb-16 w-full">
-        <span className="text-[9px] font-semibold tracking-[0.25em] text-foreground/45 uppercase block mb-3">
-          ● Our Portfolio
-        </span>
+      <div className="mb-[42px] w-full text-center">
+        <span className="section-label mb-1">● Our Portfolio</span>
+
         <h2
           ref={headingRef}
-          className="text-[15vw] md:text-[12vw] leading-[0.82] font-heading font-bold text-foreground tracking-[-0.04em]"
+          className="display-heading text-[90px] md:text-[130px] lg:text-[160px] xl:text-[190px]"
         >
           Projects
         </h2>
       </div>
 
       {/* Project Card */}
-      <div
-        ref={cardRef}
-        className="w-full max-w-[1000px] rounded-[2rem] flex flex-col md:flex-row overflow-hidden"
-        style={{ backgroundColor: '#ede9dc', border: '1px solid rgba(0,0,0,0.05)' }}
-      >
-        {/* Image */}
-        <div className="w-full md:w-[52%] p-4">
-          <div className="relative w-full aspect-[4/3] rounded-[1.25rem] overflow-hidden group">
-            <img
-              src={img2}
-              alt="The Waterfront"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-            />
-            <div className="absolute bottom-3 left-3 right-3 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-              <div className="flex items-center justify-between bg-[#ede9dc] rounded-full px-4 py-2.5">
-                <span className="text-sm text-foreground font-medium">View Project</span>
-                <div className="w-8 h-8 flex items-center justify-center rounded-full bg-foreground">
-                  <ArrowRight className="w-3.5 h-3.5 text-white" />
-                </div>
-              </div>
+      <div ref={cardRef} className="page-x w-full">
+        <div className="mx-auto max-w-[960px] rounded-[8px] bg-[#eeeadc] p-[16px]">
+          <div className="grid grid-cols-1 gap-0 md:grid-cols-[380px_1fr] lg:grid-cols-[420px_1fr]">
+            <div className="h-[280px] overflow-hidden rounded-[6px] md:h-[315px]">
+              <img
+                src={img2}
+                alt="The Waterfront"
+                className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+              />
+            </div>
+
+            <div className="flex flex-col justify-center px-6 py-6 md:px-[48px] lg:px-[64px]">
+              <h3 className="mb-3 font-heading text-[20px] font-extrabold leading-none tracking-[-0.03em] text-foreground">
+                The Waterfront
+              </h3>
+
+              <p className="max-w-[340px] text-[11.5px] font-medium leading-[1.55] tracking-[-0.02em] text-foreground sm:text-[12px]">
+                Welcome to The Waterfront by Kalamangala – Erode's first
+                premium community living, where nature and modern comforts come
+                together. Choose your plot, build your dream home and be part of
+                a secure, eco-friendly and like-minded neighborhood.
+              </p>
             </div>
           </div>
         </div>
-
-        {/* Content */}
-        <div className="w-full md:w-[48%] px-8 md:px-12 py-10 md:py-14 flex flex-col justify-center">
-          <h3 className="text-[26px] md:text-[30px] font-heading font-bold text-foreground mb-4">
-            The Waterfront
-          </h3>
-          <p className="text-foreground/55 text-[14px] leading-[1.8]">
-            Welcome to The Waterfront by Kalamangala – Erode's first premium
-            community living, where nature and modern comforts come together.
-            Choose your plot, build your dream home and be part of a secure,
-            eco-friendly and like-minded neighborhood.
-          </p>
-        </div>
       </div>
 
-      {/* CTA Button */}
-      <div className="mt-12">
-        <button className="flex items-center gap-2.5 bg-foreground text-white pl-5 pr-1.5 py-1.5 rounded-full text-[13px] font-medium hover:bg-foreground/85 transition-colors">
+      {/* CTA */}
+      <div ref={btnRef} className="mt-[72px] md:mt-[82px]">
+        <Link
+          to="/the-waterfront"
+          className="group inline-flex items-center gap-2 rounded-full bg-foreground py-1.5 pl-5 pr-1.5 text-[10px] font-semibold text-white transition-all hover:bg-foreground/90"
+        >
           <span>All Projects</span>
-          <span className="bg-primary p-2 rounded-lg flex items-center justify-center">
-            <ArrowRight className="w-3.5 h-3.5 text-foreground" />
+
+          <span className="flex h-[30px] w-[34px] items-center justify-center rounded-[8px] bg-primary transition-transform group-hover:translate-x-0.5">
+            <svg width="12" height="12" viewBox="0 0 13 13" fill="none">
+              <path
+                d="M2 11L11 2M11 2H4.5M11 2V8.5"
+                stroke="#102d25"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </span>
-        </button>
+        </Link>
       </div>
     </section>
   );

@@ -3,64 +3,54 @@ import gsap from 'gsap';
 import herovideo from '../../assets/homepage/herovideo.mp4';
 
 export const HeroSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const textRef1 = useRef<HTMLHeadingElement>(null);
-  const textRef2 = useRef<HTMLHeadingElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline();
-
-    tl.fromTo(textRef1.current,
-      { y: 40, opacity: 0 },
+    gsap.fromTo(
+      titleRef.current,
+      { y: 28, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }
-    )
-    .fromTo(textRef2.current,
-      { y: 50, opacity: 0, rotate: -2 },
-      { y: 0, opacity: 1, rotate: 0, duration: 1, ease: 'back.out(1.7)' },
-      '-=0.5'
-    )
-    .fromTo(videoRef.current,
-      { scale: 0.95, opacity: 0, y: 40 },
-      { scale: 1, opacity: 1, y: 0, duration: 1.4, ease: 'power3.inOut' },
-      '-=0.7'
+    );
+
+    gsap.fromTo(
+      videoRef.current,
+      { y: 35, opacity: 0, scale: 0.985 },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
+        delay: 0.25,
+        ease: 'power3.out',
+      }
     );
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-screen pt-28 pb-10 flex flex-col overflow-hidden"
-    >
-      {/* Hero text — left-aligned with page padding */}
-      <div className="w-full px-8 md:px-14 z-10 mb-8">
-        <h2
-          ref={textRef1}
-          className="text-lg md:text-xl font-sans tracking-[0.18em] text-foreground/65 mb-1"
-        >
-          Redefining
-        </h2>
-        <h1
-          ref={textRef2}
-          className="text-[4.5rem] md:text-[6.5rem] lg:text-[8rem] font-script text-foreground leading-none"
-        >
-          Luxury Living
-        </h1>
-      </div>
+    <section className="pt-[118px]">
+      <div className="site-shell site-px">
+        <div ref={titleRef} className="ml-[76px] h-[390px] md:ml-[88px]">
+          <p className="mb-[-2px] text-[31px] font-normal leading-none tracking-[-0.06em] text-foreground">
+            Redefining
+          </p>
 
-      {/* Video — full bleed with small side padding */}
-      <div
-        ref={videoRef}
-        className="w-full px-4 md:px-6"
-      >
-        <div className="w-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-xl relative" style={{ aspectRatio: '16/7' }}>
+          <h1 className="font-script text-[82px] font-normal leading-[0.9] tracking-[-0.05em] text-foreground md:text-[96px]">
+            Luxury Living
+          </h1>
+        </div>
+
+        <div
+          ref={videoRef}
+          className="h-[590px] w-full overflow-hidden rounded-[7px]"
+        >
           <video
             src={herovideo}
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
           />
         </div>
       </div>
