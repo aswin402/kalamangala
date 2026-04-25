@@ -10,14 +10,14 @@ export function ContactPage() {
     const tl = gsap.to(trackRef.current, {
       xPercent: -50,
       ease: 'none',
-      duration: 28,
+      duration: 60,
       repeat: -1,
     });
     return () => { tl.kill(); };
   }, []);
 
   return (
-    <section className="pt-24 pb-10 overflow-hidden" id="contact">
+    <section className="pt-24 pb-10 overflow-hidden m-16 " id="contact">
       <div
         ref={trackRef}
         className="flex whitespace-nowrap will-change-transform"
@@ -27,10 +27,12 @@ export function ContactPage() {
         {[0, 1].map((half) => (
           <span
             key={half}
-            className="font-heading font-bold text-foreground leading-none"
-            style={{ fontSize: 'clamp(56px, 8.8vw, 140px)' }}
+            className="font-normal  text-foreground leading-none tracking-[-0.08em] pr-16"
+            style={{
+              fontSize: 'clamp(48px, 9vw, 120px)',
+            }}
           >
-            {TEXT.repeat(4)}
+            {TEXT}
           </span>
         ))}
       </div>

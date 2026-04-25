@@ -1,262 +1,434 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Shield, Zap, Droplets, Wind, Star, CheckCircle2 } from 'lucide-react';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Assets
-import img1 from '../assets/amenities/img1.avif';
-import img2 from '../assets/amenities/img2.avif';
-import img3 from '../assets/amenities/img3.webp';
-import img4 from '../assets/amenities/img4.webp';
-import img5 from '../assets/amenities/img5.avif';
-import img6 from '../assets/amenities/img6.webp';
-import img7 from '../assets/amenities/img7.webp';
-import img8 from '../assets/amenities/img8.avif';
-import img9 from '../assets/amenities/img9.webp';
-import img10 from '../assets/amenities/img10.webp';
-import img11 from '../assets/amenities/img11.webp';
-import img12 from '../assets/amenities/img12.webp';
-import img13 from '../assets/amenities/img13.webp';
+import img1 from "../assets/amenities/img1.avif";
+import img2 from "../assets/amenities/img2.avif";
+import img3 from "../assets/amenities/img3.webp";
+import img4 from "../assets/amenities/img4.webp";
+import img5 from "../assets/amenities/img5.avif";
+import img6 from "../assets/amenities/img6.webp";
+import img7 from "../assets/amenities/img7.webp";
+import img8 from "../assets/amenities/img8.avif";
+import img9 from "../assets/amenities/img9.webp";
+import img10 from "../assets/amenities/img10.webp";
+import img11 from "../assets/amenities/img11.webp";
+import img12 from "../assets/amenities/img12.webp";
+import img13 from "../assets/amenities/img13.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const green = "#12362d";
+const peach = "#ffad86";
+
 export function AmenitiesPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const pageRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // Marquee Animation
-    if (marqueeRef.current) {
-      gsap.to(marqueeRef.current, {
-        xPercent: -50,
-        repeat: -1,
-        duration: 20,
-        ease: 'none',
-      });
-    }
+    const ctx = gsap.context(() => {
+      if (marqueeRef.current) {
+        gsap.to(marqueeRef.current, {
+          xPercent: -50,
+          duration: 36,
+          ease: "none",
+          repeat: -1,
+        });
+      }
 
-    // Scroll Revelations
-    const sections = containerRef.current?.querySelectorAll('.scroll-reveal');
-    sections?.forEach((section) => {
-      gsap.fromTo(section,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1, y: 0,
-          duration: 1.2,
-          ease: 'power3.out',
+      gsap.from(".am-hero", {
+        opacity: 0,
+        y: 28,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      gsap.utils.toArray<HTMLElement>(".am-reveal").forEach((el) => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 38,
+          duration: 0.9,
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: section,
-            start: 'top 85%',
-          }
-        }
-      );
-    });
+            trigger: el,
+            start: "top 88%",
+          },
+        });
+      });
+    }, pageRef);
+
+    return () => ctx.revert();
   }, []);
 
-  const features = [
+  const keyHighlights = [
     {
-      title: "Premium Clubhouse",
-      desc: "A sprawling social hub designed for community interaction, celebrations, and leisure.",
-      items: ["Lounge Area", "Indoor Games", "Community Spaces"],
-      img: img3,
-      align: "right"
+      title: "Premium Infrastructure",
+      image: img13,
+      reverse: false,
+      points: [
+        "Well-planned internal roads",
+        "Modern street lighting",
+        "Underground power lines",
+        "Beautifully planned landscape zones",
+      ],
     },
     {
-      title: "Smart Home Ready",
-      desc: "Experience the future with homes designed to integrate seamless smart technologies.",
-      items: ["High-speed Connectivity", "Automation Ready", "Energy Efficiency"],
-      img: img6,
-      align: "left"
+      title: "Smart & Future Ready",
+      image: img6,
+      reverse: true,
+      points: [
+        "Smart plotted development layout",
+        "Future-ready utility access",
+        "Secure community environment",
+        "Clean and organized planning",
+      ],
     },
     {
-      title: "State-of-the-art Gym",
-      desc: "Equipped with modern fitness gear to help you maintain a healthy and active lifestyle.",
-      items: ["Cardio Zone", "Weight Training", "Yoga Space"],
-      img: img5,
-      align: "right"
+      title: "Leisure & Wellness Zones",
+      image: img10,
+      reverse: false,
+      points: [
+        "Children’s play area",
+        "Open recreation zones",
+        "Green walking spaces",
+        "Peaceful community lifestyle",
+      ],
     },
     {
-      title: "Children's Play Area",
-      desc: "Safe and vibrant spaces where children can explore, play, and create lasting memories.",
-      items: ["Safe Flooring", "Modern Equipment", "Green Surroundings"],
-      img: img10,
-      align: "left"
+      title: "Recreation for All Ages",
+      image: img8,
+      reverse: true,
+      points: [
+        "Spaces for relaxed evenings",
+        "Family-friendly surroundings",
+        "Comfort-focused amenities",
+        "Active everyday lifestyle",
+      ],
     },
     {
-      title: "Multipurpose Hall",
-      desc: "Versatile spaces perfect for hosting events, meetings, and personal celebrations.",
-      items: ["Acoustic Treatment", "Flexible Layout", "Modern Decor"],
-      img: img11,
-      align: "right"
-    }
+      title: "Clubhouse — The Heart of Community",
+      image: img2,
+      reverse: false,
+      points: [
+        "A central place to meet",
+        "Indoor gathering spaces",
+        "Community interaction zones",
+        "Lifestyle-focused planning",
+      ],
+    },
+  ];
+
+  const apart = [
+    {
+      title: "Why The Waterfront Stands Apart",
+      image: img2,
+      desc: "A calm, nature-rich plotted community with premium lifestyle planning.",
+    },
+    {
+      title: "Eco-Friendly Planning",
+      image: img7,
+      desc: "Thoughtful landscape, trees and open areas for peaceful living.",
+    },
+    {
+      title: "Low Maintenance Design",
+      image: img12,
+      desc: "Clean utilities and organized infrastructure for long-term comfort.",
+    },
+    {
+      title: "Prime Location",
+      image: img4,
+      desc: "Easy access while still offering a private and calm environment.",
+    },
+    {
+      title: "Natural Integration",
+      image: img9,
+      desc: "A beautiful balance of built spaces, views and greenery.",
+    },
+  ];
+
+  const darkBlocks = [
+    {
+      title: "The Kalamangala Promise",
+      image: img3,
+      reverse: false,
+      points: [
+        "Thoughtful design with lifestyle comfort",
+        "Clear attention to detail across each space",
+        "Premium planning for modern families",
+        "A refined environment you can trust",
+      ],
+    },
+    {
+      title: "Location Advantage",
+      image: img5,
+      reverse: true,
+      points: [
+        "Smooth connectivity to key landmarks",
+        "Peaceful yet accessible community",
+        "Balanced living with modern convenience",
+        "Ideal environment for daily living",
+      ],
+    },
+    {
+      title: "Lifestyle Beyond Homes",
+      image: img10,
+      reverse: false,
+      points: [
+        "Community-first planning",
+        "Spaces for children and families",
+        "Outdoor areas for recreation",
+        "A better way to experience everyday life",
+      ],
+    },
+    {
+      title: "Built for Lasting Benefits",
+      image: img6,
+      reverse: true,
+      points: [
+        "Future-ready infrastructure",
+        "Clean and practical planning",
+        "Reliable everyday usability",
+        "Premium community value",
+      ],
+    },
   ];
 
   return (
-    <div ref={containerRef} className="w-full bg-[#f9f8f3] overflow-x-hidden pt-24 pb-20">
-      
-      {/* Top Marquee */}
-      <div className="w-full border-b border-foreground/5 py-4 overflow-hidden bg-white/30 backdrop-blur-sm">
-        <div ref={marqueeRef} className="whitespace-nowrap flex gap-8 items-center">
-          {[...Array(10)].map((_, i) => (
-            <span key={i} className="text-4xl md:text-6xl font-heading font-bold text-foreground/10 uppercase tracking-tighter">
-              Amenities. <span className="text-primary italic">Amenities.</span>
-            </span>
+    <main
+      ref={pageRef}
+      className="w-full overflow-hidden pb-20"
+      style={{
+        color: green,
+        fontFamily: "'News Cycle', 'Inter', sans-serif",
+      }}
+    >
+      {/* MARQUEE */}
+      <section className="relative w-full overflow-hidden pt-4">
+        <div
+          ref={marqueeRef}
+          className="flex w-fit whitespace-nowrap"
+        >
+          {[0, 1].map((half) => (
+            <div key={half} className="flex">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="mr-2 text-[42px] font-semibold leading-none tracking-[-0.08em] md:text-[58px]"
+                  style={{ color: green }}
+                >
+                  Amenities.
+                </span>
+              ))}
+            </div>
           ))}
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <section className="max-w-[1400px] mx-auto px-6 py-16 scroll-reveal">
-        <div className="rounded-[3rem] overflow-hidden shadow-2xl aspect-[21/9] border-4 border-white">
-          <img src={img1} alt="Amenities Hero" className="w-full h-full object-cover" />
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="max-w-4xl mx-auto px-6 text-center mb-32 scroll-reveal">
-        <h2 className="text-5xl md:text-7xl font-heading font-bold text-foreground mb-8 tracking-tighter">
-          Why choose <br /> <span className="text-primary">Kalamangala</span>
-        </h2>
-        <p className="text-lg text-foreground/60 leading-relaxed max-w-2xl mx-auto">
-          We don't just build houses; we craft environments where families thrive. Our amenities are chosen to provide a balanced lifestyle of wellness, security, and community.
+      {/* HERO */}
+      <section className="am-hero mx-auto mt-7 max-w-[680px] px-4 text-center">
+        <div className="mx-auto h-[135px] max-w-[680px] overflow-hidden md:h-[165px]">
+          <img
+            src={img1}
+            alt="Amenities"
+            className="h-full w-full object-cover"
+          />
+        </div>
+
+        <h1
+          className="mx-auto mt-4 max-w-[360px] text-[45px] font-semibold leading-[0.78] tracking-[-0.08em] md:text-[55px]"
+          style={{ color: green }}
+        >
+          Why choose Kalamangala
+        </h1>
+
+        <p className="mx-auto mt-5 max-w-[520px] text-[9px] leading-[1.45] text-[#12362d]/75">
+          The Waterfront offers more than just plots. It brings together
+          thoughtful amenities, scenic planning, safe surroundings and modern
+          infrastructure to create a peaceful community lifestyle.
         </p>
-        <div className="mt-12 inline-flex items-center gap-2 px-8 py-4 bg-[#1a2b25] text-white rounded-full font-bold text-sm hover:scale-105 transition-transform cursor-pointer">
-          Explore Features
-        </div>
+
+        <button
+          className="mt-4 rounded-full px-6 py-[7px] text-[8px] font-semibold text-white"
+          style={{ backgroundColor: green }}
+        >
+          Explore more
+        </button>
       </section>
 
-      {/* Visionary Section */}
-      <section className="max-w-6xl mx-auto px-6 mb-40 scroll-reveal">
-        <div className="text-center mb-16">
-          <h3 className="text-2xl font-bold text-foreground italic">Crafted by Visionaries, Built for You</h3>
-        </div>
-        <div className="grid md:grid-cols-2 gap-12 text-foreground/70 leading-relaxed">
-          <p>
-            At Kalamangala, we believe that the true value of a home lies beyond its walls. It's in the way you feel when you step into the clubhouse, the safety your children feel at play, and the peace of mind that comes from knowing every detail has been meticulously planned.
-          </p>
-          <p>
-            Our project, The Waterfront, represents our commitment to excellence. We have integrated the natural beauty of the canal views with state-of-the-art modern amenities to create a truly unique living experience in Tamil Nadu.
-          </p>
-        </div>
+      {/* VISION */}
+      <section className="am-reveal mx-auto mt-12 max-w-[620px] px-4 text-center">
+        <h2 className="text-[20px] font-semibold leading-none tracking-[-0.02em]">
+          Crafted by Visionaries, Built for You
+        </h2>
+
+        <p className="mx-auto mt-5 max-w-[570px] text-[10px] leading-[1.55] text-[#12362d]/80">
+          Kalamangala believes that a home is not just about walls. It is about
+          the comfort of the surroundings, the safety of the community and the
+          quality of everyday living. Every detail at The Waterfront is planned
+          to give families a better lifestyle.
+        </p>
       </section>
 
-      {/* Feature Rows */}
-      <section className="max-w-6xl mx-auto px-6 mb-40">
-        <div className="flex flex-col gap-32">
-          {features.map((f, i) => (
-            <div key={i} className={`flex flex-col ${f.align === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 items-center scroll-reveal`}>
-              <div className="flex-1 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-[10px] font-bold uppercase tracking-widest">
-                  <Star size={12} />
-                  <span>Premium Feature</span>
-                </div>
-                <h3 className="text-4xl md:text-5xl font-heading font-bold text-foreground tracking-tighter">{f.title}</h3>
-                <p className="text-foreground/60 leading-relaxed">{f.desc}</p>
-                <ul className="grid grid-cols-1 gap-3">
-                  {f.items.map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm font-medium text-foreground/80">
-                      <CheckCircle2 size={18} className="text-primary" />
-                      {item}
-                    </li>
+      {/* HIGHLIGHTS */}
+      <section className="am-reveal mx-auto mt-12 max-w-[620px] px-4">
+        <h3 className="text-[17px] font-semibold leading-none tracking-[-0.02em]">
+          Key Highlights of The Waterfront
+        </h3>
+
+        <p className="mt-4 text-[10px] leading-[1.55] text-[#12362d]/80">
+          Each amenity is designed with purpose — from beautiful entry spaces
+          and open green areas to smart utilities and recreational zones.
+        </p>
+
+        <h4 className="mt-6 text-[15px] font-semibold leading-none tracking-[-0.02em]">
+          Expansive Green Spaces & Scenic Canal Views
+        </h4>
+
+        <p className="mt-3 text-[10px] leading-[1.55] text-[#12362d]/80">
+          A calm residential layout surrounded by greenery, thoughtful
+          landscaping and peaceful views that make everyday living more
+          refreshing.
+        </p>
+      </section>
+
+      {/* FEATURE PAIRS */}
+      <section className="mx-auto mt-14 max-w-[520px] px-4">
+        <div className="flex flex-col gap-10">
+          {keyHighlights.map((item, index) => (
+            <div
+              key={index}
+              className={`am-reveal grid grid-cols-2 items-center gap-7 ${
+                item.reverse ? "direction-rtl" : ""
+              }`}
+              style={{ direction: item.reverse ? "rtl" : "ltr" }}
+            >
+              <div style={{ direction: "ltr" }}>
+                <h4 className="text-[13px] font-semibold leading-tight tracking-[-0.02em]">
+                  {item.title}
+                </h4>
+
+                <ul className="mt-3 list-disc pl-4 text-[9px] leading-[1.55] text-[#12362d]/80">
+                  {item.points.map((point) => (
+                    <li key={point}>{point}</li>
                   ))}
                 </ul>
               </div>
-              <div className="flex-1 w-full">
-                <div className="rounded-[2.5rem] overflow-hidden shadow-xl aspect-[4/3] group cursor-pointer border-4 border-white/50">
-                  <img src={f.img} alt={f.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                </div>
+
+              <div className="overflow-hidden rounded-[4px]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-[145px] w-full object-cover transition duration-700 hover:scale-[1.04]"
+                />
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Why Stands Apart Grid */}
-      <section className="bg-[#1a2b25] py-32 rounded-t-[5rem]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="mb-20 text-center">
-            <h2 className="text-4xl md:text-6xl font-heading font-bold text-white tracking-tighter mb-4">
-              Why The Waterfront <br /> <span className="text-primary">Stands Apart</span>
-            </h2>
-            <p className="text-white/40 text-sm tracking-[0.2em] uppercase">Premium Community Living</p>
-          </div>
+      {/* SAFE SECTION */}
+      <section className="am-reveal mx-auto mt-14 max-w-[620px] px-4">
+        <h3 className="text-[18px] font-semibold leading-none tracking-[-0.02em]">
+          Safe, Secure, and Serene
+        </h3>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
-            {[
-              { title: "Grand Entrance", desc: "Impressive gated entry with 24/7 surveillance.", img: img13 },
-              { title: "24/7 Security", desc: "Advanced security systems for absolute peace of mind.", img: img9 },
-              { title: "Lush Landscaping", desc: "Themed gardens and green belts across the project.", img: img8 },
-              { title: "Underground Utilities", desc: "No hanging wires. Pure aesthetic excellence.", img: img12 },
-              { title: "Modern Infrastructure", desc: "High-quality roads and drainage systems.", img: img7 }
-            ].map((item, i) => (
-              <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] overflow-hidden group scroll-reveal">
-                <div className="h-48 overflow-hidden">
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                </div>
-                <div className="p-8">
-                  <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <p className="mt-4 text-[10px] leading-[1.55] text-[#12362d]/80">
+          Designed for families, The Waterfront brings together privacy,
+          greenery and a peaceful atmosphere within a secure community
+          environment.
+        </p>
+      </section>
 
-          {/* Lifestyle Showcase */}
-          <div className="flex flex-col gap-12">
-            <div className="bg-[#1d2f28] border border-white/5 rounded-[3rem] overflow-hidden flex flex-col md:flex-row items-stretch scroll-reveal shadow-2xl">
-              <div className="flex-1 p-12 md:p-16 flex flex-col justify-center gap-6">
-                <h3 className="text-3xl font-heading font-bold text-white">The Waterfront Lifestyle</h3>
-                <p className="text-white/50 leading-relaxed">
-                  Imagine waking up to the gentle breeze from the canal and spending your evenings in a vibrant community space. Our project is designed to give you that perfect blend of nature and modern luxury.
-                </p>
-                <div className="flex items-center gap-4 mt-4">
-                   <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
-                      <Wind size={24} />
-                   </div>
-                   <div className="text-white/80 text-sm font-medium">Naturally Ventilated Layouts</div>
-                </div>
-              </div>
-              <div className="flex-1 min-h-[350px]">
-                <img src={img2} alt="Lifestyle" className="w-full h-full object-cover" />
-              </div>
-            </div>
+      {/* STANDS APART */}
+      <section className="am-reveal mx-auto mt-12 max-w-[620px] px-4">
+        <h2 className="mb-4 text-[25px] font-semibold leading-[0.9] tracking-[-0.05em]">
+          Why The Waterfront <br />
+          Stands Apart
+        </h2>
 
-            <div className="bg-[#1d2f28] border border-white/5 rounded-[3rem] overflow-hidden flex flex-col md:flex-row-reverse items-stretch scroll-reveal shadow-2xl">
-              <div className="flex-1 p-12 md:p-16 flex flex-col justify-center gap-6">
-                <h3 className="text-3xl font-heading font-bold text-white">Security & Safety</h3>
-                <p className="text-white/50 leading-relaxed">
-                  Your safety is our priority. With gated access, 24/7 CCTV monitoring, and dedicated security personnel, The Waterfront offers a sanctuary for your family.
-                </p>
-                <ul className="space-y-4">
-                  {[Shield, Zap, Droplets].map((Icon, i) => (
-                    <li key={i} className="flex items-center gap-4">
-                      <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary">
-                        <Icon size={16} />
-                      </div>
-                      <span className="text-white/60 text-xs font-bold uppercase tracking-widest">
-                        {i === 0 ? "24/7 Surveillance" : i === 1 ? "Emergency Power" : "Pure Water Supply"}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="flex-1 min-h-[350px]">
-                <img src={img4} alt="Security" className="w-full h-full object-cover" />
-              </div>
-            </div>
-          </div>
+        <div className="grid grid-cols-3 gap-[7px]">
+          {apart.slice(0, 3).map((item) => (
+            <ApartCard key={item.title} item={item} />
+          ))}
+        </div>
+
+        <div className="mt-[7px] grid grid-cols-2 gap-[7px]">
+          {apart.slice(3).map((item) => (
+            <ApartCard key={item.title} item={item} />
+          ))}
         </div>
       </section>
 
-      {/* Huge Logo Footer Section */}
-      <section className="w-full pt-40 pb-20 bg-[#1a2b25] flex flex-col items-center overflow-hidden">
-        <h2 className="text-[25vw] font-heading font-bold text-primary/5 leading-none select-none pointer-events-none transform translate-y-1/4">
-          Kalamangala
-        </h2>
-      </section>
+      {/* DARK BLOCKS */}
+      <section className="mx-auto mt-16 max-w-[500px] px-4">
+        <div className="flex flex-col gap-4">
+          {darkBlocks.map((item) => (
+            <div
+              key={item.title}
+              className={`am-reveal grid overflow-hidden rounded-[5px] bg-[#12362d] md:grid-cols-2 ${
+                item.reverse ? "md:[&>*:first-child]:order-2" : ""
+              }`}
+            >
+              <div className="h-[260px] overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition duration-700 hover:scale-[1.04]"
+                />
+              </div>
 
+              <div className="flex flex-col justify-center px-8 py-8">
+                <h3
+                  className="text-[13px] font-semibold leading-tight"
+                  style={{ color: peach }}
+                >
+                  {item.title}
+                </h3>
+
+                <ul className="mt-4 list-disc pl-4 text-[9px] leading-[1.7] text-white/78">
+                  {item.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function ApartCard({
+  item,
+}: {
+  item: {
+    title: string;
+    image: string;
+    desc: string;
+  };
+}) {
+  return (
+    <div className="group relative h-[105px] overflow-hidden rounded-[3px] bg-[#12362d]">
+      <img
+        src={item.image}
+        alt={item.title}
+        className="h-full w-full object-cover opacity-85 transition duration-700 group-hover:scale-[1.05]"
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-[#12362d] via-[#12362d]/40 to-transparent" />
+
+      <div className="absolute bottom-0 left-0 right-0 p-3">
+        <h4 className="text-[8px] font-semibold leading-tight text-white">
+          {item.title}
+        </h4>
+
+        <p className="mt-1 text-[7px] leading-[1.25] text-white/75">
+          {item.desc}
+        </p>
+      </div>
     </div>
   );
 }

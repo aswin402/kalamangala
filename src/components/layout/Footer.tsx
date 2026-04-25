@@ -1,45 +1,47 @@
-import { Link } from 'react-router-dom';
-import { Phone } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Phone } from "lucide-react";
 import {
   FaInstagram,
   FaFacebookF,
   FaYoutube,
   FaLinkedinIn,
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
 const servicesList = [
-  'Top Real Estate Contractors in Tiruchengode',
-  'House & Plot Layouts in Karur',
-  'Villa & Residential Layouts in Tiruppur',
-  'Approved Real Estate Layouts & Plots in Tamil Nadu',
-  'real estate construction companies in Erode',
-  'luxury  layouts in erode',
+  "Top Real Estate Contractors in Tiruchengode",
+  "House & Plot Layouts in Karur",
+  "Villa & Residential Layouts in Tiruppur",
+  "Approved Real Estate Layouts & Plots in Tamil Nadu",
+  "real estate construction companies in Erode",
+  "luxury layouts in erode",
 ];
 
 const menuLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Projects', href: '/the-waterfront' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Projects", href: "/the-waterfront" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
 ];
+
+type SocialCardProps = {
+  href: string;
+  children: React.ReactNode;
+  label: string;
+  external?: boolean;
+};
 
 const SocialCard = ({
   href,
   children,
   label,
   external = false,
-}: {
-  href: string;
-  children: React.ReactNode;
-  label: string;
-  external?: boolean;
-}) => {
+}: SocialCardProps) => {
   return (
     <a
       href={href}
-      target={external ? '_blank' : undefined}
-      rel={external ? 'noreferrer' : undefined}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
       className="
         flex h-[121px] flex-col items-center justify-center gap-[13px]
         rounded-[10px] bg-white/[0.055] text-[#f4efe2]
@@ -48,6 +50,7 @@ const SocialCard = ({
       "
     >
       {children}
+
       <span className="text-[11px] font-normal uppercase leading-none tracking-[0.04em] text-[#f4efe2]">
         {label}
       </span>
@@ -60,12 +63,11 @@ export const Footer = () => {
     <footer
       className="
         relative mx-5 my-[18px] flex min-h-[calc(100vh-40px)]
-        flex-col overflow-hidden rounded-[10px] bg-[#18382f] text-white
+        flex-col overflow-hidden rounded-[10px] bg-footer text-white
         max-lg:min-h-0
         max-sm:m-2.5 max-sm:rounded-xl
       "
     >
-      {/* Top Content */}
       <div
         className="
           mx-auto w-full max-w-[1220px] pt-[42px]
@@ -81,9 +83,7 @@ export const Footer = () => {
             max-lg:grid-cols-1 max-lg:gap-y-[42px]
           "
         >
-          {/* Left Area */}
           <div>
-            {/* Social Grid */}
             <div className="flex flex-col gap-3">
               <div className="grid grid-cols-2 gap-3">
                 <SocialCard
@@ -127,7 +127,6 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Newsletter */}
             <div className="mt-[31px]">
               <p className="mb-3 text-[22px] font-medium leading-[1.2] text-white">
                 Subscribe to the newsletter
@@ -151,7 +150,7 @@ export const Footer = () => {
                   type="submit"
                   className="
                     h-[42px] w-full cursor-pointer rounded-lg border-0
-                    bg-[#f2aa80] text-[16px] font-semibold text-[#102d25]
+                    bg-primary text-[16px] font-semibold text-foreground
                     transition-opacity duration-200 hover:opacity-90
                   "
                 >
@@ -161,7 +160,6 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
           <div>
             <div className="flex flex-col gap-[15px]">
               {servicesList.map((service, index) => (
@@ -172,10 +170,10 @@ export const Footer = () => {
                     text-[16px] font-medium leading-[1.25] no-underline
                     ${
                       index === 1
-                        ? 'text-[#f2aa80]'
+                        ? "text-primary"
                         : index === 0
-                          ? 'font-semibold text-white'
-                          : 'text-white'
+                          ? "font-semibold text-white"
+                          : "text-white"
                     }
                   `}
                 >
@@ -185,9 +183,8 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Menu */}
           <div>
-            <span className="mb-5 block text-[18px] font-medium uppercase tracking-[0.04em] text-[#f2aa80]">
+            <span className="mb-5 block text-[18px] font-medium uppercase tracking-[0.04em] text-primary">
               Menu
             </span>
 
@@ -198,7 +195,7 @@ export const Footer = () => {
                   to={link.href}
                   className={`
                     text-[16px] font-medium leading-none no-underline
-                    ${index === 0 ? 'text-[#f2aa80]' : 'text-white'}
+                    ${index === 0 ? "text-primary" : "text-white"}
                   `}
                 >
                   {link.name}
@@ -209,7 +206,6 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Big Brand Name */}
       <div
         className="
           mt-auto w-full pb-12 pl-7
@@ -218,7 +214,7 @@ export const Footer = () => {
       >
         <h2
           className="
-            m-0 select-none whitespace-nowrap text-[#f2aa80]
+            m-0 select-none whitespace-nowrap text-primary
             text-[clamp(150px,16.2vw,310px)] font-extrabold
             leading-[0.72] tracking-[-0.065em]
             max-lg:text-[clamp(78px,21vw,190px)] max-lg:tracking-[-0.055em]

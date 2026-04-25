@@ -1,272 +1,290 @@
-import { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { Play } from 'lucide-react';
-import img1 from '../assets/aboutpage/img1.avif';
-import img2 from '../assets/aboutpage/img2.avif';
-import img3 from '../assets/aboutpage/img3.avif';
-import img4 from '../assets/aboutpage/img4.avif';
-import img5 from '../assets/aboutpage/img5.avif';
-import img6 from '../assets/aboutpage/img6.avif';
-import img7 from '../assets/aboutpage/img7.avif';
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { Play } from "lucide-react";
 
-const MARQUEE = 'Innovation. Community. Quality. ';
+import img1 from "../assets/aboutpage/img1.avif";
+import img2 from "../assets/aboutpage/img2.avif";
+import img3 from "../assets/aboutpage/img3.avif";
+import img4 from "../assets/aboutpage/img4.avif";
+import img5 from "../assets/aboutpage/img5.avif";
+import img6 from "../assets/aboutpage/img6.avif";
+import img7 from "../assets/aboutpage/img7.avif";
+
+const MARQUEE = "Innovation. Community. Quality. ";
 
 const journey = [
   {
-    num: '01',
-    title: 'housing plots in tamil nadu',
-    desc: 'Discover thoughtfully designed communities with premium infrastructure and modern amenities.',
+    num: "01",
+    title: "housing plots in tamil nadu",
+    desc: "Discover thoughtfully designed communities with premium infrastructure and modern amenities.",
     img: img4,
   },
   {
-    num: '02',
-    title: 'luxury property developers',
-    desc: 'Select a space that fits your lifestyle, crafted with quality and innovation.',
+    num: "02",
+    title: "luxury property developers",
+    desc: "Select a space that fits your lifestyle, crafted with quality and innovation.",
     img: img5,
   },
   {
-    num: '03',
-    title: 'Premium property developers',
-    desc: 'Watch your dream take shape with our expert construction and development.',
+    num: "03",
+    title: "Premium property developers",
+    desc: "Watch your dream take shape with our expert construction and development.",
     img: img6,
   },
   {
-    num: '04',
-    title: 'Custom home builders Tamil Nadu',
-    desc: 'Experience an upscale, nature-integrated living environment built to last for generations.',
+    num: "04",
+    title: "Custom home builders Tamil Nadu",
+    desc: "Experience an upscale, nature-integrated living environment built to last for generations.",
     img: img7,
   },
 ];
 
 export function AboutPage() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [tab, setTab] = useState<'mission' | 'vision'>('mission');
+  const [tab, setTab] = useState<"mission" | "vision">("mission");
 
   useEffect(() => {
     const tl = gsap.to(trackRef.current, {
       xPercent: -50,
-      ease: 'none',
-      duration: 28,
+      ease: "none",
+      duration: 95,
       repeat: -1,
     });
-    return () => { tl.kill(); };
+
+    return () => {
+      tl.kill();
+    };
   }, []);
 
   return (
-    <div className="pt-20">
-
-      {/* ─── Marquee ─────────────────────────────────────────── */}
-      <section className="py-6 overflow-hidden">
+    <main className="about-page min-h-screen overflow-hidden pt-[74px] text-[#172d24]">
+      {/* MARQUEE */}
+      <section className="relative overflow-hidden">
         <div
           ref={trackRef}
-          className="flex whitespace-nowrap will-change-transform"
-          style={{ width: 'fit-content' }}
+          className="flex w-fit whitespace-nowrap will-change-transform"
         >
-          {[0, 1].map((i) => (
-            <span
-              key={i}
-              className="font-heading font-bold text-foreground leading-none"
-              style={{ fontSize: 'clamp(48px, 7vw, 118px)' }}
+          {[0, 1].map((item) => (
+            <h1
+              key={item}
+              className="pr-10 text-[clamp(64px,8.25vw,132px)] font-medium leading-none tracking-[-0.075em]"
             >
-              {MARQUEE.repeat(5)}
-            </span>
+              {MARQUEE.repeat(4)}
+            </h1>
           ))}
         </div>
       </section>
 
-      {/* ─── About Dark Section ──────────────────────────────── */}
-      <section className="bg-[#162a22] mx-4 rounded-[1.5rem] overflow-hidden py-14 px-10 md:px-14">
+      {/* ABOUT DARK SECTION */}
+      <section className="mx-auto mt-[98px] max-w-[1188px] rounded-[12px] bg-[#17392f] px-[76px] pb-[64px] pt-[66px] text-white">
+        <div className="mb-[82px] grid grid-cols-[1.42fr_0.9fr] gap-[92px]">
+          <div>
+            <div className="mb-[18px] flex items-center gap-3">
+              <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#f4a77f]">
+                ✦ About Us
+              </span>
+              <div className="h-px flex-1 bg-white/35" />
+            </div>
 
-        {/* Header text row */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 mb-10">
-          <div className="lg:w-[55%]">
-            <span className="text-[9px] font-semibold tracking-[0.25em] text-white/40 uppercase block mb-5">
-              ● About Us
-            </span>
-            <h2 className="text-[22px] md:text-[28px] font-heading font-bold text-white leading-snug mb-5">
-              Welcome to Kalamangala –<br />Where Quality Meets Legacy.
+            <h2 className="max-w-[710px] text-[27px] font-medium leading-[1.08] tracking-[-0.045em]">
+              Welcome to Kalamangala – Where Quality Meets Legacy.
             </h2>
-            <p className="text-white/60 text-[13.5px] leading-[1.85]">
-              With over 33 years of expertise in construction, we craft premium living spaces designed
-              to stand the test of time. Our projects blend superior infrastructure, modern amenities,
-              and lush green landscapes to create thriving communities. At Kalamangala, we don't just
-              build homes—we shape lifestyles, ensuring every detail enhances your comfort, convenience,
-              and connection with nature.
+
+            <p className="mt-[18px] max-w-[700px] text-[13px] font-medium leading-[1.42] tracking-[-0.035em] text-white">
+              With over 33 years of expertise in construction, we craft premium
+              living spaces designed to stand the test of time. Our projects
+              blend superior infrastructure, modern amenities, and lush green
+              landscapes to create thriving communities. At Kalamangala, we
+              don&apos;t just build homes—we shape lifestyles, ensuring every
+              detail enhances your comfort, convenience, and connection with
+              nature.
             </p>
           </div>
-          <div className="lg:w-[45%] flex items-end">
-            <p className="text-white/50 text-[14px] leading-[1.85]">
-              We seamlessly blend nature with modern living, designing communities with lush gardens
-              and green spaces for a serene yet contemporary lifestyle.
+
+          <div className="flex items-end pb-[8px]">
+            <p className="max-w-[360px] text-[10px] font-medium leading-[1.35] tracking-[-0.035em] text-white">
+              We seamlessly blend nature with modern living, designing
+              communities with lush gardens and green spaces for a serene yet
+              contemporary lifestyle.
             </p>
           </div>
         </div>
 
-        {/* Image bento grid */}
-        <div className="grid gap-3.5" style={{ gridTemplateColumns: '2fr 1fr 1.6fr', minHeight: '520px' }}>
+        <div className="grid min-h-[610px] grid-cols-[1.98fr_0.98fr_0.98fr] gap-[6px]">
+          {/* LEFT LARGE IMAGE */}
+          <div className="relative overflow-hidden rounded-[8px]">
+            <img
+              src={img1}
+              alt="Kalamangala aerial community"
+              className="h-full w-full object-cover"
+            />
 
-          {/* Col 1: Large image + founder quote */}
-          <div className="flex flex-col gap-3.5">
-            <div className="rounded-xl overflow-hidden flex-1 group min-h-[300px]">
-              <img
-                src={img1}
-                alt="Aerial view of Kalamangala"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
-            <div className="bg-white/[0.06] rounded-xl p-5">
-              <p className="text-white/65 text-[12.5px] leading-relaxed italic">
-                "With over 33 years in the construction industry, I've learned that quality is
-                everything — that's why I've made it the top priority in every project at Kalamangala"
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-[24px] pb-[26px] pt-[90px]">
+              <p className="max-w-[500px] text-[11px] font-semibold leading-[1.28] tracking-[-0.04em] text-white">
+                “With over 33 years in the construction industry, I&apos;ve
+                learned that quality is everything — that&apos;s why I&apos;ve
+                made it the top priority in every project at Kalamangala”
               </p>
-              <div className="flex items-center gap-3 mt-4">
-                <div className="w-8 h-8 rounded-full bg-primary/30 flex items-center justify-center shrink-0">
-                  <span className="text-white text-[10px] font-bold">RK</span>
-                </div>
+
+              <div className="mt-[14px] flex items-center gap-[10px]">
+                <div className="h-[30px] w-[30px] rounded-full bg-white/20" />
                 <div>
-                  <p className="text-white text-[11.5px] font-semibold">R.Krishnamurthy</p>
-                  <p className="text-white/40 text-[10px]">Founder & Managing Director of Kalamangala</p>
+                  <p className="text-[11px] font-semibold leading-none">
+                    R.Krishnamurthy
+                  </p>
+                  <p className="mt-[4px] text-[8.5px] font-medium leading-none text-white/65">
+                    Founder & Managing Director of Kalamangala
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Col 2: Misty image + 33+ stat */}
-          <div className="flex flex-col gap-3.5">
-            <div className="rounded-xl overflow-hidden flex-1 group">
+          {/* MIDDLE STACK */}
+          <div className="grid grid-rows-[1fr_190px] gap-[6px]">
+            <div className="relative overflow-hidden rounded-[8px]">
               <img
                 src={img2}
-                alt="Community aerial"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                alt="Kalamangala green community"
+                className="h-full w-full object-cover"
               />
+
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent px-[18px] pb-[24px] pt-[80px]">
+                <p className="text-[11px] font-semibold leading-[1.22] tracking-[-0.045em]">
+                  “At Kalamangala, we don&apos;t just build spaces — we create
+                  lasting legacies, where quality, innovation and expertise
+                  blend together to redefine modern living.”
+                </p>
+
+                <div className="mt-[12px] flex items-center gap-[9px]">
+                  <div className="h-[28px] w-[28px] rounded-full bg-white/20" />
+                  <div>
+                    <p className="text-[10px] font-semibold leading-none">
+                      Raju S.V.
+                    </p>
+                    <p className="mt-[4px] text-[8px] font-medium leading-none text-white/65">
+                      Managing Director of Kalamangala
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="bg-background rounded-xl p-5 flex flex-col items-center justify-center text-center">
-              <span
-                className="font-heading font-bold text-foreground leading-none"
-                style={{ fontSize: '2.8rem' }}
-              >
+
+            <div className="flex flex-col items-center justify-center rounded-[8px] bg-[#f4f1e5] text-[#17392f]">
+              <h3 className="text-[56px] font-semibold leading-none tracking-[-0.06em]">
                 33+
-              </span>
-              <span className="text-foreground/55 text-[11.5px] mt-1.5">Years of Experience</span>
-            </div>
-          </div>
-
-          {/* Col 3: Quote + night video card + learn more */}
-          <div className="flex flex-col gap-3.5">
-            <div className="bg-white/[0.06] rounded-xl p-5">
-              <p className="text-white/70 text-[12.5px] leading-relaxed">
-                "At Kalamangala, we don't just build spaces — we create lasting legacies, where quality,
-                innovation and expertise blend together to redefine modern living."
+              </h3>
+              <p className="mt-[10px] text-[10px] font-medium tracking-[-0.035em]">
+                Years of Experience
               </p>
-              <div className="flex items-center gap-3 mt-4">
-                <div className="w-8 h-8 rounded-full bg-primary/30 flex items-center justify-center shrink-0">
-                  <span className="text-white text-[10px] font-bold">RS</span>
-                </div>
-                <div>
-                  <p className="text-white text-[11.5px] font-semibold">Raju S.V.</p>
-                  <p className="text-white/40 text-[10px]">Managing Director of Kalamangala</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-xl overflow-hidden flex-1 relative group cursor-pointer">
-              <img
-                src={img3}
-                alt="Kalamangala night"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/25 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/85 flex items-center justify-center shadow-lg">
-                  <Play className="w-4 h-4 text-foreground ml-0.5" />
-                </div>
-              </div>
-            </div>
-            <div className="bg-white/[0.06] rounded-xl px-5 py-4">
-              <p className="text-white/55 text-[12.5px]">Learn more about Kalamangala.</p>
             </div>
           </div>
 
+          {/* RIGHT VIDEO */}
+          <div className="relative overflow-hidden rounded-[8px]">
+            <img
+              src={img3}
+              alt="Kalamangala building at night"
+              className="h-full w-full object-cover"
+            />
+
+            <div className="absolute inset-0 bg-black/30" />
+
+            <button className="absolute left-1/2 top-1/2 flex h-[78px] w-[78px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/55 backdrop-blur-[1px]">
+              <span className="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-white">
+                <Play className="ml-[3px] h-[18px] w-[18px] fill-[#17392f] text-[#17392f]" />
+              </span>
+            </button>
+
+            <p className="absolute bottom-[198px] left-1/2 w-[94px] -translate-x-1/2 text-center text-[10px] font-semibold leading-[1.15] tracking-[-0.04em] text-white">
+              Learn more About Kalamangala
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ─── Journey Section ─────────────────────────────────── */}
-      <section className="py-24 px-8 md:px-16">
-        <div className="max-w-5xl mx-auto">
+      {/* JOURNEY SECTION */}
+      <section className="mx-auto max-w-[850px] px-4 pb-[56px] pt-[62px]">
+        <div className="mb-[44px] text-center">
+          <p className="mb-[4px] text-[8px] font-bold uppercase tracking-[-0.02em]">
+            ✦ Our Approach
+          </p>
+          <h2 className="text-[30px] font-semibold leading-none tracking-[-0.065em]">
+            This is our journey with you
+          </h2>
+        </div>
 
-          {/* Heading */}
-          <div className="text-center mb-16">
-            <span className="text-[9px] font-semibold tracking-[0.25em] text-foreground/45 uppercase block mb-3">
-              ● Our Approach
-            </span>
-            <h2 className="text-[26px] md:text-[34px] font-heading font-bold text-foreground">
-              This is our journey with you
-            </h2>
-          </div>
+        <div className="space-y-[-8px]">
+          {journey.map((item, index) => {
+            const isEven = index % 2 === 0;
 
-          {/* Staggered items */}
-          <div className="flex flex-col gap-14">
-            {journey.map((item, i) => (
+            return (
               <div
                 key={item.num}
-                className="flex items-start gap-10"
-                style={{ paddingLeft: `${i * 54}px` }}
+                className={`relative flex items-center ${
+                  isEven ? "justify-start" : "justify-end"
+                }`}
               >
-                {/* Text */}
-                <div className="min-w-[240px] max-w-[290px] shrink-0">
-                  <div className="w-12 h-12 bg-foreground rounded-xl flex items-center justify-center mb-5">
-                    <span className="text-white font-heading font-bold text-[15px]">{item.num}</span>
-                  </div>
-                  <h3 className="text-[16px] font-heading font-bold text-foreground mb-2 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-foreground/55 text-[13px] leading-relaxed">{item.desc}</p>
-                </div>
+                <div
+                  className={`relative grid w-[610px] grid-cols-[1fr_280px] items-center gap-[44px] ${
+                    !isEven ? "translate-x-[44px]" : "-translate-x-[44px]"
+                  }`}
+                >
+                  <div className="relative h-[225px] bg-[#f2efe1] px-[26px] pb-[34px] pt-[104px]">
+                    <div className="absolute left-[28px] top-[-38px] flex h-[70px] w-[70px] items-center justify-center rounded-[5px] bg-[#17392f] shadow-[6px_6px_0_rgba(23,57,47,0.08)]">
+                      <span className="text-[24px] font-semibold tracking-[-0.06em] text-[#f4a77f]">
+                        {item.num}
+                      </span>
+                    </div>
 
-                {/* Image */}
-                <div className="flex-1 max-w-[360px] ml-auto">
-                  <div className="rounded-2xl overflow-hidden aspect-[4/3] group">
+                    <h3 className="text-[18px] font-semibold leading-[1.02] tracking-[-0.06em] text-[#17392f]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-[8px] max-w-[255px] text-[9.5px] font-medium leading-[1.35] tracking-[-0.045em] text-[#17392f]/70">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div className="h-[225px] overflow-hidden rounded-[3px]">
                     <img
                       src={item.img}
                       alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover"
                     />
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* ─── Mission / Vision ────────────────────────────────── */}
-      <section className="px-4 pb-8">
-        <div className="bg-[#162a22] rounded-[1.5rem] px-10 md:px-16 py-14">
-
-          {/* Toggle */}
-          <div className="flex justify-center mb-10">
-            <div className="flex gap-1 bg-white/10 rounded-full p-1">
-              {(['mission', 'vision'] as const).map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setTab(t)}
-                  className={`px-7 py-2 rounded-full text-[13px] font-medium capitalize transition-all duration-200 ${
-                    tab === t ? 'bg-primary text-foreground font-semibold' : 'text-white/55 hover:text-white'
-                  }`}
-                >
-                  {t.charAt(0).toUpperCase() + t.slice(1)}
-                </button>
-              ))}
-            </div>
+      {/* MISSION / VISION */}
+      <section className="mx-auto max-w-[1142px] px-4 pb-[96px]">
+        <div className="rounded-[12px] bg-[#17392f] px-[72px] py-[52px] text-center text-white">
+          <div className="mb-[34px] inline-flex rounded-[6px] border border-white/45 p-[2px]">
+            {(["mission", "vision"] as const).map((item) => (
+              <button
+                key={item}
+                onClick={() => setTab(item)}
+                className={`h-[31px] min-w-[70px] rounded-[5px] px-[16px] text-[10px] font-medium capitalize transition ${
+                  tab === item
+                    ? "bg-[#f4a77f] text-[#17392f]"
+                    : "text-white"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
           </div>
 
-          {/* Content */}
-          <p className="text-white/65 text-[15px] leading-[1.9] max-w-3xl mx-auto text-center">
-            {tab === 'mission'
-              ? 'At Kalamangala, we build premium, lasting developments with top-tier infrastructure, modern amenities, and eco-friendly designs. Focused on quality, innovation, and customer satisfaction, we create thriving, well-connected communities for a superior lifestyle.'
-              : 'Our vision is to become the most trusted name in premium real estate development across Tamil Nadu — creating landmark communities that inspire generations, harmonise with nature, and set new benchmarks for quality, sustainability, and design excellence.'}
+          <p className="mx-auto max-w-[960px] text-[14px] font-medium leading-[1.45] tracking-[-0.045em]">
+            {tab === "mission"
+              ? "At Kalamangala, we build premium, lasting developments with top-tier infrastructure, modern amenities, and eco-friendly designs. Focused on quality, innovation, and customer satisfaction, we create thriving, well-connected communities for a superior lifestyle."
+              : "Our vision is to become the most trusted name in premium real estate development across Tamil Nadu — creating landmark communities that inspire generations, harmonise with nature, and set new benchmarks for quality, sustainability, and design excellence."}
           </p>
         </div>
       </section>
-
-    </div>
+    </main>
   );
 }
