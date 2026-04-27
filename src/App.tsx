@@ -1,30 +1,35 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { RootLayout } from '@/layouts/RootLayout';
-import { HomePage } from '@/pages/HomePage';
-import { AboutPage } from '@/pages/AboutPage';
-import { ContactPage } from '@/pages/ContactPage';
-import { TheWaterfrontPage } from '@/pages/TheWaterfrontPage';
-import { AmenitiesPage } from '@/pages/AmenitiesPage';
-import { LocationAdvantagePage } from '@/pages/LocationAdvantagePage';
-import { ConstructionCompanyPage } from '@/pages/ConstructionCompanyPage';
-import { PremiumResidentialPlotsPage } from '@/pages/PremiumResidentialPlotsPage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RootLayout } from "@/layouts/RootLayout";
+import {
+  HomePage,
+  AboutPage,
+  ContactPage,
+  TheWaterfrontPage,
+  AmenitiesPage,
+  LocationAdvantagePage,
+  ConstructionCompanyPage,
+  PremiumResidentialPlotsPage,
+  NotFoundPage,
+} from "@/pages";
+import "./App.css";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'about', element: <AboutPage /> },
-      { path: 'the-waterfront', element: <TheWaterfrontPage /> },
-      { path: 'amenities', element: <AmenitiesPage /> },
-      { path: 'location-advantage', element: <LocationAdvantagePage /> },
-      { path: 'construction-company', element: <ConstructionCompanyPage /> },
-      { path: 'residential-plots-coimbatore', element: <PremiumResidentialPlotsPage /> },
-      { path: 'contact', element: <ContactPage /> },
-      { path: '*', element: <NotFoundPage /> },
+      { path: "about", element: <AboutPage /> },
+      { path: "the-waterfront", element: <TheWaterfrontPage /> },
+      { path: "amenities", element: <AmenitiesPage /> },
+      { path: "location-advantage", element: <LocationAdvantagePage /> },
+      { path: "construction-company", element: <ConstructionCompanyPage /> },
+      {
+        path: "residential-plots-coimbatore",
+        element: <PremiumResidentialPlotsPage />,
+      },
+      { path: "contact", element: <ContactPage /> },
+      { path: "*", element: <NotFoundPage /> },
     ],
   },
 ]);
@@ -34,6 +39,3 @@ function App() {
 }
 
 export default App;
-
-
-
