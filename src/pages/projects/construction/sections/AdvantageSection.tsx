@@ -1,44 +1,42 @@
-import { Star } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
+
 import img8 from "../../../../assets/construction-company/img8.webp";
 
 export function AdvantageSection() {
   return (
-    <section className="max-w-6xl mx-auto px-6 mb-20 scroll-reveal">
-      <div className="flex flex-col md:flex-row items-center gap-12 bg-white rounded-[3rem] p-8 shadow-xl border border-foreground/5">
-        <div className="flex-1 space-y-6">
-          <h3 className="text-3xl font-heading font-bold text-foreground">
-            Experience the Kalamangala Advantage
-          </h3>
-          <p className="text-foreground/60 leading-relaxed">
-            With decades of experience and a track record of successful
-            projects, Kalamangala is your partner for building a better future.
-            We combine traditional values with modern technology to deliver
-            unmatched results.
-          </p>
-          <ul className="space-y-4">
-            {[
-              "Expert Engineering",
-              "Quality Materials",
-              "On-time Delivery",
-              "Transparent Pricing",
-            ].map((item, idx) => (
-              <li
-                key={idx}
-                className="flex items-center gap-3 text-sm font-bold text-foreground"
-              >
-                <Star size={16} className="text-primary" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex-1 rounded-[2.5rem] overflow-hidden shadow-2xl h-[350px]">
-          <img
-            src={img8}
-            alt="Advantage"
-            className="w-full h-full object-cover"
-          />
-        </div>
+    <section className="mx-auto mt-[112px] grid max-w-[1000px] grid-cols-1 gap-[34px] px-5 md:grid-cols-2 md:items-start">
+      <div className="km-reveal pt-[38px]">
+        <h2 className="max-w-[390px] font-['Inter',sans-serif] text-[30px] font-[900] leading-[0.84] tracking-[-0.08em] text-[#0d2b22] md:text-[38px]">
+          Experience the Kalamangala Advantage
+        </h2>
+
+        <p className="mt-[12px] max-w-[365px] font-['Inter',sans-serif] text-[11px] font-[600] leading-[1.25] tracking-[-0.045em] text-[#0d2b22] md:text-[13px]">
+          Choosing Kalamangala means partnering with a builder who understands
+          your aspirations. We bring trust, quality, and proven execution to
+          every project.
+        </p>
+
+        <ul className="mt-[14px] space-y-[5px] font-['Inter',sans-serif] text-[11px] font-[700] leading-[1.18] tracking-[-0.045em] text-[#0d2b22] md:text-[13px]">
+          {[
+            "Expert engineering and planning",
+            "Quality materials and execution",
+            "Transparent process from start to finish",
+            "On-time project delivery",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-[7px]">
+              <CheckCircle2 size={12} className="mt-[1px] shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="km-reveal overflow-hidden rounded-[8px]">
+        <img
+          src={img8}
+          alt="Kalamangala advantage"
+          className="h-[300px] w-full object-cover md:h-[360px]"
+        />
       </div>
     </section>
   );

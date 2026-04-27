@@ -1,51 +1,58 @@
-import { Navigation, TrendingUp, Layers, Heart } from "lucide-react";
+import { Navigation, TrendingUp, Heart, MapPin } from "lucide-react";
+
+const whyChoose = [
+  {
+    title: "Location Mastery",
+    desc: "Located exactly where comfort and connectivity meet.",
+    icon: MapPin,
+  },
+  {
+    title: "Future Appreciation",
+    desc: "A smart investment location with strong future value.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Convenient Living",
+    desc: "Everything essential within a few minutes reach.",
+    icon: Navigation,
+  },
+  {
+    title: "Natural Harmony",
+    desc: "Planned with green spaces, calm, and pollution-free surroundings.",
+    icon: Heart,
+  },
+];
 
 export function WhyChooseSection() {
   return (
-    <section className="max-w-6xl mx-auto px-6 mb-40 scroll-reveal">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl font-heading font-bold text-foreground italic">
-          Why Choose The Waterfront, Erode
-        </h2>
-      </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          {
-            title: "Location Mastery",
-            icon: <Navigation />,
-            desc: "Unmatched connectivity to key city points.",
-          },
-          {
-            title: "Future Appreciation",
-            icon: <TrendingUp />,
-            desc: "Located in a high-growth investment zone.",
-          },
-          {
-            title: "Convenient Living",
-            icon: <Layers />,
-            desc: "Schools, hospitals, and malls within reach.",
-          },
-          {
-            title: "Natural Harmony",
-            icon: <Heart />,
-            desc: "Riverside living with fresh air and views.",
-          },
-        ].map((item, i) => (
-          <div
-            key={i}
-            className="bg-white p-10 rounded-[2rem] border border-foreground/5 shadow-sm hover:shadow-xl transition-all group"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-              {item.icon}
+    <section className="mx-auto mt-[70px] max-w-[1000px] px-5">
+      <h2 className="km-reveal font-['Inter',sans-serif] text-[28px] font-[900] leading-none tracking-[-0.075em] text-[#0d2b22] md:text-[36px]">
+        Why Choose The Waterfront, Erode
+      </h2>
+
+      <div className="mt-[26px] grid grid-cols-1 gap-[12px] md:grid-cols-2">
+        {whyChoose.map((item) => {
+          const Icon = item.icon;
+
+          return (
+            <div
+              key={item.title}
+              className="km-reveal rounded-[6px] bg-[#f4f0df] px-[22px] py-[24px]"
+            >
+              <div className="mb-[24px] flex h-[22px] w-[22px] items-center justify-center rounded-[4px] bg-white text-[#0d2b22]">
+                <Icon size={12} strokeWidth={2.2} />
+              </div>
+
+              <h3 className="font-['Inter',sans-serif] text-[22px] font-[900] leading-none tracking-[-0.07em] text-[#0d2b22] md:text-[27px]">
+                {item.title}
+              </h3>
+
+              <p className="mt-[10px] max-w-[360px] font-['Inter',sans-serif] text-[10px] font-[600] leading-[1.25] tracking-[-0.045em] text-[#0d2b22] md:text-[12px]">
+                {item.desc}
+              </p>
             </div>
-            <h4 className="text-lg font-bold text-foreground mb-2">
-              {item.title}
-            </h4>
-            <p className="text-sm text-foreground/50 leading-relaxed">
-              {item.desc}
-            </p>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
