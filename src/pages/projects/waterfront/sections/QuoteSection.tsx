@@ -1,18 +1,20 @@
 export function QuoteSection() {
   return (
-    <section className="max-w-4xl mx-auto px-6 mb-32">
-      <div className="bg-[#fcfbf7] border border-foreground/5 rounded-[2.5rem] p-12 md:p-16 relative overflow-hidden">
-        <div className="absolute -top-10 -left-10 text-[180px] font-serif text-foreground/5 pointer-events-none">
+    <section className="waterfront-animate w-full px-[110px] pb-[120px]">
+      <div className="mx-auto max-w-[1420px] rounded-[8px] bg-[#f4f1e5] px-[90px] pb-[82px] pt-[76px] text-center">
+        <div className="mb-[26px] text-[122px] font-bold leading-[0.55] tracking-[-0.08em] text-[#17392f]/5">
           “
         </div>
-        <p className="text-xl md:text-2xl font-medium text-foreground/80 leading-relaxed text-center relative z-10 italic">
-          "Kalamangala houses are designed with your life and happiness in
-          mind. Every project we undertake is a step towards building a better
-          future, where you can live your best life, surrounded by nature and
-          modern comforts."
+
+        <p className="mx-auto max-w-[1100px] text-[42px] font-medium leading-[1.18] tracking-[-0.075em] text-[#17392f]">
+          &quot;Kalamangala has exceeded our expectations in every way. The
+          quality of construction, attention to detail, and thoughtful
+          amenities make it a truly exceptional place to live. We couldn&apos;t
+          be happier with our investment!&quot;
         </p>
-        <p className="text-center mt-8 font-bold text-primary tracking-widest uppercase text-xs">
-          — Kalamangala
+
+        <p className="mt-[26px] text-[21px] font-medium leading-none tracking-[-0.045em] text-[#17392f]/75">
+          -Rahul &amp; Priya S.
         </p>
       </div>
     </section>

@@ -1,22 +1,36 @@
 export function DescriptionSection() {
   return (
-    <section className="max-w-4xl mx-auto px-6 mb-32">
-      <div className="grid md:grid-cols-2 gap-12 items-start">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold leading-[1.1] text-foreground">
-          Welcome to The Waterfront by Kalamangala – where nature and modern
-          comforts come together.
+    <section className="waterfront-animate mx-auto w-full max-w-[660px] px-6 pt-[84px] pb-[128px]">
+      <div className="text-left text-foreground">
+        <h2 className="mb-[26px] text-[16px] font-extrabold uppercase leading-[1.15] tracking-[-0.025em]">
+          THE WATERFRONT - WHERE LUXURY MEETS LEGACY
         </h2>
-        <div className="flex flex-col gap-6">
-          <p className="text-foreground/60 leading-relaxed">
-            Experience Erode's first premium community living. Choose your
-            plot, build your dream home and be part of a secure, eco-friendly
-            and like-minded neighborhood.
-          </p>
-          <div className="flex items-center gap-2 text-primary font-bold text-sm group cursor-pointer">
-            <span>Explore Community</span>
-            <div className="w-6 h-px bg-primary group-hover:w-10 transition-all"></div>
-          </div>
-        </div>
+
+        <p className="mb-[24px] text-[16px] font-semibold leading-[1.48] tracking-[-0.035em]">
+          This isn’t just another address—it’s a statement of refined living.
+          Designed for discerning homeowners,{" "}
+          <strong className="font-extrabold">The Waterfront</strong> seamlessly
+          blends modern sophistication with the tranquility of nature, offering
+          an unparalleled residential experience.With a thoughtfully balanced
+          layout, the design ensures ample built-up space while preserving
+          generous open areas for a harmonious environment, enjoy both privacy
+          and the benefits of a well- connected, vibrant community.
+        </p>
+
+        <p className="mb-[24px] text-[16px] font-semibold leading-[1.48] tracking-[-0.035em]">
+          Multiple premium amenities await, including an underground drainage
+          system, advanced intercom connectivity, automatic water trip lines and
+          timer-controlled street lighting—all in place from day one.Now is your
+          opportunity to design your dream home in Erode’s most forward-thinking
+          community.
+        </p>
+
+        <p className="text-[16px] font-semibold leading-[1.48] tracking-[-0.035em]">
+          <strong className="font-extrabold">The Waterfront</strong> is more
+          than a promise—it’s a legacy in the making.Your vision. Our
+          infrastructure. Erode’s finest address{" "}
+          <strong className="font-extrabold">“Welcomes You!”</strong>
+        </p>
       </div>
     </section>
   );

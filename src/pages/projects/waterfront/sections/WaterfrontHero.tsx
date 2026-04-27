@@ -1,60 +1,85 @@
-import { Calendar, Home, MapPin } from "lucide-react";
-import img1 from "../../../../assets/thewaterfront/img1.avif";
+import waterfrontImg from "../../../../assets/thewaterfront/img1.avif";
 
 export function WaterfrontHero() {
   return (
-    <section className="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-8 mb-24">
-      <div className="md:col-span-8 rounded-[2rem] overflow-hidden shadow-2xl h-[450px]">
-        <img
-          src={img1}
-          alt="The Waterfront Hero"
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="md:col-span-4 flex flex-col gap-6">
-        <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-[2rem] p-8 flex flex-col gap-6 shadow-sm">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-              <Calendar size={18} />
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-wider text-foreground/40 font-semibold">
-                Status
-              </p>
-              <p className="text-sm font-bold text-foreground">On Going</p>
-            </div>
+    <section className="w-full px-[110px] pb-[120px] pt-[70px] text-[#17392f]">
+      <div className="mx-auto max-w-[1680px]">
+        {/* TOP IMAGE + DETAILS */}
+        <div className="grid grid-cols-[1fr_390px] gap-[36px]">
+          {/* IMAGE */}
+          <div className="h-[405px] overflow-hidden rounded-[8px]">
+            <img
+              src={waterfrontImg}
+              alt="The Waterfront by Kalamangala"
+              className="h-full w-full object-cover"
+            />
           </div>
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-              <Home size={18} />
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-wider text-foreground/40 font-semibold">
-                Type
-              </p>
-              <p className="text-sm font-bold text-foreground">
-                Residential Community
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-              <MapPin size={18} />
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-wider text-foreground/40 font-semibold">
+
+          {/* DETAILS */}
+          <div className="pt-[20px]">
+            <div className="border-b border-[#17392f]/25 pb-[18px]">
+              <h4 className="text-[18px] font-semibold leading-none tracking-[-0.045em]">
                 Location
+              </h4>
+              <p className="mt-[15px] text-[19px] font-medium leading-none tracking-[-0.045em] text-[#17392f]/70">
+                Modakurichi, Erode
               </p>
-              <p className="text-sm font-bold text-foreground">
-                Perundurai, Erode
+            </div>
+
+            <div className="border-b border-[#17392f]/25 py-[18px]">
+              <h4 className="text-[18px] font-semibold leading-none tracking-[-0.045em]">
+                Theme
+              </h4>
+              <p className="mt-[15px] text-[19px] font-medium leading-none tracking-[-0.045em] text-[#17392f]/70">
+                Modern Roman Elegance
+              </p>
+            </div>
+
+            <div className="border-b border-[#17392f]/25 py-[18px]">
+              <h4 className="text-[18px] font-semibold leading-none tracking-[-0.045em]">
+                Size
+              </h4>
+              <p className="mt-[15px] text-[19px] font-medium leading-none tracking-[-0.045em] text-[#17392f]/70">
+                10 Acres
               </p>
             </div>
           </div>
         </div>
-        <button className="w-full py-5 bg-foreground text-white rounded-full font-bold text-sm tracking-wide hover:bg-foreground/90 transition-all shadow-xl">
-          Enquire Now
-        </button>
+
+        {/* BOTTOM CONTENT */}
+        <div className="mt-[110px] grid grid-cols-[1fr_1fr] gap-[120px]">
+          {/* LEFT BIG HEADING */}
+          <div className="pl-[220px]">
+            <h2 className="max-w-[560px] text-[44px] font-medium leading-[1.05] tracking-[-0.075em] text-[#17392f]">
+              Welcome to The Waterfront by Kalamangala – Erode’s first premium
+              community living, where nature and modern comforts come together.
+              Choose your plot, build your dream home and be part of a secure,
+              eco-friendly and like-minded neighborhood.
+            </h2>
+          </div>
+
+          {/* RIGHT CONTENT */}
+          <div className="pt-[2px]">
+            <h3 className="text-[32px] font-semibold leading-none tracking-[-0.065em] text-[#17392f]">
+              The Waterfront
+            </h3>
+
+            <p className="mt-[24px] max-w-[640px] text-[18px] font-semibold leading-[1.35] tracking-[-0.045em] text-[#17392f]">
+              Imagine waking up to the gentle sounds of flowing water, strolling
+              along tree-lined, wide streets, and watching your children play in
+              the lap of lush greenery.
+            </p>
+
+            <p className="mt-[32px] max-w-[660px] text-[18px] font-medium leading-[1.35] tracking-[-0.045em] text-[#17392f]">
+              Transform your lifestyle effortlessly. Simply choose your plot
+              size and create your perfect home in Erode&apos;s most in-demand
+              address. Here, you are not just building a house – you are
+              becoming a part of a highly modern, nature-rich and secured
+              community designed for the future.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+};
