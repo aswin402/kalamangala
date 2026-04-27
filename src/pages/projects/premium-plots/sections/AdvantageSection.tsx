@@ -1,40 +1,33 @@
-import { Star } from "lucide-react";
-import img13 from "../../../../assets/premium-residential-plots-in-coimbatore/img13.webp";
+import img8 from "../../../../assets/premium-residential-plots-in-coimbatore/img8.avif";
 
 export function AdvantageSection() {
   return (
-    <section className="max-w-6xl mx-auto px-6 mb-20 scroll-reveal">
-      <div className="flex flex-col md:flex-row items-center gap-12 bg-white rounded-[3rem] p-8 shadow-xl border border-foreground/5">
-        <div className="flex-1 space-y-6">
-          <h3 className="text-3xl font-heading font-bold text-foreground">
-            Experience the Kalamangala Advantage
-          </h3>
-          <p className="text-foreground/60 leading-relaxed">
-            We specialize in creating premium residential environments that
-            offer lasting value. Our Coimbatore project is a testament to our
-            commitment to excellence.
+    <section className="km-reveal mt-16 overflow-hidden rounded-[10px] bg-[#eee9cf]">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="flex flex-col justify-center p-8 md:p-12">
+          <h2 className="text-[20px] font-black leading-none tracking-[-0.06em] sm:text-[26px]">
+            Experience the
+            <br />
+            Kalamangala Advantage
+          </h2>
+
+          <p className="mt-4 text-[10px] font-medium leading-[1.5] tracking-[-0.02em] opacity-80 sm:text-[11px]">
+            We focus on creating residential environments where infrastructure
+            meets nature. Our plots are designed for individuals who value
+            peaceful living without compromising on city access.
           </p>
-          <div className="flex flex-col gap-4">
-            {[
-              "Premium Gated Community",
-              "Strategic Growth Location",
-              "World-Class Amenities",
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-3 text-sm font-bold text-foreground"
-              >
-                <Star size={16} className="text-primary" />
-                {item}
-              </div>
-            ))}
-          </div>
+
+          <p className="mt-3 text-[10px] font-medium leading-[1.5] tracking-[-0.02em] opacity-80 sm:text-[11px]">
+            Ownership here means more than just a piece of land; it is a step
+            towards a lifestyle of security, space, and community.
+          </p>
         </div>
-        <div className="flex-1 rounded-[2.5rem] overflow-hidden shadow-2xl h-[350px]">
+
+        <div className="h-[200px] md:h-auto">
           <img
-            src={img13}
-            alt="Advantage"
-            className="w-full h-full object-cover"
+            src={img8}
+            alt="Kalamangala lifestyle"
+            className="h-full w-full object-cover"
           />
         </div>
       </div>
