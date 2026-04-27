@@ -7,42 +7,49 @@ export const HeroSection = () => {
   const videoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { y: 28, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }
-    );
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        titleRef.current,
+        { y: 28, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }
+      );
 
-    gsap.fromTo(
-      videoRef.current,
-      { y: 35, opacity: 0, scale: 0.985 },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1.2,
-        delay: 0.25,
-        ease: 'power3.out',
-      }
-    );
+      gsap.fromTo(
+        videoRef.current,
+        { y: 42, opacity: 0, scale: 0.985 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.15,
+          delay: 0.15,
+          ease: 'power3.out',
+        }
+      );
+    });
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section className="pt-[118px]">
-      <div className="site-shell site-px">
-        <div ref={titleRef} className="ml-[76px] h-[390px] md:ml-[88px]">
-          <p className="mb-[-2px] text-[31px] font-normal leading-none tracking-[-0.06em] text-foreground">
+    <section id="home" className="relative pt-[128px]">
+      <div className="mx-auto w-full px-[38px]">
+        <div
+          ref={titleRef}
+          className="mb-[255px] ml-[105px] max-w-[520px]"
+        >
+          <p className="font-pathway text-[41px] font-normal leading-[0.92] tracking-[-0.03em] text-[#14352d]">
             Redefining
           </p>
 
-          <h1 className="font-script text-[82px] font-normal leading-[0.9] tracking-[-0.05em] text-foreground md:text-[96px]">
+          <h1 className="font-script text-[82px] font-normal leading-[0.9] tracking-[-0.04em] text-[#14352d]">
             Luxury Living
           </h1>
         </div>
 
         <div
           ref={videoRef}
-          className="h-[590px] w-full overflow-hidden rounded-[7px]"
+          className="h-[596px] w-full overflow-hidden rounded-[7px] bg-black"
         >
           <video
             src={herovideo}

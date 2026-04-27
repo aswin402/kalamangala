@@ -1,4 +1,3 @@
-// src/components/Home/ProjectsSection.tsx
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -6,6 +5,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import img2 from '../../assets/homepage/img2.webp';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const ArrowIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 13 13" fill="none">
+    <path
+      d="M2 11L11 2M11 2H4.5M11 2V8.5"
+      stroke="#14352d"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 export const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -15,48 +26,49 @@ export const ProjectsSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Heading animation
-      gsap.fromTo(headingRef.current,
-        { y: 80, opacity: 0 },
+      gsap.fromTo(
+        headingRef.current,
+        { y: 90, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1.1,
+          duration: 1.15,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
-          }
+            start: 'top 78%',
+          },
         }
       );
-      
-      // Card animation
-      gsap.fromTo(cardRef.current,
-        { y: 45, opacity: 0 },
+
+      gsap.fromTo(
+        cardRef.current,
+        { y: 55, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: 'top 70%',
-          }
-        }
-      );
-      
-      // Button animation
-      gsap.fromTo(btnRef.current,
-        { y: 25, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
+          duration: 1.05,
+          delay: 0.05,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: cardRef.current,
-            start: 'top 80%',
-          }
+            start: 'top 84%',
+          },
+        }
+      );
+
+      gsap.fromTo(
+        btnRef.current,
+        { y: 26, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.85,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: btnRef.current,
+            start: 'top 90%',
+          },
         }
       );
     }, sectionRef);
@@ -68,66 +80,60 @@ export const ProjectsSection = () => {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative flex flex-col items-center overflow-hidden pt-[56px] pb-[96px] md:pb-[106px]"
+      className="relative overflow-hidden pt-[56px] pb-[92px]"
     >
-      {/* Heading */}
-      <div className="mb-[42px] w-full text-center">
-        <span className="section-label mb-1">● Our Portfolio</span>
+      <div className="mb-[108px] text-center">
+        <span className="mb-[-12px] inline-flex items-center gap-[6px] text-[10px] font-black uppercase leading-none tracking-[-0.05em] text-[#14352d]">
+          <span className="h-[8px] w-[8px] rounded-full border border-[#14352d]/40 bg-[#14352d]" />
+          Our Portfolio
+        </span>
 
         <h2
           ref={headingRef}
-          className="display-heading text-[90px] md:text-[130px] lg:text-[160px] xl:text-[190px]"
+          className="font-display text-[clamp(112px,14.35vw,255px)] font-medium leading-[0.78] tracking-[-0.105em] text-[#14352d]"
         >
           Projects
         </h2>
       </div>
 
-      {/* Project Card */}
-      <div ref={cardRef} className="page-x w-full">
-        <div className="mx-auto max-w-[960px] rounded-[8px] bg-[#eeeadc] p-[16px]">
-          <div className="grid grid-cols-1 gap-0 md:grid-cols-[380px_1fr] lg:grid-cols-[420px_1fr]">
-            <div className="h-[280px] overflow-hidden rounded-[6px] md:h-[315px]">
-              <img
-                src={img2}
-                alt="The Waterfront"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-              />
-            </div>
+      <div className="relative w-full bg-[#fbf9f0]/88 py-[22px]">
+        <div ref={cardRef} className="mx-auto w-full max-w-[1168px] px-[20px]">
+          <div className="rounded-[8px] bg-[#f0ecde] px-[18px] py-[19px]">
+            <div className="grid grid-cols-1 items-center gap-0 md:grid-cols-[548px_1fr]">
+              <div className="h-[407px] overflow-hidden rounded-[7px]">
+                <img
+                  src={img2}
+                  alt="The Waterfront"
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.035]"
+                />
+              </div>
 
-            <div className="flex flex-col justify-center px-6 py-6 md:px-[48px] lg:px-[64px]">
-              <h3 className="mb-3 font-heading text-[20px] font-extrabold leading-none tracking-[-0.03em] text-foreground">
-                The Waterfront
-              </h3>
+              <div className="flex h-full flex-col justify-center px-[98px] py-[44px]">
+                <h3 className="mb-[29px] font-display text-[32px] font-black leading-none tracking-[-0.055em] text-[#14352d]">
+                  The Waterfront
+                </h3>
 
-              <p className="max-w-[340px] text-[11.5px] font-medium leading-[1.55] tracking-[-0.02em] text-foreground sm:text-[12px]">
-                Welcome to The Waterfront by Kalamangala – Erode's first
-                premium community living, where nature and modern comforts come
-                together. Choose your plot, build your dream home and be part of
-                a secure, eco-friendly and like-minded neighborhood.
-              </p>
+                <p className="max-w-[420px] text-[15.5px] font-bold leading-[1.45] tracking-[-0.045em] text-[#14352d]/70">
+                  Welcome to The Waterfront by Kalamangala – Erode&apos;s first
+                  premium community living, where nature and modern comforts
+                  come together. Choose your plot, build your dream home and be
+                  part of a secure, eco-friendly and like-minded neighborhood.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* CTA */}
-      <div ref={btnRef} className="mt-[72px] md:mt-[82px]">
+      <div ref={btnRef} className="mt-[100px] flex justify-center">
         <Link
           to="/the-waterfront"
-          className="group inline-flex items-center gap-2 rounded-full bg-foreground py-1.5 pl-5 pr-1.5 text-[10px] font-semibold text-white transition-all hover:bg-foreground/90"
+          className="group inline-flex items-center gap-[7px] rounded-[9px] bg-[#14352d] py-[6px] pl-[26px] pr-[6px] text-[18px] font-semibold leading-none text-[#f7f1e4] transition-all hover:bg-[#14352d]/90"
         >
-          <span>All Projects</span>
+          All Projects
 
-          <span className="flex h-[30px] w-[34px] items-center justify-center rounded-[8px] bg-primary transition-transform group-hover:translate-x-0.5">
-            <svg width="12" height="12" viewBox="0 0 13 13" fill="none">
-              <path
-                d="M2 11L11 2M11 2H4.5M11 2V8.5"
-                stroke="#102d25"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+          <span className="grid h-[47px] w-[48px] place-items-center rounded-[9px] bg-[#f0a77e] transition-transform group-hover:translate-x-[2px]">
+            <ArrowIcon />
           </span>
         </Link>
       </div>

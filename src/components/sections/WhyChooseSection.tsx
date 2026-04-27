@@ -39,34 +39,94 @@ const accordionItems = [
   },
 ];
 
-const DiamondIcon = () => (
-  <span className="flex h-[28px] w-[28px] shrink-0 items-center justify-center rounded-[4px] bg-primary/10">
-    <svg
-      width="13"
-      height="13"
-      viewBox="0 0 14 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M7 1L13 7L7 13L1 7Z"
-        stroke="#f2aa80"
-        strokeWidth="1.3"
-        fill="none"
-      />
-      <path d="M7 4L10 7L7 10L4 7Z" fill="#f2aa80" fillOpacity="0.45" />
-    </svg>
-  </span>
+const ArrowIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 13 13" fill="none">
+    <path
+      d="M2 11L11 2M11 2H4.5M11 2V8.5"
+      stroke="#14352d"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
 );
 
-interface ItemProps {
+const ItemIcon = ({ index }: { index: number }) => {
+  const icons = [
+    <path
+      key="client"
+      d="M4.2 7.2L6.1 9.1C6.8 9.8 8 9.8 8.7 9.1L12.1 5.7C12.5 5.3 12.5 4.7 12.1 4.3C11.7 3.9 11.1 3.9 10.7 4.3L8.1 6.9L6.9 5.7M4.2 7.2L2.9 5.9C2.5 5.5 1.9 5.5 1.5 5.9C1.1 6.3 1.1 6.9 1.5 7.3L4.8 10.6C5.4 11.2 6.4 11.2 7 10.6M4.2 7.2L6.9 4.5C7.3 4.1 7.9 4.1 8.3 4.5L9.1 5.3"
+      stroke="#f0a77e"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />,
+    <path
+      key="quality"
+      d="M4 3H10V6.5C10 8.2 8.7 9.5 7 9.5C5.3 9.5 4 8.2 4 6.5V3ZM10 4.5H11.2C12 4.5 12.6 5.1 12.6 5.9C12.6 6.7 12 7.3 11.2 7.3H10M5.2 12H8.8M7 9.5V12"
+      stroke="#f0a77e"
+      strokeWidth="1.45"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />,
+    <path
+      key="innovation"
+      d="M7 2.2C9.2 3 10.8 4.6 11.8 7C10.2 7.1 8.9 7.7 7.9 8.8L5.2 6.1C6.3 5.1 6.9 3.8 7 2.2ZM5.2 6.1L3.2 6.4L2.2 8.8L4.7 8.2M7.9 8.8L7.6 10.8L5.2 11.8L5.8 9.3M8.7 5.3H8.72"
+      stroke="#f0a77e"
+      strokeWidth="1.45"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />,
+    <path
+      key="leaf"
+      d="M12 2C7.2 2.3 3.8 4.8 3.3 9.4C5.8 9.5 10.2 8.5 12 2ZM3.3 9.4C3 10.4 2.7 11.2 2 12M5.1 8.2C6.7 7.2 8.4 6.1 10.1 4.4"
+      stroke="#f0a77e"
+      strokeWidth="1.45"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />,
+    <path
+      key="collab"
+      d="M4.2 7.2L6.1 9.1C6.8 9.8 8 9.8 8.7 9.1L12.1 5.7C12.5 5.3 12.5 4.7 12.1 4.3C11.7 3.9 11.1 3.9 10.7 4.3L8.1 6.9L6.9 5.7M4.2 7.2L2.9 5.9C2.5 5.5 1.9 5.5 1.5 5.9C1.1 6.3 1.1 6.9 1.5 7.3L4.8 10.6C5.4 11.2 6.4 11.2 7 10.6M4.2 7.2L6.9 4.5C7.3 4.1 7.9 4.1 8.3 4.5L9.1 5.3"
+      stroke="#f0a77e"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />,
+    <path
+      key="integrity"
+      d="M7 2.2V11.6M7 4.2C5.4 3.4 3.8 3.7 3 5.1C2.2 6.4 2.7 8.1 4.1 8.9M7 4.2C8.6 3.4 10.2 3.7 11 5.1C11.8 6.4 11.3 8.1 9.9 8.9M3.8 8.7C4.6 10.7 6.2 11.6 7 11.6C7.8 11.6 9.4 10.7 10.2 8.7"
+      stroke="#f0a77e"
+      strokeWidth="1.45"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />,
+  ];
+
+  return (
+    <span className="grid h-[48px] w-[48px] shrink-0 place-items-center rounded-[6px] bg-white/10">
+      <svg width="23" height="23" viewBox="0 0 14 14" fill="none">
+        {icons[index]}
+      </svg>
+    </span>
+  );
+};
+
+interface AccordionItemProps {
   title: string;
   content: string;
+  index: number;
   isOpen: boolean;
   onClick: () => void;
 }
 
-const AccordionItem = ({ title, content, isOpen, onClick }: ItemProps) => {
+const AccordionItem = ({
+  title,
+  content,
+  index,
+  isOpen,
+  onClick,
+}: AccordionItemProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -79,25 +139,21 @@ const AccordionItem = ({ title, content, isOpen, onClick }: ItemProps) => {
   }, [isOpen]);
 
   return (
-    <div className="border-b border-white/[0.07] last:border-0">
+    <div className={isOpen ? 'rounded-[8px] bg-white/[0.045]' : ''}>
       <button
         type="button"
         onClick={onClick}
-        className="group flex w-full items-center gap-3 py-[14px] text-left outline-none"
+        className="group flex w-full items-center gap-[22px] px-[24px] py-[15px] text-left outline-none"
       >
-        <DiamondIcon />
+        <ItemIcon index={index} />
 
-        <span
-          className={`flex-1 font-sans text-[12.5px] font-medium transition-colors ${
-            isOpen ? 'text-white' : 'text-white/70 group-hover:text-white'
-          }`}
-        >
+        <span className="flex-1 text-[17px] font-bold leading-none tracking-[-0.035em] text-white">
           {title}
         </span>
 
         <svg
-          width="12"
-          height="12"
+          width="18"
+          height="18"
           viewBox="0 0 14 14"
           fill="none"
           className={`shrink-0 transition-transform duration-300 ${
@@ -106,8 +162,8 @@ const AccordionItem = ({ title, content, isOpen, onClick }: ItemProps) => {
         >
           <path
             d="M2.5 5L7 9.5L11.5 5"
-            stroke={isOpen ? '#f2aa80' : 'rgba(255,255,255,0.42)'}
-            strokeWidth="1.4"
+            stroke="white"
+            strokeWidth="1.35"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -115,7 +171,7 @@ const AccordionItem = ({ title, content, isOpen, onClick }: ItemProps) => {
       </button>
 
       <div ref={contentRef} className="h-0 overflow-hidden opacity-0">
-        <p className="pb-[15px] pl-[41px] text-[11px] font-medium leading-[1.55] text-white/55">
+        <p className="max-w-[610px] pb-[24px] pl-[96px] pr-[28px] text-[16px] font-medium leading-[1.45] tracking-[-0.035em] text-white/75">
           {content}
         </p>
       </div>
@@ -130,110 +186,110 @@ export const WhyChooseSection = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   useEffect(() => {
-    const el = sectionRef.current;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        leftColRef.current,
+        { opacity: 0, x: -42 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1.05,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 74%',
+          },
+        }
+      );
 
-    gsap.fromTo(
-      leftColRef.current,
-      { opacity: 0, x: -32 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1.05,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 74%' },
-      }
-    );
+      gsap.fromTo(
+        rightColRef.current,
+        { opacity: 0, x: 42 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1.05,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 74%',
+          },
+        }
+      );
+    }, sectionRef);
 
-    gsap.fromTo(
-      rightColRef.current,
-      { opacity: 0, x: 32 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1.05,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 74%' },
-      }
-    );
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
       ref={sectionRef}
       id="why-choose"
-      className="page-x pb-[92px] pt-[48px]"
+      className="relative overflow-hidden pt-[30px] pb-[95px]"
     >
-      <div className="mx-auto grid max-w-[1220px] grid-cols-1 gap-[14px] lg:grid-cols-[550px_1fr]">
-        {/* Left Image */}
+      <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-[14px] px-[120px] lg:grid-cols-[760px_1fr]">
         <div
           ref={leftColRef}
-          className="relative min-h-[435px] overflow-hidden rounded-[7px]"
+          className="relative h-[610px] overflow-hidden rounded-[8px]"
         >
           <img
             src={img3}
-            alt="Kalamangala Building"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+            alt="Kalamangala building"
+            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
-
-          <div className="absolute inset-0 flex flex-col justify-end p-[26px]">
-            <h3 className="mb-2 max-w-[460px] text-[22px] font-medium leading-[1.1] tracking-[-0.045em] text-white md:text-[26px]">
+          <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[24px] pt-[24px] pb-[27px] backdrop-blur-[11px]">
+            <h3 className="mb-[17px] max-w-[650px] text-[35px] font-medium leading-[1.14] tracking-[-0.055em] text-white">
               Our specialty lies in transforming spaces into harmonious
               environments
             </h3>
 
-            <p className="mb-5 max-w-[430px] text-[11.5px] font-medium leading-[1.5] text-white/65">
+            <p className="mb-[39px] max-w-[670px] text-[16px] font-medium leading-[1.45] tracking-[-0.025em] text-white/90">
               Our craft is a harmony of space and nature, shaping communities
-              where timeless elegance meets modern comfort.
+              where timeless elegance meets modern comfort, creating homes that
+              inspire and endure.
             </p>
 
             <Link
               to="/contact"
-              className="inline-flex w-fit items-center gap-1 rounded-full bg-white py-1 pl-3 pr-1 text-[10px] font-semibold text-foreground transition-colors hover:bg-primary"
+              className="group inline-flex w-fit items-center gap-[4px] rounded-[9px] bg-white py-[6px] pl-[27px] pr-[6px] text-[17px] font-medium leading-none text-[#14352d] transition-colors hover:bg-[#fff7ee]"
             >
-              <span>Contact Us</span>
+              Contact Us
 
-              <span className="flex h-[28px] w-[32px] items-center justify-center rounded-[7px] bg-primary">
-                <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-                  <path
-                    d="M2 9L9 2M9 2H3.5M9 2V7.5"
-                    stroke="#102d25"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+              <span className="grid h-[46px] w-[48px] place-items-center rounded-[9px] bg-[#f0a77e] transition-transform group-hover:translate-x-[2px]">
+                <ArrowIcon />
               </span>
             </Link>
           </div>
         </div>
 
-        {/* Right Accordion */}
-        <div
-          ref={rightColRef}
-          className="flex min-h-[435px] flex-col rounded-[7px] bg-foreground px-[28px] py-[24px] md:px-[34px]"
-        >
-          <div className="mb-[12px]">
-            <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.22em] text-white/55">
-              ● Our Speciality
+        <div ref={rightColRef} className="relative -mt-[1px]">
+          <div className="mb-[13px]">
+            <span className="mb-[1px] inline-flex items-center gap-[6px] text-[10px] font-black uppercase leading-none tracking-[-0.055em] text-[#14352d]">
+              <span className="h-[8px] w-[8px] rounded-full border border-[#14352d]/40 bg-[#14352d]" />
+              Our Specialities
             </span>
 
-            <h2 className="font-heading text-[31px] font-extrabold leading-none tracking-[-0.055em] text-white md:text-[38px]">
+            <h2 className="font-display text-[49px] font-black leading-[0.96] tracking-[-0.07em] text-[#14352d]">
               Why choose Kalamangala
             </h2>
           </div>
 
-          <div className="mt-2 w-full">
-            {accordionItems.map((item, index) => (
-              <AccordionItem
-                key={index}
-                title={item.title}
-                content={item.content}
-                isOpen={openIndex === index}
-                onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-              />
-            ))}
+          <div className="min-h-[526px] rounded-[8px] bg-[#14352d] px-[19px] py-[19px]">
+            <div className="space-y-[12px]">
+              {accordionItems.map((item, index) => (
+                <AccordionItem
+                  key={index}
+                  title={item.title}
+                  content={item.content}
+                  index={index}
+                  isOpen={openIndex === index}
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? -1 : index)
+                  }
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
