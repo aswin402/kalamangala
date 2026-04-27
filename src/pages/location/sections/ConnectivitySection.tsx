@@ -1,44 +1,52 @@
-import { MapPin, Clock } from "lucide-react";
-
 export function ConnectivitySection() {
+  const tableRows = [
+    ["Erode New Bus Stand", "1.2 km", "2 mins"],
+    ["Cauvery River", "1 km", "2 mins"],
+    ["Thindal Kovil", "3 km", "2 mins"],
+    ["Erode Shopping Centre", "5 km", "2 mins"],
+    ["Collector Office", "5.5 km", "2 mins"],
+    ["Railway Station", "7 km", "2 mins"],
+  ];
+
   return (
-    <section className="max-w-6xl mx-auto px-6 mb-40 scroll-reveal">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground tracking-tighter">
-          The Neighbourhood Advantage
-        </h2>
-      </div>
-      <div className="overflow-hidden rounded-[2.5rem] border border-foreground/5 shadow-2xl bg-white">
-        <table className="w-full text-left border-collapse">
+    <section className="la-reveal mx-auto mt-[112px] w-full max-w-[1480px] px-5 pb-[76px]">
+      <h2 className="mb-[38px] text-center font-['Inter'] text-[36px] font-black leading-none tracking-[-0.065em] text-[#132d25] md:text-[48px]">
+        The Neighbourhood Advantage
+      </h2>
+
+      <div className="mx-auto w-full max-w-[1328px]">
+        <table className="w-full border-separate border-spacing-0 font-['Inter'] text-[#132d25]">
           <thead>
-            <tr className="bg-[#1a2b25] text-white">
-              <th className="px-8 py-6 font-heading text-lg">Landmark</th>
-              <th className="px-8 py-6 font-heading text-lg">Distance</th>
-              <th className="px-8 py-6 font-heading text-lg">Travel Time</th>
+            <tr>
+              <th className="w-1/3 border-r-[8px] border-[#f6f4e7] bg-[#385f53] px-8 py-[24px] text-center text-[22px] font-black leading-none tracking-[-0.045em] text-[#f7f3df] md:text-[30px]">
+                Landmark
+              </th>
+
+              <th className="w-1/3 border-r-[8px] border-[#f6f4e7] bg-[#385f53] px-8 py-[24px] text-center text-[22px] font-black leading-none tracking-[-0.045em] text-[#f7f3df] md:text-[30px]">
+                Distance
+              </th>
+
+              <th className="w-1/3 bg-[#385f53] px-8 py-[24px] text-center text-[22px] font-black leading-none tracking-[-0.045em] text-[#f7f3df] md:text-[30px]">
+                Travel Time
+              </th>
             </tr>
           </thead>
-          <tbody className="text-foreground/80">
-            {[
-              { name: "Perundurai Road", dist: "1.2 km", time: "3 Mins" },
-              { name: "Railway Station", dist: "5 km", time: "12 Mins" },
-              { name: "City Center", dist: "7 km", time: "18 Mins" },
-              { name: "Sathyamangalam Road", dist: "2 km", time: "5 Mins" },
-              { name: "Collector Office", dist: "8.5 km", time: "20 Mins" },
-              { name: "Cauvery River", dist: "4 km", time: "10 Mins" },
-            ].map((row, i) => (
-              <tr
-                key={i}
-                className="border-b border-foreground/5 hover:bg-foreground/5 transition-colors"
-              >
-                <td className="px-8 py-5 font-bold flex items-center gap-3">
-                  <MapPin size={16} className="text-primary" />
-                  {row.name}
-                </td>
-                <td className="px-8 py-5 text-sm font-medium">{row.dist}</td>
-                <td className="px-8 py-5 text-sm font-bold text-primary flex items-center gap-2">
-                  <Clock size={16} />
-                  {row.time}
-                </td>
+
+          <tbody>
+            {tableRows.map((row) => (
+              <tr key={row[0]}>
+                {row.map((cell, index) => (
+                  <td
+                    key={`${row[0]}-${cell}-${index}`}
+                    className={`border-t-[10px] border-[#f6f4e7] bg-[#ecebdc] px-8 py-[23px] text-center text-[18px] font-black leading-none tracking-[-0.045em] md:text-[24px] ${
+                      index !== row.length - 1
+                        ? "border-r-[8px] border-r-[#f6f4e7]"
+                        : ""
+                    }`}
+                  >
+                    {cell}
+                  </td>
+                ))}
               </tr>
             ))}
           </tbody>

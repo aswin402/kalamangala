@@ -1,17 +1,24 @@
 export function IntroSection() {
   return (
-    <section className="max-w-4xl mx-auto px-6 text-center mb-32 scroll-reveal">
-      <h2 className="text-5xl md:text-7xl font-heading font-bold text-foreground mb-8 tracking-tighter">
-        Why choose <br /> <span className="text-primary">Kalamangala</span>
-      </h2>
-      <p className="text-lg text-foreground/60 leading-relaxed max-w-2xl mx-auto">
-        We don't just build houses; we craft environments where families
-        thrive. Our amenities are chosen to provide a balanced lifestyle of
-        wellness, security, and community.
+    <section className="am-hero mx-auto mt-[32px] w-full px-6 text-center">
+      <h1 className="mx-auto max-w-[760px] text-[118px] font-semibold leading-[0.78] tracking-[-0.09em] text-[#12362d]">
+        Why choose
+        <br />
+        Kalamangala
+      </h1>
+
+      <p className="mx-auto mt-[42px] max-w-[1285px] text-[24px] font-bold leading-[1.32] tracking-[-0.04em] text-[#12362d]">
+        The Waterfront by Kalamangala redefines the idea of home. Located in
+        Modakurichi, Erode, this master-planned gated community is crafted by
+        the leading home developers in Tamil Nadu, known for their precision,
+        vision, and dedication to perfection. Here, every sunrise greets you
+        with serenity, every pathway leads to peace, and every corner echoes
+        luxury.
       </p>
-      <div className="mt-12 inline-flex items-center gap-2 px-8 py-4 bg-[#1a2b25] text-white rounded-full font-bold text-sm hover:scale-105 transition-transform cursor-pointer">
-        Explore Features
-      </div>
+
+      <button className="mt-[34px] h-[36px] min-w-[198px] rounded-full bg-[#12362d] px-[38px] text-[13px] font-bold tracking-[-0.02em] text-white">
+        Contact Us
+      </button>
     </section>
   );
 }

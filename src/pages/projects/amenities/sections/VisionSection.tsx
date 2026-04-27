@@ -1,26 +1,50 @@
 export function VisionSection() {
   return (
-    <section className="max-w-6xl mx-auto px-6 mb-40 scroll-reveal">
-      <div className="text-center mb-16">
-        <h3 className="text-2xl font-bold text-foreground italic">
+    <>
+      {/* CENTER VISION TEXT */}
+      <section className="am-reveal mx-auto mt-[112px] w-full px-6 text-center">
+        <h2 className="text-[46px] font-bold leading-none tracking-[-0.07em] text-[#12362d]">
           Crafted by Visionaries, Built for You
+        </h2>
+
+        <p className="mx-auto mt-[42px] max-w-[1500px] text-[24px] font-bold leading-[1.25] tracking-[-0.055em] text-[#12362d]">
+          Kalamangala doesn&apos;t just develop plots — it creates living
+          experiences. The Waterfront is a reflection of their commitment to
+          elegant, sustainable and meaningful spaces. Designed for those who
+          desire exclusivity and excellence, this project blends contemporary
+          architecture with lush landscapes and world-class infrastructure.
+        </p>
+
+        <p className="mx-auto mt-[30px] max-w-[1500px] text-[24px] font-bold leading-[1.25] tracking-[-0.055em] text-[#12362d]">
+          At The Waterfront, the dream of owning a luxury home becomes a
+          reality with thoughtfully designed amenities, strong civic
+          infrastructure, and a community-driven design approach. This is where
+          life flows effortlessly.
+        </p>
+      </section>
+
+      {/* LEFT CONTENT SECTION */}
+      <section className="am-reveal mx-auto mt-[108px] w-full max-w-[1540px] px-[90px]">
+        <h3 className="text-[48px] font-bold leading-none tracking-[-0.075em] text-[#12362d]">
+          Key Highlights of The Waterfront
         </h3>
-      </div>
-      <div className="grid md:grid-cols-2 gap-12 text-foreground/70 leading-relaxed">
-        <p>
-          At Kalamangala, we believe that the true value of a home lies beyond
-          its walls. It's in the way you feel when you step into the
-          clubhouse, the safety your children feel at play, and the peace of
-          mind that comes from knowing every detail has been meticulously
-          planned.
+
+        <p className="mt-[34px] max-w-[1420px] text-[24px] font-bold leading-[1.28] tracking-[-0.055em] text-[#12362d]">
+          Each element at The Waterfront has been curated to deliver comfort,
+          safety and prestige - a hallmark of Kalamangala&apos;s excellence.
         </p>
-        <p>
-          Our project, The Waterfront, represents our commitment to
-          excellence. We have integrated the natural beauty of the canal views
-          with state-of-the-art modern amenities to create a truly unique
-          living experience in Tamil Nadu.
+
+        <h4 className="mt-[36px] text-[48px] font-bold leading-none tracking-[-0.075em] text-[#12362d]">
+          Expansive Green Spaces &amp; Scenic Canal Views
+        </h4>
+
+        <p className="mt-[34px] max-w-[1420px] text-[24px] font-bold leading-[1.28] tracking-[-0.055em] text-[#12362d]">
+          A central natural canal runs through the property, enhanced by
+          landscaped walking trails and shaded seating decks. The green belts
+          are not just ornamental, they&apos;re designed to purify the air,
+          regulate temperature, and connect residents to nature every day.
         </p>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

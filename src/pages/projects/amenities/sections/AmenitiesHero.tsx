@@ -1,47 +1,54 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+
 import img1 from "../../../../assets/amenities/img1.avif";
 
 export function AmenitiesHero() {
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (marqueeRef.current) {
-      gsap.to(marqueeRef.current, {
-        xPercent: -50,
-        repeat: -1,
-        duration: 20,
-        ease: "none",
-      });
-    }
+    if (!marqueeRef.current) return;
+
+    const marquee = gsap.to(marqueeRef.current, {
+      xPercent: -50,
+      duration: 42,
+      ease: "none",
+      repeat: -1,
+    });
+
+    return () => marquee.kill();
   }, []);
 
   return (
     <>
-      {/* Top Marquee */}
-      <div className="w-full border-b border-foreground/5 py-4 overflow-hidden bg-white/30 backdrop-blur-sm">
+      {/* AMENITIES MARQUEE - MOVES LEFT */}
+      <section className="relative w-full overflow-hidden pt-[100px]">
         <div
           ref={marqueeRef}
-          className="whitespace-nowrap flex gap-8 items-center"
+          className="flex w-max whitespace-nowrap will-change-transform"
         >
-          {[...Array(10)].map((_, i) => (
-            <span
-              key={i}
-              className="text-4xl md:text-6xl font-heading font-bold text-foreground/10 uppercase tracking-tighter"
-            >
-              Amenities. <span className="text-primary italic">Amenities.</span>
-            </span>
+          {[0, 1].map((group) => (
+            <div key={group} className="flex shrink-0">
+              {Array.from({ length: 8 }).map((_, index) => (
+                <span
+                  key={index}
+                  className="mr-[18px] text-[92px] font-semibold leading-[0.82] tracking-[-0.085em] text-[#12362d] sm:text-[112px] md:text-[132px] lg:text-[154px]"
+                >
+                  Amenities.
+                </span>
+              ))}
+            </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Hero Section */}
-      <section className="max-w-[1400px] mx-auto px-6 py-16 scroll-reveal">
-        <div className="rounded-4xl overflow-hidden shadow-2xl aspect-21/9 border-4 border-white">
+      {/* HERO IMAGE */}
+      <section className="am-hero mx-auto mt-[156px] w-full max-w-[1800px] px-[160px]">
+        <div className="h-[410px] w-full overflow-hidden rounded-[6px]">
           <img
             src={img1}
-            alt="Amenities Hero"
-            className="w-full h-full object-cover"
+            alt="Amenities"
+            className="h-full w-full object-cover"
           />
         </div>
       </section>

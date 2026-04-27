@@ -1,76 +1,95 @@
-import img13 from "../../../../assets/amenities/img13.webp";
-import img9 from "../../../../assets/amenities/img9.webp";
-import img8 from "../../../../assets/amenities/img8.avif";
-import img12 from "../../../../assets/amenities/img12.webp";
 import img7 from "../../../../assets/amenities/img7.webp";
+import img8 from "../../../../assets/amenities/img8.avif";
+import img9 from "../../../../assets/amenities/img9.webp";
+import img10 from "../../../../assets/amenities/img10.webp";
+import img11 from "../../../../assets/amenities/img11.webp";
+
+const cards = [
+  {
+    title: "Why The Waterfront Stands Apart",
+    image: img7,
+    desc: "A trusted name synonymous with quality and innovation in real estate.",
+  },
+  {
+    title: "Eco-Sensitive Planning",
+    image: img8,
+    desc: "Over 40 % open green space to ensure a cleaner, cooler environment.",
+  },
+  {
+    title: "Low-Maintenance Design",
+    image: img9,
+    desc: "A trusted name synonymous with quality and innovation in real estate.",
+  },
+  {
+    title: "Prime Location",
+    image: img10,
+    desc: "Situated in Modakurichi, Erode — fast developing, yet peaceful.",
+  },
+  {
+    title: "Natural Integration",
+    image: img11,
+    desc: "The presence of the canal gives a resort-like ambience every day.",
+  },
+];
 
 export function StandApartSection() {
-  const items = [
-    {
-      title: "Grand Entrance",
-      desc: "Impressive gated entry with 24/7 surveillance.",
-      img: img13,
-    },
-    {
-      title: "24/7 Security",
-      desc: "Advanced security systems for absolute peace of mind.",
-      img: img9,
-    },
-    {
-      title: "Lush Landscaping",
-      desc: "Themed gardens and green belts across the project.",
-      img: img8,
-    },
-    {
-      title: "Underground Utilities",
-      desc: "No hanging wires. Pure aesthetic excellence.",
-      img: img12,
-    },
-    {
-      title: "Modern Infrastructure",
-      desc: "High-quality roads and drainage systems.",
-      img: img7,
-    },
-  ];
-
   return (
-    <section className="bg-[#1a2b25] py-32 rounded-t-[5rem]">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-20 text-center">
-          <h2 className="text-4xl md:text-6xl font-heading font-bold text-white tracking-tighter mb-4">
-            Why The Waterfront <br />{" "}
-            <span className="text-primary">Stands Apart</span>
-          </h2>
-          <p className="text-white/40 text-sm tracking-[0.2em] uppercase">
-            Premium Community Living
-          </p>
-        </div>
+    <section className="am-reveal mx-auto mt-[72px] w-full max-w-[1420px] px-0">
+      <h2 className="mb-[28px] text-[48px] font-bold leading-[0.93] tracking-[-0.08em] text-[#12362d]">
+        Why The Waterfront
+        <br />
+        Stands Apart
+      </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] overflow-hidden group scroll-reveal"
-            >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-8">
-                <h4 className="text-xl font-bold text-white mb-2">
-                  {item.title}
-                </h4>
-                <p className="text-white/50 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-3 gap-[18px]">
+        {cards.slice(0, 3).map((item) => (
+          <ApartCard key={item.title} item={item} />
+        ))}
+      </div>
+
+      <div className="mt-[22px] grid grid-cols-2 gap-[18px]">
+        {cards.slice(3).map((item) => (
+          <ApartCard key={item.title} item={item} wide />
+        ))}
       </div>
     </section>
+  );
+}
+
+function ApartCard({
+  item,
+  wide = false,
+}: {
+  item: {
+    title: string;
+    image: string;
+    desc: string;
+  };
+  wide?: boolean;
+}) {
+  return (
+    <article
+      className={`group overflow-hidden rounded-[19px] bg-[#12362d] ${
+        wide ? "h-[282px]" : "h-[304px]"
+      }`}
+    >
+      <div className="h-[128px] w-full overflow-hidden">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
+        />
+      </div>
+
+      <div className="px-[18px] pt-[30px]">
+        <h3 className="max-w-[330px] text-[24px] font-bold leading-[0.98] tracking-[-0.06em] text-white">
+          {item.title}
+        </h3>
+
+        <p className="mt-[15px] max-w-[360px] text-[16px] font-bold leading-[1.32] tracking-[-0.04em] text-white/82">
+          {item.desc}
+        </p>
+      </div>
+    </article>
   );
 }

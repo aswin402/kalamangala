@@ -1,27 +1,54 @@
-import img15 from "../../../assets/location-advantage/img15.webp";
+import img1 from "../../../assets/location-advantage/img1.avif";
 
 export function CTASection() {
   return (
-    <section className="max-w-[1400px] mx-auto px-6 mb-20 scroll-reveal">
-      <div className="relative h-[500px] rounded-[4rem] overflow-hidden shadow-2xl group cursor-pointer">
-        <img
-          src={img15}
-          alt="Live Connected"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-        />
-        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center p-10">
-          <h2 className="text-5xl md:text-7xl font-heading font-bold text-white tracking-tighter mb-6">
-            Live Connected. <br /> Live Kalamangala.
-          </h2>
-          <p className="text-white/80 max-w-xl mx-auto text-lg font-medium">
-            Be part of Erode's most prestigious community. Your future home at
-            The Waterfront awaits.
-          </p>
-          <button className="mt-12 px-12 py-5 bg-primary text-foreground rounded-full font-bold text-sm tracking-widest uppercase hover:bg-white transition-colors">
-            Contact Sales Team
-          </button>
+    <section className="mx-auto mt-[118px] w-full max-w-[1470px] px-5">
+      <article className="la-card grid min-h-[490px] overflow-hidden rounded-[24px] bg-[#173a31] text-[#f7f3df] md:grid-cols-[0.98fr_1.02fr]">
+        <div className="h-[380px] overflow-hidden rounded-[24px] md:h-[490px]">
+          <img
+            src={img1}
+            alt="Live Connected"
+            className="h-full w-full object-cover object-center"
+          />
         </div>
-      </div>
+
+        <div className="flex flex-col justify-center px-[36px] py-[44px] md:px-[58px]">
+          <h2 className="font-['Inter'] text-[42px] font-black leading-[1.02] tracking-[-0.07em] text-[#f5a37d] md:text-[54px]">
+            Live Connected.
+            <br />
+            Live Complete.
+            <br />
+            Live The Waterfront.
+          </h2>
+
+          <div className="mt-[36px] max-w-[690px] space-y-[10px] font-['Inter'] text-[15px] font-bold leading-[1.55] tracking-[-0.035em] text-[#f7f3df] md:text-[16px]">
+            <p>
+              At Kalamangala, we didn&apos;t just build homes — we built a
+              lifestyle rooted in location excellence.
+            </p>
+
+            <p>
+              The Waterfront stands as a perfect example of how thoughtful
+              planning transforms living standards.
+            </p>
+
+            <p>
+              From morning devotion at Thindal Kovil to evening shopping in the
+              city, from weekend train trips to peaceful riverside sunsets —
+              everything you love is within reach.
+            </p>
+
+            <p>This is not just a home.</p>
+
+            <p>
+              It&apos;s your gateway to premium living, crafted by a luxury home
+              developer in Tamil Nadu who understands what modern families truly
+              value —{" "}
+              <span className="italic">time, peace, and pride of ownership.</span>
+            </p>
+          </div>
+        </div>
+      </article>
     </section>
   );
 }
