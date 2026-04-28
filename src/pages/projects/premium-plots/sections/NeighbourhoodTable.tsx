@@ -1,52 +1,53 @@
-const DARK = "#17352d";
-
 export function NeighbourhoodTable() {
   const tableRows = [
-    ["Government School", "500 m", "2 mins"],
-    ["Proposed Park", "1 km", "2 mins"],
-    ["Thindal Kovil", "3 km", "5 mins"],
-    ["Erode Railway Station", "4 km", "15 mins"],
-    ["Collector Office", "5 km", "7 mins"],
-    ["Cauvery River", "700 m", "2 mins"],
+    ["Erode New Bus Stand", "1.2 km", "2 mins"],
+    ["Cauvery River", "1 km", "2 mins"],
+    ["Thindal Kovil", "3 km", "2 mins"],
+    ["Erode Shopping Centre", "5 km", "2 mins"],
+    ["Collector Office", "5.5 km", "2 mins"],
+    ["Railway Station", "7 km", "2 mins"],
   ];
 
   return (
-    <section className="km-reveal mx-auto mt-16 max-w-[740px] text-center">
-      <h2 className="text-[18px] font-black tracking-[-0.06em] sm:text-[22px]">
-        The Neighbourhood Advantage
-      </h2>
+    <section className="km-reveal relative mx-auto mt-[42px] w-full  px-5 pb-[86px] pt-[42px] text-center font-['Inter',sans-serif]">
+      {/* full background pattern */}
 
-      <div className="mt-5 overflow-hidden">
-        <table className="w-full border-collapse text-[10px] sm:text-[12px]">
-          <thead>
-            <tr style={{ backgroundColor: DARK, color: "white" }}>
-              <th className="border border-[#f6f3df] px-4 py-3 text-center font-bold">
-                Landmark
-              </th>
-              <th className="border border-[#f6f3df] px-4 py-3 text-center font-bold">
-                Distance
-              </th>
-              <th className="border border-[#f6f3df] px-4 py-3 text-center font-bold">
-                Travel Time
-              </th>
-            </tr>
-          </thead>
+      <div className="relative mx-auto w-full max-w-[1390px]">
+        <h2 className="text-[34px] font-[900] leading-none tracking-[-0.075em] text-[#0d2b22] md:text-[43px]">
+          The Neighbourhood Advantage
+        </h2>
 
-          <tbody>
-            {tableRows.map((row) => (
-              <tr key={row[0]} className="bg-[#eee9cf]">
-                {row.map((cell) => (
-                  <td
-                    key={cell}
-                    className="border border-[#f6f3df] px-4 py-3 text-center font-medium"
+        <div className="mx-auto mt-[34px] w-full">
+          <table className="w-full border-separate border-spacing-0 text-[#0d2b22]">
+            <thead>
+              <tr>
+                {["Landmark", "Distance", "Travel Time"].map((heading) => (
+                  <th
+                    key={heading}
+                    className="border-r-[8px] border-[#fbfbef] bg-[#365f53] px-4 py-[25px] text-center text-[28px] font-[900] leading-none tracking-[-0.055em] text-white last:border-r-0"
                   >
-                    {cell}
-                  </td>
+                    {heading}
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {tableRows.map((row) => (
+                <tr key={row[0]}>
+                  {row.map((cell) => (
+                    <td
+                      key={cell}
+                      className="border-r-[8px] border-t-[10px] border-[#fbfbef] bg-[#eee9cf] px-4 py-[28px] text-center text-[21px] font-[900] leading-none tracking-[-0.045em] last:border-r-0"
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );

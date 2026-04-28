@@ -5,25 +5,26 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PlotsHero } from "./sections/PlotsHero";
 import { PlotsMarquee } from "./sections/PlotsMarquee";
 import { IntroSection } from "./sections/IntroSection";
+import { PrimeLocationSection } from "./sections/PrimeLocationSection";
+import { PremiumAmenitiesSection } from "./sections/PremiumAmenitiesSection";
+import { PremiumAmenitiesCardsSection } from "./sections/PremiumAmenitiesCardsSection";
 import { WhyChooseSection } from "./sections/WhyChooseSection";
 import { NeighbourhoodTable } from "./sections/NeighbourhoodTable";
-import { GrowthGrid } from "./sections/GrowthGrid";
+import { NeighbourhoodGrowthSection } from "./sections/NeighbourhoodGrowthSection";
 import { AdvantageSection } from "./sections/AdvantageSection";
 import { LifestyleSection } from "./sections/LifestyleSection";
 import { CTASection } from "./sections/CTASection";
-import { ContactSection } from "./sections/ContactSection";
+import { FooterSection } from "./sections/FooterSection";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const CREAM = "#f6f3df";
-const TEXT = "#101d18";
 
 export const PremiumResidentialPlotsPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const reveals = document.querySelectorAll(".km-reveal");
+      const reveals = gsap.utils.toArray<HTMLElement>(".km-reveal");
+
       reveals.forEach((el) => {
         gsap.fromTo(
           el,
@@ -50,29 +51,29 @@ export const PremiumResidentialPlotsPage = () => {
   }, []);
 
   return (
-    <div
+    <main
       ref={containerRef}
-      className="min-h-screen pt-[120px]"
-      style={{
-        backgroundColor: CREAM,
-        color: TEXT,
-        backgroundImage: `radial-gradient(rgba(23, 53, 45, 0.08) 1px, transparent 1px)`,
-        backgroundSize: "12px 12px",
-      }}
+      className="min-h-screen overflow-hidden pt-[92px]"
     >
-      <div className="mx-auto max-w-[1200px] px-5 sm:px-10">
+      {/* Full width marquee */}
+      <PlotsMarquee />
+
+      {/* Main centered content */}
+      <div className="mx-auto w-full max-w-[1540px] px-[42px]">
         <PlotsHero />
-        <PlotsMarquee />
         <IntroSection />
+        <PrimeLocationSection />
+        <PremiumAmenitiesSection />
+        <PremiumAmenitiesCardsSection />
         <WhyChooseSection />
         <NeighbourhoodTable />
-        <GrowthGrid />
+        <NeighbourhoodGrowthSection />
         <AdvantageSection />
         <LifestyleSection />
         <CTASection />
-        <ContactSection />
+        <FooterSection />
       </div>
-    </div>
+    </main>
   );
 };
 

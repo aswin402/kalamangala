@@ -1,9 +1,43 @@
 export function FooterSection() {
   return (
-    <section className="w-full pt-40 pb-20 bg-[#1a2b25] flex flex-col items-center overflow-hidden">
-      <h2 className="text-[25vw] font-heading font-bold text-primary/5 leading-none select-none pointer-events-none transform translate-y-1/4 uppercase">
-        Kalamangala
-      </h2>
+    <section
+      className="
+        mx-auto
+        max-w-[1455px]
+        px-5
+        pt-[34px]
+        pb-[52px]
+        text-center
+      "
+    >
+      <h3
+        className="
+          font-['Inter',sans-serif]
+          text-[42px]
+          font-[900]
+          leading-none
+          tracking-[-0.075em]
+          text-[#0d2b22]
+          md:text-[50px]
+        "
+      >
+        The Waterfront by Kalamangala
+      </h3>
+
+      <p
+        className="
+          mt-[16px]
+          font-['Inter',sans-serif]
+          text-[20px]
+          font-[800]
+          leading-none
+          tracking-[-0.055em]
+          text-[#0d2b22]
+          md:text-[24px]
+        "
+      >
+        Where every direction leads to convenience, and every view opens to calm.
+      </p>
     </section>
   );
 }

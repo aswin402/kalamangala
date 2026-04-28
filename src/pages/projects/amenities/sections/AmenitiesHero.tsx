@@ -16,7 +16,9 @@ export function AmenitiesHero() {
       repeat: -1,
     });
 
-    return () => marquee.kill();
+    return () => {
+      marquee.kill();
+    };
   }, []);
 
   return (

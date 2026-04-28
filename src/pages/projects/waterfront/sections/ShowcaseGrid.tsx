@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 import img1 from "../../../../assets/thewaterfront/img1.avif";
 import img2 from "../../../../assets/thewaterfront/img2.png";
@@ -74,7 +74,7 @@ const showcaseItems = [
   },
 ];
 
-const sectionVariants = {
+const sectionVariants: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -83,7 +83,7 @@ const sectionVariants = {
   },
 };
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: {
     opacity: 0,
     y: 70,
@@ -95,7 +95,7 @@ const fadeUp = {
     filter: "blur(0px)",
     transition: {
       duration: 0.9,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
 };

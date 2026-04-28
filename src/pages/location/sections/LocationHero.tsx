@@ -14,7 +14,9 @@ export function LocationHero() {
       ease: "none",
     });
 
-    return () => tween.kill();
+    return () => {
+      tween.kill();
+    };
   }, []);
 
   return (

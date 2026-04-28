@@ -2,12 +2,12 @@ import img1 from "../../../../assets/premium-residential-plots-in-coimbatore/img
 
 export function PlotsHero() {
   return (
-    <section className="km-reveal pt-2">
-      <div className="mx-auto h-[150px] w-full max-w-[740px] overflow-hidden rounded-[7px] sm:h-[190px] md:h-[225px]">
+    <section className="km-reveal w-full px-5 pt-[18px]">
+      <div className="mx-auto h-[255px] w-full max-w-[1520px] overflow-hidden rounded-[10px] md:h-[360px] lg:h-[454px]">
         <img
           src={img1}
           alt="Premium residential plots in Coimbatore"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-center"
         />
       </div>
     </section>

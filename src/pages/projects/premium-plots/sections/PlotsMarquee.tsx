@@ -5,19 +5,31 @@ export function PlotsMarquee() {
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = marqueeRef.current;
+    if (!el) return;
+
     const ctx = gsap.context(() => {
-      gsap.to(marqueeRef.current, {
-        xPercent: -50,
-        duration: 36,
-        repeat: -1,
-        ease: "none",
-      });
-    });
+      const halfWidth = el.scrollWidth / 2;
+
+      gsap.fromTo(
+        el,
+        { x: 0 },
+        {
+          x: -halfWidth,
+          duration: 38,
+          repeat: -1,
+          ease: "none",
+        }
+      );
+    }, el);
+
     return () => ctx.revert();
   }, []);
 
+  const text = "Premium.Residential.Plots";
+
   return (
-    <section className="w-full overflow-hidden pt-[18px] pb-[18px]">
+    <section className="w-full overflow-hidden py-[30px]">
       <div
         ref={marqueeRef}
         className="flex w-max whitespace-nowrap will-change-transform"
@@ -26,14 +38,15 @@ export function PlotsMarquee() {
           <div key={set} className="flex items-center">
             {Array.from({ length: 8 }).map((_, i) => (
               <span
-                key={i}
-                className="pr-2 font-black leading-none tracking-[-0.085em]"
+                key={`${set}-${i}`}
+                className="font-['Inter',sans-serif] font-black leading-none text-[#0d2b22]"
                 style={{
-                  fontFamily: "Inter, Arial, sans-serif",
-                  fontSize: "clamp(48px, 7vw, 118px)",
+                  fontSize: "clamp(92px, 6.8vw, 126px)",
+                  letterSpacing: "-0.09em",
+                  marginRight: "0px",
                 }}
               >
-                Premium.Residential.Plots
+                {text}
               </span>
             ))}
           </div>
