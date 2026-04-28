@@ -8,7 +8,7 @@ const navLinks = [
   { name: 'Home', href: '/', route: true },
   { name: 'About', href: '/about', route: true },
   { name: 'Projects', href: '#', route: false, dropdown: true },
-  { name: 'Blog', href: '/#blog', route: false },
+  { name: 'Blog', href: `${import.meta.env.BASE_URL}#blog`, route: false },
   { name: 'Contact', href: '/contact', route: true },
 ];
 
