@@ -14,6 +14,7 @@ export default defineConfig({
       overlay: true,
     },
   },
+  base: "/kalamangala/",
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
