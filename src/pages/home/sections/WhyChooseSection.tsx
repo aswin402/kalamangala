@@ -95,7 +95,7 @@ const ItemIcon = ({ index }: { index: number }) => {
   ];
 
   return (
-    <span className="grid h-[50px] w-[50px] shrink-0 place-items-center rounded-[6px] bg-white/10 max-[768px]:h-[50px] max-[768px]:w-[50px]">
+    <span className="grid h-[50px] w-[50px] shrink-0 place-items-center rounded-[6px] bg-white/10 max-[520px]:h-[46px] max-[520px]:w-[46px]">
       <svg width="24" height="24" viewBox="0 0 14 14" fill="none">
         {icons[index]}
       </svg>
@@ -140,11 +140,11 @@ const AccordionItem = ({
       <button
         type="button"
         onClick={onClick}
-        className="group flex w-full items-center gap-[22px] px-[24px] py-[15px] text-left outline-none max-[768px]:gap-[22px] max-[768px]:px-[19px] max-[768px]:py-[12px]"
+        className="group flex w-full items-center gap-[22px] px-[21px] py-[11px] text-left outline-none max-[520px]:gap-[17px] max-[520px]:px-[18px] max-[520px]:py-[12px]"
       >
         <ItemIcon index={index} />
 
-        <span className="flex-1 text-[17px] font-bold leading-none tracking-[-0.035em] text-white max-[768px]:text-[18px]">
+        <span className="flex-1 text-[17px] font-bold leading-none tracking-[-0.035em] text-white max-[520px]:text-[17px]">
           {title}
         </span>
 
@@ -168,7 +168,7 @@ const AccordionItem = ({
       </button>
 
       <div ref={contentRef} className="h-0 overflow-hidden opacity-0">
-        <p className="max-w-[610px] pb-[24px] pl-[96px] pr-[28px] text-[16px] font-medium leading-[1.45] tracking-[-0.035em] text-white/75 max-[768px]:pl-[91px] max-[768px]:pr-[22px] max-[768px]:text-[15px]">
+        <p className="max-w-[610px] pb-[22px] pl-[93px] pr-[28px] text-[16px] font-medium leading-[1.45] tracking-[-0.035em] text-white/75 max-[520px]:pl-[81px] max-[520px]:pr-[20px] max-[520px]:text-[14px]">
           {content}
         </p>
       </div>
@@ -223,27 +223,27 @@ export const WhyChooseSection = () => {
     <section
       ref={whyChooseSectionRef}
       id="why-choose"
-      className="relative overflow-hidden pb-[95px] pt-[30px] max-[768px]:pb-[48px] max-[768px]:pt-[36px]"
+      className="relative overflow-hidden pb-[95px] pt-[86px] max-[768px]:pb-[48px] max-[768px]:pt-[36px]"
     >
-      <div className="mx-auto grid w-full grid-cols-1 items-start gap-[14px] px-[120px] max-[1280px]:px-[60px] max-[1024px]:px-[28px] max-[768px]:gap-[50px] max-[768px]:px-[12px] lg:grid-cols-[760px_minmax(0,1fr)]">
-        {/* IMAGE CARD - desktop left, mobile bottom */}
+      <div className="mx-auto grid w-full max-w-[1205px] grid-cols-1 items-start gap-[24px] px-[20px] md:px-[36px] xl:grid-cols-[540px_1fr] xl:gap-[14px] xl:px-0">
+        {/* IMAGE CARD */}
         <div
           ref={whyChooseLeftColRef}
-          className="relative order-2 h-[670px] overflow-hidden rounded-[8px] max-[768px]:h-[755px] lg:order-1"
+          className="relative order-2 h-[560px] min-w-0 overflow-hidden rounded-[8px] md:h-[610px] lg:h-[640px] xl:order-1 xl:h-[560px]"
         >
           <img
             src={img3}
             alt="Kalamangala building"
-            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.03] max-[768px]:object-[center_top]"
+            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
           />
 
-          <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[24px] pb-[27px] pt-[24px] backdrop-blur-[11px] max-[768px]:bottom-[7px] max-[768px]:left-[10px] max-[768px]:right-[10px] max-[768px]:px-[21px] max-[768px]:pb-[28px] max-[768px]:pt-[25px]">
-            <h3 className="mb-[17px] max-w-[650px] text-[35px] font-medium leading-[1.14] tracking-[-0.055em] text-white max-[768px]:mb-[15px] max-[768px]:text-[28px] max-[768px]:leading-[1.12]">
+          <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[21px] pb-[27px] pt-[24px] backdrop-blur-[11px] md:px-[30px] md:pb-[30px] md:pt-[28px] xl:px-[21px] xl:pb-[27px] xl:pt-[24px]">
+            <h3 className="mb-[17px] max-w-[500px] text-[35px] font-medium leading-[1.14] tracking-[-0.055em] text-white max-[768px]:text-[28px] max-[480px]:text-[25px]">
               Our specialty lies in transforming spaces into harmonious
               environments
             </h3>
 
-            <p className="mb-[39px] max-w-[670px] text-[16px] font-medium leading-[1.45] tracking-[-0.025em] text-white/90 max-[768px]:mb-[37px] max-[768px]:text-[16px] max-[768px]:leading-[1.42]">
+            <p className="mb-[39px] max-w-[500px] text-[16px] font-medium leading-[1.45] tracking-[-0.025em] text-white/90 max-[480px]:text-[15px]">
               Our craft is a harmony of space and nature, shaping communities
               where timeless elegance meets modern comfort, creating homes
               that inspire and endure.
@@ -251,7 +251,7 @@ export const WhyChooseSection = () => {
 
             <Link
               to="/contact"
-              className="group inline-flex w-fit items-center gap-[4px] rounded-[9px] bg-white py-[6px] pl-[27px] pr-[6px] text-[17px] font-medium leading-none text-[#14352d] transition-colors hover:bg-[#fff7ee] max-[768px]:pl-[27px]"
+              className="group inline-flex w-fit items-center gap-[4px] rounded-[9px] bg-white py-[6px] pl-[27px] pr-[6px] text-[17px] font-medium leading-none text-[#14352d] transition-colors hover:bg-[#fff7ee]"
             >
               Contact Us
 
@@ -262,23 +262,23 @@ export const WhyChooseSection = () => {
           </div>
         </div>
 
-        {/* ACCORDION CARD - desktop right, mobile top */}
+        {/* ACCORDION CARD */}
         <div
           ref={whyChooseRightColRef}
-          className="relative order-1 flex min-h-[670px] flex-col max-[1024px]:min-h-0 lg:order-2"
+          className="relative order-1 flex min-w-0 flex-col xl:order-2 xl:h-[560px]"
         >
           <div className="mb-[13px] shrink-0 max-[768px]:mb-[9px] max-[768px]:text-center">
             <div className="mb-[1px] flex max-[768px]:justify-center">
               <SectionLabel>Our Specialities</SectionLabel>
             </div>
 
-            <h2 className="font-display text-[49px] font-black leading-[0.96] tracking-[-0.07em] text-[#14352d] max-[768px]:text-center max-[768px]:text-[31px] max-[768px]:leading-[0.95] max-[768px]:tracking-[-0.065em]">
+            <h2 className="font-display text-[43px] font-black leading-[0.96] tracking-[-0.07em] text-[#14352d] md:text-[56px] xl:text-[49px]">
               Why choose Kalamangala
             </h2>
           </div>
 
-          <div className="min-h-[587px] rounded-[8px] bg-[#14352d] px-[19px] py-[19px] max-[1024px]:min-h-[526px] max-[768px]:min-h-[464px] max-[768px]:px-[0px] max-[768px]:py-[19px]">
-            <div className="space-y-[12px] max-[768px]:space-y-[13px]">
+          <div className="flex flex-1 rounded-[8px] bg-[#14352d] px-[19px] py-[19px] md:min-h-[480px] xl:min-h-0">
+            <div className="flex w-full flex-col justify-between">
               {accordionItems.map((item, index) => (
                 <AccordionItem
                   key={item.title}

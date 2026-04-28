@@ -70,15 +70,31 @@ export const ProjectsSection = () => {
     <section
       ref={projectsSectionRef}
       id="projects"
-      className="relative overflow-hidden pt-[54px] pb-[64px] md:pt-[54px] md:pb-[82px]"
+      className="
+        relative overflow-hidden
+        pt-[54px] pb-[64px]
+        md:pt-[54px] md:pb-[82px]
+        lg:pt-[74px]
+      "
     >
       {/* Heading */}
-      <div className="relative mx-auto mb-[47px] w-full max-w-[705px] text-center md:mb-[112px]">
+      <div
+        className="
+          relative mx-auto mb-[47px] w-full max-w-[705px] text-center
+          md:mb-[112px]
+          lg:mb-[112px] lg:max-w-[705px]
+        "
+      >
         <div
           className="
-            absolute left-1/2 top-[-13px] z-20
-            flex -translate-x-[72px] items-center gap-[5px]
-            md:left-[145px] md:top-[12px] md:translate-x-0
+            absolute z-30 flex items-center gap-[5px]
+
+            left-1/2 top-[-13px]
+            -translate-x-[72px]
+
+            md:left-[160px] md:top-[12px] md:translate-x-0
+
+            lg:left-[180px] lg:top-[12px]
           "
         >
           <span className="grid h-[11px] w-[11px] place-items-center rounded-full border border-[#082f2f]">
@@ -93,11 +109,18 @@ export const ProjectsSection = () => {
         <h2
           ref={projectsHeadingRef}
           className="
-            font-display text-[76px] font-medium leading-[0.76]
-            tracking-[-0.118em] text-[#082f2f]
+            relative z-10
+            font-display font-medium text-[#082f2f]
+
+            text-[76px] leading-[0.76] tracking-[-0.118em]
             sm:text-[92px]
-            md:text-[clamp(108px,12.1vw,218px)]
+
+            md:text-[clamp(108px,12.1vw,170px)]
             md:tracking-[-0.108em]
+
+            lg:text-[218px]
+            lg:leading-[0.72]
+            lg:tracking-[-0.118em]
           "
         >
           Projects
@@ -125,7 +148,6 @@ export const ProjectsSection = () => {
             "
           >
             <div className="grid grid-cols-1 items-stretch md:grid-cols-[548px_1fr] max-[1024px]:md:grid-cols-[50%_1fr]">
-              {/* Mobile image */}
               <div
                 className="
                   overflow-hidden rounded-[7px]
@@ -145,7 +167,6 @@ export const ProjectsSection = () => {
                 />
               </div>
 
-              {/* Content */}
               <div
                 className="
                   flex h-full flex-col
@@ -185,7 +206,6 @@ export const ProjectsSection = () => {
         </div>
       </div>
 
-      {/* Button */}
       <div
         ref={projectsBtnRef}
         className="mt-[40px] flex justify-center md:mt-[98px]"
