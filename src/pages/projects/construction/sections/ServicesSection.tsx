@@ -15,31 +15,31 @@ import img7 from "../../../../assets/construction-company/img7.webp";
 const services = [
   {
     title: "Residential Construction",
-    desc: "Build your dream home with our expert residential construction services, designed for comfort, functionality, and long-lasting quality.",
+    desc: "Kalamangala is a preferred choice among homeowners who seek elegant, durable, and well-designed living spaces. We understand that a home is a lifelong dream — which is why we bring together contemporary architecture, sustainable materials, and innovative layouts to craft homes that truly stand out. Whether it’s a luxury villa, an independent house, or an apartment complex, we build spaces that embody comfort and sophistication.",
     img: img2,
     icon: Building2,
   },
   {
     title: "Commercial Projects",
-    desc: "We create efficient commercial spaces that support business growth, strong layouts, and reliable structural performance.",
+    desc: "Our expertise extends to commercial developments such as offices, shopping complexes, and business centers. Every commercial project by Kalamangala is designed with an eye for detail, efficiency, and modernity. We ensure that the spaces we create support productivity, attract attention, and add long-term value to our clients’ investments.",
     img: img3,
     icon: HardHat,
   },
   {
     title: "Industrial Construction",
-    desc: "Reliable industrial construction for factories, warehouses, and large-scale facilities with practical planning and durable execution.",
+    desc: "We deliver reliable industrial construction for factories, warehouses, and large-scale facilities with practical planning, durable execution, and future-ready layouts that support long-term operational growth.",
     img: img4,
     icon: Layers,
   },
   {
     title: "Architectural Design & Planning",
-    desc: "From initial concept to detailed planning, we shape functional, aesthetic, and future-ready architectural solutions.",
+    desc: "From initial concept to detailed planning, we shape functional, aesthetic, and future-ready architectural solutions that balance creativity, usability, structure, and long-lasting value.",
     img: img6,
     icon: PenTool,
   },
   {
     title: "Renovation & Remodeling",
-    desc: "Transform your existing space with smart renovation and remodeling services focused on comfort, beauty, and usability.",
+    desc: "Transform your existing space with smart renovation and remodeling services focused on comfort, beauty, usability, and improved everyday living through thoughtful design upgrades.",
     img: img7,
     icon: Hammer,
   },
@@ -47,45 +47,87 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section className="mx-auto mt-[64px] max-w-[1000px] px-5">
-      <h2 className="km-reveal mb-[18px] font-['Inter',sans-serif] text-[30px] font-[900] leading-none tracking-[-0.075em] text-[#0d2b22] md:text-[38px]">
+    <section className="mx-auto mt-[34px] max-w-[1430px] px-5 pb-[28px]">
+      <h2
+        className="
+          km-reveal
+          mb-[30px]
+          font-['Inter',sans-serif]
+          text-[34px]
+          font-[900]
+          leading-none
+          tracking-[-0.075em]
+          text-[#0d2b22]
+          md:text-[44px]
+        "
+      >
         Our Core Construction Services
       </h2>
 
-      <div className="space-y-[12px]">
+      <div className="space-y-[18px]">
         {services.map((service) => {
-          const Icon = service.icon;
-
           return (
             <article
               key={service.title}
-              className="km-service group relative h-[285px] overflow-hidden rounded-[8px] bg-[#14372e]"
+              className="
+                km-service
+                group
+                relative
+                overflow-hidden
+                rounded-[18px]
+                bg-[#17392f]
+                px-[18px]
+                pt-[18px]
+                pb-[26px]
+                min-h-[420px]
+              "
             >
               <img
                 src={service.img}
                 alt={service.title}
-                className="absolute left-[12px] right-[12px] top-[12px] h-[165px] w-[calc(100%-24px)] rounded-[3px] object-cover transition-all duration-700 group-hover:scale-[1.015]"
+                className="
+                  h-[240px]
+                  w-full
+                  rounded-[6px]
+                  object-cover
+                  object-center
+                  transition-all
+                  duration-700
+                  group-hover:scale-[1.01]
+                  md:h-[255px]
+                "
               />
 
-              <div className="absolute inset-0 bg-gradient-to-b from-[#14372e]/10 via-[#14372e]/35 to-[#14372e] transition duration-700 group-hover:from-[#14372e]/0" />
+              <div className="mt-[34px]">
+                <h3
+                  className="
+                    font-['Inter',sans-serif]
+                    text-[23px]
+                    font-[900]
+                    leading-none
+                    tracking-[-0.055em]
+                    text-[#fff8df]
+                    md:text-[25px]
+                  "
+                >
+                  {service.title}
+                </h3>
 
-              <div className="relative z-10 flex h-full flex-col justify-between px-[20px] py-[18px]">
-                <div className="flex items-center gap-[6px] text-white/45">
-                  <Icon size={12} strokeWidth={2.4} />
-                  <span className="font-['Inter',sans-serif] text-[8px] font-[600] leading-none tracking-[-0.045em]">
-                    {service.title}
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="font-['Inter',sans-serif] text-[13px] font-[900] leading-none tracking-[-0.055em] text-white md:text-[15px]">
-                    {service.title}
-                  </h3>
-
-                  <p className="mt-[6px] max-w-[890px] font-['Inter',sans-serif] text-[9px] font-[500] leading-[1.25] tracking-[-0.04em] text-white/85 md:text-[11px]">
-                    {service.desc}
-                  </p>
-                </div>
+                <p
+                  className="
+                    mt-[13px]
+                    max-w-[1360px]
+                    font-['Inter',sans-serif]
+                    text-[14px]
+                    font-[700]
+                    leading-[1.32]
+                    tracking-[-0.04em]
+                    text-[#fff8df]/90
+                    md:text-[16px]
+                  "
+                >
+                  {service.desc}
+                </p>
               </div>
             </article>
           );
