@@ -117,8 +117,8 @@ export const Navbar = () => {
       name === "Projects" ? projectsOpen || isProjectRoute : isActive(href);
 
     return `
-      flex h-[34px] items-center justify-center rounded-[8px]
-      px-[16px] text-[16px] font-[500] leading-none tracking-[-0.01em]
+      flex h-[32px] items-center justify-center rounded-[7px]
+      px-[14px] text-[16px] font-[500] leading-none tracking-[-0.01em]
       transition-all duration-200
       ${
         active
@@ -150,12 +150,12 @@ export const Navbar = () => {
             flex h-[61px] w-full items-center justify-between bg-[#fbfaee]
             px-[108px]
             shadow-[0_12px_34px_rgba(23,55,47,0.22)]
-            md:shadow-[0_14px_38px_rgba(23,55,47,0.16)]
             max-[520px]:px-[31px]
             md:mx-auto md:h-[72px] md:max-w-[1920px] md:justify-center md:px-5
+            md:shadow-[0_10px_30px_rgba(23,55,47,0.11)]
           "
         >
-          <div className="flex items-center gap-[48px]">
+          <div className="flex items-center gap-[44px]">
             <Link to="/" onClick={closeMenu} className="flex shrink-0">
               <img
                 src={logo}
@@ -167,9 +167,9 @@ export const Navbar = () => {
             {/* Desktop Navigation */}
             <nav
               className="
-                hidden h-[46px] items-center rounded-[10px]
-                bg-[#f1efe3] px-[7px]
-                shadow-[inset_0_0_0_1px_rgba(20,40,32,0.03)]
+                hidden h-[42px] items-center rounded-[8px]
+                bg-[#f1efe6] px-[5px]
+                shadow-[0_3px_12px_rgba(23,55,47,0.07),inset_0_0_0_1px_rgba(20,40,32,0.025)]
                 md:flex
               "
             >
