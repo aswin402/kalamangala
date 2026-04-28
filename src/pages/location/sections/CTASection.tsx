@@ -2,7 +2,7 @@ import img1 from "../../../assets/location-advantage/img1.avif";
 
 export function CTASection() {
   return (
-    <section className="mx-auto mt-[118px] w-full max-w-[1470px] px-5">
+    <section className="mx-auto mt-[88px] w-full max-w-[1470px] px-5 md:mt-[118px]">
       <article className="la-card grid min-h-[490px] overflow-hidden rounded-[24px] bg-[#173a31] text-[#f7f3df] md:grid-cols-[0.98fr_1.02fr]">
         <div className="h-[380px] overflow-hidden rounded-[24px] md:h-[490px]">
           <img

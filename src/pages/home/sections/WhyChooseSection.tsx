@@ -95,8 +95,8 @@ const ItemIcon = ({ index }: { index: number }) => {
   ];
 
   return (
-    <span className="grid h-[48px] w-[48px] shrink-0 place-items-center rounded-[6px] bg-white/10">
-      <svg width="23" height="23" viewBox="0 0 14 14" fill="none">
+    <span className="grid h-[50px] w-[50px] shrink-0 place-items-center rounded-[6px] bg-white/10 max-[768px]:h-[50px] max-[768px]:w-[50px]">
+      <svg width="24" height="24" viewBox="0 0 14 14" fill="none">
         {icons[index]}
       </svg>
     </span>
@@ -121,6 +121,8 @@ const AccordionItem = ({
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!contentRef.current) return;
+
     gsap.to(contentRef.current, {
       height: isOpen ? 'auto' : 0,
       opacity: isOpen ? 1 : 0,
@@ -130,15 +132,19 @@ const AccordionItem = ({
   }, [isOpen]);
 
   return (
-    <div className={isOpen ? 'rounded-[8px] bg-white/[0.045]' : ''}>
+    <div
+      className={`transition-colors duration-300 ${
+        isOpen ? 'rounded-[8px] bg-white/[0.045]' : ''
+      }`}
+    >
       <button
         type="button"
         onClick={onClick}
-        className="group flex w-full items-center gap-[22px] px-[24px] py-[15px] text-left outline-none"
+        className="group flex w-full items-center gap-[22px] px-[24px] py-[15px] text-left outline-none max-[768px]:gap-[22px] max-[768px]:px-[19px] max-[768px]:py-[12px]"
       >
         <ItemIcon index={index} />
 
-        <span className="flex-1 text-[17px] font-bold leading-none tracking-[-0.035em] text-white">
+        <span className="flex-1 text-[17px] font-bold leading-none tracking-[-0.035em] text-white max-[768px]:text-[18px]">
           {title}
         </span>
 
@@ -162,7 +168,7 @@ const AccordionItem = ({
       </button>
 
       <div ref={contentRef} className="h-0 overflow-hidden opacity-0">
-        <p className="max-w-[610px] pb-[24px] pl-[96px] pr-[28px] text-[16px] font-medium leading-[1.45] tracking-[-0.035em] text-white/75">
+        <p className="max-w-[610px] pb-[24px] pl-[96px] pr-[28px] text-[16px] font-medium leading-[1.45] tracking-[-0.035em] text-white/75 max-[768px]:pl-[91px] max-[768px]:pr-[22px] max-[768px]:text-[15px]">
           {content}
         </p>
       </div>
@@ -175,7 +181,7 @@ export const WhyChooseSection = () => {
   const whyChooseLeftColRef = useRef<HTMLDivElement>(null);
   const whyChooseRightColRef = useRef<HTMLDivElement>(null);
 
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -217,26 +223,27 @@ export const WhyChooseSection = () => {
     <section
       ref={whyChooseSectionRef}
       id="why-choose"
-      className="relative overflow-hidden pt-[30px] pb-[95px]"
+      className="relative overflow-hidden pb-[95px] pt-[30px] max-[768px]:pb-[48px] max-[768px]:pt-[36px]"
     >
-      <div className="mx-auto grid w-full grid-cols-1 items-start gap-[14px] px-[120px] lg:grid-cols-[760px_minmax(0,1fr)] max-[1280px]:px-[60px] max-[1024px]:grid-cols-1 max-[1024px]:px-[28px] max-[768px]:px-[22px]">
+      <div className="mx-auto grid w-full grid-cols-1 items-start gap-[14px] px-[120px] max-[1280px]:px-[60px] max-[1024px]:px-[28px] max-[768px]:gap-[50px] max-[768px]:px-[12px] lg:grid-cols-[760px_minmax(0,1fr)]">
+        {/* IMAGE CARD - desktop left, mobile bottom */}
         <div
           ref={whyChooseLeftColRef}
-          className="relative h-[670px] overflow-hidden rounded-[8px] max-[768px]:h-[560px]"
+          className="relative order-2 h-[670px] overflow-hidden rounded-[8px] max-[768px]:h-[755px] lg:order-1"
         >
           <img
             src={img3}
             alt="Kalamangala building"
-            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
+            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.03] max-[768px]:object-[center_top]"
           />
 
-          <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[24px] pb-[27px] pt-[24px] backdrop-blur-[11px]">
-            <h3 className="mb-[17px] max-w-[650px] text-[35px] font-medium leading-[1.14] tracking-[-0.055em] text-white max-[768px]:text-[28px]">
+          <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[24px] pb-[27px] pt-[24px] backdrop-blur-[11px] max-[768px]:bottom-[7px] max-[768px]:left-[10px] max-[768px]:right-[10px] max-[768px]:px-[21px] max-[768px]:pb-[28px] max-[768px]:pt-[25px]">
+            <h3 className="mb-[17px] max-w-[650px] text-[35px] font-medium leading-[1.14] tracking-[-0.055em] text-white max-[768px]:mb-[15px] max-[768px]:text-[28px] max-[768px]:leading-[1.12]">
               Our specialty lies in transforming spaces into harmonious
               environments
             </h3>
 
-            <p className="mb-[39px] max-w-[670px] text-[16px] font-medium leading-[1.45] tracking-[-0.025em] text-white/90">
+            <p className="mb-[39px] max-w-[670px] text-[16px] font-medium leading-[1.45] tracking-[-0.025em] text-white/90 max-[768px]:mb-[37px] max-[768px]:text-[16px] max-[768px]:leading-[1.42]">
               Our craft is a harmony of space and nature, shaping communities
               where timeless elegance meets modern comfort, creating homes
               that inspire and endure.
@@ -244,7 +251,7 @@ export const WhyChooseSection = () => {
 
             <Link
               to="/contact"
-              className="group inline-flex w-fit items-center gap-[4px] rounded-[9px] bg-white py-[6px] pl-[27px] pr-[6px] text-[17px] font-medium leading-none text-[#14352d] transition-colors hover:bg-[#fff7ee]"
+              className="group inline-flex w-fit items-center gap-[4px] rounded-[9px] bg-white py-[6px] pl-[27px] pr-[6px] text-[17px] font-medium leading-none text-[#14352d] transition-colors hover:bg-[#fff7ee] max-[768px]:pl-[27px]"
             >
               Contact Us
 
@@ -255,31 +262,32 @@ export const WhyChooseSection = () => {
           </div>
         </div>
 
+        {/* ACCORDION CARD - desktop right, mobile top */}
         <div
           ref={whyChooseRightColRef}
-          className="relative flex min-h-[670px] flex-col max-[1024px]:min-h-0"
+          className="relative order-1 flex min-h-[670px] flex-col max-[1024px]:min-h-0 lg:order-2"
         >
-          <div className="mb-[13px] shrink-0">
-            <div className="mb-[1px]">
+          <div className="mb-[13px] shrink-0 max-[768px]:mb-[9px] max-[768px]:text-center">
+            <div className="mb-[1px] flex max-[768px]:justify-center">
               <SectionLabel>Our Specialities</SectionLabel>
             </div>
 
-            <h2 className="font-display text-[49px] font-black leading-[0.96] tracking-[-0.07em] text-[#14352d] max-[768px]:text-[38px]">
+            <h2 className="font-display text-[49px] font-black leading-[0.96] tracking-[-0.07em] text-[#14352d] max-[768px]:text-center max-[768px]:text-[31px] max-[768px]:leading-[0.95] max-[768px]:tracking-[-0.065em]">
               Why choose Kalamangala
             </h2>
           </div>
 
-          <div className="min-h-[587px] rounded-[8px] bg-[#14352d] px-[19px] py-[19px] max-[1024px]:min-h-[526px] max-[768px]:min-h-0">
-            <div className="space-y-[12px]">
+          <div className="min-h-[587px] rounded-[8px] bg-[#14352d] px-[19px] py-[19px] max-[1024px]:min-h-[526px] max-[768px]:min-h-[464px] max-[768px]:px-[0px] max-[768px]:py-[19px]">
+            <div className="space-y-[12px] max-[768px]:space-y-[13px]">
               {accordionItems.map((item, index) => (
                 <AccordionItem
-                  key={index}
+                  key={item.title}
                   title={item.title}
                   content={item.content}
                   index={index}
                   isOpen={openIndex === index}
                   onClick={() =>
-                    setOpenIndex(openIndex === index ? -1 : index)
+                    setOpenIndex(openIndex === index ? null : index)
                   }
                 />
               ))}

@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import herovideo from '@/assets/homepage/herovideo.mp4';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import herovideo from "@/assets/homepage/herovideo.mp4";
 
 export const HeroSection = () => {
   const heroTitleRef = useRef<HTMLDivElement>(null);
@@ -15,7 +15,7 @@ export const HeroSection = () => {
           y: 0,
           opacity: 1,
           duration: 1,
-          ease: 'power3.out',
+          ease: "power3.out",
         }
       );
 
@@ -28,7 +28,7 @@ export const HeroSection = () => {
           scale: 1,
           duration: 1.15,
           delay: 0.18,
-          ease: 'power3.out',
+          ease: "power3.out",
         }
       );
     });
@@ -38,21 +38,39 @@ export const HeroSection = () => {
 
   return (
     <section id="home" className="relative overflow-hidden">
-      <div className="relative h-[691px] w-full">
+      {/* TITLE AREA */}
+      <div
+        className="
+          relative w-full
+
+          h-[340px]
+          sm:h-[430px]
+          md:h-[560px]
+          lg:h-[640px]
+          xl:h-[691px]
+        "
+      >
         <div
           ref={heroTitleRef}
           className="
-            absolute left-[150px] top-[188px] max-w-[760px]
-            max-[1280px]:left-[120px]
-            max-[1024px]:left-[80px] max-[1024px]:top-[170px]
-            max-[768px]:left-[28px] max-[768px]:top-[130px]
+            absolute max-w-[760px]
+
+            left-[24px] top-[84px]
+            sm:left-[46px] sm:top-[115px] mt-12
+            md:left-[80px] md:top-[160px]
+            lg:left-[120px] lg:top-[188px]
+            xl:left-[150px]
           "
         >
           <p
             className="
-              font-pathway text-[55px] font-normal leading-[0.9]
+              font-pathway font-normal leading-[0.9]
               tracking-[-0.055em] text-[#082f2f]
-              max-[1024px]:text-[48px] max-[768px]:text-[36px]
+
+              text-[37px]
+              sm:text-[46px]
+              md:text-[50px]
+              lg:text-[55px]
             "
           >
             Redefining
@@ -60,10 +78,13 @@ export const HeroSection = () => {
 
           <h1
             className="
-              font-script mt-[28px] text-[118px] font-normal leading-[0.72]
+              font-script font-normal leading-[0.72]
               tracking-[-0.045em] text-[#082f2f]
-              max-[1024px]:text-[96px]
-              max-[768px]:mt-[18px] max-[768px]:text-[64px]
+
+              mt-[18px] text-[63px]
+              sm:mt-[24px] sm:text-[84px]
+              md:text-[100px]
+              lg:mt-[28px] lg:text-[118px]
             "
           >
             Luxury Living
@@ -71,10 +92,28 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      <div className="mx-auto w-full px-[38px] max-[768px]:px-[18px]">
+      {/* VIDEO AREA */}
+      <div
+        className="
+          mx-auto w-full
+
+          px-[12px]
+          sm:px-[20px]
+          md:px-[28px]
+          lg:px-[38px]
+        "
+      >
         <div
           ref={heroVideoRef}
-          className="h-[800px] w-full overflow-hidden rounded-[7px] bg-black max-[1024px]:h-[480px] max-[768px]:h-[300px]"
+          className="
+            w-full overflow-hidden bg-black
+
+            h-[386px] rounded-[7px]
+            sm:h-[440px]
+            md:h-[560px]
+            lg:h-[720px]
+            xl:h-[800px]
+          "
         >
           <video
             src={herovideo}
@@ -82,7 +121,10 @@ export const HeroSection = () => {
             loop
             muted
             playsInline
-            className="h-full w-full object-cover"
+            className="
+              h-full w-full object-cover
+              object-[center_center]
+            "
           />
         </div>
       </div>

@@ -68,7 +68,7 @@ export function LocationAdvantagePage() {
   return (
     <main
       ref={pageRef}
-      className="min-h-screen overflow-hidden bg-[#f6f4e7] text-[#132d25]"
+      className="min-h-screen overflow-x-hidden bg-[#f6f4e7] text-[#132d25]"
       style={{
         backgroundImage: bgPattern,
         backgroundSize: "42px 36px",

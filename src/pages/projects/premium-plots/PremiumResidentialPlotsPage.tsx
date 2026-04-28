@@ -53,13 +53,13 @@ export const PremiumResidentialPlotsPage = () => {
   return (
     <main
       ref={containerRef}
-      className="min-h-screen overflow-hidden pt-[92px]"
+      className="min-h-screen overflow-x-hidden pt-[82px] md:pt-[92px]"
     >
       {/* Full width marquee */}
       <PlotsMarquee />
 
       {/* Main centered content */}
-      <div className="mx-auto w-full max-w-[1540px] px-[42px]">
+      <div className="mx-auto w-full max-w-[1540px] px-5 md:px-8 lg:px-[42px]">
         <PlotsHero />
         <IntroSection />
         <PrimeLocationSection />

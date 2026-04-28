@@ -47,7 +47,7 @@ export function AmenitiesPage() {
   return (
     <main
       ref={pageRef}
-      className="w-full overflow-hidden bg-[#f4f2e3] text-[#12362d]"
+      className="w-full overflow-x-hidden bg-[#f4f2e3] text-[#12362d]"
       style={{
         backgroundImage: bgPattern,
         fontFamily: "'News Cycle', 'Inter', sans-serif",

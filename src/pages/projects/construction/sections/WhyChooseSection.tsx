@@ -25,40 +25,18 @@ const whyChoose = [
 
 export function WhyChooseSection() {
   return (
-    <section
-      className="
-        mx-auto
-        mt-[58px]
-        max-w-[1455px]
-        px-5
-        pb-[34px]
-      "
-    >
+      <section
+        className="mx-auto mt-[42px] w-full max-w-[1455px] px-5 pb-[34px] md:mt-[58px]"
+      >
       <h2
-        className="
-          km-reveal
-          font-['Inter',sans-serif]
-          text-[42px]
-          font-[900]
-          leading-none
-          tracking-[-0.075em]
-          text-[#0d2b22]
-          md:text-[50px]
-        "
+        className="km-reveal font-['Inter',sans-serif] text-[32px] font-[900] leading-none tracking-[-0.06em] text-[#0d2b22] md:text-[50px]"
       >
         Why Choose The Waterfront, Erode
       </h2>
 
-      <div
-        className="
-          mt-[44px]
-          grid
-          grid-cols-1
-          gap-x-[20px]
-          gap-y-[22px]
-          md:grid-cols-2
-        "
-      >
+        <div
+          className="mt-[32px] grid grid-cols-1 gap-x-[20px] gap-y-[22px] md:mt-[44px] md:grid-cols-2"
+        >
         {whyChoose.map((item) => {
           const Icon = item.icon;
 
@@ -67,13 +45,13 @@ export function WhyChooseSection() {
               key={item.title}
               className="
                 km-reveal
-                min-h-[255px]
-                rounded-[14px]
-                bg-[#f1efdf]
-                px-[34px]
-                pt-[52px]
-                pb-[38px]
-                md:min-h-[260px]
+                min-h-[220px]
+                 rounded-[14px]
+                 bg-[#f1efdf]
+                 px-[24px]
+                 pt-[40px]
+                 pb-[30px]
+                 md:min-h-[260px] md:px-[34px] md:pt-[52px] md:pb-[38px]
               "
             >
               <div
@@ -96,10 +74,10 @@ export function WhyChooseSection() {
               <h3
                 className="
                   font-['Inter',sans-serif]
-                  text-[40px]
+                  text-[28px]
                   font-[900]
                   leading-[0.95]
-                  tracking-[-0.075em]
+                  tracking-[-0.06em]
                   text-[#0d2b22]
                   md:text-[50px]
                 "

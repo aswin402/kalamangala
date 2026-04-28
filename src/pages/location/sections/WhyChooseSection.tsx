@@ -25,7 +25,7 @@ export function WhyChooseSection() {
   ];
 
   return (
-    <section className="mx-auto mt-[118px] w-full max-w-[1470px] px-5 pb-[82px]">
+    <section className="mx-auto mt-[88px] w-full max-w-[1470px] px-5 pb-[82px] md:mt-[118px]">
       <h2 className="la-reveal mb-[42px] font-['Inter'] text-[42px] font-black leading-none tracking-[-0.07em] text-[#132d25] md:text-[54px]">
         Why Choose The Waterfront, Erode
       </h2>

@@ -1,249 +1,468 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import gsap from 'gsap';
-import logo from '../../assets/logo.avif';
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Mail, MapPin, Phone, X } from "lucide-react";
+import gsap from "gsap";
+import logo from "../../assets/logo.avif";
 
 const navLinks = [
-  { name: 'Home', href: '/', route: true },
-  { name: 'About', href: '/about', route: true },
-  { name: 'Projects', href: '#', route: false, dropdown: true },
-  { name: 'Blog', href: `${import.meta.env.BASE_URL}#blog`, route: false },
-  { name: 'Contact', href: '/contact', route: true },
+  { name: "Home", href: "/", route: true },
+  { name: "About", href: "/about", route: true },
+  { name: "Projects", href: "#", route: false, dropdown: true },
+  { name: "Blog", href: `${import.meta.env.BASE_URL}#blog`, route: false },
+  { name: "Contact", href: "/contact", route: true },
 ];
 
 const projectsData = [
   {
-    col1: [
-      { title: 'The Waterfront', sub: 'By Kalamangala', href: '/the-waterfront' },
-      { title: 'Amenities', sub: 'At Waterfront', href: '/amenities' },
-      { title: 'Location Advantage', sub: 'Tamil Nadu', href: '/location-advantage' },
-    ],
-    col2: [
-      { title: 'Construction Company', sub: 'In Tamil Nadu', href: '/construction-company' },
-      { title: 'Residential Plots', sub: 'In Coimbatore', href: '/residential-plots-coimbatore' },
-    ],
+    title: "The Waterfront",
+    sub: "By Kalamangala",
+    href: "/the-waterfront",
+  },
+  {
+    title: "Amenities",
+    sub: "At Waterfront",
+    href: "/amenities",
+  },
+  {
+    title: "Location Advantage",
+    sub: "Tamil nadu",
+    href: "/location-advantage",
+  },
+  {
+    title: "Construction Company",
+    sub: "In Tamilnadu",
+    href: "/construction-company",
+  },
+  {
+    title: "Residential Plots",
+    sub: "In Coimbatore",
+    href: "/residential-plots-coimbatore",
   },
 ];
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
 
   const { pathname } = useLocation();
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const desktopDropdownRef = useRef<HTMLDivElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const isProjectRoute = projectsData.some((item) => item.href === pathname);
 
   useEffect(() => {
-    if (isProjectsOpen && dropdownRef.current) {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const target = mobileOpen
+      ? mobileDropdownRef.current
+      : desktopDropdownRef.current;
+
+    if (projectsOpen && target) {
       gsap.fromTo(
-        dropdownRef.current,
-        { opacity: 0, y: -10, scale: 0.98 },
+        target,
+        {
+          opacity: 0,
+          y: -10,
+          scale: 0.97,
+        },
         {
           opacity: 1,
           y: 0,
           scale: 1,
           duration: 0.28,
-          ease: 'power3.out',
+          ease: "power3.out",
         }
       );
     }
-  }, [isProjectsOpen]);
+  }, [projectsOpen, mobileOpen]);
 
-  const handleMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setIsProjectsOpen(true);
+  const closeMenu = () => {
+    setMobileOpen(false);
+    setProjectsOpen(false);
   };
 
-  const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setIsProjectsOpen(false);
+  const toggleMobile = () => {
+    setMobileOpen((prev) => {
+      if (prev) setProjectsOpen(false);
+      return !prev;
+    });
+  };
+
+  const openDesktopProjects = () => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    setProjectsOpen(true);
+  };
+
+  const closeDesktopProjects = () => {
+    hoverTimer.current = setTimeout(() => {
+      setProjectsOpen(false);
     }, 160);
   };
 
   const isActive = (href: string) => {
-    if (href === '/') return pathname === '/';
+    if (href === "/") return pathname === "/";
     return pathname === href;
   };
 
-  const linkClass = (name: string, href: string) => {
-    const active = name === 'Projects' ? isProjectsOpen : isActive(href);
+  const desktopLinkClass = (name: string, href: string) => {
+    const active =
+      name === "Projects" ? projectsOpen || isProjectRoute : isActive(href);
 
     return `
-      h-[34px]
-      px-[16px]
-      flex items-center justify-center
-      rounded-[8px]
-      text-[16px]
-      leading-none
-      font-[500]
-      tracking-[-0.01em]
+      flex h-[34px] items-center justify-center rounded-[8px]
+      px-[16px] text-[16px] font-[500] leading-none tracking-[-0.01em]
       transition-all duration-200
       ${
         active
-          ? 'bg-[#e8e6dc] text-[#142820]'
-          : 'text-[#142820] hover:bg-[#e8e6dc]'
+          ? "bg-[#e8e6dc] text-[#142820]"
+          : "text-[#142820] hover:bg-[#e8e6dc]"
+      }
+    `;
+  };
+
+  const mobileItemClass = (active: boolean) => {
+    return `
+      flex h-[64px] w-full max-w-[351px] items-center justify-center
+      rounded-[6px] text-[16px] font-[400] leading-none tracking-[-0.03em]
+      transition-colors
+      ${
+        active
+          ? "bg-[#efede2] text-[#142820]"
+          : "bg-transparent text-[#142820] hover:text-[#ff6d2d]"
       }
     `;
   };
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full h-[72px] bg-[#f7f6e9]">
-      <div className="relative mx-auto flex h-full w-full max-w-[1920px] items-center justify-center px-5">
-        {/* Center group */}
-        <div className="flex items-center gap-[48px]">
-          {/* Logo */}
-          <Link to="/" className="flex items-center shrink-0">
-            <img
-              src={logo}
-              alt="Kalamangala"
-              className="h-[42px] w-auto object-contain"
-            />
-          </Link>
+    <>
+      <header className="fixed left-0 top-0 z-[9999] w-full overflow-visible bg-transparent">
+        {/* Top bar */}
+        <div
+          className="
+            flex h-[61px] w-full items-center justify-between bg-[#fbfaee]
+            px-[108px]
+            shadow-[0_12px_34px_rgba(23,55,47,0.22)]
+            md:shadow-[0_14px_38px_rgba(23,55,47,0.16)]
+            max-[520px]:px-[31px]
+            md:mx-auto md:h-[72px] md:max-w-[1920px] md:justify-center md:px-5
+          "
+        >
+          <div className="flex items-center gap-[48px]">
+            <Link to="/" onClick={closeMenu} className="flex shrink-0">
+              <img
+                src={logo}
+                alt="Kalamangala"
+                className="h-[36px] w-auto object-contain md:h-[42px]"
+              />
+            </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex h-[46px] items-center rounded-[10px] bg-[#f1efe3] px-[7px] shadow-[inset_0_0_0_1px_rgba(20,40,32,0.03)]">
-            {navLinks.map((link) => (
-              <div
-                key={link.name}
-                className="relative flex h-full items-center"
-                onMouseEnter={link.dropdown ? handleMouseEnter : undefined}
-                onMouseLeave={link.dropdown ? handleMouseLeave : undefined}
-              >
-                {link.dropdown ? (
-                  <button className={linkClass(link.name, link.href)}>
-                    {link.name}
-                  </button>
-                ) : link.route ? (
-                  <Link to={link.href} className={linkClass(link.name, link.href)}>
-                    {link.name}
+            {/* Desktop Navigation */}
+            <nav
+              className="
+                hidden h-[46px] items-center rounded-[10px]
+                bg-[#f1efe3] px-[7px]
+                shadow-[inset_0_0_0_1px_rgba(20,40,32,0.03)]
+                md:flex
+              "
+            >
+              {navLinks.map((link) => (
+                <div
+                  key={link.name}
+                  className="relative flex h-full items-center"
+                  onMouseEnter={
+                    link.dropdown ? openDesktopProjects : undefined
+                  }
+                  onMouseLeave={
+                    link.dropdown ? closeDesktopProjects : undefined
+                  }
+                >
+                  {link.dropdown ? (
+                    <button
+                      type="button"
+                      onClick={() => setProjectsOpen((prev) => !prev)}
+                      className={desktopLinkClass(link.name, link.href)}
+                    >
+                      {link.name}
+                    </button>
+                  ) : link.route ? (
+                    <Link
+                      to={link.href}
+                      className={desktopLinkClass(link.name, link.href)}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className={desktopLinkClass(link.name, link.href)}
+                    >
+                      {link.name}
+                    </a>
+                  )}
+                </div>
+              ))}
+            </nav>
+          </div>
+
+          {/* Mobile Toggle Button */}
+          <button
+            type="button"
+            onClick={toggleMobile}
+            aria-label="Toggle menu"
+            className={`
+              flex h-[44px] w-[44px] items-center justify-center rounded-[9px]
+              transition-all duration-200 md:hidden
+              ${
+                mobileOpen
+                  ? "border border-transparent bg-[#17372f] text-[#f19b69]"
+                  : "border border-[#17372f]/40 bg-transparent text-[#17372f]"
+              }
+            `}
+          >
+            {mobileOpen ? (
+              <X size={27} strokeWidth={2.1} />
+            ) : (
+              <span className="flex flex-col items-center justify-center gap-[7px]">
+                <span className="block h-[1.8px] w-[22px] rounded-full bg-current" />
+                <span className="block h-[1.8px] w-[22px] rounded-full bg-current" />
+              </span>
+            )}
+          </button>
+
+          {/* Desktop Projects Dropdown */}
+          {projectsOpen && !mobileOpen && (
+            <div
+              ref={desktopDropdownRef}
+              onMouseEnter={openDesktopProjects}
+              onMouseLeave={closeDesktopProjects}
+              className="
+                absolute left-1/2 top-[64px] hidden w-[560px]
+                -translate-x-1/2 rounded-[28px]
+                border border-[#142820]/5 bg-[#fbfaf2]/95 p-8
+                shadow-[0_24px_60px_rgba(0,0,0,0.08)]
+                backdrop-blur-xl md:flex md:gap-10
+              "
+            >
+              <div className="flex flex-1 flex-col gap-7">
+                {projectsData.slice(0, 3).map((item) => (
+                  <Link
+                    key={item.title}
+                    to={item.href}
+                    onClick={() => setProjectsOpen(false)}
+                    className="group"
+                  >
+                    <h4 className="text-[15px] font-semibold leading-none text-[#142820] transition-colors group-hover:text-[#ff6d2d]">
+                      {item.title}
+                    </h4>
+                    <p className="mt-1 text-[12px] leading-none text-[#142820]/45">
+                      {item.sub}
+                    </p>
                   </Link>
-                ) : (
-                  <a href={link.href} className={linkClass(link.name, link.href)}>
-                    {link.name}
-                  </a>
-                )}
+                ))}
               </div>
-            ))}
-          </nav>
+
+              <div className="w-px bg-[#142820]/10" />
+
+              <div className="flex flex-1 flex-col gap-7">
+                {projectsData.slice(3).map((item) => (
+                  <Link
+                    key={item.title}
+                    to={item.href}
+                    onClick={() => setProjectsOpen(false)}
+                    className="group"
+                  >
+                    <h4 className="text-[15px] font-semibold leading-none text-[#142820] transition-colors group-hover:text-[#ff6d2d]">
+                      {item.title}
+                    </h4>
+                    <p className="mt-1 text-[12px] leading-none text-[#142820]/45">
+                      {item.sub}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Mobile Button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="absolute right-5 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-lg bg-[#f1efe3] text-[#142820] md:hidden"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={21} /> : <Menu size={21} />}
-        </button>
+        {/* Mobile Transparent Pattern Strip */}
+        <div
+          className="
+            h-[31px] w-full border-t border-[#dce4d6]/70
+            bg-transparent md:hidden
+          "
+        />
+      </header>
 
-        {/* Projects Dropdown */}
-        {isProjectsOpen && (
+      {/* Mobile Menu */}
+      <div
+        className={`
+          fixed left-0 top-[92px] z-[9998] h-[calc(100dvh-92px)] w-full
+          overflow-hidden bg-[#fbfaee] transition-all duration-300 md:hidden
+          ${
+            mobileOpen
+              ? "pointer-events-auto opacity-100"
+              : "pointer-events-none opacity-0"
+          }
+        `}
+      >
+        <div className="relative mx-auto h-full w-full max-w-[550px] px-[28px] pt-[15px]">
+          {/* Contact Card */}
           <div
-            ref={dropdownRef}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
             className="
-              pointer-events-auto
-              absolute
-              top-[64px]
-              left-1/2
-              w-[560px]
-              -translate-x-1/2
-              rounded-[28px]
-              border border-[#142820]/5
-              bg-[#fbfaf2]/95
-              p-8
-              shadow-[0_24px_60px_rgba(0,0,0,0.08)]
-              backdrop-blur-xl
-              hidden md:flex
-              gap-10
+              mx-auto h-[324px] w-[367px] max-w-full rounded-[7px]
+              bg-[#17372f] px-[22px] pt-[27px] text-center text-white
             "
           >
-            <div className="flex flex-1 flex-col gap-7">
-              {projectsData[0].col1.map((item, index) => (
-                <Link
-                  key={index}
-                  to={item.href}
-                  onClick={() => setIsProjectsOpen(false)}
-                  className="group"
-                >
-                  <h4 className="text-[15px] font-semibold leading-none text-[#142820] transition-colors group-hover:text-[#e8a87c]">
-                    {item.title}
-                  </h4>
-                  <p className="mt-1 text-[12px] leading-none text-[#142820]/45">
-                    {item.sub}
-                  </p>
-                </Link>
-              ))}
-            </div>
+            <Mail
+              size={27}
+              strokeWidth={2.2}
+              className="mx-auto text-[#ffbd34]"
+            />
 
-            <div className="w-px bg-[#142820]/7" />
+            <p className="mt-[18px] text-[18px] font-[400] leading-none tracking-[-0.035em] text-white">
+              Info@Kalamangala.com
+            </p>
 
-            <div className="flex flex-1 flex-col gap-7">
-              {projectsData[0].col2.map((item, index) => (
-                <Link
-                  key={index}
-                  to={item.href}
-                  onClick={() => setIsProjectsOpen(false)}
-                  className="group"
-                >
-                  <h4 className="text-[15px] font-semibold leading-none text-[#142820] transition-colors group-hover:text-[#e8a87c]">
-                    {item.title}
-                  </h4>
-                  <p className="mt-1 text-[12px] leading-none text-[#142820]/45">
-                    {item.sub}
-                  </p>
-                </Link>
-              ))}
-            </div>
+            <div className="mx-auto mt-[13px] h-px w-[68px] bg-white/10" />
+
+            <Phone
+              size={28}
+              strokeWidth={2.1}
+              className="mx-auto mt-[8px] text-[#ffbd34]"
+            />
+
+            <p className="mt-[17px] text-[18px] font-[400] leading-none tracking-[-0.035em] text-white">
+              +91 94897 80258
+            </p>
+
+            <MapPin
+              size={29}
+              strokeWidth={2.15}
+              className="mx-auto mt-[24px] text-[#ffbd34]"
+            />
+
+            <p className="mx-auto mt-[16px] max-w-[305px] text-[17px] font-[400] leading-[1.55] tracking-[-0.035em] text-white">
+              1 saminathapuram, Muthur Main Road, via, Modakurichi, Erode,
+              Tamil Nadu 638104
+            </p>
           </div>
-        )}
 
-        {/* Mobile Menu */}
-        <div
-          className={`
-            absolute left-5 right-5 top-[78px]
-            rounded-[22px]
-            border border-[#142820]/5
-            bg-[#fbfaf2]/95
-            p-5
-            shadow-[0_20px_50px_rgba(0,0,0,0.08)]
-            backdrop-blur-xl
-            transition-all duration-300
-            md:hidden
-            ${
-              mobileOpen
-                ? 'opacity-100 translate-y-0 pointer-events-auto'
-                : 'opacity-0 -translate-y-3 pointer-events-none'
-            }
-          `}
-        >
-          <div className="flex flex-col gap-1">
-            {navLinks.map((link) =>
-              link.route ? (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-4 py-3 text-[15px] font-medium text-[#142820] hover:bg-[#e8e6dc]"
-                >
-                  {link.name}
-                </Link>
-              ) : (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-4 py-3 text-[15px] font-medium text-[#142820] hover:bg-[#e8e6dc]"
-                >
-                  {link.name}
-                </a>
-              )
-            )}
-          </div>
+          {/* Mobile Projects Dropdown */}
+          {projectsOpen && (
+            <div
+              ref={mobileDropdownRef}
+              className="
+                absolute left-1/2 top-[110px] z-[10000] w-[272px]
+                -translate-x-1/2 rounded-[20px] border border-white/70
+                bg-gradient-to-b from-[#bfc6bb]/95 via-[#d4d7ca]/92 to-[#fbfaee]/98
+                px-[18px] pb-[18px] pt-[20px]
+                shadow-[0_20px_45px_rgba(20,40,32,0.16)]
+                backdrop-blur-xl
+              "
+            >
+              <div className="flex flex-col gap-[25px]">
+                {projectsData.map((item) => (
+                  <Link
+                    key={item.title}
+                    to={item.href}
+                    onClick={closeMenu}
+                    className="group block"
+                  >
+                    <h4 className="text-[16px] font-[600] leading-none tracking-[-0.03em] text-[#19332b] transition-colors group-hover:text-[#ff6d2d]">
+                      {item.title}
+                    </h4>
+                    <p className="mt-[8px] text-[13px] font-[500] leading-none tracking-[-0.02em] text-[#19332b]/55">
+                      {item.sub}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Mobile Links */}
+          <nav className="mt-[40px] flex flex-col items-center gap-[16px]">
+            <Link
+              to="/"
+              onClick={closeMenu}
+              className={mobileItemClass(pathname === "/")}
+            >
+              Home
+            </Link>
+
+            <Link
+              to="/about"
+              onClick={closeMenu}
+              className={`
+                flex h-[42px] w-full max-w-[351px] items-center justify-center
+                text-[16px] font-[400] leading-none tracking-[-0.03em]
+                transition-colors
+                ${
+                  pathname === "/about"
+                    ? "text-[#ff6d2d]"
+                    : "text-[#142820] hover:text-[#ff6d2d]"
+                }
+              `}
+            >
+              About
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setProjectsOpen((prev) => !prev)}
+              className={`
+                flex h-[42px] w-full max-w-[351px] items-center justify-center
+                text-[16px] font-[400] leading-none tracking-[-0.03em]
+                transition-colors
+                ${
+                  projectsOpen || isProjectRoute
+                    ? "text-[#ff6d2d]"
+                    : "text-[#142820] hover:text-[#ff6d2d]"
+                }
+              `}
+            >
+              Projects
+            </button>
+
+            <a
+              href={`${import.meta.env.BASE_URL}#blog`}
+              onClick={closeMenu}
+              className="
+                flex h-[42px] w-full max-w-[351px] items-center justify-center
+                text-[16px] font-[400] leading-none tracking-[-0.03em]
+                text-[#142820] transition-colors hover:text-[#ff6d2d]
+              "
+            >
+              Blog
+            </a>
+
+            <Link
+              to="/contact"
+              onClick={closeMenu}
+              className={`
+                flex h-[42px] w-full max-w-[351px] items-center justify-center
+                text-[16px] font-[400] leading-none tracking-[-0.03em]
+                transition-colors
+                ${
+                  pathname === "/contact"
+                    ? "text-[#ff6d2d]"
+                    : "text-[#142820] hover:text-[#ff6d2d]"
+                }
+              `}
+            >
+              Contact
+            </Link>
+          </nav>
         </div>
       </div>
-    </header>
+    </>
   );
 };

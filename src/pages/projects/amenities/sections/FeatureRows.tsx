@@ -99,7 +99,7 @@ const features = [
 
 export function FeatureRows() {
   return (
-    <section className="mx-auto mt-[130px] w-full max-w-[1160px] px-6">
+    <section className="mx-auto mt-[90px] w-full max-w-[1160px] px-5 md:mt-[130px] md:px-6">
       <div className="flex flex-col gap-[78px]">
         {features.map((item) => (
           <article
@@ -144,11 +144,11 @@ export function FeatureRows() {
       </div>
 
       <section className="am-reveal mt-[92px] w-full">
-        <h3 className="text-[50px] font-bold leading-[0.95] tracking-[-0.08em] text-[#12362d]">
+        <h3 className="text-[34px] font-bold leading-[0.95] tracking-[-0.07em] text-[#12362d] md:text-[50px]">
           Safe, Secure, and Serene
         </h3>
 
-        <p className="mt-[38px] max-w-[1500px] text-[26px] font-bold leading-[1.28] tracking-[-0.055em] text-[#12362d]">
+        <p className="mt-[22px] max-w-[1500px] text-[18px] font-bold leading-[1.38] tracking-[-0.035em] text-[#12362d] md:mt-[38px] md:text-[26px]">
           Security is non-negotiable at The Waterfront. The gated entry, CCTV
           monitoring, and 24×7 guard services provide complete peace of mind for
           residents and families alike.

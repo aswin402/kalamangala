@@ -2,12 +2,12 @@ import waterfrontImg from "../../../../assets/thewaterfront/img1.avif";
 
 export function WaterfrontHero() {
   return (
-    <section className="w-full px-[110px] pb-[120px] pt-[70px] text-[#17392f]">
+    <section className="w-full px-5 pb-[84px] pt-[46px] text-[#17392f] md:px-10 md:pb-[110px] md:pt-[62px] lg:px-[110px] lg:pb-[120px] lg:pt-[70px]">
       <div className="mx-auto max-w-[1680px]">
         {/* TOP IMAGE + DETAILS */}
-        <div className="grid grid-cols-[1fr_390px] gap-[36px]">
+        <div className="grid grid-cols-1 gap-[30px] lg:grid-cols-[1fr_390px] lg:gap-[36px]">
           {/* IMAGE */}
-          <div className="h-[405px] overflow-hidden rounded-[8px]">
+          <div className="h-[260px] overflow-hidden rounded-[8px] sm:h-[320px] md:h-[405px]">
             <img
               src={waterfrontImg}
               alt="The Waterfront by Kalamangala"
@@ -16,7 +16,7 @@ export function WaterfrontHero() {
           </div>
 
           {/* DETAILS */}
-          <div className="pt-[20px]">
+          <div className="pt-0 lg:pt-[20px]">
             <div className="border-b border-[#17392f]/25 pb-[18px]">
               <h4 className="text-[18px] font-semibold leading-none tracking-[-0.045em]">
                 Location
@@ -47,10 +47,10 @@ export function WaterfrontHero() {
         </div>
 
         {/* BOTTOM CONTENT */}
-        <div className="mt-[110px] grid grid-cols-[1fr_1fr] gap-[120px]">
+        <div className="mt-[56px] grid grid-cols-1 gap-[38px] md:mt-[84px] lg:mt-[110px] lg:grid-cols-[1fr_1fr] lg:gap-[120px]">
           {/* LEFT BIG HEADING */}
-          <div className="pl-[220px]">
-            <h2 className="max-w-[560px] text-[44px] font-medium leading-[1.05] tracking-[-0.075em] text-[#17392f]">
+          <div className="pl-0 lg:pl-[220px]">
+            <h2 className="max-w-[560px] text-[30px] font-medium leading-[1.08] tracking-[-0.06em] text-[#17392f] md:text-[40px] lg:text-[44px]">
               Welcome to The Waterfront by Kalamangala – Erode’s first premium
               community living, where nature and modern comforts come together.
               Choose your plot, build your dream home and be part of a secure,
@@ -59,8 +59,8 @@ export function WaterfrontHero() {
           </div>
 
           {/* RIGHT CONTENT */}
-          <div className="pt-[2px]">
-            <h3 className="text-[32px] font-semibold leading-none tracking-[-0.065em] text-[#17392f]">
+          <div className="pt-0 lg:pt-[2px]">
+            <h3 className="text-[28px] font-semibold leading-none tracking-[-0.06em] text-[#17392f] md:text-[32px]">
               The Waterfront
             </h3>
 

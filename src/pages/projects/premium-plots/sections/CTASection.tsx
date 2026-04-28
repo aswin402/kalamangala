@@ -2,16 +2,7 @@ import img9 from "../../../../assets/construction-company/img9.webp";
 
 export function CTASection() {
   return (
-    <section
-      className="
-        km-reveal
-        mx-auto
-        mt-[42px]
-        max-w-[1460px]
-        px-5
-        pb-[50px]
-      "
-    >
+    <section className="km-reveal mx-auto mt-[32px] max-w-[1460px] px-5 pb-[50px] md:mt-[42px]">
       <div
         className="
           grid

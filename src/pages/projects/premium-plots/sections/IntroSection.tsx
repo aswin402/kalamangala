@@ -3,7 +3,7 @@ const DARK = "#0d2b22";
 export function IntroSection() {
   return (
     <section className="km-reveal mx-auto w-full max-w-[1420px] px-5 pt-[12px] pb-[48px] text-center font-['Inter',sans-serif] text-[#0d2b22]">
-      <h1 className="mx-auto max-w-[990px] text-[54px] font-[900] leading-[0.82] tracking-[-0.085em] md:text-[76px]">
+      <h1 className="mx-auto max-w-[990px] text-[38px] font-[900] leading-[0.86] tracking-[-0.06em] sm:text-[48px] md:text-[76px]">
         Discover Premium Residential
         <br />
         Plots in Coimbatore at
@@ -11,7 +11,7 @@ export function IntroSection() {
         Kalamangala
       </h1>
 
-      <div className="mx-auto mt-[38px] max-w-[1360px] space-y-[24px] text-[23px] font-[800] leading-[1.34] tracking-[-0.055em]">
+      <div className="mx-auto mt-[28px] max-w-[1360px] space-y-[20px] text-[16px] font-[800] leading-[1.42] tracking-[-0.03em] md:mt-[38px] md:space-y-[24px] md:text-[23px] md:leading-[1.34] md:tracking-[-0.055em]">
         <p>
           Welcome to Kalamangala, where modern living meets timeless serenity.
           If you are looking for{" "}

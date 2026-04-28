@@ -87,16 +87,7 @@ export const ReviewsSection = () => {
       className="relative overflow-hidden pt-[54px] pb-[82px]"
     >
       {/* Heading area */}
-      <div
-        className="
-          relative
-          mb-[76px]
-          ml-[168px]
-          w-fit
-          max-[1024px]:ml-[80px]
-          max-[768px]:ml-[24px]
-        "
-      >
+      <div className="relative mb-[58px] ml-[24px] w-fit md:mb-[76px] md:ml-[80px] lg:ml-[168px]">
         {/* Small label */}
         <div
           className="
@@ -105,7 +96,7 @@ export const ReviewsSection = () => {
             top-[13px]
             z-20
             flex items-center gap-[5px]
-            max-[768px]:left-[82px] max-[768px]:top-[5px]
+             max-[768px]:left-[62px] max-[768px]:top-[5px]
           "
         >
           <span className=" ml-6 grid h-[11px] w-[11px] place-items-center rounded-full border border-[#082f2f]">
@@ -136,7 +127,7 @@ export const ReviewsSection = () => {
             tracking-[-0.108em]
             text-[#082f2f]
             max-[1024px]:text-[126px]
-            max-[768px]:text-[82px]
+             max-[768px]:text-[62px]
           "
         >
           Reviews
@@ -154,15 +145,16 @@ export const ReviewsSection = () => {
               key={`${review.name}-${index}`}
               className="
                 review-card
-                h-[456px]
-                w-[305px]
+                h-[360px]
+                w-[270px]
                 shrink-0
                 bg-[#f5f2e7]
-                px-[30px]
-                pt-[22px]
+                px-[20px]
+                pt-[18px]
+                md:h-[456px] md:w-[305px] md:px-[30px] md:pt-[22px]
               "
             >
-              <div className="mb-[78px]">
+              <div className="mb-[40px] md:mb-[78px]">
                 <h4 className="font-display text-[18px] font-black leading-none tracking-[-0.04em] text-[#14352d]">
                   {review.name}
                 </h4>
@@ -172,7 +164,7 @@ export const ReviewsSection = () => {
                 </span>
               </div>
 
-              <p className="max-w-[252px] text-[18px] font-semibold leading-[1.32] tracking-[-0.055em] text-[#14352d]">
+              <p className="max-w-[252px] text-[15px] font-semibold leading-[1.4] tracking-[-0.03em] text-[#14352d] md:text-[18px] md:leading-[1.32] md:tracking-[-0.055em]">
                 &quot;{review.text}&quot;
               </p>
             </article>

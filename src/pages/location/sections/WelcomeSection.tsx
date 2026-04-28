@@ -1,17 +1,17 @@
 export function WelcomeSection() {
   return (
-    <section className="la-reveal mx-auto mt-[42px] flex w-full max-w-[1260px] flex-col items-center px-5 pb-[58px] text-center">
-      <h1 className="max-w-[900px] font-['Inter'] text-[64px] font-black leading-[0.78] tracking-[-0.08em] text-[#132d25] md:text-[108px] xl:text-[124px]">
+    <section className="la-reveal mx-auto mt-[34px] flex w-full max-w-[1260px] flex-col items-center px-5 pb-[58px] text-center md:mt-[42px]">
+      <h1 className="max-w-[900px] font-['Inter'] text-[44px] font-black leading-[0.82] tracking-[-0.07em] text-[#132d25] sm:text-[56px] md:text-[108px] xl:text-[124px]">
         Welcome to The
         <br />
         Waterfront
       </h1>
 
-      <h2 className="mt-[18px] font-['Inter'] text-[24px] font-black leading-none tracking-[-0.065em] text-[#132d25] md:text-[38px] xl:text-[45px]">
+      <h2 className="mt-[16px] font-['Inter'] text-[20px] font-black leading-[1.05] tracking-[-0.05em] text-[#132d25] md:text-[38px] xl:text-[45px]">
         Erode&apos;s Most Connected Riverside Address
       </h2>
 
-      <p className="mx-auto mt-[48px] max-w-[1060px] font-['Inter'] text-[17px] font-bold leading-[1.22] tracking-[-0.055em] text-[#132d25] md:text-[23px] xl:text-[26px]">
+      <p className="mx-auto mt-[32px] max-w-[1060px] font-['Inter'] text-[16px] font-bold leading-[1.36] tracking-[-0.03em] text-[#132d25] md:mt-[48px] md:text-[23px] xl:text-[26px]">
         Every masterpiece begins with a perfect setting. At{" "}
         <span className="font-black">Kalamangala</span>, we believe the soul of
         every luxury home lies in its location — where life feels effortless,

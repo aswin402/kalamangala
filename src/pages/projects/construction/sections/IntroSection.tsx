@@ -1,17 +1,17 @@
 export function IntroSection() {
   return (
-    <section className="km-reveal mx-auto max-w-[1500px] px-5 pt-[30px] pb-[58px] text-center">
-      <h1 className="mx-auto max-w-[1060px] font-['Inter',sans-serif] text-[60px] font-[900] leading-[0.78] tracking-[-0.085em] text-[#0d2b22] md:text-[124px]">
+    <section className="km-reveal mx-auto max-w-[1500px] px-5 pb-[58px] pt-[24px] text-center md:pt-[30px]">
+      <h1 className="mx-auto max-w-[1060px] font-['Inter',sans-serif] text-[42px] font-[900] leading-[0.82] tracking-[-0.07em] text-[#0d2b22] sm:text-[52px] md:text-[124px]">
         Top Construction
         <br />
         Companies in Erode
       </h1>
 
-      <h2 className="mt-[10px] font-['Inter',sans-serif] text-[26px] font-[900] leading-none tracking-[-0.055em] text-[#0d2b22] md:text-[48px]">
+      <h2 className="mt-[10px] font-['Inter',sans-serif] text-[22px] font-[900] leading-[1.05] tracking-[-0.045em] text-[#0d2b22] md:text-[48px]">
         Leading Construction Company in Tamil Nadu
       </h2>
 
-      <p className="mx-auto mt-[48px] max-w-[1400px] font-['Inter',sans-serif] text-[17px] font-[800] leading-[1.22] tracking-[-0.055em] text-[#0d2b22] md:text-[24px]">
+      <p className="mx-auto mt-[30px] max-w-[1400px] font-['Inter',sans-serif] text-[16px] font-[800] leading-[1.4] tracking-[-0.03em] text-[#0d2b22] md:mt-[48px] md:text-[24px]">
         Welcome to Kalamangala, one of the{" "}
         <span className="font-[900] text-[#008cff] underline underline-offset-[2px]">
           top construction companies in Erode

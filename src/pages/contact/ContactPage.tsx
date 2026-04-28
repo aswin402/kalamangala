@@ -17,7 +17,10 @@ export function ContactPage() {
   }, []);
 
   return (
-    <section className="pt-24 pb-10 overflow-hidden m-16 " id="contact">
+    <section
+      className="mx-4 overflow-hidden pb-10 pt-20 md:mx-10 md:pt-24 lg:mx-16"
+      id="contact"
+    >
       <div
         ref={trackRef}
         className="flex whitespace-nowrap will-change-transform"
@@ -27,7 +30,7 @@ export function ContactPage() {
         {[0, 1].map((half) => (
           <span
             key={half}
-            className="font-normal  text-foreground leading-none tracking-[-0.08em] pr-16"
+            className="pr-10 font-normal leading-none tracking-[-0.08em] text-foreground md:pr-16"
             style={{
               fontSize: 'clamp(48px, 9vw, 120px)',
             }}

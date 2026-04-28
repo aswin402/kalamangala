@@ -24,7 +24,7 @@ export function AmenitiesHero() {
   return (
     <>
       {/* AMENITIES MARQUEE - MOVES LEFT */}
-      <section className="relative w-full overflow-hidden pt-[100px]">
+      <section className="relative w-full overflow-hidden pt-[82px] md:pt-[100px]">
         <div
           ref={marqueeRef}
           className="flex w-max whitespace-nowrap will-change-transform"
@@ -34,7 +34,7 @@ export function AmenitiesHero() {
               {Array.from({ length: 8 }).map((_, index) => (
                 <span
                   key={index}
-                  className="mr-[18px] text-[92px] font-semibold leading-[0.82] tracking-[-0.085em] text-[#12362d] sm:text-[112px] md:text-[132px] lg:text-[154px]"
+                  className="mr-[18px] text-[56px] font-semibold leading-[0.82] tracking-[-0.085em] text-[#12362d] sm:text-[92px] md:text-[132px] lg:text-[154px]"
                 >
                   Amenities.
                 </span>
@@ -45,8 +45,8 @@ export function AmenitiesHero() {
       </section>
 
       {/* HERO IMAGE */}
-      <section className="am-hero mx-auto mt-[156px] w-full max-w-[1800px] px-[160px]">
-        <div className="h-[410px] w-full overflow-hidden rounded-[6px]">
+      <section className="am-hero mx-auto mt-[72px] w-full max-w-[1800px] px-5 md:mt-[110px] md:px-10 lg:mt-[156px] lg:px-[160px]">
+        <div className="h-[240px] w-full overflow-hidden rounded-[6px] sm:h-[310px] md:h-[410px]">
           <img
             src={img1}
             alt="Amenities"

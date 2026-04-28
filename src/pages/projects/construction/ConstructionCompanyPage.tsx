@@ -71,7 +71,7 @@ export function ConstructionCompanyPage() {
   return (
     <main
       ref={pageRef}
-      className="w-full overflow-hidden bg-[#fbfaf1] text-[#0d2b22]"
+      className="w-full overflow-x-hidden bg-[#fbfaf1] text-[#0d2b22]"
       style={{
         backgroundImage:
           "url(\"data:image/svg+xml,%3Csvg width='48' height='42' viewBox='0 0 48 42' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ddd8c6' stroke-width='1' stroke-opacity='.72'%3E%3Cpath d='M12 0 0 10.5 12 21 0 31.5 12 42'/%3E%3Cpath d='M24 0 12 10.5 24 21 12 31.5 24 42'/%3E%3Cpath d='M36 0 24 10.5 36 21 24 31.5 36 42'/%3E%3Cpath d='M48 0 36 10.5 48 21 36 31.5 48 42'/%3E%3C/g%3E%3C/svg%3E\")",

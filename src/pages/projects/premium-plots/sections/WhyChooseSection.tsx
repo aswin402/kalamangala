@@ -55,7 +55,7 @@ export function WhyChooseSection() {
   ];
 
   return (
-    <section className="mt-12">
+    <section className="mt-8 md:mt-12">
       <h2 className="km-reveal text-[20px] font-black tracking-[-0.06em] sm:text-[25px]">
         Why Choose Kalamangala?
       </h2>
@@ -72,11 +72,11 @@ export function WhyChooseSection() {
             }}
           >
             <div
-              className={`grid min-h-[178px] grid-cols-1 md:grid-cols-2 ${
+              className={`grid min-h-[160px] grid-cols-1 md:min-h-[178px] md:grid-cols-2 ${
                 index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
-              <div className="h-[160px] overflow-hidden md:h-full">
+              <div className="h-[140px] overflow-hidden md:h-full">
                 <img
                   src={item.image}
                   alt={item.title}

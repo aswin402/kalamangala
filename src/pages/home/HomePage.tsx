@@ -6,7 +6,7 @@ import { WhyChooseSection } from './sections/WhyChooseSection';
 
 export function HomePage() {
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       <HeroSection />
       <AboutSection />
       <ProjectsSection />

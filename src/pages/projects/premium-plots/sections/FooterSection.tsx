@@ -1,14 +1,7 @@
 export function FooterSection() {
   return (
     <section
-      className="
-        mx-auto
-        max-w-[1455px]
-        px-5
-        pt-[34px]
-        pb-[52px]
-        text-center
-      "
+      className="mx-auto max-w-[1455px] px-5 pt-[26px] pb-[52px] text-center md:pt-[34px]"
     >
       <h3
         className="
