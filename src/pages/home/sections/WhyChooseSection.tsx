@@ -219,10 +219,10 @@ export const WhyChooseSection = () => {
       id="why-choose"
       className="relative overflow-hidden pt-[30px] pb-[95px]"
     >
-      <div className="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-[14px] px-[120px] lg:grid-cols-[760px_1fr] max-[768px]:px-[22px]">
+      <div className="mx-auto grid w-full grid-cols-1 items-start gap-[14px] px-[120px] lg:grid-cols-[760px_minmax(0,1fr)] max-[1280px]:px-[60px] max-[1024px]:grid-cols-1 max-[1024px]:px-[28px] max-[768px]:px-[22px]">
         <div
           ref={whyChooseLeftColRef}
-          className="relative h-[610px] overflow-hidden rounded-[8px] max-[768px]:h-[520px]"
+          className="relative h-[670px] overflow-hidden rounded-[8px] max-[768px]:h-[560px]"
         >
           <img
             src={img3}
@@ -230,7 +230,7 @@ export const WhyChooseSection = () => {
             className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
           />
 
-          <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[24px] pt-[24px] pb-[27px] backdrop-blur-[11px]">
+          <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[24px] pb-[27px] pt-[24px] backdrop-blur-[11px]">
             <h3 className="mb-[17px] max-w-[650px] text-[35px] font-medium leading-[1.14] tracking-[-0.055em] text-white max-[768px]:text-[28px]">
               Our specialty lies in transforming spaces into harmonious
               environments
@@ -255,8 +255,11 @@ export const WhyChooseSection = () => {
           </div>
         </div>
 
-        <div ref={whyChooseRightColRef} className="relative -mt-[1px]">
-          <div className="mb-[13px]">
+        <div
+          ref={whyChooseRightColRef}
+          className="relative flex min-h-[670px] flex-col max-[1024px]:min-h-0"
+        >
+          <div className="mb-[13px] shrink-0">
             <div className="mb-[1px]">
               <SectionLabel>Our Specialities</SectionLabel>
             </div>
@@ -266,7 +269,7 @@ export const WhyChooseSection = () => {
             </h2>
           </div>
 
-          <div className="min-h-[526px] rounded-[8px] bg-[#14352d] px-[19px] py-[19px]">
+          <div className="min-h-[587px] rounded-[8px] bg-[#14352d] px-[19px] py-[19px] max-[1024px]:min-h-[526px] max-[768px]:min-h-0">
             <div className="space-y-[12px]">
               {accordionItems.map((item, index) => (
                 <AccordionItem
