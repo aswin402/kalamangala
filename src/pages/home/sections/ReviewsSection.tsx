@@ -2,8 +2,6 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { SectionLabel } from '../components/SectionLabel';
-
 gsap.registerPlugin(ScrollTrigger);
 
 const reviews = [
@@ -38,7 +36,7 @@ export const ReviewsSection = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         reviewsHeadingRef.current,
-        { y: 85, opacity: 0 },
+        { y: 70, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -86,21 +84,66 @@ export const ReviewsSection = () => {
     <section
       ref={reviewsSectionRef}
       id="reviews"
-      className="relative overflow-hidden pt-[74px] pb-[82px]"
+      className="relative overflow-hidden pt-[54px] pb-[82px]"
     >
-      <div className="mb-[70px] ml-[154px] max-[768px]:ml-[24px]">
-        <div className="mb-[-6px]">
-          <SectionLabel>Clients&apos; Words</SectionLabel>
+      {/* Heading area */}
+      <div
+        className="
+          relative
+          mb-[76px]
+          ml-[168px]
+          w-fit
+          max-[1024px]:ml-[80px]
+          max-[768px]:ml-[24px]
+        "
+      >
+        {/* Small label */}
+        <div
+          className="
+            absolute
+            left-[120px]
+            top-[13px]
+            z-20
+            flex items-center gap-[5px]
+            max-[768px]:left-[82px] max-[768px]:top-[5px]
+          "
+        >
+          <span className=" ml-6 grid h-[11px] w-[11px] place-items-center rounded-full border border-[#082f2f]">
+            <span className="h-[6px] w-[6px] rounded-full bg-[#082f2f]" />
+          </span>
+
+          <span
+            className="
+              text-[10px]
+              font-black
+              uppercase
+              leading-none
+              tracking-[-0.06em]
+              text-[#082f2f]
+            "
+          >
+            Clients&apos; Words
+          </span>
         </div>
 
         <h2
           ref={reviewsHeadingRef}
-          className="font-display text-[clamp(118px,16.2vw,276px)] font-medium leading-[0.77] tracking-[-0.105em] text-[#14352d] max-[768px]:text-[82px]"
+          className="
+            font-display
+            text-[clamp(112px,12.3vw,236px)]
+            font-medium
+            leading-[0.76]
+            tracking-[-0.108em]
+            text-[#082f2f]
+            max-[1024px]:text-[126px]
+            max-[768px]:text-[82px]
+          "
         >
           Reviews
         </h2>
       </div>
 
+      {/* Reviews marquee */}
       <div className="relative w-full overflow-hidden">
         <div
           ref={reviewsMarqueeRef}
@@ -109,7 +152,15 @@ export const ReviewsSection = () => {
           {[...reviews, ...reviews, ...reviews].map((review, index) => (
             <article
               key={`${review.name}-${index}`}
-              className="review-card h-[456px] w-[305px] shrink-0 bg-[#f5f2e7] px-[30px] pt-[22px]"
+              className="
+                review-card
+                h-[456px]
+                w-[305px]
+                shrink-0
+                bg-[#f5f2e7]
+                px-[30px]
+                pt-[22px]
+              "
             >
               <div className="mb-[78px]">
                 <h4 className="font-display text-[18px] font-black leading-none tracking-[-0.04em] text-[#14352d]">

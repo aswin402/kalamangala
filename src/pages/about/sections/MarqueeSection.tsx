@@ -22,7 +22,7 @@ export const MarqueeSection = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden pt-[82px] pb-[130px]">
+    <section className="relative overflow-hidden pt-[180px] pb-[130px]">
       <div
         ref={trackRef}
         className="flex w-fit whitespace-nowrap will-change-transform"
