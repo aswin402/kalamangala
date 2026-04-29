@@ -229,7 +229,7 @@ export const WhyChooseSection = () => {
         {/* IMAGE CARD */}
         <div
           ref={whyChooseLeftColRef}
-          className="relative order-2 h-[560px] min-w-0 overflow-hidden rounded-[8px] md:h-[610px] lg:h-[640px] xl:order-1 xl:h-[560px]"
+          className="relative order-2 h-[700px] min-w-0 overflow-hidden rounded-[8px] md:h-[610px] lg:h-[640px] xl:order-1 xl:h-[560px]"
         >
           <img
             src={img3}

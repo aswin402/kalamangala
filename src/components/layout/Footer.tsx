@@ -261,7 +261,7 @@ export const Footer = () => {
           >
             <span
               className="
-                mb-[20px] block text-[18px] font-medium uppercase tracking-[0.04em] text-primary
+                mb-[20px] block text-[18px] font-extrabold uppercase tracking-[0.04em] text-white
                 max-sm:mb-[18px] max-sm:text-[17px]
               "
             >
