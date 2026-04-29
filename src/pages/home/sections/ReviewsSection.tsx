@@ -84,33 +84,93 @@ export const ReviewsSection = () => {
     <section
       ref={reviewsSectionRef}
       id="reviews"
-      className="relative overflow-hidden pt-[54px] pb-[82px]"
+      className="
+        relative
+        overflow-hidden
+        pt-[54px]
+        pb-[82px]
+
+        md:pt-[60px]
+        lg:pt-[60px]
+        xl:pt-[61px]
+      "
     >
       {/* Heading area */}
-      <div className="relative mb-[58px] ml-[24px] w-fit md:mb-[76px] md:ml-[80px] lg:ml-[168px]">
+      <div
+        className="
+          relative
+          mx-auto
+          mb-[58px]
+          w-fit
+
+          md:mx-0
+          md:ml-[54px]
+          md:mb-[64px]
+
+          lg:ml-[56px]
+          lg:mb-[66px]
+
+          xl:ml-[56px]
+          xl:mb-[66px]
+
+          2xl:ml-[56px]
+        "
+      >
         {/* Small label */}
         <div
           className="
             absolute
-            left-[120px]
-            top-[13px]
             z-20
-            flex items-center gap-[5px]
-             max-[768px]:left-[62px] max-[768px]:top-[5px]
+            flex
+            items-center
+            gap-[5px]
+            whitespace-nowrap
+
+            left-[54px]
+            top-[-17px]
+
+            md:left-[116px]
+            md:top-[15px]
+
+            lg:left-[117px]
+            lg:top-[16px]
+
+            xl:left-[117px]
+            xl:top-[16px]
+
+            2xl:left-[117px]
+            2xl:top-[16px]
           "
         >
-          <span className=" ml-6 grid h-[11px] w-[11px] place-items-center rounded-full border border-[#082f2f]">
-            <span className="h-[6px] w-[6px] rounded-full bg-[#082f2f]" />
+          <span
+            className="
+              grid
+              h-[10px]
+              w-[10px]
+              place-items-center
+              rounded-full
+              border
+              border-[#082f2f]
+
+              md:h-[11px]
+              md:w-[11px]
+            "
+          >
+            <span className="h-[5px] w-[5px] rounded-full bg-[#082f2f] md:h-[6px] md:w-[6px]" />
           </span>
 
           <span
             className="
-              text-[10px]
+              text-[9px]
               font-black
               uppercase
               leading-none
               tracking-[-0.06em]
               text-[#082f2f]
+
+              md:text-[10px]
+              lg:text-[10px]
+              xl:text-[10px]
             "
           >
             Clients&apos; Words
@@ -121,13 +181,25 @@ export const ReviewsSection = () => {
           ref={reviewsHeadingRef}
           className="
             font-display
-            text-[clamp(112px,12.3vw,236px)]
+            text-[62px]
             font-medium
             leading-[0.76]
             tracking-[-0.108em]
             text-[#082f2f]
-            max-[1024px]:text-[126px]
-             max-[768px]:text-[62px]
+
+            sm:text-[82px]
+
+            md:text-[clamp(142px,13.7vw,174px)]
+            md:leading-[0.72]
+            md:tracking-[-0.112em]
+
+            lg:text-[clamp(154px,13.7vw,188px)]
+
+            xl:text-[176px]
+            xl:leading-[0.72]
+            xl:tracking-[-0.112em]
+
+            2xl:text-[176px]
           "
         >
           Reviews
@@ -151,7 +223,11 @@ export const ReviewsSection = () => {
                 bg-[#f5f2e7]
                 px-[20px]
                 pt-[18px]
-                md:h-[456px] md:w-[305px] md:px-[30px] md:pt-[22px]
+
+                md:h-[456px]
+                md:w-[305px]
+                md:px-[30px]
+                md:pt-[22px]
               "
             >
               <div className="mb-[40px] md:mb-[78px]">
