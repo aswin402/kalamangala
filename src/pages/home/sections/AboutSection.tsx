@@ -54,47 +54,61 @@ export const AboutSection = () => {
     <section
       ref={aboutSectionRef}
       id="about"
-      className="relative overflow-hidden pt-[122px] pb-[182px]"
+      className="
+        relative overflow-hidden mt-20
+        pb-[52px] pt-[59px]
+        max-[1024px]:pb-[74px] max-[1024px]:pt-[50px]
+        max-[768px]:pb-[70px] max-[768px]:pt-[50px]
+      "
     >
       <div
         className="
-          mx-auto grid w-full max-w-[1570px] grid-cols-1 items-center
-          px-0
-          lg:grid-cols-[807px_1fr]
-          lg:gap-[38px]
-          max-[1600px]:max-w-[1465px]
-          max-[1440px]:max-w-[1240px]
-          max-[1440px]:lg:grid-cols-[670px_1fr]
-          max-[1024px]:max-w-none
+          mx-auto grid w-full items-center
+          grid-cols-[minmax(0,48.35vw)_minmax(0,1fr)]
+          gap-[39px]
+          px-[42px]
+
           max-[1024px]:grid-cols-1
-          max-[1024px]:px-[42px]
-          max-[768px]:px-[22px]
+          max-[1024px]:gap-0
+          max-[1024px]:px-[15px]
         "
       >
-        <div ref={aboutImgRef} className="relative">
+        <div ref={aboutImgRef} className="relative w-full">
           <span
             className="
               absolute -top-[31px] left-0 inline-flex items-center
-              gap-[7px] text-[10px] font-black uppercase leading-none
-              tracking-[-0.045em] text-[#14352d]
+              gap-[5px] text-[12px] font-black uppercase leading-none
+              tracking-[-0.055em] text-[#14352d]
+
+              max-[768px]:-top-[29px]
+              max-[768px]:text-[12px]
             "
           >
-            <span className="h-[8px] w-[8px] rounded-full border border-[#14352d]/40 bg-[#14352d]" />
+            <span
+              className="
+                grid h-[12px] w-[12px] place-items-center rounded-full
+                border border-[#14352d]
+                before:block before:h-[7px] before:w-[7px] before:rounded-full before:bg-[#14352d]
+              "
+            />
             ABOUT US
           </span>
 
           <div
             className="
-              h-[525px] w-full overflow-hidden rounded-[7px]
-              max-[1440px]:h-[490px]
-              max-[1024px]:h-[460px]
-              max-[768px]:h-[320px]
+              h-[565px] w-full overflow-hidden rounded-[7px]
+
+              max-[1024px]:h-[420px]
+              max-[768px]:h-[306px]
             "
           >
             <img
               src={img1}
               alt="Kalamangala entrance"
-              className="h-full w-full object-cover"
+              className="
+                h-full w-full object-cover
+                max-[768px]:object-center
+              "
             />
           </div>
         </div>
@@ -102,23 +116,29 @@ export const AboutSection = () => {
         <div
           ref={aboutTextRef}
           className="
-            mt-[40px]
-            lg:mt-0
-            lg:translate-y-[19px]
+            w-full
+            translate-y-[4px]
+
+            max-[1024px]:mt-[62px]
             max-[1024px]:translate-y-0
+            max-[768px]:mt-[62px]
           "
         >
           <p
             className="
-              max-w-[733px]
-              text-[16px]
-              font-bold
-              leading-[1.47]
+              max-w-[612px]
+              text-[16px] font-bold
+              leading-[1.49]
               tracking-[-0.052em]
               text-[#14352d]
-              max-[1440px]:max-w-[620px]
-              max-[1440px]:text-[15px]
-              max-[768px]:text-[15px]
+
+              min-[1440px]:max-w-[590px]
+              min-[1440px]:text-[16px]
+              max-[1280px]:max-w-[535px]
+              max-[1024px]:max-w-none
+              max-[768px]:text-[16px]
+              max-[768px]:leading-[1.49]
+              max-[768px]:tracking-[-0.055em]
             "
           >
             At <strong className="font-black">Kalamangala</strong>, quality
@@ -137,15 +157,23 @@ export const AboutSection = () => {
             to="/about"
             className="
               mt-[31px] inline-flex items-center gap-[9px]
-              text-[12px] font-black uppercase leading-none
-              tracking-[0.075em] text-[#14352d]
+              text-[13px] font-black uppercase leading-none
+              tracking-[-0.055em] text-[#14352d]
+
+              max-[768px]:mt-[31px]
+              max-[768px]:text-[14px]
             "
           >
-            <span className="border-b border-[#14352d] pb-[5px]">
+            <span className="border-b-[2px] border-[#14352d] pb-[6px]">
               Know More
             </span>
 
-            <span className="grid h-[18px] w-[18px] place-items-center rounded-full border border-[#14352d]/45">
+            <span
+              className="
+                grid h-[16px] w-[16px] place-items-center rounded-full
+                border border-[#14352d]/45
+              "
+            >
               <ArrowIcon12 />
             </span>
           </Link>
