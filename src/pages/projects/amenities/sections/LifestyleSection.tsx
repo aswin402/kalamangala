@@ -69,40 +69,120 @@ const blocks = [
 
 export function LifestyleSection() {
   return (
-    <section className="mx-auto mt-[88px] w-full max-w-[1160px] px-6">
+    <section
+      className="
+        mx-auto w-full max-w-[1160px]
+        px-5 pt-[82px]
+        sm:px-6
+        md:mt-[88px] md:px-6 md:pt-0
+      "
+    >
       <div className="flex flex-col gap-[22px]">
         {blocks.map((item) => (
           <article
             key={item.title}
-            className="am-reveal grid overflow-hidden rounded-[28px] bg-[#12362d] p-[18px] md:grid-cols-2 md:gap-[42px]"
+            className="
+              am-reveal grid overflow-hidden bg-[#12362d]
+
+              /* mobile */
+              rounded-[27px]
+              p-[20px]
+              pb-[60px]
+
+              /* tablet / desktop */
+              md:grid-cols-2
+              md:gap-[42px]
+              md:rounded-[28px]
+              md:p-[18px]
+              md:pb-[18px]
+            "
           >
+            {/* IMAGE */}
             <div
-              className={`overflow-hidden rounded-[13px] ${
-                item.reverse ? "md:order-2" : "md:order-1"
-              }`}
+              className={`
+                overflow-hidden rounded-[16px] md:rounded-[13px]
+                ${item.reverse ? "md:order-2" : "md:order-1"}
+              `}
             >
               <img
                 src={item.image}
                 alt={item.title}
-                className="h-[390px] w-full object-cover transition duration-700 hover:scale-[1.04] md:h-[438px]"
+                className="
+                  h-[221px] w-full object-cover
+                  transition duration-700 hover:scale-[1.04]
+
+                  sm:h-[300px]
+                  md:h-[438px]
+                "
               />
             </div>
 
+            {/* CONTENT */}
             <div
-              className={`flex flex-col justify-center px-[24px] py-[34px] md:px-[14px] ${
-                item.reverse ? "md:order-1" : "md:order-2"
-              }`}
+              className={`
+                flex flex-col justify-center
+
+                /* mobile */
+                px-0 pt-[43px]
+
+                /* tablet / desktop */
+                md:px-[14px] md:py-[34px]
+
+                ${item.reverse ? "md:order-1" : "md:order-2"}
+              `}
             >
-              <h3 className="text-[34px] font-bold leading-[0.98] tracking-[-0.07em] text-[#ffad86]">
+              <h3
+                className="
+                  max-w-[310px]
+                  text-[31px] font-bold
+                  leading-[1.32]
+                  tracking-[-0.055em]
+                  text-[#ffad86]
+
+                  md:max-w-none
+                  md:text-[34px]
+                  md:leading-[0.98]
+                  md:tracking-[-0.07em]
+                "
+              >
                 {item.title}
               </h3>
 
-              <p className="mt-[24px] max-w-[540px] text-[16px] font-bold leading-[1.65] tracking-[-0.035em] text-white/90">
+              <p
+                className="
+                  mt-[17px] max-w-[540px]
+                  text-[16px] font-bold
+                  leading-[1.6]
+                  tracking-[-0.035em]
+                  text-white
+
+                  md:mt-[24px]
+                  md:text-white/90
+                  md:leading-[1.65]
+                "
+              >
                 {item.text}
               </p>
 
               {item.points.length > 0 && (
-                <ul className="mt-[25px] max-w-[540px] list-disc space-y-[8px] pl-[19px] text-[16px] font-bold leading-[1.55] tracking-[-0.035em] text-white/90 marker:text-[9px]">
+                <ul
+                  className="
+                    mt-[3px] max-w-[540px]
+                    list-disc space-y-[2px]
+                    pl-[19px]
+                    text-[16px] font-bold
+                    leading-[1.58]
+                    tracking-[-0.035em]
+                    text-white
+                    marker:text-[8px]
+
+                    md:mt-[25px]
+                    md:space-y-[8px]
+                    md:leading-[1.55]
+                    md:text-white/90
+                    md:marker:text-[9px]
+                  "
+                >
                   {item.points.map((point, index) => (
                     <li key={index}>{point}</li>
                   ))}
@@ -110,7 +190,18 @@ export function LifestyleSection() {
               )}
 
               {item.bottom && (
-                <p className="mt-[28px] max-w-[540px] text-[16px] font-bold leading-[1.65] tracking-[-0.035em] text-white/90">
+                <p
+                  className="
+                    mt-[28px] max-w-[540px]
+                    text-[16px] font-bold
+                    leading-[1.62]
+                    tracking-[-0.035em]
+                    text-white
+
+                    md:leading-[1.65]
+                    md:text-white/90
+                  "
+                >
                   {item.bottom}
                 </p>
               )}

@@ -99,13 +99,14 @@ const features = [
 
 export function FeatureRows() {
   return (
-    <section className="mx-auto mt-[90px] w-full max-w-[1160px] px-5 md:mt-[130px] md:px-6">
-      <div className="flex flex-col gap-[78px]">
+    <section className="mx-auto mt-[82px] w-full max-w-[1160px] px-5 md:mt-[130px] md:px-6">
+      <div className="flex flex-col gap-[78px] md:gap-[88px]">
         {features.map((item) => (
           <article
             key={item.title}
-            className="am-reveal grid grid-cols-1 items-center gap-[54px] md:grid-cols-2 md:gap-[88px]"
+            className="am-reveal grid grid-cols-1 items-center gap-[34px] md:grid-cols-2 md:gap-[88px]"
           >
+            {/* CONTENT */}
             <div
               className={`${
                 item.reverse ? "md:order-2" : "md:order-1"
@@ -126,16 +127,29 @@ export function FeatureRows() {
               </ul>
             </div>
 
+            {/* IMAGE */}
             <div
               className={`${
                 item.reverse ? "md:order-1" : "md:order-2"
               } order-1`}
             >
-              <div className="overflow-hidden rounded-[13px]">
+              <div
+                className="
+                  mx-auto w-full overflow-hidden rounded-[18px]
+                  max-[767px]:h-[370px]
+                  max-[767px]:max-w-[372px]
+                  max-[767px]:rounded-[17px]
+                  sm:max-[767px]:h-[390px]
+                  md:h-[475px] md:max-w-none md:rounded-[13px]
+                "
+              >
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-[440px] w-full object-cover transition duration-700 hover:scale-[1.04] md:h-[475px]"
+                  className="
+                    h-full w-full object-cover transition duration-700 hover:scale-[1.04]
+                    max-[767px]:object-cover
+                  "
                 />
               </div>
             </div>
