@@ -48,12 +48,12 @@ const SocialCard = ({
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
       className="
-        group flex h-[121px] flex-col items-center justify-center gap-[13px]
-        rounded-[10px] border border-transparent bg-white/[0.055] text-[#f4efe2]
+        group flex h-[160px] flex-col items-center justify-center gap-[13px]
+        rounded-[9px] border border-transparent bg-white/[0.055] text-[#f4efe2]
         no-underline transition-all duration-500
         hover:border-primary hover:bg-white/[0.075]
 
-        max-md:h-[118px]
+        max-md:h-[160px]
         max-sm:h-[117px] max-sm:gap-[14px] max-sm:rounded-[8px]
       "
     >
@@ -78,10 +78,10 @@ export const Footer = () => {
   return (
     <footer
       className="
-        relative mx-9 my-5 flex min-h-[calc(100vh-40px)]
+        relative mx-[39px] my-[15px] flex min-h-[690px]
         flex-col overflow-hidden rounded-[10px] bg-footer text-white
 
-        max-xl:min-h-[720px]
+        max-xl:mx-9 max-xl:my-5 max-xl:min-h-[690px]
         max-lg:min-h-0
         max-md:mx-4 max-md:my-4
         max-sm:mx-3 max-sm:my-[31px] max-sm:rounded-[8px]
@@ -89,9 +89,9 @@ export const Footer = () => {
     >
       <div
         className="
-          mx-auto w-full max-w-[1220px] pt-[42px]
+          w-full px-[30px] pt-[39px]
 
-          max-[1280px]:max-w-[1040px] max-[1280px]:px-7
+          max-xl:px-[30px]
           max-lg:px-7 max-lg:pt-9
           max-md:px-6
           max-sm:px-3 max-sm:pt-[39px]
@@ -99,14 +99,18 @@ export const Footer = () => {
       >
         <div
           className="
-            grid grid-cols-[585px_420px_145px] items-start gap-x-[62px]
+            grid w-full grid-cols-[535px_minmax(360px,1fr)_100px]
+            items-start gap-x-[83px]
 
-            max-[1280px]:grid-cols-[1fr_360px_120px] max-[1280px]:gap-x-[42px]
-            max-xl:grid-cols-[1fr_330px_115px] max-xl:gap-x-[34px]
+            max-[1180px]:grid-cols-[535px_minmax(320px,1fr)_95px]
+            max-[1180px]:gap-x-[55px]
+
+            max-xl:grid-cols-[535px_minmax(300px,1fr)_90px]
+            max-xl:gap-x-[45px]
+
             max-lg:grid-cols-1 max-lg:gap-y-0
           "
         >
-          {/* SOCIAL CARDS - desktop left / mobile after menu */}
           <div
             className="
               order-1 col-start-1 row-start-1 w-full
@@ -114,8 +118,8 @@ export const Footer = () => {
               max-sm:mt-[54px]
             "
           >
-            <div className="flex flex-col gap-3 max-sm:gap-[11px]">
-              <div className="grid grid-cols-2 gap-3 max-sm:gap-[11px]">
+            <div className="flex flex-col gap-[11px] max-sm:gap-[11px]">
+              <div className="grid grid-cols-2 gap-[11px] max-sm:gap-[11px]">
                 <SocialCard
                   href="https://instagram.com"
                   label="Instagram"
@@ -139,7 +143,7 @@ export const Footer = () => {
                 </SocialCard>
               </div>
 
-              <div className="grid grid-cols-3 gap-3 max-sm:gap-[10px]">
+              <div className="grid grid-cols-3 gap-[13px] max-sm:gap-[10px]">
                 <SocialCard href="tel:+91" label="Call">
                   <Phone
                     size={30}
@@ -170,7 +174,6 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* NEWSLETTER - desktop under social / mobile after social */}
           <div
             className="
               order-2 col-start-1 row-start-2 mt-[31px] w-full
@@ -180,7 +183,7 @@ export const Footer = () => {
           >
             <p
               className="
-                mb-3 text-[22px] font-medium leading-[1.2] text-white
+                mb-[11px] text-[22px] font-medium leading-[1.2] text-white
                 max-sm:mb-[12px] max-sm:text-[18px]
               "
             >
@@ -189,14 +192,14 @@ export const Footer = () => {
 
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="flex flex-col gap-[11px] max-sm:gap-[10px]"
+              className="flex flex-col gap-[10px] max-sm:gap-[10px]"
             >
               <input
                 type="email"
                 placeholder="Info@Kalamangala.com"
                 className="
-                  h-[42px] w-full rounded-[9px] border border-white/[0.08]
-                  bg-white/[0.055] px-3 text-[16px] text-white outline-none
+                  h-[41px] w-full rounded-[8px] border border-white/[0.08]
+                  bg-white/[0.055] px-[12px] text-[16px] text-white outline-none
                   placeholder:text-white/45
 
                   max-sm:h-[40px] max-sm:rounded-[8px] max-sm:px-[12px]
@@ -207,10 +210,10 @@ export const Footer = () => {
               <button
                 type="submit"
                 className="
-                  h-[42px] w-full cursor-pointer rounded-lg border border-primary
+                  h-[40px] w-full cursor-pointer rounded-[8px] border border-primary
                   bg-primary text-[16px] font-semibold text-foreground
                   transition-all duration-500 ease-out
-                  hover:bg-[#ff8952] hover:text-white hover:border-[#ff8952]
+                  hover:border-[#ff8952] hover:bg-[#ff8952] hover:text-white
 
                   max-sm:h-[40px] max-sm:rounded-[8px] max-sm:text-[16px]
                 "
@@ -220,11 +223,10 @@ export const Footer = () => {
             </form>
           </div>
 
-          {/* SERVICES - desktop middle / mobile first */}
           <div
             className="
-              order-3 col-start-2 row-start-1 w-full
-              max-lg:order-1 max-lg:col-start-auto max-lg:row-auto
+              order-3 col-start-2 row-start-1 w-full pt-[2px]
+              max-lg:order-1 max-lg:col-start-auto max-lg:row-auto max-lg:pt-0
             "
           >
             <div className="flex flex-col items-start gap-[15px] max-sm:gap-[18px]">
@@ -251,28 +253,22 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* MENU - desktop right / mobile second */}
           <div
             className="
-              order-4 col-start-3 row-start-1 w-full
-              max-lg:order-2 max-lg:col-start-auto max-lg:row-auto max-lg:mt-[44px]
+              order-4 col-start-3 row-start-1 w-full pt-[2px]
+              max-lg:order-2 max-lg:col-start-auto max-lg:row-auto max-lg:mt-[44px] max-lg:pt-0
             "
           >
             <span
               className="
-                mb-5 block text-[18px] font-medium uppercase tracking-[0.04em] text-primary
+                mb-[20px] block text-[18px] font-medium uppercase tracking-[0.04em] text-primary
                 max-sm:mb-[18px] max-sm:text-[17px]
               "
             >
               Menu
             </span>
 
-            <div
-              className="
-                flex flex-col items-start gap-4
-                max-sm:gap-[18px]
-              "
-            >
+            <div className="flex flex-col items-start gap-[17px] max-sm:gap-[18px]">
               {menuLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -292,24 +288,24 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* BIG FOOTER TITLE */}
       <div
         className="
-          mt-auto w-full pb-12 pl-7 pt-[70px]
+          w-full overflow-hidden
+          pl-[18px] pt-[54px] pb-[24px]
 
-          max-lg:pt-[80px]
-          max-md:pt-[64px]
-          max-sm:pb-[55px] max-sm:pl-[12px] max-sm:pt-[55px]
+          max-lg:pt-[56px]
+          max-md:pt-[45px]
+          max-sm:pl-[12px] max-sm:pt-[40px] max-sm:pb-[28px]
         "
       >
         <h2
           className="
-            m-0 select-none whitespace-nowrap text-primary
-            text-[clamp(150px,16.2vw,310px)] font-extrabold
-            leading-[0.72] tracking-[-0.065em]
+            mb-20 select-none whitespace-nowrap text-primary
+            text-[clamp(132px,15.6vw,235px)] font-extrabold
+            leading-[0.78] tracking-[-0.065em]
 
             max-lg:text-[clamp(78px,21vw,190px)] max-lg:tracking-[-0.055em]
-            max-sm:text-[82px] max-sm:leading-[0.72] max-sm:tracking-[-0.075em]
+            max-sm:text-[64px] max-sm:leading-[0.72] max-sm:tracking-[-0.075em] max-sm:mb-8
           "
         >
           Kalamangala
