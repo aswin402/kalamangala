@@ -108,7 +108,7 @@ export const HeroSection = () => {
           className="
             w-full overflow-hidden bg-black
 
-            h-[386px] rounded-[7px]
+            h-[300px] rounded-[10px]
             sm:h-[440px]
             md:h-[560px]
             lg:h-[720px]

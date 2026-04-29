@@ -149,10 +149,10 @@ export const Navbar = () => {
           className="
             flex h-[61px] w-full items-center justify-between bg-[#fbfaee]
             px-[108px]
-            shadow-[0_12px_34px_rgba(23,55,47,0.22)]
+            shadow-[0_4px_14px_rgba(23,55,47,0.14)]
             max-[520px]:px-[31px]
             md:mx-auto md:h-[72px] md:max-w-[1920px] md:justify-center md:px-5
-            md:shadow-[0_10px_30px_rgba(23,55,47,0.11)]
+            md:shadow-[0_4px_14px_rgba(23,55,47,0.14)]
           "
         >
           <div className="flex items-center gap-[44px]">
