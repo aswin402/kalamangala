@@ -1,149 +1,254 @@
-import { Play } from "lucide-react";
+import { useState } from "react";
+import { Play, X } from "lucide-react";
 
 import img1 from "@/assets/aboutpage/img1.avif";
 import img2 from "@/assets/aboutpage/img2.avif";
 import img3 from "@/assets/aboutpage/img3.avif";
+import raj from "@/assets/aboutpage/raj.avif";
+import rkrish from "@/assets/aboutpage/rkrish.avif";
 
 export const AboutDarkSection = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
-    <section className="w-full rounded-t-[14px] bg-[#17392f] px-5 pb-[88px] pt-[74px] text-white md:px-10 md:pb-[110px] md:pt-[94px] lg:px-[112px] lg:pb-[135px] lg:pt-[118px]">
-      <div className="mx-auto max-w-[1760px]">
-        {/* TEXT TOP AREA */}
-        <div className="mb-[72px] md:mb-[100px] lg:mb-[135px]">
-          <div className="mb-[26px] flex items-center gap-[10px]">
-            <span className="whitespace-nowrap text-[13px] font-bold uppercase tracking-[-0.02em] text-[#f4a77f]">
-              ✺ About Us
-            </span>
+    <>
+      <style>
+        {`
+          @keyframes slowVideoPulse {
+            0% {
+              transform: translate(-50%, -50%) scale(0.75);
+              opacity: 0.22;
+            }
+            45% {
+              transform: translate(-50%, -50%) scale(1.15);
+              opacity: 0.34;
+            }
+            100% {
+              transform: translate(-50%, -50%) scale(1.42);
+              opacity: 0;
+            }
+          }
 
-            <div className="h-px flex-1 bg-white/75" />
-          </div>
+          @keyframes slowPlayFloat {
+            0%, 100% {
+              transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+              transform: translate(-50%, -50%) scale(1.04);
+            }
+          }
 
-          <h2 className="max-w-[980px] text-[30px] font-semibold leading-[1.08] tracking-[-0.055em] text-white md:text-[36px] lg:text-[40px]">
-            Welcome to Kalamangala – Where Quality Meets Legacy.
-          </h2>
+          .km-video-pulse {
+            animation: slowVideoPulse 3.8s ease-in-out infinite;
+          }
 
-          <div className="mt-[22px] grid grid-cols-1 gap-[28px] md:mt-[26px] lg:grid-cols-[1.65fr_0.75fr] lg:gap-[120px]">
-            <p className="max-w-[1500px] text-[18px] font-semibold leading-[1.4] tracking-[-0.035em] text-white md:text-[22px] lg:text-[24px] lg:leading-[1.28] lg:tracking-[-0.06em]">
-              With over 33 years of expertise in construction, we craft premium
-              living spaces designed to stand the test of time. Our projects
-              blend superior infrastructure, modern amenities, and lush green
-              landscapes to create thriving communities. At Kalamangala, we
-              don&apos;t just build homes—we shape lifestyles, ensuring every
-              detail enhances your comfort, convenience, and connection with
-              nature.
-            </p>
+          .km-video-play {
+            animation: slowPlayFloat 3.8s ease-in-out infinite;
+          }
+        `}
+      </style>
 
-            <div className="flex items-end pb-[8px]">
-              <p className="max-w-[520px] text-[17px] font-semibold leading-[1.38] tracking-[-0.03em] text-white md:text-[20px] lg:text-[21px]">
-                We seamlessly blend nature with modern living, designing
-                communities with lush gardens and green spaces for a serene yet
-                contemporary lifestyle.
-              </p>
-            </div>
-          </div>
-        </div>
+      <section className="w-full overflow-hidden bg-[#f4f1e5] text-white">
+        <div className="w-full rounded-t-[14px] bg-[#17392f] px-[13px] pb-[33px] pt-[36px] sm:mx-auto sm:max-w-[416px] sm:rounded-[16px] sm:px-[13px] sm:pb-[33px] sm:pt-[36px] md:max-w-none md:rounded-t-[14px] md:px-[43px] md:pb-[110px] md:pt-[105px] lg:px-[43px] lg:pb-[135px] lg:pt-[110px]">
+          <div className="mx-auto max-w-[1200px] xl:max-w-[1760px]">
+            {/* TEXT TOP AREA - SAME */}
+            <div className="mb-[72px] md:mb-[100px] lg:mb-[135px]">
+              <div className="mb-[21px] md:mb-[23px]">
+                <div className="mb-[23px] flex items-center gap-[7px] md:mb-[22px]">
+                  <span className="flex h-[11px] w-[11px] items-center justify-center rounded-full border border-[#f4a77f]">
+                    <span className="h-[6px] w-[6px] rounded-full bg-[#f4a77f]" />
+                  </span>
 
-        {/* IMAGE GRID */}
-        <div className="grid min-h-0 grid-cols-1 gap-[10px] xl:min-h-[870px] xl:grid-cols-[2.05fr_1fr_1fr]">
-          {/* LEFT BIG IMAGE */}
-          <div className="relative h-[420px] overflow-hidden rounded-[10px] md:h-[620px] xl:h-auto">
-            <img
-              src={img1}
-              alt="Kalamangala aerial community"
-              className="h-full w-full object-cover"
-            />
+                  <span className="whitespace-nowrap text-[12px] font-bold uppercase leading-none tracking-[-0.03em] text-[#f4a77f]">
+                    About Us
+                  </span>
+                </div>
 
-            <div className="absolute inset-x-[12px] bottom-[12px] rounded-[8px] bg-black/45 px-4 pb-4 pt-4 backdrop-blur-[14px] md:px-[24px] md:pb-[22px] md:pt-[24px] lg:px-[30px] lg:pb-[30px] lg:pt-[34px]">
-              <p className="max-w-[900px] text-[15px] font-bold leading-[1.35] tracking-[-0.02em] text-white md:text-[18px] lg:text-[21px]">
-                &quot;With over 33 years in the construction industry,
-                I&apos;ve learned that quality is everything — that&apos;s why
-                I&apos;ve made it the top priority in every project at
-                Kalamangala&quot;
-              </p>
+                <div className="h-px w-full bg-white/75" />
+              </div>
 
-              <div className="mt-[16px] flex items-center gap-[12px] md:mt-[22px] lg:mt-[28px] lg:gap-[16px]">
-                <div className="h-[52px] w-[52px] overflow-hidden rounded-[4px] bg-white/20 md:h-[62px] md:w-[62px] lg:h-[70px] lg:w-[70px]" />
+              <h2 className="max-w-[1120px] text-[30px] font-medium leading-[1.08] tracking-[-0.065em] text-white md:text-[36px] md:leading-[1.08] lg:text-[38px] xl:text-[40px]">
+                Welcome to Kalamangala – Where Quality Meets Legacy.
+              </h2>
 
-                <div>
-                    <p className="text-[18px] font-semibold leading-none tracking-[-0.035em] text-white md:text-[22px] lg:text-[24px]">
-                    R.Krishnamurthy
-                  </p>
-                    <p className="mt-[6px] text-[13px] font-medium leading-[1.2] tracking-[-0.02em] text-white/80 md:text-[17px] lg:mt-[9px] lg:text-[19px]">
-                    Founder &amp; Managing Director of Kalamangala
+              <div className="mt-[22px] grid grid-cols-1 gap-[48px] md:mt-[24px] md:gap-[50px] lg:grid-cols-[1.55fr_0.78fr] lg:gap-[96px] xl:grid-cols-[1.58fr_0.78fr] xl:gap-[125px]">
+                <p className="max-w-[1210px] text-justify text-[18px] font-semibold leading-[1.32] tracking-[-0.045em] text-white md:text-left md:text-[24px] md:leading-[1.3] md:tracking-[-0.055em] lg:text-[24px] lg:leading-[1.3] xl:text-[24px]">
+                  With over 33 years of expertise in construction, we craft
+                  premium living spaces designed to stand the test of time. Our
+                  projects blend superior infrastructure, modern amenities, and
+                  lush green landscapes to create thriving communities. At
+                  Kalamangala, we don&apos;t just build homes—we shape lifestyles,
+                  ensuring every detail enhances your comfort, convenience, and
+                  connection with nature.
+                </p>
+
+                <div className="flex items-start lg:items-end lg:pb-[3px] xl:pb-[5px]">
+                  <p className="max-w-[550px] text-[18px] font-semibold leading-[1.28] tracking-[-0.045em] text-white md:text-[20px] md:leading-[1.28] lg:text-[20px] xl:text-[20px]">
+                    We seamlessly blend nature with modern living, designing
+                    communities with lush gardens and green spaces for a serene
+                    yet contemporary lifestyle.
                   </p>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* MIDDLE STACK */}
-          <div className="grid grid-rows-[1fr_260px] gap-[10px] md:grid-rows-[1fr_300px] xl:grid-rows-[1fr_360px]">
-            <div className="relative overflow-hidden rounded-[10px]">
-              <img
-                src={img2}
-                alt="Kalamangala green community"
-                className="h-full w-full object-cover"
-              />
+            {/* IMAGE GRID */}
+            <div className="grid min-h-0 grid-cols-1 gap-[10px] xl:min-h-[870px] xl:grid-cols-[2.05fr_1fr_1fr]">
+              {/* LEFT BIG IMAGE - SAME */}
+              <div className="relative order-1 h-[420px] overflow-hidden rounded-[10px] md:h-[620px] xl:h-auto">
+                <img
+                  src={img1}
+                  alt="Kalamangala aerial community"
+                  className="h-full w-full object-cover"
+                />
 
-              <div className="absolute inset-x-[12px] bottom-[12px] rounded-[8px] bg-[#17392f]/60 px-4 pb-4 pt-4 backdrop-blur-[14px] md:px-[22px] md:pb-[20px] md:pt-[22px] lg:px-[28px] lg:pb-[26px] lg:pt-[28px]">
-                <p className="text-[15px] font-bold leading-[1.3] tracking-[-0.02em] text-white md:text-[18px] lg:text-[21px]">
-                  &quot;At Kalamangala, we don&apos;t just build spaces — we
-                  create lasting legacies, where quality, innovation and nature
-                  come together to redefine modern living&quot;
-                </p>
+                <div className="absolute inset-x-[12px] bottom-[12px] rounded-[8px] bg-black/45 px-4 pb-4 pt-4 backdrop-blur-[14px] md:px-[24px] md:pb-[22px] md:pt-[24px] lg:px-[30px] lg:pb-[30px] lg:pt-[34px]">
+                  <p className="max-w-[900px] text-[15px] font-bold leading-[1.35] tracking-[-0.02em] text-white md:text-[18px] lg:text-[21px]">
+                    &quot;With over 33 years in the construction industry,
+                    I&apos;ve learned that quality is everything — that&apos;s
+                    why I&apos;ve made it the top priority in every project at
+                    Kalamangala&quot;
+                  </p>
 
-                <div className="mt-[14px] flex items-center gap-[10px] md:mt-[18px] lg:mt-[24px] lg:gap-[15px]">
-                  <div className="h-[50px] w-[50px] overflow-hidden rounded-[4px] bg-white/20 md:h-[58px] md:w-[58px] lg:h-[66px] lg:w-[66px]" />
+                  <div className="mt-[16px] flex items-center gap-[12px] md:mt-[22px] lg:mt-[28px] lg:gap-[16px]">
+                    <img
+                      src={rkrish}
+                      alt="R.Krishnamurthy"
+                      className="h-[52px] w-[52px] overflow-hidden rounded-[4px] bg-white/20 md:h-[62px] md:w-[62px] lg:h-[70px] lg:w-[70px]"
+                    />
 
-                  <div>
-                    <p className="text-[17px] font-semibold leading-none tracking-[-0.03em] text-white md:text-[20px] lg:text-[23px]">
-                      Ramji S.K
-                    </p>
-                    <p className="mt-[6px] text-[13px] font-medium leading-[1.25] tracking-[-0.02em] text-white/80 md:text-[17px] lg:mt-[8px] lg:text-[23px]">
-                      Managing Director of Kalamangala
-                    </p>
+                    <div>
+                      <p className="text-[18px] font-semibold leading-none tracking-[-0.035em] text-white md:text-[22px] lg:text-[24px]">
+                        R.Krishnamurthy
+                      </p>
+
+                      <p className="mt-[6px] text-[13px] font-medium leading-[1.2] tracking-[-0.02em] text-white/80 md:text-[17px] lg:mt-[9px] lg:text-[19px]">
+                        Founder &amp; Managing Director of Kalamangala
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* MIDDLE STACK */}
+              <div className="order-2 grid gap-[10px] md:grid-rows-[1fr_220px] xl:grid-rows-[1fr_260px]">
+                {/* UPPER CARD - SAME */}
+                <div className="relative min-h-[420px] overflow-hidden rounded-[10px] md:min-h-[560px] xl:min-h-0">
+                  <img
+                    src={img2}
+                    alt="Kalamangala green community"
+                    className="h-full w-full object-cover"
+                  />
+
+                  <div className="absolute left-1/2 top-1/2 w-[calc(100%-24px)] -translate-x-1/2 -translate-y-1/2 rounded-[8px] bg-[#17392f]/60 px-[14px] pb-[13px] pt-[13px] backdrop-blur-[14px] md:w-[calc(100%-32px)] md:px-[18px] md:pb-[16px] md:pt-[16px] lg:w-[calc(100%-24px)] lg:px-[22px] lg:pb-[18px] lg:pt-[18px]">
+                    <p className="text-[13px] font-bold leading-[1.24] tracking-[-0.02em] text-white md:text-[16px] md:leading-[1.25] lg:text-[18px]">
+                      &quot;At Kalamangala, we don&apos;t just build spaces — we
+                      create lasting legacies, where quality, innovation and
+                      nature come together to redefine modern living&quot;
+                    </p>
+
+                    <div className="mt-[10px] flex items-center gap-[9px] md:mt-[13px] md:gap-[11px] lg:mt-[15px] lg:gap-[13px]">
+                      <img
+                        src={raj}
+                        alt="Ramji S.K"
+                        className="h-[44px] w-[44px] overflow-hidden rounded-[4px] bg-white/20 object-cover md:h-[52px] md:w-[52px] lg:h-[58px] lg:w-[58px]"
+                      />
+
+                      <div>
+                        <p className="text-[15px] font-semibold leading-none tracking-[-0.03em] text-white md:text-[18px] lg:text-[20px]">
+                          Ramji S.K
+                        </p>
+
+                        <p className="mt-[5px] text-[12px] font-medium leading-[1.16] tracking-[-0.02em] text-white/80 md:text-[15px] lg:mt-[6px] lg:text-[18px]">
+                          Managing Director of Kalamangala
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* DESKTOP 33+ CARD */}
+                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] bg-[#f4f1e5] text-[#17392f] md:flex xl:h-[260px]">
+                  <h3 className="text-[62px] font-semibold leading-none tracking-[-0.06em] lg:text-[72px]">
+                    33+
+                  </h3>
+
+                  <p className="mt-[8px] text-[17px] font-medium tracking-[-0.03em] text-[#17392f]/80 lg:mt-[12px] lg:text-[18px]">
+                    Years of Experience
+                  </p>
+                </div>
+              </div>
+
+              {/* VIDEO THUMBNAIL - MOBILE COMES BEFORE 33+ */}
+              <button
+                type="button"
+                onClick={() => setIsVideoOpen(true)}
+                aria-label="Play Kalamangala video"
+                className="group relative order-3 h-[410px] overflow-hidden rounded-[9px] text-left md:h-[560px] xl:h-auto xl:rounded-[10px]"
+              >
+                <img
+                  src={img3}
+                  alt="Kalamangala building at night"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-black/28 transition-colors duration-500 group-hover:bg-black/38" />
+
+                <span className="km-video-pulse pointer-events-none absolute left-1/2 top-1/2 h-[82px] w-[82px] rounded-full bg-white/75 md:h-[96px] md:w-[96px] lg:h-[108px] lg:w-[108px]" />
+
+                <span className="km-video-pulse pointer-events-none absolute left-1/2 top-1/2 h-[82px] w-[82px] rounded-full bg-white/60 [animation-delay:1.9s] md:h-[96px] md:w-[96px] lg:h-[108px] lg:w-[108px]" />
+
+                <span className="km-video-play absolute left-1/2 top-1/2 flex h-[64px] w-[64px] items-center justify-center rounded-full bg-white shadow-[0_14px_34px_rgba(0,0,0,0.18)] md:h-[74px] md:w-[74px] lg:h-[82px] lg:w-[82px]">
+                  <Play className="ml-[4px] h-[22px] w-[22px] fill-[#17392f] text-[#17392f] md:h-[25px] md:w-[25px] lg:h-[28px] lg:w-[28px]" />
+                </span>
+
+                <p className="absolute left-1/2 top-[67%] w-[230px] -translate-x-1/2 text-center text-[16px] font-bold leading-[1.08] tracking-[-0.035em] text-white md:top-[62%] md:text-[20px] lg:text-[22px]">
+                  Learn more
+                  <br />
+                  About Kalamangala
+                </p>
+              </button>
+
+              {/* MOBILE 33+ CARD - EXACTLY AFTER VIDEO */}
+              <div className="order-4 flex h-[200px] flex-col items-center justify-center rounded-[9px] bg-[#f4f1e5] text-[#17392f] md:hidden">
+                <h3 className="text-[72px] font-semibold leading-none tracking-[-0.07em]">
+                  33+
+                </h3>
+
+                <p className="mt-[11px] text-[16px] font-medium tracking-[-0.03em] text-[#17392f]/85">
+                  Years of Experience
+                </p>
+              </div>
             </div>
-
-            <div className="flex flex-col items-center justify-center rounded-[10px] bg-[#f4f1e5] text-[#17392f]">
-              <h3 className="text-[62px] font-semibold leading-none tracking-[-0.06em] md:text-[78px] lg:text-[92px]">
-                33+
-              </h3>
-              <p className="mt-[12px] text-[16px] font-medium tracking-[-0.03em] text-[#17392f]/80 md:text-[20px] lg:mt-[20px] lg:text-[22px]">
-                Years of Experience
-              </p>
-            </div>
-          </div>
-
-          {/* RIGHT VIDEO IMAGE */}
-          <div className="relative h-[420px] overflow-hidden rounded-[10px] md:h-[560px] xl:h-auto">
-            <img
-              src={img3}
-              alt="Kalamangala building at night"
-              className="h-full w-full object-cover"
-            />
-
-            <div className="absolute inset-0 bg-black/30" />
-
-            <button
-              type="button"
-              className="absolute left-1/2 top-1/2 flex h-[110px] w-[110px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/45 backdrop-blur-[1px] md:h-[128px] md:w-[128px] lg:h-[148px] lg:w-[148px]"
-            >
-              <span className="flex h-[78px] w-[78px] items-center justify-center rounded-full bg-white md:h-[92px] md:w-[92px] lg:h-[104px] lg:w-[104px]">
-                <Play className="ml-[5px] h-[28px] w-[28px] fill-[#17392f] text-[#17392f] md:h-[32px] md:w-[32px] lg:ml-[7px] lg:h-[36px] lg:w-[36px]" />
-              </span>
-            </button>
-
-            <p className="absolute left-1/2 top-[62%] w-[220px] -translate-x-1/2 text-center text-[17px] font-bold leading-[1.2] tracking-[-0.03em] text-white md:text-[20px] lg:text-[22px]">
-              Learn more
-              <br />
-              About Kalamangala
-            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* VIDEO MODAL */}
+      {isVideoOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 px-4 py-6 backdrop-blur-[2px]">
+          <button
+            type="button"
+            aria-label="Close video"
+            onClick={() => setIsVideoOpen(false)}
+            className="absolute right-[18px] top-[18px] z-10 flex h-[44px] w-[44px] items-center justify-center rounded-full bg-white text-[#17392f] shadow-lg transition-transform duration-300 hover:scale-105 md:right-[36px] md:top-[36px]"
+          >
+            <X className="h-[24px] w-[24px]" />
+          </button>
+
+          <div className="relative w-full max-w-[1200px] overflow-hidden rounded-[10px] bg-black shadow-2xl">
+            <div className="aspect-video w-full">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/S4wGdBpXoNk?autoplay=1&rel=0&modestbranding=1"
+                title="Kalamangala Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
