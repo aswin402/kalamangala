@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,6 +9,8 @@ import { ArrowIcon14 } from '../components/icons';
 gsap.registerPlugin(ScrollTrigger);
 
 export const ProjectsSection = () => {
+  const [hovered, setHovered] = useState(false);
+
   const projectsSectionRef = useRef<HTMLElement>(null);
   const projectsHeadingRef = useRef<HTMLHeadingElement>(null);
   const projectsCardRef = useRef<HTMLDivElement>(null);
@@ -88,12 +90,9 @@ export const ProjectsSection = () => {
         <div
           className="
             absolute z-30 flex items-center gap-[5px]
-
             left-1/2 top-[-13px]
             -translate-x-[72px]
-
             md:left-[160px] md:top-[12px] md:translate-x-0
-
             lg:left-[180px] lg:top-[12px]
           "
         >
@@ -111,13 +110,10 @@ export const ProjectsSection = () => {
           className="
             relative z-10
             font-display font-medium text-[#082f2f]
-
             text-[76px] leading-[0.76] tracking-[-0.118em]
             sm:text-[92px]
-
             md:text-[clamp(108px,12.1vw,170px)]
             md:tracking-[-0.108em]
-
             lg:text-[218px]
             lg:leading-[0.72]
             lg:tracking-[-0.118em]
@@ -148,9 +144,14 @@ export const ProjectsSection = () => {
             "
           >
             <div className="grid grid-cols-1 items-stretch md:grid-cols-[548px_1fr] max-[1024px]:md:grid-cols-[50%_1fr]">
+              {/* Image */}
               <div
+                onPointerEnter={() => setHovered(true)}
+                onPointerLeave={() => setHovered(false)}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
                 className="
-                  overflow-hidden rounded-[7px]
+                  relative z-20 overflow-hidden rounded-[7px]
                   h-[206px] w-[329px] max-w-full
                   sm:h-[245px] sm:w-[430px]
                   md:h-[360px] md:w-full
@@ -160,13 +161,58 @@ export const ProjectsSection = () => {
                 <img
                   src={img2}
                   alt="The Waterfront"
-                  className="
-                    h-full w-full object-cover object-center
-                    transition-transform duration-700 hover:scale-[1.035]
-                  "
+                  className="h-full w-full object-cover object-center"
+                  style={{
+                    transform: hovered ? 'scale(1.045)' : 'scale(1)',
+                    transition: 'transform 700ms ease-out',
+                  }}
                 />
+
+                <Link
+                  to="/the-waterfront"
+                  className="
+                    absolute z-[999]
+                    flex items-center justify-between
+                    rounded-[8px] bg-[#fbfaf3]
+                    shadow-[0_10px_28px_rgba(0,0,0,0.14)]
+
+                    left-1/2 bottom-[17px]
+                    h-[48px] w-[calc(100%-52px)]
+                    pl-[20px] pr-[6px]
+
+                    sm:h-[50px] sm:w-[calc(100%-64px)] sm:pl-[22px]
+                    md:bottom-[22px] md:h-[50px] md:w-[386px]
+                    lg:bottom-[22px] lg:h-[51px] lg:w-[386px]
+                  "
+                  style={{
+                    opacity: hovered ? 1 : 0,
+                    transform: hovered
+                      ? 'translateX(-50%) translateY(0px)'
+                      : 'translateX(-50%) translateY(18px)',
+                    transition:
+                      'opacity 500ms ease-out, transform 500ms ease-out',
+                    pointerEvents: hovered ? 'auto' : 'none',
+                  }}
+                >
+                  <span className="text-[14px] font-bold tracking-[-0.04em] text-[#14352d]/70">
+                    View Project
+                  </span>
+
+                  <span className="grid h-[38px] w-[38px] place-items-center rounded-full bg-[#14352d]">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path
+                        d="M4 9H13.2M13.2 9L9.2 5M13.2 9L9.2 13"
+                        stroke="#fbfaf3"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </Link>
               </div>
 
+              {/* Text */}
               <div
                 className="
                   flex h-full flex-col
@@ -206,12 +252,13 @@ export const ProjectsSection = () => {
         </div>
       </div>
 
+      {/* All Projects button */}
       <div
         ref={projectsBtnRef}
         className="mt-[40px] flex justify-center md:mt-[98px]"
       >
         <Link
-          to="/the-waterfront"
+          to="/projects"
           className="
             group inline-flex items-center gap-[6px]
             rounded-[9px] bg-[#14352d]

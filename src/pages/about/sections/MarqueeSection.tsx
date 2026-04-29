@@ -12,7 +12,7 @@ export const MarqueeSection = () => {
     const tl = gsap.to(trackRef.current, {
       xPercent: -50,
       ease: "none",
-      duration: 95,
+      duration: 300,
       repeat: -1,
     });
 
@@ -22,7 +22,7 @@ export const MarqueeSection = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden pt-[180px] pb-[130px]">
+    <section className="relative flex h-[250px] w-full items-center overflow-hidden bg-transparent sm:h-[300px] md:h-[340px] lg:h-[384px] m-4">
       <div
         ref={trackRef}
         className="flex w-fit whitespace-nowrap will-change-transform"
@@ -30,9 +30,9 @@ export const MarqueeSection = () => {
         {[0, 1].map((item) => (
           <h1
             key={item}
-            className="pr-[34px] text-[clamp(110px,9.4vw,185px)] font-medium leading-[0.86] tracking-[-0.095em] text-[#172d24]"
+            className="shrink-0 pr-[28px] text-[clamp(56px,8.9vw,132px)] font-[500] leading-[0.86] tracking-[-0.095em] text-[#172d24] sm:pr-[34px]"
           >
-            {MARQUEE.repeat(4)}
+            {MARQUEE.repeat(5)}
           </h1>
         ))}
       </div>
