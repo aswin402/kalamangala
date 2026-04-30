@@ -150,13 +150,13 @@ export const ReviewsSection = () => {
               place-items-center
               rounded-full
               border
-              border-[#082f2f]
+              border-foreground
 
               md:h-[11px]
               md:w-[11px]
             "
           >
-            <span className="h-[5px] w-[5px] rounded-full bg-[#082f2f] md:h-[6px] md:w-[6px]" />
+            <span className="h-[5px] w-[5px] rounded-full bg-card-green md:h-[6px] md:w-[6px]" />
           </span>
 
           <span
@@ -166,7 +166,7 @@ export const ReviewsSection = () => {
               uppercase
               leading-none
               tracking-[-0.06em]
-              text-[#082f2f]
+              text-foreground
 
               md:text-[10px]
               lg:text-[10px]
@@ -185,7 +185,7 @@ export const ReviewsSection = () => {
             font-medium
             leading-[0.76]
             tracking-[-0.108em]
-            text-[#082f2f]
+            text-foreground
 
             sm:text-[82px]
 
@@ -220,7 +220,7 @@ export const ReviewsSection = () => {
                 h-[360px]
                 w-[270px]
                 shrink-0
-                bg-[#f5f2e7]
+                bg-white-text
                 px-[20px]
                 pt-[18px]
 
@@ -231,16 +231,16 @@ export const ReviewsSection = () => {
               "
             >
               <div className="mb-[40px] md:mb-[78px]">
-                <h4 className="font-display text-[18px] font-black leading-none tracking-[-0.04em] text-[#14352d]">
+                <h4 className="font-display text-[18px] font-black leading-none tracking-[-0.04em] text-[var(--home-reviewssection-text-5)]">
                   {review.name}
                 </h4>
 
-                <span className="mt-[9px] block text-[10px] font-black uppercase leading-none tracking-[0.08em] text-[#14352d]/80">
+                <span className="mt-[9px] block text-[10px] font-black uppercase leading-none tracking-[0.08em] text-[var(--home-reviewssection-text-5)]/80">
                   {review.role}
                 </span>
               </div>
 
-              <p className="max-w-[252px] text-[15px] font-semibold leading-[1.4] tracking-[-0.03em] text-[#14352d] md:text-[18px] md:leading-[1.32] md:tracking-[-0.055em]">
+              <p className="max-w-[252px] text-[15px] font-semibold leading-[1.4] tracking-[-0.03em] text-[var(--home-reviewssection-text-5)] md:text-[18px] md:leading-[1.32] md:tracking-[-0.055em]">
                 &quot;{review.text}&quot;
               </p>
             </article>

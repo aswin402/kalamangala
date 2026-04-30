@@ -78,7 +78,7 @@ export const AboutSection = () => {
             className="
               absolute -top-[31px] left-0 inline-flex items-center
               gap-[5px] text-[12px] font-black uppercase leading-none
-              tracking-[-0.055em] text-[#14352d]
+              tracking-[-0.055em] text-[var(--home-aboutsection-text-3)]
 
               max-[768px]:-top-[29px]
               max-[768px]:text-[12px]
@@ -87,8 +87,8 @@ export const AboutSection = () => {
             <span
               className="
                 grid h-[12px] w-[12px] place-items-center rounded-full
-                border border-[#14352d]
-                before:block before:h-[7px] before:w-[7px] before:rounded-full before:bg-[#14352d]
+                border border-foreground
+                before:block before:h-[7px] before:w-[7px] before:rounded-full before:bg-card-green
               "
             />
             ABOUT US
@@ -130,7 +130,7 @@ export const AboutSection = () => {
               text-[16px] font-bold
               leading-[1.49]
               tracking-[-0.052em]
-              text-[#14352d]
+              text-[var(--home-aboutsection-text-3)]
 
               min-[1440px]:max-w-[590px]
               min-[1440px]:text-[16px]
@@ -158,20 +158,20 @@ export const AboutSection = () => {
             className="
               mt-[31px] inline-flex items-center gap-[9px]
               text-[13px] font-black uppercase leading-none
-              tracking-[-0.055em] text-[#14352d]
+              tracking-[-0.055em] text-[var(--home-aboutsection-text-3)]
 
               max-[768px]:mt-[31px]
               max-[768px]:text-[14px]
             "
           >
-            <span className="border-b-[2px] border-[#14352d] pb-[6px]">
+            <span className="border-b-[2px] border-foreground pb-[6px]">
               Know More
             </span>
 
             <span
               className="
                 grid h-[16px] w-[16px] place-items-center rounded-full
-                border border-[#14352d]/45
+                border border-foreground/45
               "
             >
               <ArrowIcon12 />

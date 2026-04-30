@@ -1,34 +1,13 @@
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-
+import { MarqueeText } from "../../../../global/components/MarqueeText";
 import img1 from "../../../../assets/amenities/img1.avif";
 
 export function AmenitiesHero() {
-  const marqueeRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    if (!marqueeRef.current) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        marqueeRef.current,
-        { xPercent: 0 },
-        {
-          xPercent: -50,
-          duration: 180,
-          ease: "none",
-          repeat: -1,
-        }
-      );
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <>
       {/* AMENITIES MARQUEE */}
-      <section
+      <MarqueeText 
+        text="Amenities." 
+        duration={180} 
         className="
           relative w-full overflow-hidden
           h-[205px] pt-[102px]
@@ -38,37 +17,8 @@ export function AmenitiesHero() {
           xl:h-[330px] xl:pt-[122px]
           2xl:h-[340px] 2xl:pt-[124px]
         "
-      >
-        <div
-          ref={marqueeRef}
-          className="flex w-max whitespace-nowrap will-change-transform"
-        >
-          {[0, 1].map((group) => (
-            <div key={group} className="flex shrink-0">
-              {Array.from({ length: 10 }).map((_, index) => (
-                <span
-                  key={index}
-                  className="
-                    mr-[14px]
-                    text-[45px]
-                    font-medium
-                    leading-[0.82]
-                    tracking-[-0.085em]
-                    text-[#12362d]
-                    sm:mr-[16px] sm:text-[78px]
-                    md:mr-[18px] md:text-[112px]
-                    lg:text-[140px]
-                    xl:text-[140px]
-                    2xl:text-[140px]
-                  "
-                >
-                  Amenities.
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
+        repeatCount={10}
+      />
 
       {/* HERO IMAGE */}
       <section

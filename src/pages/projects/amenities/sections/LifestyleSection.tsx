@@ -82,7 +82,7 @@ export function LifestyleSection() {
           <article
             key={item.title}
             className="
-              am-reveal grid overflow-hidden bg-[#12362d]
+              am-reveal grid overflow-hidden bg-card-green
 
               /* mobile */
               rounded-[27px]
@@ -137,7 +137,7 @@ export function LifestyleSection() {
                   text-[31px] font-bold
                   leading-[1.32]
                   tracking-[-0.055em]
-                  text-[#ffad86]
+                  text-primary
 
                   md:max-w-none
                   md:text-[34px]

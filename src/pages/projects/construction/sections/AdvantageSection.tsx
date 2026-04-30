@@ -50,12 +50,12 @@ export function AdvantageSection() {
           className="
             max-w-[610px]
             font-['Inter',sans-serif]
-            text-[31px]
+            text-[16px]
             font-[900]
-            leading-[1.04]
-            tracking-[-0.075em]
-            text-[#0d2b22]
-            md:text-[50px]
+            leading-[0.95]
+            tracking-[-0.035em]
+            text-foreground
+            md:text-[18px]
           "
         >
           Experience the Kalamangala Advantage
@@ -69,12 +69,12 @@ export function AdvantageSection() {
             text-[16px]
             font-[400]
             italic
-            leading-[1.45]
+            leading-[1.22]
             tracking-[-0.045em]
             text-black/70
             md:mt-[18px]
-            md:text-[18px]
-            md:leading-[1.55]
+            md:text-[15px]
+            md:leading-[1.25]
           "
         >
           Being a luxury home developer in Tamil Nadu, Kalamangala brings more
@@ -89,12 +89,12 @@ export function AdvantageSection() {
             font-['Inter',sans-serif]
             text-[16px]
             font-[500]
-            leading-[1.08]
+            leading-[1.05]
             tracking-[-0.035em]
             text-black
             md:mt-[12px]
-            md:text-[18px]
-            md:leading-[1.18]
+            md:text-[15px]
+            md:leading-[1.12]
           "
         >
           <p>

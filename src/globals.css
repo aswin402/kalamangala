@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap');
+@import "tailwindcss";
+@layer base {
+  :root {
+    /* ===== Colors ===== */
+    --background: #f4f2e3;
+    --foreground: #1d322d;
+    
+    --primary: #f3ac85;
+    --primary-foreground: #14352d;
+    
+    --card: #faf5ea;
+    --card-foreground: #1d322d;
+    
+    --card-green: #1f3630;
+    
+    --footer: #1f3630;
+    --footer-foreground: #f4f2e3;
+    
+    --muted: #e6e3d1;
+    --muted-foreground: #4a635d;
+    
+    --border: #dcd8c0;
+    --ring: #f3ac85;
+    
+    --white-text: #fdfcee;
+    --table-header: #3c5e56;
+    --table-row: #f2f1df;
+    
+    /* ===== Border Radius ===== */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #14352d;
+    --foreground: #f4f2e3;
+    
+    --primary: #f3ac85;
+    --primary-foreground: #14352d;
+    
+    --card: #1f3630;
+    --card-foreground: #f4f2e3;
+    
+    --footer: #0a1b17;
+    --footer-foreground: #f4f2e3;
+    
+    --muted: #2a4b42;
+    --muted-foreground: #a3b8b2;
+    
+    --border: #2a4b42;
+    --ring: #f3ac85;
+  }
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --color-card-green: var(--card-green);
+  --color-white-text: var(--white-text);
+  --color-table-header: var(--table-header);
+  --color-table-row: var(--table-row);
+
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Inter", sans-serif;
+  --font-script: "Satisfy", cursive;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0 overflow-x-hidden bg-background text-foreground font-sans antialiased;
+    
+    background-image: url("https://framerusercontent.com/images/vaS0nXWH3vvzP1FenR3MFCToc.png?width=1065&height=795");
+    background-repeat: repeat;
+    background-position: left top;
+    background-size: 426px auto;
+  }
+
+  /* ===== Typography Base ===== */
+  /* Centralized typography that acts as a default styling layer. */
+  h1 {
+    @apply font-display text-4xl font-extrabold tracking-tight lg:text-5xl;
+  }
+
+  h2 {
+    @apply font-display text-3xl font-semibold tracking-tight transition-colors first:mt-0;
+  }
+
+  h3 {
+    @apply font-display text-2xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply font-display text-xl font-semibold tracking-tight;
+  }
+
+  p {
+    @apply leading-7 [&:not(:first-child)]:mt-6;
+  }
+
+  blockquote {
+    @apply mt-6 border-l-2 pl-6 italic text-muted-foreground;
+  }
+
+  ul {
+    @apply my-6 ml-6 list-disc [&>li]:mt-2;
+  }
+
+  a {
+    text-decoration: none;
+    @apply font-medium transition-colors hover:text-primary;
+  }
+
+  button,
+  input {
+    font-family: inherit;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+@layer utilities {
+  .site-shell {
+    @apply mx-auto w-full max-w-[1380px];
+  }
+
+  .site-px {
+    @apply px-[30px];
+  }
+
+  .tiny-label {
+    @apply text-[8px] font-bold uppercase tracking-[0.18em] text-foreground;
+  }
+
+  .big-title {
+    @apply font-sans font-black leading-[0.82] tracking-[-0.075em] text-foreground;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

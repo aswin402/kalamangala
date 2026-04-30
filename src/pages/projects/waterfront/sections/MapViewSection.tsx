@@ -175,7 +175,7 @@ export function MapViewSection() {
               bg-white/90
               text-[20px]
               font-bold
-              text-[#17392f]
+              text-[var(--projects-mapviewsection-text-1)]
               shadow-md
               backdrop-blur-sm
               md:h-[54px]

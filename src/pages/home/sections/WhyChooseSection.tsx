@@ -251,11 +251,11 @@ export const WhyChooseSection = () => {
 
             <Link
               to="/contact"
-              className="group inline-flex w-fit items-center gap-[4px] rounded-[9px] bg-white py-[6px] pl-[27px] pr-[6px] text-[17px] font-medium leading-none text-[#14352d] transition-colors hover:bg-[#fff7ee]"
+              className="group inline-flex w-fit items-center gap-[4px] rounded-[9px] bg-white py-[6px] pl-[27px] pr-[6px] text-[17px] font-medium leading-none text-[var(--home-whychoosesection-text-5)] transition-colors hover:bg-white-text"
             >
               Contact Us
 
-              <span className="grid h-[46px] w-[48px] place-items-center rounded-[9px] bg-[#f0a77e] transition-transform group-hover:translate-x-[2px]">
+              <span className="grid h-[46px] w-[48px] place-items-center rounded-[9px] bg-primary transition-transform group-hover:translate-x-[2px]">
                 <ArrowIcon14 />
               </span>
             </Link>
@@ -272,12 +272,12 @@ export const WhyChooseSection = () => {
               <SectionLabel>Our Specialities</SectionLabel>
             </div>
 
-            <h2 className="font-display text-[43px] font-black leading-[0.96] tracking-[-0.07em] text-[#14352d] md:text-[56px] xl:text-[49px]">
+            <h2 className="font-display text-[43px] font-black leading-[0.96] tracking-[-0.07em] text-[var(--home-whychoosesection-text-5)] md:text-[56px] xl:text-[49px]">
               Why choose Kalamangala
             </h2>
           </div>
 
-          <div className="flex flex-1 rounded-[8px] bg-[#14352d] px-[19px] py-[19px] md:min-h-[480px] xl:min-h-0">
+          <div className="flex flex-1 rounded-[8px] bg-card-green px-[19px] py-[19px] md:min-h-[480px] xl:min-h-0">
             <div className="flex w-full flex-col justify-between">
               {accordionItems.map((item, index) => (
                 <AccordionItem

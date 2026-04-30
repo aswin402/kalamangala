@@ -105,11 +105,11 @@ export function LandmarksSection() {
   return (
     <section className="mx-auto mt-[70px] w-full max-w-[1490px] px-5 md:mt-[92px] md:px-8">
       <div className="la-reveal mb-[34px]">
-        <h2 className="font-['Inter'] text-[34px] font-black leading-[0.95] tracking-[-0.065em] text-[#132d25] md:text-[46px]">
+        <h2 className="font-['Inter'] text-[34px] font-black leading-[0.95] tracking-[-0.065em] text-foreground md:text-[46px]">
           Erode&apos;s Landmarks — All Within Minutes
         </h2>
 
-        <p className="mt-[14px] max-w-[1040px] font-['Inter'] text-[18px] font-black leading-[1.16] tracking-[-0.052em] text-[#132d25] md:text-[24px]">
+        <p className="mt-[14px] max-w-[1040px] font-['Inter'] text-[18px] font-black leading-[1.16] tracking-[-0.052em] text-foreground md:text-[24px]">
           When we say convenience redefined, we mean it. Every major landmark of
           Erode is just around the corner. Here&apos;s how close your next home
           truly is 👇
@@ -142,8 +142,8 @@ export function LandmarksSection() {
                 md:p-[20px]
                 ${
                   item.dark
-                    ? "bg-[#173a31] text-[#fff7e8]"
-                    : "bg-[#e8e5b8] text-[#132d25]"
+                    ? "bg-card-green text-white-text"
+                    : "bg-[#e8e5b8] text-foreground"
                 }
               `}
             >
@@ -213,8 +213,8 @@ export function LandmarksSection() {
                     md:tracking-[-0.035em]
                     ${
                       item.dark
-                        ? "text-[#fff7e8]/95"
-                        : "text-[#132d25]/95"
+                        ? "text-white-text/95"
+                        : "text-foreground/95"
                     }
                   `}
                 >

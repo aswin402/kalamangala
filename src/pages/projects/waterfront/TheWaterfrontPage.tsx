@@ -46,7 +46,7 @@ export function TheWaterfrontPage() {
   return (
       <main
         ref={containerRef}
-        className="w-full overflow-x-hidden bg-background pb-0 pt-[74px] text-foreground"
+        className="w-full overflow-x-hidden pb-0 pt-[74px] text-foreground"
       >
       <WaterfrontHeader />
       <WaterfrontHero />

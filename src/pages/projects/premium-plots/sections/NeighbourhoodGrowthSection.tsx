@@ -40,11 +40,11 @@ export function NeighbourhoodGrowthSection() {
   return (
     <section className="mx-auto mt-[118px] w-full max-w-[1300px] px-5 pb-[82px]">
       <div className="la-reveal mb-[30px]">
-        <h2 className="font-['Inter'] text-[36px] font-black leading-none tracking-[-0.07em] text-[#132d25] md:text-[48px]">
+        <h2 className="font-['Inter'] text-[36px] font-black leading-none tracking-[-0.07em] text-foreground md:text-[48px]">
           A Neighbourhood Designed for Growth
         </h2>
 
-        <p className="mt-[30px] max-w-[1240px] font-['Inter'] text-[18px] font-black leading-[1.18] tracking-[-0.052em] text-[#132d25] md:text-[23px]">
+        <p className="mt-[30px] max-w-[1240px] font-['Inter'] text-[18px] font-black leading-[1.18] tracking-[-0.052em] text-foreground md:text-[23px]">
           Erode is not just growing — it&apos;s evolving into a hub of premium
           residential communities. The{" "}
           <span className="font-black">
@@ -61,7 +61,7 @@ export function NeighbourhoodGrowthSection() {
         {topCards.map((card) => (
           <article
             key={card.title}
-            className="la-card group h-[262px] overflow-hidden rounded-[18px] bg-[#173a31] p-[18px] text-[#f7f3df]"
+            className="la-card group h-[262px] overflow-hidden rounded-[18px] bg-card-green p-[18px] text-[var(--projects-neighbourhoodgrowthsection-text-3)]"
           >
             <div className="h-[128px] overflow-hidden rounded-[7px]">
               <img
@@ -76,7 +76,7 @@ export function NeighbourhoodGrowthSection() {
                 {card.title}
               </h3>
 
-              <p className="mt-[14px] font-['Inter'] text-[13px] font-black leading-[1.2] tracking-[-0.035em] text-[#f7f3df] md:text-[15px]">
+              <p className="mt-[14px] font-['Inter'] text-[13px] font-black leading-[1.2] tracking-[-0.035em] text-[var(--projects-neighbourhoodgrowthsection-text-3)] md:text-[15px]">
                 {card.desc}
               </p>
             </div>
@@ -88,7 +88,7 @@ export function NeighbourhoodGrowthSection() {
         {bottomCards.map((card) => (
           <article
             key={card.title}
-            className="la-card group h-[263px] overflow-hidden rounded-[18px] bg-[#173a31] p-[18px] text-[#f7f3df]"
+            className="la-card group h-[263px] overflow-hidden rounded-[18px] bg-card-green p-[18px] text-[var(--projects-neighbourhoodgrowthsection-text-3)]"
           >
             <div className="h-[128px] overflow-hidden rounded-[7px]">
               <img
@@ -103,7 +103,7 @@ export function NeighbourhoodGrowthSection() {
                 {card.title}
               </h3>
 
-              <p className="mt-[14px] font-['Inter'] text-[13px] font-black leading-[1.2] tracking-[-0.035em] text-[#f7f3df] md:text-[15px]">
+              <p className="mt-[14px] font-['Inter'] text-[13px] font-black leading-[1.2] tracking-[-0.035em] text-[var(--projects-neighbourhoodgrowthsection-text-3)] md:text-[15px]">
                 {card.desc}
               </p>
             </div>

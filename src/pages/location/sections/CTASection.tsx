@@ -19,8 +19,8 @@ export function CTASection() {
           min-h-[585px]
           overflow-hidden
           rounded-[30px]
-          bg-[#16382f]
-          text-[#f7f3df]
+          bg-card-green
+          text-white-text
           lg:grid-cols-[0.98fr_1.02fr]
         "
       >
@@ -65,7 +65,7 @@ export function CTASection() {
               font-black
               leading-[0.98]
               tracking-[-0.07em]
-              text-[#f8a77f]
+              text-[var(--location-ctasection-text-3)]
               md:text-[54px]
               lg:text-[50px]
               xl:text-[54px]
@@ -89,7 +89,7 @@ export function CTASection() {
               font-bold
               leading-[1.6]
               tracking-[-0.035em]
-              text-[#f7f3df]
+              text-white-text
               md:text-[16px]
             "
           >

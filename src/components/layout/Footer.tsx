@@ -49,7 +49,7 @@ const SocialCard = ({
       rel={external ? "noreferrer" : undefined}
       className="
         group flex h-[160px] flex-col items-center justify-center gap-[13px]
-        rounded-[9px] border border-transparent bg-white/[0.055] text-[#f4efe2]
+        rounded-[9px] border border-transparent bg-white/[0.055] text-white-text
         no-underline transition-all duration-500
         hover:border-primary hover:bg-white/[0.075]
 
@@ -57,14 +57,14 @@ const SocialCard = ({
         max-sm:h-[117px] max-sm:gap-[14px] max-sm:rounded-[8px]
       "
     >
-      <span className="text-[#f4efe2] transition-colors duration-500 group-hover:text-primary">
+      <span className="text-white-text transition-colors duration-500 group-hover:text-primary">
         {children}
       </span>
 
       <span
         className="
           text-[11px] font-normal uppercase leading-none tracking-[0.04em]
-          text-[#f4efe2] transition-colors duration-500 group-hover:text-primary
+          text-white-text transition-colors duration-500 group-hover:text-primary
           max-sm:text-[11px]
         "
       >
@@ -213,7 +213,7 @@ export const Footer = () => {
                   h-[40px] w-full cursor-pointer rounded-[8px] border border-primary
                   bg-primary text-[16px] font-semibold text-foreground
                   transition-all duration-500 ease-out
-                  hover:border-[#ff8952] hover:bg-[#ff8952] hover:text-white
+                  hover:border-primary hover:bg-primary hover:text-white
 
                   max-sm:h-[40px] max-sm:rounded-[8px] max-sm:text-[16px]
                 "

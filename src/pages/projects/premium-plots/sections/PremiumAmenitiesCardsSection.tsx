@@ -40,7 +40,7 @@ const amenityCards = [
 
 export function PremiumAmenitiesCardsSection() {
   return (
-    <section className="km-reveal relative w-full overflow-hidden bg-[#fbfbef] font-['Inter',sans-serif] text-[#0d2b22]">
+    <section className="km-reveal relative w-full overflow-hidden font-['Inter',sans-serif] text-[var(--projects-premiumamenitiescardssection-text-4)]">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.42]"
         style={{
@@ -61,9 +61,9 @@ export function PremiumAmenitiesCardsSection() {
             return (
               <article
                 key={card.title}
-                className="min-h-[320px] rounded-[18px] bg-[#dedbca] px-[30px] pb-[36px] pt-[44px] md:min-h-[400px] md:px-[34px] md:pb-[44px] md:pt-[54px]"
+                className="min-h-[320px] rounded-[18px] bg-table-row px-[30px] pb-[36px] pt-[44px] md:min-h-[400px] md:px-[34px] md:pb-[44px] md:pt-[54px]"
               >
-                <div className="mb-[24px] flex h-[50px] w-[50px] items-center justify-center rounded-[10px] bg-[#e8ebed] text-[#5c5f65] shadow-[0_3px_8px_rgba(0,0,0,0.16)]">
+                <div className="mb-[24px] flex h-[50px] w-[50px] items-center justify-center rounded-[10px] bg-table-row text-[var(--projects-premiumamenitiescardssection-text-6)] shadow-[0_3px_8px_rgba(0,0,0,0.16)]">
                   <Icon size={30} strokeWidth={1.75} />
                 </div>
 
@@ -71,7 +71,7 @@ export function PremiumAmenitiesCardsSection() {
                   {card.title}
                 </h3>
 
-                <p className="mt-[16px] max-w-[760px] text-[16px] font-[500] leading-[1.33] tracking-[-0.03em] text-[#2a4a42] md:text-[24px]">
+                <p className="mt-[16px] max-w-[760px] text-[16px] font-[500] leading-[1.33] tracking-[-0.03em] text-[var(--projects-premiumamenitiescardssection-text-5)] md:text-[24px]">
                   {card.description}
                 </p>
               </article>

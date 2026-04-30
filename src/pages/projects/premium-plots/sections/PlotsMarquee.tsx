@@ -39,7 +39,7 @@ export function PlotsMarquee() {
             {Array.from({ length: 8 }).map((_, i) => (
               <span
                 key={`${set}-${i}`}
-                className="font-['Inter',sans-serif] font-black leading-none text-[#0d2b22]"
+                className="font-['Inter',sans-serif] font-black leading-none text-foreground"
                 style={{
                   fontSize: "clamp(92px, 6.8vw, 126px)",
                   letterSpacing: "-0.09em",

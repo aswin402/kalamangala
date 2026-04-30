@@ -7,7 +7,7 @@ export const MissionVisionSection = () => {
 
   return (
     <section className="w-full px-[13px] pb-[51px] pt-[24px] sm:px-[34px] sm:pt-[31px]">
-      <div className="mx-auto flex min-h-[430px] w-full max-w-[1360px] flex-col items-center rounded-[18px] bg-[#183b31] px-[25px] pt-[59px] text-center sm:min-h-[400px] sm:px-[46px] sm:pt-[80px]">
+      <div className="mx-auto flex min-h-[430px] w-full max-w-[1360px] flex-col items-center rounded-[18px] bg-card-green px-[25px] pt-[59px] text-center sm:min-h-[400px] sm:px-[46px] sm:pt-[80px]">
         {/* Tabs */}
         <div className="mb-[42px] inline-flex h-[51px] rounded-[9px] border border-white/50 bg-transparent p-[1px] sm:mb-[44px]">
           {(["mission", "vision"] as const).map((item) => (
@@ -17,7 +17,7 @@ export const MissionVisionSection = () => {
               onClick={() => setTab(item)}
               className={`h-[47px] min-w-[94px] rounded-[8px] px-[18px] text-[18px] font-medium capitalize tracking-[-0.025em] transition-all duration-300 sm:min-w-[99px] sm:px-[20px] ${
                 tab === item
-                  ? "bg-[#f5a77f] text-[#102d25]"
+                  ? "bg-primary text-foreground"
                   : "bg-transparent text-white"
               }`}
             >
@@ -28,7 +28,7 @@ export const MissionVisionSection = () => {
 
         {/* Content */}
         <p
-          className={`mx-auto font-medium text-[#fbf8ec] tracking-[-0.045em] ${
+          className={`mx-auto font-medium text-[var(--about-missionvisionsection-text-4)] tracking-[-0.045em] ${
             isMission
               ? "max-w-[350px] text-[20px] leading-[1.3] sm:max-w-[1190px] sm:text-[25px] sm:leading-[1.28]"
               : "max-w-[350px] text-[20px] leading-[1.3] sm:max-w-[1210px] sm:text-[38px] sm:leading-[1.2]"

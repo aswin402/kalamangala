@@ -57,7 +57,7 @@ export function ServicesSection() {
           font-[900]
           leading-none
           tracking-[-0.075em]
-          text-[#0d2b22]
+          text-[var(--projects-servicessection-text-2)]
           md:text-[44px]
         "
       >
@@ -75,7 +75,7 @@ export function ServicesSection() {
                 relative
                 overflow-hidden
                 rounded-[18px]
-                bg-[#17392f]
+                bg-card-green
                 px-[18px]
                 pt-[18px]
                 pb-[26px]
@@ -106,7 +106,7 @@ export function ServicesSection() {
                     font-[900]
                     leading-none
                     tracking-[-0.055em]
-                    text-[#fff8df]
+                    text-[var(--projects-servicessection-text-3)]
                     md:text-[25px]
                   "
                 >
@@ -122,7 +122,7 @@ export function ServicesSection() {
                     font-[700]
                     leading-[1.32]
                     tracking-[-0.04em]
-                    text-[#fff8df]/90
+                    text-[var(--projects-servicessection-text-3)]/90
                     md:text-[16px]
                   "
                 >

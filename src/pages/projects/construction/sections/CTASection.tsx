@@ -21,7 +21,7 @@ export function CTASection() {
         className="
           overflow-hidden
           rounded-[30px]
-          bg-[#17392f]
+          bg-card-green
           md:grid
           md:min-h-[500px]
           md:rounded-[28px]
@@ -69,14 +69,14 @@ export function CTASection() {
             className="
               max-w-[270px]
               font-['Inter',sans-serif]
-              text-[28px]
+              text-[54px]
               font-[900]
-              leading-[1.12]
+              leading-[1.6]
               tracking-[-0.065em]
-              text-[#f7a77f]
+              text-white-text
               md:max-w-[560px]
               md:text-[54px]
-              md:leading-[1.08]
+              md:leading-[0.98]
               md:tracking-[-0.075em]
             "
           >
@@ -94,11 +94,11 @@ export function CTASection() {
               block
               max-w-[264px]
               font-['Inter',sans-serif]
-              text-[15px]
+              text-[42px]
               font-[600]
               leading-[1.66]
-              tracking-[-0.035em]
-              text-[#fff8ec]
+              tracking-[-0.07em]
+              text-[var(--projects-ctasection-text-3)]
               md:hidden
             "
           >
@@ -145,13 +145,13 @@ export function CTASection() {
               hidden
               max-w-[650px]
               font-['Inter',sans-serif]
-              text-[15px]
+              text-[42px]
               font-[600]
               leading-[1.65]
-              tracking-[-0.035em]
-              text-[#fff8ec]
+              tracking-[-0.07em]
+              text-[var(--projects-ctasection-text-3)]
               md:block
-              md:text-[16px]
+              md:text-[50px]
             "
           >
             <p>

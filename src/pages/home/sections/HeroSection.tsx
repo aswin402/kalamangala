@@ -65,7 +65,7 @@ export const HeroSection = () => {
           <p
             className="
               font-pathway font-normal leading-[0.9]
-              tracking-[-0.055em] text-[#082f2f]
+              tracking-[-0.055em] text-foreground
 
               text-[37px]
               sm:text-[46px]
@@ -79,7 +79,7 @@ export const HeroSection = () => {
           <h1
             className="
               font-script font-normal leading-[0.72]
-              tracking-[-0.045em] text-[#082f2f]
+              tracking-[-0.045em] text-foreground
 
               mt-[18px] text-[63px]
               sm:mt-[24px] sm:text-[84px]

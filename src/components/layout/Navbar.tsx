@@ -177,8 +177,8 @@ export const Navbar = () => {
       transition-all duration-200
       ${
         active
-          ? "bg-[#e8e6dc] text-[#142820]"
-          : "text-[#142820] hover:bg-[#e8e6dc]"
+          ? "bg-[#e8e6dc] text-foreground"
+          : "text-foreground hover:bg-[#e8e6dc]"
       }
     `;
   };
@@ -190,8 +190,8 @@ export const Navbar = () => {
       transition-colors
       ${
         active
-          ? "text-[#ff6d2d]"
-          : "text-[#142820] hover:text-[#ff6d2d]"
+          ? "text-primary"
+          : "text-foreground hover:text-primary"
       }
     `;
   };
@@ -208,7 +208,7 @@ export const Navbar = () => {
         {/* Top bar */}
         <div
           className="
-            flex h-[61px] w-full items-center justify-between bg-[#fbfaee]
+            flex h-[61px] w-full items-center justify-between bg-white-text
             px-[108px]
             shadow-[0_4px_14px_rgba(23,55,47,0.14)]
             max-[520px]:px-[31px]
@@ -283,8 +283,8 @@ export const Navbar = () => {
               transition-all duration-200 md:hidden
               ${
                 mobileOpen
-                  ? "border border-transparent bg-[#17372f] text-[#f19b69]"
-                  : "border border-[#17372f]/40 bg-transparent text-[#17372f]"
+                  ? "border border-transparent bg-card-green text-primary"
+                  : "border border-foreground/40 bg-transparent text-foreground"
               }
             `}
           >
@@ -307,7 +307,7 @@ export const Navbar = () => {
               className="
                 absolute left-1/2 top-[64px] hidden w-[560px]
                 -translate-x-1/2 rounded-[28px]
-                border border-[#142820]/5 bg-[#fbfaf2]/95 p-8
+                border border-foreground/5 bg-white-text/95 p-8
                 shadow-[0_24px_60px_rgba(0,0,0,0.08)]
                 backdrop-blur-xl md:flex md:gap-10
               "
@@ -320,17 +320,17 @@ export const Navbar = () => {
                     onClick={() => setProjectsOpen(false)}
                     className="group"
                   >
-                    <h4 className="text-[15px] font-semibold leading-none text-[#142820] transition-colors group-hover:text-[#ff6d2d]">
+                    <h4 className="text-[15px] font-semibold leading-none text-foreground transition-colors group-hover:text-primary">
                       {item.title}
                     </h4>
-                    <p className="mt-1 text-[12px] leading-none text-[#142820]/45">
+                    <p className="mt-1 text-[12px] leading-none text-foreground/45">
                       {item.sub}
                     </p>
                   </Link>
                 ))}
               </div>
 
-              <div className="w-px bg-[#142820]/10" />
+              <div className="w-px bg-card-green/10" />
 
               <div className="flex flex-1 flex-col gap-7">
                 {projectsData.slice(3).map((item) => (
@@ -340,10 +340,10 @@ export const Navbar = () => {
                     onClick={() => setProjectsOpen(false)}
                     className="group"
                   >
-                    <h4 className="text-[15px] font-semibold leading-none text-[#142820] transition-colors group-hover:text-[#ff6d2d]">
+                    <h4 className="text-[15px] font-semibold leading-none text-foreground transition-colors group-hover:text-primary">
                       {item.title}
                     </h4>
-                    <p className="mt-1 text-[12px] leading-none text-[#142820]/45">
+                    <p className="mt-1 text-[12px] leading-none text-foreground/45">
                       {item.sub}
                     </p>
                   </Link>
@@ -357,7 +357,7 @@ export const Navbar = () => {
         <div
           className={`
             h-[31px] w-full border-t border-[#dce4d6]/70 md:hidden
-            ${mobileOpen ? "bg-[#fbfaee]" : "bg-transparent"}
+            ${mobileOpen ? "bg-white-text" : "bg-transparent"}
           `}
         />
       </header>
@@ -366,7 +366,7 @@ export const Navbar = () => {
       <div
         className={`
           fixed left-0 top-[61px] z-[9998] h-[calc(100dvh-61px)] w-full
-          overflow-hidden bg-[#fbfaee] transition-all duration-300 md:hidden
+          overflow-hidden bg-white-text transition-all duration-300 md:hidden
           ${
             mobileOpen
               ? "pointer-events-auto opacity-100"
@@ -439,10 +439,10 @@ export const Navbar = () => {
                     onClick={closeMenu}
                     className="group block"
                   >
-                    <h4 className="text-[16px] font-[600] leading-none tracking-[-0.03em] text-[#19332b] transition-colors group-hover:text-[#ff6d2d]">
+                    <h4 className="text-[16px] font-[600] leading-none tracking-[-0.03em] text-foreground transition-colors group-hover:text-primary">
                       {item.title}
                     </h4>
-                    <p className="mt-[8px] text-[13px] font-[500] leading-none tracking-[-0.02em] text-[#19332b]/55">
+                    <p className="mt-[8px] text-[13px] font-[500] leading-none tracking-[-0.02em] text-foreground/55">
                       {item.sub}
                     </p>
                   </Link>
@@ -455,13 +455,13 @@ export const Navbar = () => {
           <div
             className="
               mx-auto mt-[46px] h-[324px] w-[367px] max-w-full rounded-[7px]
-              bg-[#17372f] px-[22px] pt-[27px] text-center text-white
+              bg-card-green px-[22px] pt-[27px] text-center text-white
             "
           >
             <Mail
               size={27}
               strokeWidth={2.2}
-              className="mx-auto text-[#ffbd34]"
+              className="mx-auto text-primary"
             />
 
             <p className="mt-[18px] text-[18px] font-[400] leading-none tracking-[-0.035em] text-white">
@@ -473,7 +473,7 @@ export const Navbar = () => {
             <Phone
               size={28}
               strokeWidth={2.1}
-              className="mx-auto mt-[8px] text-[#ffbd34]"
+              className="mx-auto mt-[8px] text-primary"
             />
 
             <p className="mt-[17px] text-[18px] font-[400] leading-none tracking-[-0.035em] text-white">
@@ -483,7 +483,7 @@ export const Navbar = () => {
             <MapPin
               size={29}
               strokeWidth={2.15}
-              className="mx-auto mt-[24px] text-[#ffbd34]"
+              className="mx-auto mt-[24px] text-primary"
             />
 
             <p className="mx-auto mt-[16px] max-w-[305px] text-[17px] font-[400] leading-[1.55] tracking-[-0.035em] text-white">

@@ -1,30 +1,13 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-
+import { MarqueeText } from "../../../global/components/MarqueeText";
 import img1 from "../../../assets/location-advantage/img1.avif";
 
 export function LocationHero() {
-  const marqueeRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!marqueeRef.current) return;
-
-    const tween = gsap.to(marqueeRef.current, {
-      xPercent: -50,
-      duration: 140,
-      repeat: -1,
-      ease: "none",
-    });
-
-    return () => {
-      tween.kill();
-    };
-  }, []);
-
   return (
     <>
       {/* Big Marquee */}
-      <section
+      <MarqueeText 
+        text="Location.Advantage. " 
+        duration={140} 
         className="
           w-full overflow-hidden
           pt-[115px]
@@ -36,37 +19,8 @@ export function LocationHero() {
           lg:pt-[140px]
           lg:pb-[24px]
         "
-      >
-        <div
-          ref={marqueeRef}
-          className="flex w-max whitespace-nowrap will-change-transform"
-        >
-          {[0, 1].map((set) => (
-            <div key={set} className="flex items-center">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <span
-                  key={`${set}-${i}`}
-                  className="
-                    block
-                    pr-[10px]
-                    font-['Inter',sans-serif]
-                    text-[55px]
-                    font-[650]
-                    leading-[1.02]
-                    tracking-[-0.075em]
-                    text-[#132d25]
-                    sm:text-[74px]
-                    md:text-[138px]
-                    xl:text-[154px]
-                  "
-                >
-                  Location.Advantage.
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
+        repeatCount={5}
+      />
 
       {/* Hero Image */}
       <section

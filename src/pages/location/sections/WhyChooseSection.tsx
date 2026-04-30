@@ -26,7 +26,7 @@ export function WhyChooseSection() {
 
   return (
     <section className="mx-auto mt-[88px] w-full max-w-[1470px] px-5 pb-[82px] md:mt-[118px]">
-      <h2 className="la-reveal mb-[42px] font-['Inter'] text-[42px] font-black leading-none tracking-[-0.07em] text-[#132d25] md:text-[54px]">
+      <h2 className="la-reveal mb-[42px] font-['Inter'] text-[42px] font-black leading-none tracking-[-0.07em] text-[var(--location-whychoosesection-text-3)] md:text-[54px]">
         Why Choose The Waterfront, Erode
       </h2>
 
@@ -37,17 +37,17 @@ export function WhyChooseSection() {
           return (
             <article
               key={card.title}
-              className="la-card min-h-[260px] rounded-[14px] bg-[#ecebdc] px-[34px] py-[48px] text-[#132d25]"
+              className="la-card min-h-[260px] rounded-[14px] bg-table-row px-[34px] py-[48px] text-[var(--location-whychoosesection-text-3)]"
             >
-              <div className="mb-[28px] flex h-[48px] w-[48px] items-center justify-center rounded-[8px] bg-[#f6f7f5] text-[#4b5552] shadow-[0_10px_22px_rgba(19,45,37,0.16)]">
+              <div className="mb-[28px] flex h-[48px] w-[48px] items-center justify-center rounded-[8px] bg-white-text text-[var(--location-whychoosesection-text-4)] shadow-[0_10px_22px_rgba(19,45,37,0.16)]">
                 <Icon size={27} strokeWidth={1.8} />
               </div>
 
-              <h3 className="font-['Inter'] text-[38px] font-black leading-none tracking-[-0.075em] text-[#132d25] md:text-[52px]">
+              <h3 className="font-['Inter'] text-[38px] font-black leading-none tracking-[-0.075em] text-[var(--location-whychoosesection-text-3)] md:text-[52px]">
                 {card.title}
               </h3>
 
-              <p className="mt-[22px] font-['Inter'] text-[18px] font-medium leading-[1.25] tracking-[-0.035em] text-[#132d25]/75 md:text-[21px]">
+              <p className="mt-[22px] font-['Inter'] text-[18px] font-medium leading-[1.25] tracking-[-0.035em] text-[var(--location-whychoosesection-text-3)]/75 md:text-[21px]">
                 {card.desc}
               </p>
             </article>

@@ -48,7 +48,7 @@ export function StandApartSection() {
         className="
           mb-[24px] max-w-[330px]
           text-[31px] font-bold leading-[1.02] tracking-[-0.075em]
-          text-[#12362d]
+          text-foreground
 
           sm:text-[38px]
           lg:mb-[28px] lg:max-w-none lg:text-[48px] lg:leading-[0.93]
@@ -98,7 +98,7 @@ function ApartCard({
   return (
     <article
       className={`
-        group overflow-hidden bg-[#12362d]
+        group overflow-hidden bg-card-green
 
         h-[339px] rounded-[22px] px-[20px] pt-[20px]
 

@@ -96,11 +96,11 @@ export const ProjectsSection = () => {
             lg:left-[180px] lg:top-[12px]
           "
         >
-          <span className="grid h-[11px] w-[11px] place-items-center rounded-full border border-[#082f2f]">
-            <span className="h-[6px] w-[6px] rounded-full bg-[#082f2f]" />
+          <span className="grid h-[11px] w-[11px] place-items-center rounded-full border border-foreground">
+            <span className="h-[6px] w-[6px] rounded-full bg-card-green" />
           </span>
 
-          <span className="text-[10px] font-black uppercase leading-none tracking-[-0.06em] text-[#082f2f]">
+          <span className="text-[10px] font-black uppercase leading-none tracking-[-0.06em] text-[var(--home-projectssection-text-7)]">
             Our Portfolio
           </span>
         </div>
@@ -109,7 +109,7 @@ export const ProjectsSection = () => {
           ref={projectsHeadingRef}
           className="
             relative z-10
-            font-display font-medium text-[#082f2f]
+            font-display font-medium text-[var(--home-projectssection-text-7)]
             text-[76px] leading-[0.76] tracking-[-0.118em]
             sm:text-[92px]
             md:text-[clamp(108px,12.1vw,170px)]
@@ -124,7 +124,7 @@ export const ProjectsSection = () => {
       </div>
 
       {/* Project card area */}
-      <div className="relative w-full bg-[#fbfaf3]/95 py-[12px] md:py-[22px]">
+      <div className="relative w-full bg-white-text/95 py-[12px] md:py-[22px]">
         <div
           ref={projectsCardRef}
           className="
@@ -173,7 +173,7 @@ export const ProjectsSection = () => {
                   className="
                     absolute z-[999]
                     flex items-center justify-between
-                    rounded-[8px] bg-[#fbfaf3]
+                    rounded-[8px] bg-white-text
                     shadow-[0_10px_28px_rgba(0,0,0,0.14)]
 
                     left-1/2 bottom-[17px]
@@ -194,11 +194,11 @@ export const ProjectsSection = () => {
                     pointerEvents: hovered ? 'auto' : 'none',
                   }}
                 >
-                  <span className="text-[14px] font-bold tracking-[-0.04em] text-[#14352d]/70">
+                  <span className="text-[14px] font-bold tracking-[-0.04em] text-[var(--home-projectssection-text-8)]/70">
                     View Project
                   </span>
 
-                  <span className="grid h-[38px] w-[38px] place-items-center rounded-full bg-[#14352d]">
+                  <span className="grid h-[38px] w-[38px] place-items-center rounded-full bg-card-green">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                       <path
                         d="M4 9H13.2M13.2 9L9.2 5M13.2 9L9.2 13"
@@ -226,7 +226,7 @@ export const ProjectsSection = () => {
                   className="
                     mb-[4px]
                     font-display text-[24px] font-black leading-none
-                    tracking-[-0.062em] text-[#14352d]
+                    tracking-[-0.062em] text-[var(--home-projectssection-text-8)]
                     md:mb-[29px] md:text-[32px]
                   "
                 >
@@ -237,7 +237,7 @@ export const ProjectsSection = () => {
                   className="
                     max-w-[395px]
                     text-[15.5px] font-bold leading-[1.43]
-                    tracking-[-0.047em] text-[#14352d]/70
+                    tracking-[-0.047em] text-[var(--home-projectssection-text-8)]/70
                     md:text-[15.5px]
                   "
                 >
@@ -261,15 +261,15 @@ export const ProjectsSection = () => {
           to="/projects"
           className="
             group inline-flex items-center gap-[6px]
-            rounded-[9px] bg-[#14352d]
+            rounded-[9px] bg-card-green
             py-[6px] pl-[24px] pr-[6px]
-            text-[18px] font-semibold leading-none text-[#f7f1e4]
-            transition-all hover:bg-[#14352d]/90
+            text-[18px] font-semibold leading-none text-[var(--home-projectssection-text-9)]
+            transition-all hover:bg-card-green/90
           "
         >
           All Projects
 
-          <span className="grid h-[47px] w-[48px] place-items-center rounded-[9px] bg-[#f0a77e] transition-transform group-hover:translate-x-[2px]">
+          <span className="grid h-[47px] w-[48px] place-items-center rounded-[9px] bg-primary transition-transform group-hover:translate-x-[2px]">
             <ArrowIcon14 />
           </span>
         </Link>

@@ -1,6 +1,6 @@
 export function PrimeLocationSection() {
   return (
-    <section className="km-reveal relative w-full overflow-hidden bg-[#fbfbef] font-['Inter',sans-serif] text-[#0d2b22]">
+    <section className="km-reveal relative w-full overflow-hidden font-['Inter',sans-serif] text-foreground">
       {/* Background pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.42]"

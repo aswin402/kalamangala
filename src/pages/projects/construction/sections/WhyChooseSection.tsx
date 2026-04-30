@@ -29,7 +29,7 @@ export function WhyChooseSection() {
         className="mx-auto mt-[42px] w-full max-w-[1455px] px-5 pb-[34px] md:mt-[58px]"
       >
       <h2
-        className="km-reveal font-['Inter',sans-serif] text-[32px] font-[900] leading-none tracking-[-0.06em] text-[#0d2b22] md:text-[50px]"
+        className="km-reveal font-['Inter',sans-serif] text-[20px] font-[900] leading-none tracking-[-0.02em] text-foreground md:text-[25px]"
       >
         Why Choose The Waterfront, Erode
       </h2>
@@ -47,7 +47,7 @@ export function WhyChooseSection() {
                 km-reveal
                 min-h-[220px]
                  rounded-[14px]
-                 bg-[#f1efdf]
+                 bg-table-row
                  px-[24px]
                  pt-[40px]
                  pb-[30px]
@@ -64,7 +64,7 @@ export function WhyChooseSection() {
                   justify-center
                   rounded-[8px]
                   bg-white
-                  text-[#53585a]
+                  text-[var(--projects-whychoosesection-text-4)]
                   shadow-[0_10px_20px_rgba(13,43,34,0.18)]
                 "
               >
@@ -74,12 +74,12 @@ export function WhyChooseSection() {
               <h3
                 className="
                   font-['Inter',sans-serif]
-                  text-[28px]
+                  text-[16px]
                   font-[900]
-                  leading-[0.95]
-                  tracking-[-0.06em]
-                  text-[#0d2b22]
-                  md:text-[50px]
+                  leading-[0.96]
+                  tracking-[-0.02em]
+                  text-foreground
+                  md:text-[25px]
                 "
               >
                 {item.title}
@@ -90,12 +90,12 @@ export function WhyChooseSection() {
                   mt-[20px]
                   max-w-[650px]
                   font-['Inter',sans-serif]
-                  text-[17px]
+                  text-[10px]
                   font-[500]
-                  leading-[1.35]
+                  leading-[1.45]
                   tracking-[-0.035em]
-                  text-[#183f38]
-                  md:text-[20px]
+                  text-[var(--projects-whychoosesection-text-3)]
+                  md:text-[11px]
                 "
               >
                 {item.desc}

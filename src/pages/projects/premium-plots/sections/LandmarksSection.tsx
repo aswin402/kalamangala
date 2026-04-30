@@ -63,7 +63,7 @@ export function LandmarksSection() {
         {landmarks.map((l, i) => (
           <div
             key={i}
-            className={`flex flex-col md:flex-row items-stretch rounded-[3rem] overflow-hidden scroll-reveal shadow-xl ${l.dark ? "bg-[#1a2b25] text-white" : "bg-white text-foreground"}`}
+            className={`flex flex-col md:flex-row items-stretch rounded-[3rem] overflow-hidden scroll-reveal shadow-xl ${l.dark ? "bg-card-green text-white" : "bg-white text-foreground"}`}
           >
             <div
               className={`flex-1 min-h-[300px] ${i % 2 === 0 ? "" : "md:order-2"}`}

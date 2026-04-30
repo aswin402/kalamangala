@@ -13,18 +13,18 @@ export function NeighbourhoodTable() {
       {/* full background pattern */}
 
       <div className="relative mx-auto w-full max-w-[1390px]">
-        <h2 className="text-[34px] font-[900] leading-none tracking-[-0.075em] text-[#0d2b22] md:text-[43px]">
+        <h2 className="text-[34px] font-[900] leading-none tracking-[-0.075em] text-foreground md:text-[43px]">
           The Neighbourhood Advantage
         </h2>
 
         <div className="mx-auto mt-[34px] w-full">
-          <table className="w-full border-separate border-spacing-0 text-[#0d2b22]">
+          <table className="w-full border-separate border-spacing-0 text-foreground">
             <thead>
               <tr>
                 {["Landmark", "Distance", "Travel Time"].map((heading) => (
                   <th
                     key={heading}
-                    className="border-r-[8px] border-[#fbfbef] bg-[#365f53] px-4 py-[25px] text-center text-[28px] font-[900] leading-none tracking-[-0.055em] text-white last:border-r-0"
+                    className="border-r-[8px] border-[#fbfbef] bg-table-header px-4 py-[25px] text-center text-[28px] font-[900] leading-none tracking-[-0.055em] text-foreground last:border-r-0"
                   >
                     {heading}
                   </th>

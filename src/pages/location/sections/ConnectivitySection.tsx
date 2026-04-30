@@ -37,7 +37,7 @@ export function ConnectivitySection() {
           font-black
           leading-[1.02]
           tracking-[-0.07em]
-          text-[#132d25]
+          text-foreground
           sm:max-w-none
           sm:text-[36px]
           md:mb-[38px]
@@ -55,7 +55,7 @@ export function ConnectivitySection() {
             border-separate
             border-spacing-0
             font-['Inter']
-            text-[#132d25]
+            text-foreground
           "
         >
           <thead>
@@ -65,7 +65,7 @@ export function ConnectivitySection() {
                   w-1/3
                   border-r-[10px]
                   border-[#f6f4e7]
-                  bg-[#385f53]
+                  bg-table-header
                   px-[9px]
                   py-[18px]
                   text-center
@@ -73,7 +73,7 @@ export function ConnectivitySection() {
                   font-black
                   leading-none
                   tracking-[-0.055em]
-                  text-[#f7f3df]
+                  text-foreground
                   sm:border-r-[8px]
                   sm:px-8
                   sm:py-[22px]
@@ -90,7 +90,7 @@ export function ConnectivitySection() {
                   w-1/3
                   border-r-[10px]
                   border-[#f6f4e7]
-                  bg-[#385f53]
+                  bg-table-header
                   px-[9px]
                   py-[18px]
                   text-center
@@ -98,7 +98,7 @@ export function ConnectivitySection() {
                   font-black
                   leading-none
                   tracking-[-0.055em]
-                  text-[#f7f3df]
+                  text-foreground
                   sm:border-r-[8px]
                   sm:px-8
                   sm:py-[22px]
@@ -113,7 +113,7 @@ export function ConnectivitySection() {
               <th
                 className="
                   w-1/3
-                  bg-[#385f53]
+                  bg-table-header
                   px-[9px]
                   py-[18px]
                   text-center
@@ -121,7 +121,7 @@ export function ConnectivitySection() {
                   font-black
                   leading-none
                   tracking-[-0.055em]
-                  text-[#f7f3df]
+                  text-foreground
                   sm:px-8
                   sm:py-[22px]
                   sm:text-[22px]
@@ -143,7 +143,7 @@ export function ConnectivitySection() {
                     className={`
                       border-t-[10px]
                       border-[#f6f4e7]
-                      bg-[#ecebdc]
+                      bg-table-row
                       px-[8px]
                       py-[20px]
                       text-center

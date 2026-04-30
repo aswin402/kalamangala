@@ -10,7 +10,7 @@ export function FooterSection() {
           font-[900]
           leading-none
           tracking-[-0.075em]
-          text-[#0d2b22]
+          text-[var(--projects-footersection-text-1)]
           md:text-[50px]
         "
       >
@@ -25,7 +25,7 @@ export function FooterSection() {
           font-[800]
           leading-none
           tracking-[-0.055em]
-          text-[#0d2b22]
+          text-[var(--projects-footersection-text-1)]
           md:text-[24px]
         "
       >

@@ -102,7 +102,7 @@ export function ShowcaseGrid() {
         px-[13px]
         pb-[72px]
         pt-[24px]
-        text-[#17392f]
+        text-foreground
         sm:px-[22px]
         sm:pb-[90px]
         sm:pt-[44px]
@@ -144,7 +144,7 @@ export function ShowcaseGrid() {
               uppercase
               leading-none
               tracking-[-0.04em]
-              text-[#17392f]
+              text-foreground
               sm:top-[6px]
               sm:text-[12px]
               md:top-[12px]
@@ -159,7 +159,7 @@ export function ShowcaseGrid() {
                 w-[7px]
                 rounded-full
                 border-[2px]
-                border-[#17392f]
+                border-foreground
                 md:h-[8px]
                 md:w-[8px]
               "
@@ -173,7 +173,7 @@ export function ShowcaseGrid() {
               font-medium
               leading-[0.82]
               tracking-[-0.105em]
-              text-[#17392f]
+              text-foreground
               sm:text-[clamp(86px,17vw,130px)]
               md:text-[clamp(110px,12vw,220px)]
               md:leading-[0.78]

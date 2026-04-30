@@ -48,18 +48,18 @@ export const AboutDarkSection = () => {
         `}
       </style>
 
-      <section className="w-full overflow-hidden bg-[#f4f1e5] text-white">
-        <div className="w-full rounded-t-[14px] bg-[#17392f] px-[13px] pb-[33px] pt-[36px] sm:mx-auto sm:max-w-[416px] sm:rounded-[16px] sm:px-[13px] sm:pb-[33px] sm:pt-[36px] md:max-w-none md:rounded-t-[14px] md:px-[43px] md:pb-[110px] md:pt-[105px] lg:px-[43px] lg:pb-[135px] lg:pt-[110px]">
+      <section className="w-full overflow-hidden text-white">
+        <div className="w-full rounded-t-[14px] bg-card-green px-[13px] pb-[33px] pt-[36px] sm:mx-auto sm:max-w-[416px] sm:rounded-[16px] sm:px-[13px] sm:pb-[33px] sm:pt-[36px] md:max-w-none md:rounded-t-[14px] md:px-[43px] md:pb-[110px] md:pt-[105px] lg:px-[43px] lg:pb-[135px] lg:pt-[110px]">
           <div className="mx-auto max-w-[1200px] xl:max-w-[1760px]">
             {/* TEXT TOP AREA - SAME */}
             <div className="mb-[72px] md:mb-[100px] lg:mb-[135px]">
               <div className="mb-[21px] md:mb-[23px]">
                 <div className="mb-[23px] flex items-center gap-[7px] md:mb-[22px]">
-                  <span className="flex h-[11px] w-[11px] items-center justify-center rounded-full border border-[#f4a77f]">
-                    <span className="h-[6px] w-[6px] rounded-full bg-[#f4a77f]" />
+                  <span className="flex h-[11px] w-[11px] items-center justify-center rounded-full border border-primary">
+                    <span className="h-[6px] w-[6px] rounded-full bg-primary" />
                   </span>
 
-                  <span className="whitespace-nowrap text-[12px] font-bold uppercase leading-none tracking-[-0.03em] text-[#f4a77f]">
+                  <span className="whitespace-nowrap text-[12px] font-bold uppercase leading-none tracking-[-0.03em] text-primary">
                     About Us
                   </span>
                 </div>
@@ -140,7 +140,7 @@ export const AboutDarkSection = () => {
                     className="h-full w-full object-cover"
                   />
 
-                  <div className="absolute left-1/2 top-1/2 w-[calc(100%-24px)] -translate-x-1/2 -translate-y-1/2 rounded-[8px] bg-[#17392f]/60 px-[14px] pb-[13px] pt-[13px] backdrop-blur-[14px] md:w-[calc(100%-32px)] md:px-[18px] md:pb-[16px] md:pt-[16px] lg:w-[calc(100%-24px)] lg:px-[22px] lg:pb-[18px] lg:pt-[18px]">
+                  <div className="absolute left-1/2 top-1/2 w-[calc(100%-24px)] -translate-x-1/2 -translate-y-1/2 rounded-[8px] bg-card-green/60 px-[14px] pb-[13px] pt-[13px] backdrop-blur-[14px] md:w-[calc(100%-32px)] md:px-[18px] md:pb-[16px] md:pt-[16px] lg:w-[calc(100%-24px)] lg:px-[22px] lg:pb-[18px] lg:pt-[18px]">
                     <p className="text-[13px] font-bold leading-[1.24] tracking-[-0.02em] text-white md:text-[16px] md:leading-[1.25] lg:text-[18px]">
                       &quot;At Kalamangala, we don&apos;t just build spaces — we
                       create lasting legacies, where quality, innovation and
@@ -168,12 +168,12 @@ export const AboutDarkSection = () => {
                 </div>
 
                 {/* DESKTOP 33+ CARD */}
-                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] bg-[#f4f1e5] text-[#17392f] md:flex xl:h-[260px]">
+                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] text-foreground md:flex xl:h-[260px]">
                   <h3 className="text-[62px] font-semibold leading-none tracking-[-0.06em] lg:text-[72px]">
                     33+
                   </h3>
 
-                  <p className="mt-[8px] text-[17px] font-medium tracking-[-0.03em] text-[#17392f]/80 lg:mt-[12px] lg:text-[18px]">
+                  <p className="mt-[8px] text-[17px] font-medium tracking-[-0.03em] text-foreground/80 lg:mt-[12px] lg:text-[18px]">
                     Years of Experience
                   </p>
                 </div>
@@ -199,7 +199,7 @@ export const AboutDarkSection = () => {
                 <span className="km-video-pulse pointer-events-none absolute left-1/2 top-1/2 h-[82px] w-[82px] rounded-full bg-white/60 [animation-delay:1.9s] md:h-[96px] md:w-[96px] lg:h-[108px] lg:w-[108px]" />
 
                 <span className="km-video-play absolute left-1/2 top-1/2 flex h-[64px] w-[64px] items-center justify-center rounded-full bg-white shadow-[0_14px_34px_rgba(0,0,0,0.18)] md:h-[74px] md:w-[74px] lg:h-[82px] lg:w-[82px]">
-                  <Play className="ml-[4px] h-[22px] w-[22px] fill-[#17392f] text-[#17392f] md:h-[25px] md:w-[25px] lg:h-[28px] lg:w-[28px]" />
+                  <Play className="ml-[4px] h-[22px] w-[22px] fill-foreground text-foreground md:h-[25px] md:w-[25px] lg:h-[28px] lg:w-[28px]" />
                 </span>
 
                 <p className="absolute left-1/2 top-[67%] w-[230px] -translate-x-1/2 text-center text-[16px] font-bold leading-[1.08] tracking-[-0.035em] text-white md:top-[62%] md:text-[20px] lg:text-[22px]">
@@ -210,12 +210,12 @@ export const AboutDarkSection = () => {
               </button>
 
               {/* MOBILE 33+ CARD - EXACTLY AFTER VIDEO */}
-              <div className="order-4 flex h-[200px] flex-col items-center justify-center rounded-[9px] bg-[#f4f1e5] text-[#17392f] md:hidden">
+              <div className="order-4 flex h-[200px] flex-col items-center justify-center rounded-[9px] text-foreground md:hidden">
                 <h3 className="text-[72px] font-semibold leading-none tracking-[-0.07em]">
                   33+
                 </h3>
 
-                <p className="mt-[11px] text-[16px] font-medium tracking-[-0.03em] text-[#17392f]/85">
+                <p className="mt-[11px] text-[16px] font-medium tracking-[-0.03em] text-foreground/85">
                   Years of Experience
                 </p>
               </div>
@@ -231,7 +231,7 @@ export const AboutDarkSection = () => {
             type="button"
             aria-label="Close video"
             onClick={() => setIsVideoOpen(false)}
-            className="absolute right-[18px] top-[18px] z-10 flex h-[44px] w-[44px] items-center justify-center rounded-full bg-white text-[#17392f] shadow-lg transition-transform duration-300 hover:scale-105 md:right-[36px] md:top-[36px]"
+            className="absolute right-[18px] top-[18px] z-10 flex h-[44px] w-[44px] items-center justify-center rounded-full bg-white text-foreground shadow-lg transition-transform duration-300 hover:scale-105 md:right-[36px] md:top-[36px]"
           >
             <X className="h-[24px] w-[24px]" />
           </button>

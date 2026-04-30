@@ -112,15 +112,15 @@ export function FeatureRows() {
                 item.reverse ? "md:order-2" : "md:order-1"
               } order-2`}
             >
-              <h4 className="max-w-[500px] text-[34px] font-bold leading-[0.96] tracking-[-0.075em] text-[#12362d] md:text-[38px]">
+              <h4 className="max-w-[500px] text-[34px] font-bold leading-[0.96] tracking-[-0.075em] text-foreground md:text-[38px]">
                 {item.title}
               </h4>
 
-              <p className="mt-[14px] max-w-[470px] text-[17px] font-medium leading-[1.22] tracking-[-0.04em] text-[#12362d]/45">
+              <p className="mt-[14px] max-w-[470px] text-[17px] font-medium leading-[1.22] tracking-[-0.04em] text-foreground/45">
                 {item.desc}
               </p>
 
-              <ul className="mt-[15px] max-w-[500px] list-disc pl-[23px] text-[19px] font-medium leading-[1.32] tracking-[-0.045em] text-[#12362d] marker:text-[12px]">
+              <ul className="mt-[15px] max-w-[500px] list-disc pl-[23px] text-[19px] font-medium leading-[1.32] tracking-[-0.045em] text-foreground marker:text-[12px]">
                 {item.points.map((point, index) => (
                   <li key={index}>{point}</li>
                 ))}
@@ -158,11 +158,11 @@ export function FeatureRows() {
       </div>
 
       <section className="am-reveal mt-[92px] w-full">
-        <h3 className="text-[34px] font-bold leading-[0.95] tracking-[-0.07em] text-[#12362d] md:text-[50px]">
+        <h3 className="text-[34px] font-bold leading-[0.95] tracking-[-0.07em] text-foreground md:text-[50px]">
           Safe, Secure, and Serene
         </h3>
 
-        <p className="mt-[22px] max-w-[1500px] text-[18px] font-bold leading-[1.38] tracking-[-0.035em] text-[#12362d] md:mt-[38px] md:text-[26px]">
+        <p className="mt-[22px] max-w-[1500px] text-[18px] font-bold leading-[1.38] tracking-[-0.035em] text-foreground md:mt-[38px] md:text-[26px]">
           Security is non-negotiable at The Waterfront. The gated entry, CCTV
           monitoring, and 24×7 guard services provide complete peace of mind for
           residents and families alike.

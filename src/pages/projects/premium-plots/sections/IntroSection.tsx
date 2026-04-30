@@ -2,7 +2,7 @@ const DARK = "#0d2b22";
 
 export function IntroSection() {
   return (
-    <section className="km-reveal mx-auto w-full max-w-[1420px] px-5 pt-[12px] pb-[48px] text-center font-['Inter',sans-serif] text-[#0d2b22]">
+    <section className="km-reveal mx-auto w-full max-w-[1420px] px-5 pt-[12px] pb-[48px] text-center font-['Inter',sans-serif] text-foreground">
       <h1 className="mx-auto max-w-[990px] text-[38px] font-[900] leading-[0.86] tracking-[-0.06em] sm:text-[48px] md:text-[76px]">
         Discover Premium Residential
         <br />

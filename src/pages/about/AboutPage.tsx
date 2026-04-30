@@ -8,7 +8,7 @@ import { JourneySection } from "./sections/JourneySection";
 
 export function AboutPage() {
   return (
-    <main className="about-page min-h-screen overflow-hidden text-[#172d24]">
+    <main className="about-page min-h-screen overflow-hidden text-foreground">
       <MarqueeSection />
       <AboutDarkSection />
       <JourneySection />

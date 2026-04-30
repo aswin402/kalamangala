@@ -35,11 +35,11 @@ export const JourneySection = () => {
     <section className="relative w-full overflow-hidden px-4 pb-[96px] pt-[72px] md:px-8 md:pb-[125px] md:pt-[96px]">
       {/* HEADER */}
       <div className="mb-[68px] text-center md:mb-[78px]">
-        <p className="mb-[7px] text-[11px] font-[800] uppercase leading-none tracking-[-0.045em] text-[#17392f] md:text-[12px]">
+        <p className="mb-[7px] text-[11px] font-[800] uppercase leading-none tracking-[-0.045em] text-foreground md:text-[12px]">
           ✺ Our Approach
         </p>
 
-        <h2 className="text-[34px] font-[800] leading-[0.95] tracking-[-0.07em] text-[#17392f] sm:text-[42px] md:text-[54px] lg:text-[58px]">
+        <h2 className="text-[34px] font-[800] leading-[0.95] tracking-[-0.07em] text-foreground sm:text-[42px] md:text-[54px] lg:text-[58px]">
           This is our journey with you
         </h2>
       </div>
@@ -91,7 +91,7 @@ export const JourneySection = () => {
                     />
                   </svg>
 
-                  <span className="absolute inset-0 flex items-center justify-center text-[34px] font-[800] leading-none tracking-[-0.05em] text-[#f4a77f] md:text-[42px]">
+                  <span className="absolute inset-0 flex items-center justify-center text-[34px] font-[800] leading-none tracking-[-0.05em] text-primary md:text-[42px]">
                     {item.num}
                   </span>
                 </div>
@@ -99,11 +99,11 @@ export const JourneySection = () => {
                 <div className="grid h-full grid-cols-1 overflow-hidden rounded-[8px] md:grid-cols-[1fr_455px]">
                   {/* TEXT */}
                   <div className="flex min-h-[260px] flex-col justify-end px-[28px] pb-[34px] pt-[70px] md:min-h-0 md:px-[34px] md:pb-[68px] md:pt-[120px]">
-                    <h3 className="max-w-[420px] text-[27px] font-[800] leading-[0.96] tracking-[-0.065em] text-[#17392f] md:text-[31px] lg:text-[32px]">
+                    <h3 className="max-w-[420px] text-[27px] font-[800] leading-[0.96] tracking-[-0.065em] text-foreground md:text-[31px] lg:text-[32px]">
                       {item.title}
                     </h3>
 
-                    <p className="mt-[12px] max-w-[455px] text-[15px] font-[600] leading-[1.45] tracking-[-0.035em] text-[#17392f]/70 md:mt-[14px] md:text-[17px]">
+                    <p className="mt-[12px] max-w-[455px] text-[15px] font-[600] leading-[1.45] tracking-[-0.035em] text-foreground/70 md:mt-[14px] md:text-[17px]">
                       {item.desc}
                     </p>
                   </div>

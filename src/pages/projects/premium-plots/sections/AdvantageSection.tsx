@@ -6,13 +6,13 @@ export function AdvantageSection() {
     <>
       <section className="mx-auto mt-[130px] grid w-full max-w-[1470px] items-center gap-[58px] px-5 md:grid-cols-[0.92fr_1.08fr]">
         <div className="la-reveal">
-          <h2 className="max-w-[660px] font-['Inter'] text-[42px] font-black leading-[1.05] tracking-[-0.065em] text-[#132d25] md:text-[54px]">
+          <h2 className="max-w-[660px] font-['Inter'] text-[42px] font-black leading-[1.05] tracking-[-0.065em] text-foreground md:text-[54px]">
             Experience the Kalamangala
             <br />
             Advantage
           </h2>
 
-          <p className="mt-[22px] max-w-[650px] font-['Inter'] text-[15px] font-medium italic leading-[1.35] tracking-[-0.035em] text-[#132d25]/80 md:text-[18px]">
+          <p className="mt-[22px] max-w-[650px] font-['Inter'] text-[15px] font-medium italic leading-[1.35] tracking-[-0.035em] text-foreground/80 md:text-[18px]">
             Being a luxury home developer in Tamil Nadu, Kalamangala brings more
             than just structures – we bring vision, trust, and lifestyle
             excellence.
@@ -58,7 +58,7 @@ export function AdvantageSection() {
         </div>
 
         <div className="la-reveal md:pl-[20px]">
-          <h2 className="font-['Inter'] text-[42px] font-black leading-[0.95] tracking-[-0.07em] text-[#132d25] md:text-[54px]">
+          <h2 className="font-['Inter'] text-[42px] font-black leading-[0.95] tracking-[-0.07em] text-foreground md:text-[54px]">
             Lifestyle Benefits You’ll Love
           </h2>
 

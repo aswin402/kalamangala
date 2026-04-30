@@ -41,7 +41,7 @@ export function LifestyleBenefitsSection() {
             font-[900]
             leading-[1.03]
             tracking-[-0.075em]
-            text-[#0d2b22]
+            text-foreground
             md:text-[50px]
           "
         >
