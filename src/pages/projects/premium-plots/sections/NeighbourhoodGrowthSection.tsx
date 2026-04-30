@@ -4,6 +4,7 @@ import img10 from "../../../../assets/premium-residential-plots-in-coimbatore/im
 import img11 from "../../../../assets/premium-residential-plots-in-coimbatore/img11.avif";
 import img12 from "../../../../assets/premium-residential-plots-in-coimbatore/img12.avif";
 
+
 export function NeighbourhoodGrowthSection() {
   const topCards = [
     {
@@ -18,7 +19,7 @@ export function NeighbourhoodGrowthSection() {
     },
     {
       title: "Healthcare access",
-      desc: "Leading hospitals within 10-15 minutes",
+      desc: "Leading hospitals within 10–15 minutes",
       img: img10,
     },
   ];
@@ -37,32 +38,32 @@ export function NeighbourhoodGrowthSection() {
   ];
 
   return (
-    <section className="mx-auto mt-16 w-full max-w-[1300px] pb-10">
-      <div className="km-reveal mb-8">
-        <h2 className="text-[28px] font-black leading-[1.02] tracking-[-0.06em] text-[#132d25] md:text-[48px]">
+    <section className="mx-auto mt-[118px] w-full max-w-[1300px] px-5 pb-[82px]">
+      <div className="la-reveal mb-[30px]">
+        <h2 className="font-['Inter'] text-[36px] font-black leading-none tracking-[-0.07em] text-[#132d25] md:text-[48px]">
           A Neighbourhood Designed for Growth
         </h2>
 
-        <p className="mt-6 max-w-[1240px] text-[16px] font-black leading-[1.2] tracking-[-0.045em] text-[#132d25] md:text-[23px]">
-          Erode is not just growing - it&apos;s evolving into a hub of premium
+        <p className="mt-[30px] max-w-[1240px] font-['Inter'] text-[18px] font-black leading-[1.18] tracking-[-0.052em] text-[#132d25] md:text-[23px]">
+          Erode is not just growing — it&apos;s evolving into a hub of premium
           residential communities. The{" "}
-          <span className="font-black">Modakurichi - Thindal - Saminathapuram</span>{" "}
+          <span className="font-black">
+            Modakurichi – Thindal – Saminathapuram
+          </span>{" "}
           corridor is now a preferred destination for professionals,
           entrepreneurs, and NRIs seeking secure, high-value properties.
-        </p>
-
-        <p className="mt-4 text-[22px] font-black tracking-[-0.045em] text-[#132d25]">
+          <br />
           Reasons why this corridor stands out:
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-[18px] lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-[18px] md:grid-cols-3">
         {topCards.map((card) => (
           <article
             key={card.title}
-            className="km-reveal group h-[262px] overflow-hidden rounded-[24px] bg-[#173a31] p-[18px] text-[#f7f3df]"
+            className="la-card group h-[262px] overflow-hidden rounded-[18px] bg-[#173a31] p-[18px] text-[#f7f3df]"
           >
-            <div className="h-[140px] overflow-hidden rounded-[12px]">
+            <div className="h-[128px] overflow-hidden rounded-[7px]">
               <img
                 src={card.img}
                 alt={card.title}
@@ -70,12 +71,12 @@ export function NeighbourhoodGrowthSection() {
               />
             </div>
 
-            <div className="pt-[24px]">
-              <h3 className="text-[24px] font-black leading-none tracking-[-0.05em]">
+            <div className="pt-[31px]">
+              <h3 className="font-['Inter'] text-[22px] font-black leading-none tracking-[-0.055em] md:text-[25px]">
                 {card.title}
               </h3>
 
-              <p className="mt-3 text-[15px] font-black leading-[1.2] tracking-[-0.03em] text-[#f7f3df]">
+              <p className="mt-[14px] font-['Inter'] text-[13px] font-black leading-[1.2] tracking-[-0.035em] text-[#f7f3df] md:text-[15px]">
                 {card.desc}
               </p>
             </div>
@@ -83,13 +84,13 @@ export function NeighbourhoodGrowthSection() {
         ))}
       </div>
 
-      <div className="mt-[18px] grid grid-cols-1 gap-[18px] lg:grid-cols-2">
+      <div className="mt-[26px] grid grid-cols-1 gap-[18px] md:grid-cols-2">
         {bottomCards.map((card) => (
           <article
             key={card.title}
-            className="km-reveal group h-[262px] overflow-hidden rounded-[24px] bg-[#173a31] p-[18px] text-[#f7f3df]"
+            className="la-card group h-[263px] overflow-hidden rounded-[18px] bg-[#173a31] p-[18px] text-[#f7f3df]"
           >
-            <div className="h-[140px] overflow-hidden rounded-[12px]">
+            <div className="h-[128px] overflow-hidden rounded-[7px]">
               <img
                 src={card.img}
                 alt={card.title}
@@ -97,12 +98,12 @@ export function NeighbourhoodGrowthSection() {
               />
             </div>
 
-            <div className="pt-[24px]">
-              <h3 className="text-[24px] font-black leading-none tracking-[-0.05em]">
+            <div className="pt-[31px]">
+              <h3 className="font-['Inter'] text-[22px] font-black leading-none tracking-[-0.055em] md:text-[25px]">
                 {card.title}
               </h3>
 
-              <p className="mt-3 text-[15px] font-black leading-[1.2] tracking-[-0.03em] text-[#f7f3df]">
+              <p className="mt-[14px] font-['Inter'] text-[13px] font-black leading-[1.2] tracking-[-0.035em] text-[#f7f3df] md:text-[15px]">
                 {card.desc}
               </p>
             </div>

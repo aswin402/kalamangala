@@ -12,7 +12,6 @@ import { WhyChooseSection } from "./sections/WhyChooseSection";
 import { NeighbourhoodTable } from "./sections/NeighbourhoodTable";
 import { NeighbourhoodGrowthSection } from "./sections/NeighbourhoodGrowthSection";
 import { AdvantageSection } from "./sections/AdvantageSection";
-import { LifestyleSection } from "./sections/LifestyleSection";
 import { CTASection } from "./sections/CTASection";
 import { FooterSection } from "./sections/FooterSection";
 
@@ -69,7 +68,6 @@ export const PremiumResidentialPlotsPage = () => {
         <NeighbourhoodTable />
         <NeighbourhoodGrowthSection />
         <AdvantageSection />
-        <LifestyleSection />
         <CTASection />
         <FooterSection />
       </div>

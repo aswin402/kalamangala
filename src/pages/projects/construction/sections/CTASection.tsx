@@ -2,19 +2,42 @@ import img9 from "../../../../assets/construction-company/img9.webp";
 
 export function CTASection() {
   return (
-    <section className="km-reveal mx-auto mt-[32px] max-w-[1460px] px-5 pb-[50px] md:mt-[42px]">
+    <section
+      className="
+        km-reveal
+        mx-auto
+        mt-[8px]
+        w-[calc(100%-82px)]
+        max-w-[318px]
+        pb-[4px]
+        md:mt-[42px]
+        md:w-full
+        md:max-w-[1460px]
+        md:px-5
+        md:pb-[50px]
+      "
+    >
       <div
         className="
-          grid
-          min-h-[500px]
           overflow-hidden
-          rounded-[28px]
+          rounded-[30px]
           bg-[#17392f]
+          md:grid
+          md:min-h-[500px]
+          md:rounded-[28px]
           md:grid-cols-[0.98fr_1.02fr]
         "
       >
         {/* Left Image */}
-        <div className="relative min-h-[360px] md:min-h-[500px]">
+        <div
+          className="
+            relative
+            h-[210px]
+            w-full
+            md:h-auto
+            md:min-h-[500px]
+          "
+        >
           <img
             src={img9}
             alt="The Waterfront"
@@ -35,21 +58,26 @@ export function CTASection() {
             flex
             flex-col
             justify-center
-            px-[42px]
-            py-[48px]
+            px-[28px]
+            pb-[34px]
+            pt-[38px]
             md:px-[62px]
+            md:py-[48px]
           "
         >
           <h2
             className="
-              max-w-[560px]
+              max-w-[270px]
               font-['Inter',sans-serif]
-              text-[42px]
+              text-[28px]
               font-[900]
-              leading-[1.08]
-              tracking-[-0.075em]
+              leading-[1.12]
+              tracking-[-0.065em]
               text-[#f7a77f]
+              md:max-w-[560px]
               md:text-[54px]
+              md:leading-[1.08]
+              md:tracking-[-0.075em]
             "
           >
             Live Connected.
@@ -59,9 +87,62 @@ export function CTASection() {
             Live The Waterfront.
           </h2>
 
+          {/* Mobile Content */}
+          <div
+            className="
+              mt-[24px]
+              block
+              max-w-[264px]
+              font-['Inter',sans-serif]
+              text-[15px]
+              font-[600]
+              leading-[1.66]
+              tracking-[-0.035em]
+              text-[#fff8ec]
+              md:hidden
+            "
+          >
+            <p>
+              What makes Kalamangala one of the{" "}
+              <strong className="font-[900]">
+                luxury home builders in Tamil Nadu
+              </strong>{" "}
+              is not just the architecture — it’s the philosophy. Every
+              Kalamangala project is:
+            </p>
+
+            <ul className="mt-[4px] list-disc space-y-[2px] pl-[18px]">
+              <li>
+                <strong className="font-[900]">
+                  Architecturally Distinct
+                </strong>{" "}
+                – blending local aesthetics with modern minimalism.
+              </li>
+              <li>
+                <strong className="font-[900]">
+                  Functionally Efficient
+                </strong>{" "}
+                – designed for long-term sustainability.
+              </li>
+              <li>
+                <strong className="font-[900]">
+                  Emotionally Connected
+                </strong>{" "}
+                – nurturing communities, not just houses.
+              </li>
+            </ul>
+
+            <p className="mt-[28px]">
+              The Waterfront embodies this very spirit — offering a luxurious yet
+              grounded lifestyle.
+            </p>
+          </div>
+
+          {/* Desktop / Tablet Content */}
           <div
             className="
               mt-[34px]
+              hidden
               max-w-[650px]
               font-['Inter',sans-serif]
               text-[15px]
@@ -69,6 +150,7 @@ export function CTASection() {
               leading-[1.65]
               tracking-[-0.035em]
               text-[#fff8ec]
+              md:block
               md:text-[16px]
             "
           >
@@ -88,9 +170,7 @@ export function CTASection() {
               everything you love is within reach.
             </p>
 
-            <p className="mt-[6px]">
-              This is not just a home.
-            </p>
+            <p className="mt-[6px]">This is not just a home.</p>
 
             <p className="mt-[6px]">
               It’s your{" "}

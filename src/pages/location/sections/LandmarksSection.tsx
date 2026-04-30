@@ -103,7 +103,7 @@ export function LandmarksSection() {
   ];
 
   return (
-    <section className="mx-auto mt-[92px] w-full max-w-[1490px] px-5 md:px-8">
+    <section className="mx-auto mt-[70px] w-full max-w-[1490px] px-5 md:mt-[92px] md:px-8">
       <div className="la-reveal mb-[34px]">
         <h2 className="font-['Inter'] text-[34px] font-black leading-[0.95] tracking-[-0.065em] text-[#132d25] md:text-[46px]">
           Erode&apos;s Landmarks — All Within Minutes
@@ -123,16 +123,40 @@ export function LandmarksSection() {
           return (
             <article
               key={item.title}
-              className={`la-card grid min-h-[395px] overflow-hidden rounded-[24px] p-[20px] md:grid-cols-[0.96fr_1.04fr] md:gap-[42px] ${
-                item.dark
-                  ? "bg-[#173a31] text-[#f7f3df]"
-                  : "bg-[#e8e5b8] text-[#132d25]"
-              }`}
+              className={`
+                la-card
+                mx-auto
+                w-full
+                max-w-[332px]
+                overflow-hidden
+                rounded-[22px]
+                px-[20px]
+                pb-[22px]
+                pt-[20px]
+                md:grid
+                md:min-h-[395px]
+                md:max-w-none
+                md:grid-cols-[0.96fr_1.04fr]
+                md:gap-[42px]
+                md:rounded-[24px]
+                md:p-[20px]
+                ${
+                  item.dark
+                    ? "bg-[#173a31] text-[#fff7e8]"
+                    : "bg-[#e8e5b8] text-[#132d25]"
+                }
+              `}
             >
+              {/* Image */}
               <div
-                className={`h-[310px] overflow-hidden rounded-[12px] md:h-[355px] ${
-                  imageFirst ? "md:order-1" : "md:order-2"
-                }`}
+                className={`
+                  h-[136px]
+                  overflow-hidden
+                  rounded-[9px]
+                  md:h-[355px]
+                  md:rounded-[12px]
+                  ${imageFirst ? "md:order-1" : "md:order-2"}
+                `}
               >
                 <img
                   src={item.img}
@@ -141,28 +165,65 @@ export function LandmarksSection() {
                 />
               </div>
 
+              {/* Content */}
               <div
-                className={`flex min-h-[355px] flex-col justify-center py-8 md:py-0 ${
-                  imageFirst ? "md:order-2" : "md:order-1"
-                }`}
+                className={`
+                  flex
+                  flex-col
+                  md:min-h-[355px]
+                  md:justify-center
+                  md:py-0
+                  ${imageFirst ? "md:order-2" : "md:order-1"}
+                `}
               >
-                <h3 className="max-w-[620px] font-['Inter'] text-[30px] font-black leading-[0.92] tracking-[-0.065em] md:text-[36px]">
+                <h3
+                  className="
+                    mt-[50px]
+                    max-w-[292px]
+                    font-['Inter']
+                    text-[34px]
+                    font-black
+                    leading-[0.87]
+                    tracking-[-0.075em]
+                    md:mt-0
+                    md:max-w-[620px]
+                    md:text-[36px]
+                    md:leading-[0.92]
+                    md:tracking-[-0.065em]
+                  "
+                >
                   {item.title}
                   <br />
                   {item.time}
                 </h3>
 
                 <div
-                  className={`mt-[46px] max-w-[650px] font-['Inter'] text-[14px] font-black leading-[1.28] tracking-[-0.035em] md:text-[15.5px] ${
-                    item.dark ? "text-[#f7f3df]/95" : "text-[#132d25]/95"
-                  }`}
+                  className={`
+                    mt-[24px]
+                    max-w-[292px]
+                    font-['Inter']
+                    text-[15px]
+                    font-black
+                    leading-[1.32]
+                    tracking-[-0.038em]
+                    md:mt-[46px]
+                    md:max-w-[650px]
+                    md:text-[15.5px]
+                    md:leading-[1.28]
+                    md:tracking-[-0.035em]
+                    ${
+                      item.dark
+                        ? "text-[#fff7e8]/95"
+                        : "text-[#132d25]/95"
+                    }
+                  `}
                 >
                   {item.intro && <p>{item.intro}</p>}
 
                   <p>{item.desc}</p>
 
                   {item.points.length > 0 && (
-                    <ul className="mt-[2px] list-disc pl-[19px]">
+                    <ul className="mt-[2px] list-disc pl-[18px]">
                       {item.points.map((point) => (
                         <li key={point}>{point}</li>
                       ))}

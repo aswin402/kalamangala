@@ -5,26 +5,54 @@ export function AdvantageSection() {
     <section
       className="
         mx-auto
-        mt-[38px]
+        mt-[26px]
         grid
         max-w-[1455px]
         grid-cols-1
         items-center
-        gap-[70px]
-        px-5
-        pb-[26px]
+        gap-[22px]
+        px-[40px]
+        pb-[42px]
+        md:mt-[38px]
         md:grid-cols-[0.9fr_1.1fr]
+        md:gap-[70px]
+        md:px-5
+        md:pb-[26px]
       "
     >
-      {/* Left Content */}
-      <div className="km-reveal md:pl-[6px]">
+      {/* Image - First on mobile, right side on desktop */}
+      <div
+        className="
+          km-reveal
+          order-1
+          overflow-hidden
+          rounded-[18px]
+          md:order-2
+        "
+      >
+        <img
+          src={img8}
+          alt="Kalamangala advantage"
+          className="
+            h-[350px]
+            w-full
+            object-cover
+            object-center
+            sm:h-[390px]
+            md:h-[555px]
+          "
+        />
+      </div>
+
+      {/* Content - Below image on mobile, left side on desktop */}
+      <div className="km-reveal order-2 md:order-1 md:pl-[6px]">
         <h2
           className="
             max-w-[610px]
             font-['Inter',sans-serif]
-            text-[40px]
+            text-[31px]
             font-[900]
-            leading-[1.03]
+            leading-[1.04]
             tracking-[-0.075em]
             text-[#0d2b22]
             md:text-[50px]
@@ -35,16 +63,18 @@ export function AdvantageSection() {
 
         <p
           className="
-            mt-[18px]
+            mt-[12px]
             max-w-[720px]
             font-['Inter',sans-serif]
             text-[16px]
             font-[400]
             italic
-            leading-[1.55]
+            leading-[1.45]
             tracking-[-0.045em]
             text-black/70
+            md:mt-[18px]
             md:text-[18px]
+            md:leading-[1.55]
           "
         >
           Being a luxury home developer in Tamil Nadu, Kalamangala brings more
@@ -54,15 +84,17 @@ export function AdvantageSection() {
 
         <div
           className="
-            mt-[12px]
+            mt-[13px]
             max-w-[760px]
             font-['Inter',sans-serif]
-            text-[17px]
+            text-[16px]
             font-[500]
-            leading-[1.18]
+            leading-[1.08]
             tracking-[-0.035em]
             text-black
+            md:mt-[12px]
             md:text-[18px]
+            md:leading-[1.18]
           "
         >
           <p>
@@ -85,27 +117,6 @@ export function AdvantageSection() {
             </strong>
           </p>
         </div>
-      </div>
-
-      {/* Right Image */}
-      <div
-        className="
-          km-reveal
-          overflow-hidden
-          rounded-[18px]
-        "
-      >
-        <img
-          src={img8}
-          alt="Kalamangala advantage"
-          className="
-            h-[430px]
-            w-full
-            object-cover
-            object-center
-            md:h-[555px]
-          "
-        />
       </div>
     </section>
   );

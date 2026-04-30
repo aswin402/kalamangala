@@ -9,24 +9,126 @@ export function ConnectivitySection() {
   ];
 
   return (
-    <section className="la-reveal mx-auto mt-[112px] w-full max-w-[1480px] px-5 pb-[76px]">
-      <h2 className="mb-[38px] text-center font-['Inter'] text-[36px] font-black leading-none tracking-[-0.065em] text-[#132d25] md:text-[48px]">
+    <section
+      className="
+        la-reveal
+        mx-auto
+        mt-[68px]
+        w-full
+        max-w-[1480px]
+        px-[41px]
+        pb-[58px]
+        sm:mt-[82px]
+        sm:px-5
+        sm:pb-[70px]
+        md:mt-[96px]
+        md:pb-[76px]
+        lg:mt-[112px]
+      "
+    >
+      <h2
+        className="
+          mx-auto
+          mb-[34px]
+          max-w-[340px]
+          text-center
+          font-['Inter']
+          text-[30px]
+          font-black
+          leading-[1.02]
+          tracking-[-0.07em]
+          text-[#132d25]
+          sm:max-w-none
+          sm:text-[36px]
+          md:mb-[38px]
+          md:text-[48px]
+        "
+      >
         The Neighbourhood Advantage
       </h2>
 
       <div className="mx-auto w-full max-w-[1328px]">
-        <table className="w-full border-separate border-spacing-0 font-['Inter'] text-[#132d25]">
+        <table
+          className="
+            w-full
+            table-fixed
+            border-separate
+            border-spacing-0
+            font-['Inter']
+            text-[#132d25]
+          "
+        >
           <thead>
             <tr>
-              <th className="w-1/3 border-r-[8px] border-[#f6f4e7] bg-[#385f53] px-8 py-[24px] text-center text-[22px] font-black leading-none tracking-[-0.045em] text-[#f7f3df] md:text-[30px]">
+              <th
+                className="
+                  w-1/3
+                  border-r-[10px]
+                  border-[#f6f4e7]
+                  bg-[#385f53]
+                  px-[9px]
+                  py-[18px]
+                  text-center
+                  text-[17px]
+                  font-black
+                  leading-none
+                  tracking-[-0.055em]
+                  text-[#f7f3df]
+                  sm:border-r-[8px]
+                  sm:px-8
+                  sm:py-[22px]
+                  sm:text-[22px]
+                  md:py-[24px]
+                  md:text-[30px]
+                "
+              >
                 Landmark
               </th>
 
-              <th className="w-1/3 border-r-[8px] border-[#f6f4e7] bg-[#385f53] px-8 py-[24px] text-center text-[22px] font-black leading-none tracking-[-0.045em] text-[#f7f3df] md:text-[30px]">
+              <th
+                className="
+                  w-1/3
+                  border-r-[10px]
+                  border-[#f6f4e7]
+                  bg-[#385f53]
+                  px-[9px]
+                  py-[18px]
+                  text-center
+                  text-[17px]
+                  font-black
+                  leading-none
+                  tracking-[-0.055em]
+                  text-[#f7f3df]
+                  sm:border-r-[8px]
+                  sm:px-8
+                  sm:py-[22px]
+                  sm:text-[22px]
+                  md:py-[24px]
+                  md:text-[30px]
+                "
+              >
                 Distance
               </th>
 
-              <th className="w-1/3 bg-[#385f53] px-8 py-[24px] text-center text-[22px] font-black leading-none tracking-[-0.045em] text-[#f7f3df] md:text-[30px]">
+              <th
+                className="
+                  w-1/3
+                  bg-[#385f53]
+                  px-[9px]
+                  py-[18px]
+                  text-center
+                  text-[17px]
+                  font-black
+                  leading-none
+                  tracking-[-0.055em]
+                  text-[#f7f3df]
+                  sm:px-8
+                  sm:py-[22px]
+                  sm:text-[22px]
+                  md:py-[24px]
+                  md:text-[30px]
+                "
+              >
                 Travel Time
               </th>
             </tr>
@@ -38,11 +140,30 @@ export function ConnectivitySection() {
                 {row.map((cell, index) => (
                   <td
                     key={`${row[0]}-${cell}-${index}`}
-                    className={`border-t-[10px] border-[#f6f4e7] bg-[#ecebdc] px-8 py-[23px] text-center text-[18px] font-black leading-none tracking-[-0.045em] md:text-[24px] ${
-                      index !== row.length - 1
-                        ? "border-r-[8px] border-r-[#f6f4e7]"
-                        : ""
-                    }`}
+                    className={`
+                      border-t-[10px]
+                      border-[#f6f4e7]
+                      bg-[#ecebdc]
+                      px-[8px]
+                      py-[20px]
+                      text-center
+                      align-middle
+                      text-[14px]
+                      font-black
+                      leading-[0.9]
+                      tracking-[-0.06em]
+                      sm:px-8
+                      sm:py-[22px]
+                      sm:text-[18px]
+                      sm:leading-none
+                      md:py-[23px]
+                      md:text-[24px]
+                      ${
+                        index !== row.length - 1
+                          ? "border-r-[10px] border-r-[#f6f4e7] sm:border-r-[8px]"
+                          : ""
+                      }
+                    `}
                   >
                     {cell}
                   </td>

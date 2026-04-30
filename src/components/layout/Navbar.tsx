@@ -43,12 +43,15 @@ const projectsData = [
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
+  const [navbarVisible, setNavbarVisible] = useState(true);
 
   const { pathname } = useLocation();
 
   const desktopDropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
+
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hideNavbarTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isProjectRoute = projectsData.some((item) => item.href === pathname);
 
@@ -59,6 +62,58 @@ export const Navbar = () => {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    const clearHideTimer = () => {
+      if (hideNavbarTimer.current) {
+        clearTimeout(hideNavbarTimer.current);
+      }
+    };
+
+    const startHideTimer = () => {
+      clearHideTimer();
+
+      hideNavbarTimer.current = setTimeout(() => {
+        const nearTop = window.scrollY < 120;
+
+        if (!nearTop && !mobileOpen && !projectsOpen) {
+          setNavbarVisible(false);
+        }
+      }, 1800);
+    };
+
+    const handleScroll = () => {
+      const nearTop = window.scrollY < 120;
+
+      if (nearTop) {
+        setNavbarVisible(true);
+        clearHideTimer();
+        return;
+      }
+
+      setNavbarVisible(true);
+      startHideTimer();
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      clearHideTimer();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [mobileOpen, projectsOpen]);
+
+  useEffect(() => {
+    if (mobileOpen || projectsOpen) {
+      setNavbarVisible(true);
+
+      if (hideNavbarTimer.current) {
+        clearTimeout(hideNavbarTimer.current);
+      }
+    }
+  }, [mobileOpen, projectsOpen]);
 
   useEffect(() => {
     const target = mobileOpen
@@ -130,20 +185,26 @@ export const Navbar = () => {
 
   const mobileItemClass = (active: boolean) => {
     return `
-      flex h-[64px] w-full max-w-[351px] items-center justify-center
-      rounded-[6px] text-[16px] font-[400] leading-none tracking-[-0.03em]
+      flex h-[42px] w-full max-w-[351px] items-center justify-center
+      text-[16px] font-[400] leading-none tracking-[-0.03em]
       transition-colors
       ${
         active
-          ? "bg-[#efede2] text-[#142820]"
-          : "bg-transparent text-[#142820] hover:text-[#ff6d2d]"
+          ? "text-[#ff6d2d]"
+          : "text-[#142820] hover:text-[#ff6d2d]"
       }
     `;
   };
 
   return (
     <>
-      <header className="fixed left-0 top-0 z-[9999] w-full overflow-visible bg-transparent">
+      <header
+        className={`
+          fixed left-0 top-0 z-[9999] w-full overflow-visible bg-transparent
+          transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+          ${navbarVisible ? "translate-y-0" : "-translate-y-full"}
+        `}
+      >
         {/* Top bar */}
         <div
           className="
@@ -292,19 +353,19 @@ export const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Transparent Pattern Strip */}
+        {/* Mobile Pattern Strip */}
         <div
-          className="
-            h-[31px] w-full border-t border-[#dce4d6]/70
-            bg-transparent md:hidden
-          "
+          className={`
+            h-[31px] w-full border-t border-[#dce4d6]/70 md:hidden
+            ${mobileOpen ? "bg-[#fbfaee]" : "bg-transparent"}
+          `}
         />
       </header>
 
       {/* Mobile Menu */}
       <div
         className={`
-          fixed left-0 top-[92px] z-[9998] h-[calc(100dvh-92px)] w-full
+          fixed left-0 top-[61px] z-[9998] h-[calc(100dvh-61px)] w-full
           overflow-hidden bg-[#fbfaee] transition-all duration-300 md:hidden
           ${
             mobileOpen
@@ -313,11 +374,87 @@ export const Navbar = () => {
           }
         `}
       >
-        <div className="relative mx-auto h-full w-full max-w-[550px] px-[28px] pt-[15px]">
-          {/* Contact Card */}
+        <div className="relative mx-auto flex h-full w-full max-w-[550px] flex-col px-[28px] pt-[58px]">
+          {/* Mobile Links First */}
+          <nav className="flex flex-col items-center gap-[28px]">
+            <Link
+              to="/"
+              onClick={closeMenu}
+              className={mobileItemClass(pathname === "/")}
+            >
+              Home
+            </Link>
+
+            <Link
+              to="/about"
+              onClick={closeMenu}
+              className={mobileItemClass(pathname === "/about")}
+            >
+              About
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setProjectsOpen((prev) => !prev)}
+              className={mobileItemClass(projectsOpen || isProjectRoute)}
+            >
+              Projects
+            </button>
+
+            <a
+              href={`${import.meta.env.BASE_URL}#blog`}
+              onClick={closeMenu}
+              className={mobileItemClass(false)}
+            >
+              Blog
+            </a>
+
+            <Link
+              to="/contact"
+              onClick={closeMenu}
+              className={mobileItemClass(pathname === "/contact")}
+            >
+              Contact
+            </Link>
+          </nav>
+
+          {/* Mobile Projects Dropdown */}
+          {projectsOpen && (
+            <div
+              ref={mobileDropdownRef}
+              className="
+                absolute left-1/2 top-[190px] z-[10000] w-[272px]
+                -translate-x-1/2 rounded-[20px] border border-white/70
+                bg-gradient-to-b from-[#bfc6bb]/95 via-[#d4d7ca]/92 to-[#fbfaee]/98
+                px-[18px] pb-[18px] pt-[20px]
+                shadow-[0_20px_45px_rgba(20,40,32,0.16)]
+                backdrop-blur-xl
+              "
+            >
+              <div className="flex flex-col gap-[25px]">
+                {projectsData.map((item) => (
+                  <Link
+                    key={item.title}
+                    to={item.href}
+                    onClick={closeMenu}
+                    className="group block"
+                  >
+                    <h4 className="text-[16px] font-[600] leading-none tracking-[-0.03em] text-[#19332b] transition-colors group-hover:text-[#ff6d2d]">
+                      {item.title}
+                    </h4>
+                    <p className="mt-[8px] text-[13px] font-[500] leading-none tracking-[-0.02em] text-[#19332b]/55">
+                      {item.sub}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Contact Card Down */}
           <div
             className="
-              mx-auto h-[324px] w-[367px] max-w-full rounded-[7px]
+              mx-auto mt-[46px] h-[324px] w-[367px] max-w-full rounded-[7px]
               bg-[#17372f] px-[22px] pt-[27px] text-center text-white
             "
           >
@@ -354,113 +491,6 @@ export const Navbar = () => {
               Tamil Nadu 638104
             </p>
           </div>
-
-          {/* Mobile Projects Dropdown */}
-          {projectsOpen && (
-            <div
-              ref={mobileDropdownRef}
-              className="
-                absolute left-1/2 top-[110px] z-[10000] w-[272px]
-                -translate-x-1/2 rounded-[20px] border border-white/70
-                bg-gradient-to-b from-[#bfc6bb]/95 via-[#d4d7ca]/92 to-[#fbfaee]/98
-                px-[18px] pb-[18px] pt-[20px]
-                shadow-[0_20px_45px_rgba(20,40,32,0.16)]
-                backdrop-blur-xl
-              "
-            >
-              <div className="flex flex-col gap-[25px]">
-                {projectsData.map((item) => (
-                  <Link
-                    key={item.title}
-                    to={item.href}
-                    onClick={closeMenu}
-                    className="group block"
-                  >
-                    <h4 className="text-[16px] font-[600] leading-none tracking-[-0.03em] text-[#19332b] transition-colors group-hover:text-[#ff6d2d]">
-                      {item.title}
-                    </h4>
-                    <p className="mt-[8px] text-[13px] font-[500] leading-none tracking-[-0.02em] text-[#19332b]/55">
-                      {item.sub}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Mobile Links */}
-          <nav className="mt-[40px] flex flex-col items-center gap-[16px]">
-            <Link
-              to="/"
-              onClick={closeMenu}
-              className={mobileItemClass(pathname === "/")}
-            >
-              Home
-            </Link>
-
-            <Link
-              to="/about"
-              onClick={closeMenu}
-              className={`
-                flex h-[42px] w-full max-w-[351px] items-center justify-center
-                text-[16px] font-[400] leading-none tracking-[-0.03em]
-                transition-colors
-                ${
-                  pathname === "/about"
-                    ? "text-[#ff6d2d]"
-                    : "text-[#142820] hover:text-[#ff6d2d]"
-                }
-              `}
-            >
-              About
-            </Link>
-
-            <button
-              type="button"
-              onClick={() => setProjectsOpen((prev) => !prev)}
-              className={`
-                flex h-[42px] w-full max-w-[351px] items-center justify-center
-                text-[16px] font-[400] leading-none tracking-[-0.03em]
-                transition-colors
-                ${
-                  projectsOpen || isProjectRoute
-                    ? "text-[#ff6d2d]"
-                    : "text-[#142820] hover:text-[#ff6d2d]"
-                }
-              `}
-            >
-              Projects
-            </button>
-
-            <a
-              href={`${import.meta.env.BASE_URL}#blog`}
-              onClick={closeMenu}
-              className="
-                flex h-[42px] w-full max-w-[351px] items-center justify-center
-                text-[16px] font-[400] leading-none tracking-[-0.03em]
-                text-[#142820] transition-colors hover:text-[#ff6d2d]
-              "
-            >
-              Blog
-            </a>
-
-            <Link
-              to="/contact"
-              onClick={closeMenu}
-              className={`
-                flex h-[42px] w-full max-w-[351px] items-center justify-center
-                text-[16px] font-[400] leading-none tracking-[-0.03em]
-                transition-colors
-                ${
-                  pathname === "/contact"
-                    ? "text-[#ff6d2d]"
-                    : "text-[#142820] hover:text-[#ff6d2d]"
-                }
-              `}
-            >
-              Contact
-            </Link>
-          </nav>
         </div>
       </div>
     </>
