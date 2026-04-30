@@ -168,8 +168,8 @@ export const AboutDarkSection = () => {
                 </div>
 
                 {/* DESKTOP 33+ CARD */}
-                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] text-foreground md:flex xl:h-[260px]">
-                  <h3 className="text-[62px] font-semibold leading-none tracking-[-0.06em] lg:text-[72px]">
+                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] text-foreground bg-card md:flex xl:h-[260px]">
+                  <h3 className="text-[62px] font-semibold leading-none tracking-[-0.06em]   lg:text-[72px]">
                     33+
                   </h3>
 

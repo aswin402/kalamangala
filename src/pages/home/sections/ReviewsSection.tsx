@@ -1,28 +1,28 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const reviews = [
   {
-    name: 'Ravi S.',
-    role: 'Home Owner',
+    name: "Ravi S.",
+    role: "Home Owner",
     text: "From the moment I stepped into Kalamangala's The Waterfront, I knew this was where I wanted to build my home. The peaceful vibe, the open spaces, and the thoughtful planning make it feel just right.",
   },
   {
-    name: 'Arun P.',
-    role: 'CEO',
+    name: "Arun P.",
+    role: "CEO",
     text: "Kalamangala gives me the best of both worlds—close enough to the city for convenience, yet far enough to enjoy some peace and quiet. It's the kind of place that just makes life easier.",
   },
   {
-    name: 'Ashok K.',
-    role: 'Business Owner',
-    text: 'Living here feels like a daily retreat. The greenery, fresh air, and quiet surroundings make such a difference—I never knew how much I needed this until now!',
+    name: "Ashok K.",
+    role: "Business Owner",
+    text: "Living here feels like a daily retreat. The greenery, fresh air, and quiet surroundings make such a difference—I never knew how much I needed this until now!",
   },
   {
-    name: 'Vignesh R.',
-    role: 'Doctor',
+    name: "Vignesh R.",
+    role: "Doctor",
     text: "Buying property here wasn’t just an investment, it was a step toward the life I always wanted. Safe, well-planned, and full of potential—I couldn’t have asked for a better place.",
   },
 ];
@@ -41,26 +41,26 @@ export const ReviewsSection = () => {
           y: 0,
           opacity: 1,
           duration: 1.15,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
             trigger: reviewsSectionRef.current,
-            start: 'top 78%',
+            start: "top 78%",
           },
         }
       );
 
       gsap.fromTo(
-        '.review-card',
+        ".review-card",
         { y: 42, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.9,
           stagger: 0.08,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
             trigger: reviewsMarqueeRef.current,
-            start: 'top 84%',
+            start: "top 84%",
           },
         }
       );
@@ -70,7 +70,7 @@ export const ReviewsSection = () => {
       const marquee = gsap.to(reviewsMarqueeRef.current, {
         xPercent: 0,
         duration: 58,
-        ease: 'none',
+        ease: "none",
         repeat: -1,
       });
 
@@ -210,37 +210,69 @@ export const ReviewsSection = () => {
       <div className="relative w-full overflow-hidden">
         <div
           ref={reviewsMarqueeRef}
-          className="flex w-max gap-[10px] will-change-transform"
+          className="flex w-max gap-[10px] will-change-transform md:gap-[12px]"
         >
           {[...reviews, ...reviews, ...reviews].map((review, index) => (
             <article
               key={`${review.name}-${index}`}
               className="
                 review-card
-                h-[360px]
-                w-[270px]
+                flex
+                h-[515px]
+                w-[326px]
                 shrink-0
+                flex-col
                 bg-white-text
                 px-[20px]
-                pt-[18px]
+                pt-[17px]
 
-                md:h-[456px]
-                md:w-[305px]
-                md:px-[30px]
-                md:pt-[22px]
+                md:h-[515px]
+                md:w-[326px]
+                md:px-[20px]
+                md:pt-[17px]
               "
             >
-              <div className="mb-[40px] md:mb-[78px]">
-                <h4 className="font-display text-[18px] font-black leading-none tracking-[-0.04em] text-[var(--home-reviewssection-text-5)]">
+              <div className="mb-[88px] md:mb-[88px]">
+                <h4
+                  className="
+                    font-sans
+                    text-[20px]
+                    font-bold
+                    leading-[1]
+                    tracking-[-0.04em]
+                    text-foreground
+                  "
+                >
                   {review.name}
                 </h4>
 
-                <span className="mt-[9px] block text-[10px] font-black uppercase leading-none tracking-[0.08em] text-[var(--home-reviewssection-text-5)]/80">
+                <span
+                  className="
+                    mt-[7px]
+                    block
+                    text-[10px]
+                    font-black
+                    uppercase
+                    leading-none
+                    tracking-[0.02em]
+                    text-[var(--home-reviewssection-text-5)]/80
+                  "
+                >
                   {review.role}
                 </span>
               </div>
 
-              <p className="max-w-[252px] text-[15px] font-semibold leading-[1.4] tracking-[-0.03em] text-[var(--home-reviewssection-text-5)] md:text-[18px] md:leading-[1.32] md:tracking-[-0.055em]">
+              <p
+                className="
+                  max-w-[286px]
+                  font-sans
+                  text-[20px]
+                  font-normal
+                  leading-[1.25]
+                  tracking-[-0.045em]
+                  text-[#17302a]
+                "
+              >
                 &quot;{review.text}&quot;
               </p>
             </article>

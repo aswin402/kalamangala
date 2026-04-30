@@ -95,7 +95,7 @@ const ItemIcon = ({ index }: { index: number }) => {
   ];
 
   return (
-    <span className="grid h-[50px] w-[50px] shrink-0 place-items-center rounded-[6px] bg-white/10 max-[520px]:h-[46px] max-[520px]:w-[46px]">
+    <span className="grid h-[50px] w-[50px] shrink-0 place-items-center rounded-[6px] bg-white/10 md:h-[56px] md:w-[56px] xl:h-[58px] xl:w-[58px] max-[520px]:h-[46px] max-[520px]:w-[46px]">
       <svg width="24" height="24" viewBox="0 0 14 14" fill="none">
         {icons[index]}
       </svg>
@@ -128,6 +128,7 @@ const AccordionItem = ({
       opacity: isOpen ? 1 : 0,
       duration: isOpen ? 0.32 : 0.22,
       ease: isOpen ? 'power2.out' : 'power2.in',
+      overwrite: 'auto',
     });
   }, [isOpen]);
 
@@ -140,11 +141,11 @@ const AccordionItem = ({
       <button
         type="button"
         onClick={onClick}
-        className="group flex w-full items-center gap-[22px] px-[21px] py-[11px] text-left outline-none max-[520px]:gap-[17px] max-[520px]:px-[18px] max-[520px]:py-[12px]"
+        className="group flex w-full items-center gap-[22px] px-[21px] py-[11px] text-left outline-none md:gap-[26px] md:px-[28px] md:py-[15px] xl:py-[17px] max-[520px]:gap-[17px] max-[520px]:px-[18px] max-[520px]:py-[12px]"
       >
         <ItemIcon index={index} />
 
-        <span className="flex-1 text-[17px] font-bold leading-none tracking-[-0.035em] text-white max-[520px]:text-[17px]">
+        <span className="flex-1 text-[17px] font-bold leading-none tracking-[-0.035em] text-white md:text-[18px] xl:text-[19px] max-[520px]:text-[17px]">
           {title}
         </span>
 
@@ -168,7 +169,7 @@ const AccordionItem = ({
       </button>
 
       <div ref={contentRef} className="h-0 overflow-hidden opacity-0">
-        <p className="max-w-[610px] pb-[22px] pl-[93px] pr-[28px] text-[16px] font-medium leading-[1.45] tracking-[-0.035em] text-white/75 max-[520px]:pl-[81px] max-[520px]:pr-[20px] max-[520px]:text-[14px]">
+        <p className="max-w-[670px] pb-[28px] pl-[93px] pr-[28px] text-[16px] font-medium leading-[1.45] tracking-[-0.035em] text-white/75 md:pl-[110px] md:pr-[36px] md:text-[17px] xl:pb-[34px] max-[520px]:pl-[81px] max-[520px]:pr-[20px] max-[520px]:text-[14px]">
           {content}
         </p>
       </div>
@@ -223,13 +224,13 @@ export const WhyChooseSection = () => {
     <section
       ref={whyChooseSectionRef}
       id="why-choose"
-      className="relative overflow-hidden pb-[95px] pt-[86px] max-[768px]:pb-[48px] max-[768px]:pt-[36px]"
+      className="relative overflow-hidden px-0 pb-[95px] pt-[86px] md:px-[28px] lg:px-[44px] xl:px-[56px] 2xl:px-[88px] max-[768px]:pb-[48px] max-[768px]:pt-[36px]"
     >
-      <div className="mx-auto grid w-full max-w-[1205px] grid-cols-1 items-start gap-[24px] px-[20px] md:px-[36px] xl:grid-cols-[540px_1fr] xl:gap-[14px] xl:px-0">
+      <div className="mx-auto grid w-full max-w-[1205px] grid-cols-1 items-stretch gap-[24px] px-[20px] md:max-w-[1320px] md:px-0 xl:min-h-[640px] xl:max-w-[1360px] xl:grid-cols-[610px_1fr] xl:gap-[18px]">
         {/* IMAGE CARD */}
         <div
           ref={whyChooseLeftColRef}
-          className="relative order-2 h-[700px] min-w-0 overflow-hidden rounded-[8px] md:h-[610px] lg:h-[640px] xl:order-1 xl:h-[560px]"
+          className="relative order-2 h-[700px] min-w-0 overflow-hidden rounded-[8px] md:h-[680px] lg:h-[700px] xl:order-1 xl:h-full"
         >
           <img
             src={img3}
@@ -237,13 +238,13 @@ export const WhyChooseSection = () => {
             className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
           />
 
-          <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[21px] pb-[27px] pt-[24px] backdrop-blur-[11px] md:px-[30px] md:pb-[30px] md:pt-[28px] xl:px-[21px] xl:pb-[27px] xl:pt-[24px]">
-            <h3 className="mb-[17px] max-w-[500px] text-[35px] font-medium leading-[1.14] tracking-[-0.055em] text-white max-[768px]:text-[28px] max-[480px]:text-[25px]">
+          <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[21px] pb-[27px] pt-[24px] backdrop-blur-[11px] md:px-[36px] md:pb-[36px] md:pt-[34px] xl:px-[34px] xl:pb-[36px] xl:pt-[34px]">
+            <h3 className="mb-[17px] max-w-[500px] text-[35px] font-medium leading-[1.14] tracking-[-0.055em] text-white md:max-w-[560px] md:text-[39px] xl:text-[40px] max-[768px]:text-[28px] max-[480px]:text-[25px]">
               Our specialty lies in transforming spaces into harmonious
               environments
             </h3>
 
-            <p className="mb-[39px] max-w-[500px] text-[16px] font-medium leading-[1.45] tracking-[-0.025em] text-white/90 max-[480px]:text-[15px]">
+            <p className="mb-[39px] max-w-[500px] text-[16px] font-medium leading-[1.45] tracking-[-0.025em] text-white/90 md:max-w-[570px] md:text-[17px] max-[480px]:text-[15px]">
               Our craft is a harmony of space and nature, shaping communities
               where timeless elegance meets modern comfort, creating homes
               that inspire and endure.
@@ -251,11 +252,11 @@ export const WhyChooseSection = () => {
 
             <Link
               to="/contact"
-              className="group inline-flex w-fit items-center gap-[4px] rounded-[9px] bg-white py-[6px] pl-[27px] pr-[6px] text-[17px] font-medium leading-none text-[var(--home-whychoosesection-text-5)] transition-colors hover:bg-white-text"
+              className="group inline-flex w-fit items-center gap-[4px] rounded-[9px] bg-white py-[6px] pl-[27px] pr-[6px] text-[17px] font-medium leading-none text-[var(--home-whychoosesection-text-5)] transition-colors hover:bg-white-text md:text-[18px]"
             >
               Contact Us
 
-              <span className="grid h-[46px] w-[48px] place-items-center rounded-[9px] bg-primary transition-transform group-hover:translate-x-[2px]">
+              <span className="grid h-[46px] w-[48px] place-items-center rounded-[9px] bg-primary transition-transform group-hover:translate-x-[2px] md:h-[50px] md:w-[52px]">
                 <ArrowIcon14 />
               </span>
             </Link>
@@ -265,20 +266,20 @@ export const WhyChooseSection = () => {
         {/* ACCORDION CARD */}
         <div
           ref={whyChooseRightColRef}
-          className="relative order-1 flex min-w-0 flex-col xl:order-2 xl:h-[560px]"
+          className="relative order-1 flex min-w-0 flex-col xl:order-2 xl:h-full"
         >
           <div className="mb-[13px] shrink-0 max-[768px]:mb-[9px] max-[768px]:text-center">
             <div className="mb-[1px] flex max-[768px]:justify-center">
               <SectionLabel>Our Specialities</SectionLabel>
             </div>
 
-            <h2 className="font-display text-[43px] font-black leading-[0.96] tracking-[-0.07em] text-[var(--home-whychoosesection-text-5)] md:text-[56px] xl:text-[49px]">
+            <h2 className="font-display text-[43px] font-black leading-[0.96] tracking-[-0.07em] text-[var(--home-whychoosesection-text-5)] md:text-[60px] xl:text-[58px]">
               Why choose Kalamangala
             </h2>
           </div>
 
-          <div className="flex flex-1 rounded-[8px] bg-card-green px-[19px] py-[19px] md:min-h-[480px] xl:min-h-0">
-            <div className="flex w-full flex-col justify-between">
+          <div className="flex min-h-[480px] flex-1 rounded-[8px] bg-card-green px-[19px] py-[19px] md:min-h-[610px] md:px-[28px] md:py-[28px] xl:min-h-0 xl:px-[28px] xl:py-[28px]">
+            <div className="flex w-full flex-col justify-between gap-[10px] md:gap-[14px]">
               {accordionItems.map((item, index) => (
                 <AccordionItem
                   key={item.title}

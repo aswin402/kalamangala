@@ -32,16 +32,8 @@ export function ConnectivitySection() {
           mb-[34px]
           max-w-[340px]
           text-center
-          font-['Inter']
-          text-[30px]
-          font-black
-          leading-[1.02]
-          tracking-[-0.07em]
-          text-foreground
           sm:max-w-none
-          sm:text-[36px]
           md:mb-[38px]
-          md:text-[48px]
         "
       >
         The Neighbourhood Advantage
@@ -54,7 +46,6 @@ export function ConnectivitySection() {
             table-fixed
             border-separate
             border-spacing-0
-            font-['Inter']
             text-foreground
           "
         >

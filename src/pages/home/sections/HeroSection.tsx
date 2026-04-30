@@ -67,10 +67,10 @@ export const HeroSection = () => {
               font-pathway font-normal leading-[0.9]
               tracking-[-0.055em] text-foreground
 
-              text-[37px]
-              sm:text-[46px]
-              md:text-[50px]
-              lg:text-[55px]
+              text-[44px]
+              sm:text-[44px]
+              md:text-[52px]
+              lg:text-[60px]
             "
           >
             Redefining
@@ -81,10 +81,10 @@ export const HeroSection = () => {
               font-script font-normal leading-[0.72]
               tracking-[-0.045em] text-foreground
 
-              mt-[18px] text-[63px]
-              sm:mt-[24px] sm:text-[84px]
-              md:text-[100px]
-              lg:mt-[28px] lg:text-[118px]
+              mt-[18px] text-[60px]
+              sm:mt-[24px] sm:text-[60px]
+              md:text-[60px]
+              lg:mt-[28px] lg:text-[114px]
             "
           >
             Luxury Living

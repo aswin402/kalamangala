@@ -100,7 +100,7 @@ export const ProjectsSection = () => {
             <span className="h-[6px] w-[6px] rounded-full bg-card-green" />
           </span>
 
-          <span className="text-[10px] font-black uppercase leading-none tracking-[-0.06em] text-[var(--home-projectssection-text-7)]">
+          <span className="text-[12px] font-semibold font-sans uppercase leading-none tracking-[-0.06em] text-foreground">
             Our Portfolio
           </span>
         </div>
@@ -225,9 +225,9 @@ export const ProjectsSection = () => {
                 <h3
                   className="
                     mb-[4px]
-                    font-display text-[24px] font-black leading-none
-                    tracking-[-0.062em] text-[var(--home-projectssection-text-8)]
-                    md:mb-[29px] md:text-[32px]
+                    font-sans text-[30px] font-bold leading-none
+                    tracking-[-0.062em] text-foreground
+                    md:mb-[29px] md:text-[30px]
                   "
                 >
                   The Waterfront
@@ -236,9 +236,9 @@ export const ProjectsSection = () => {
                 <p
                   className="
                     max-w-[395px]
-                    text-[15.5px] font-bold leading-[1.43]
-                    tracking-[-0.047em] text-[var(--home-projectssection-text-8)]/70
-                    md:text-[15.5px]
+                    text-[16px] font-medium font-sans leading-[1.43]
+                    tracking-[-0.047em] text-foreground
+                    md:text-[16px]
                   "
                 >
                   Welcome to The Waterfront by Kalamangala – Erode&apos;s first
@@ -263,7 +263,7 @@ export const ProjectsSection = () => {
             group inline-flex items-center gap-[6px]
             rounded-[9px] bg-card-green
             py-[6px] pl-[24px] pr-[6px]
-            text-[18px] font-semibold leading-none text-[var(--home-projectssection-text-9)]
+            text-[18px] font-semibold leading-none text-white
             transition-all hover:bg-card-green/90
           "
         >

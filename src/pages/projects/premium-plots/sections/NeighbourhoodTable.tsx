@@ -9,11 +9,11 @@ export function NeighbourhoodTable() {
   ];
 
   return (
-    <section className="km-reveal relative mx-auto mt-[42px] w-full  px-5 pb-[86px] pt-[42px] text-center font-['Inter',sans-serif]">
+    <section className="km-reveal relative mx-auto mt-[42px] w-full pb-[86px] pt-[42px] text-center">
       {/* full background pattern */}
 
       <div className="relative mx-auto w-full max-w-[1390px]">
-        <h2 className="text-[34px] font-[900] leading-none tracking-[-0.075em] text-foreground md:text-[43px]">
+        <h2 className="font-bold text-[50px]">
           The Neighbourhood Advantage
         </h2>
 
@@ -24,7 +24,7 @@ export function NeighbourhoodTable() {
                 {["Landmark", "Distance", "Travel Time"].map((heading) => (
                   <th
                     key={heading}
-                    className="border-r-[8px] border-[#fbfbef] bg-table-header px-4 py-[25px] text-center text-[28px] font-[900] leading-none tracking-[-0.055em] text-foreground last:border-r-0"
+                    className="border-r-[8px] border-[#fbfbef] bg-table-header px-4 py-[25px] text-center text-xl font-bold text-white last:border-r-0 md:text-2xl"
                   >
                     {heading}
                   </th>
@@ -38,7 +38,7 @@ export function NeighbourhoodTable() {
                   {row.map((cell) => (
                     <td
                       key={cell}
-                      className="border-r-[8px] border-t-[10px] border-[#fbfbef] bg-[#eee9cf] px-4 py-[28px] text-center text-[21px] font-[900] leading-none tracking-[-0.045em] last:border-r-0"
+                      className="border-r-[8px] border-t-[10px] border-[#fbfbef] bg-[#eee9cf] px-4 py-[28px] text-center text-lg font-bold last:border-r-0 md:text-xl"
                     >
                       {cell}
                     </td>

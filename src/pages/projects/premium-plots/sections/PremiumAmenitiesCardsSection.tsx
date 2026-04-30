@@ -1,4 +1,11 @@
-import { Baby, CloudRain, Droplets, Navigation, Shield, TreePine } from "lucide-react";
+import {
+  Baby,
+  CloudRain,
+  Droplets,
+  Navigation,
+  Shield,
+  TreePine,
+} from "lucide-react";
 
 const amenityCards = [
   {
@@ -40,7 +47,7 @@ const amenityCards = [
 
 export function PremiumAmenitiesCardsSection() {
   return (
-    <section className="km-reveal relative w-full overflow-hidden font-['Inter',sans-serif] text-[var(--projects-premiumamenitiescardssection-text-4)]">
+    <section className="km-reveal relative w-full overflow-hidden px-5 text-[#0d2b22] sm:px-6">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.42]"
         style={{
@@ -53,7 +60,7 @@ export function PremiumAmenitiesCardsSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1680px] px-[24px] pb-[56px] pt-[12px] md:px-[120px]">
+      <div className="relative mx-auto max-w-[1680px] pb-[56px] pt-[12px]">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {amenityCards.map((card) => {
             const Icon = card.icon;
@@ -61,17 +68,78 @@ export function PremiumAmenitiesCardsSection() {
             return (
               <article
                 key={card.title}
-                className="min-h-[320px] rounded-[18px] bg-table-row px-[30px] pb-[36px] pt-[44px] md:min-h-[400px] md:px-[34px] md:pb-[44px] md:pt-[54px]"
+                className="
+                  flex
+                  min-h-[260px]
+                  flex-col
+                  items-start
+                  justify-start
+                  rounded-[18px]
+                  bg-[#efeedc]
+                  px-[30px]
+                  pb-[30px]
+                  pt-[38px]
+                  md:min-h-[300px]
+                  md:px-[32px]
+                  md:pb-[34px]
+                  md:pt-[44px]
+                  lg:min-h-[320px]
+                  lg:px-[34px]
+                  lg:pb-[36px]
+                  lg:pt-[48px]
+                "
               >
-                <div className="mb-[24px] flex h-[50px] w-[50px] items-center justify-center rounded-[10px] bg-table-row text-[var(--projects-premiumamenitiescardssection-text-6)] shadow-[0_3px_8px_rgba(0,0,0,0.16)]">
+                <div
+                  className="
+                    mb-[22px]
+                    flex
+                    h-[48px]
+                    w-[48px]
+                    items-center
+                    justify-center
+                    rounded-[9px]
+                    bg-white/80
+                    text-[#243a35]
+                    shadow-[0_3px_8px_rgba(0,0,0,0.16)]
+                    md:h-[50px]
+                    md:w-[50px]
+                  "
+                >
                   <Icon size={30} strokeWidth={1.75} />
                 </div>
 
-                <h3 className="max-w-[650px] text-[34px] font-[900] leading-[1.1] tracking-[-0.06em] md:text-[62px]">
+                <h3
+                  className="
+                    max-w-[650px]
+                    text-left
+                    font-['Inter',sans-serif]
+                    text-[32px]
+                    font-bold
+                    leading-[1.08]
+                    tracking-[-0.07em]
+                    text-[#0d2b22]
+                    sm:text-[38px]
+                    md:text-[42px]
+                    lg:text-[48px]
+                  "
+                >
                   {card.title}
                 </h3>
 
-                <p className="mt-[16px] max-w-[760px] text-[16px] font-[500] leading-[1.33] tracking-[-0.03em] text-[var(--projects-premiumamenitiescardssection-text-5)] md:text-[24px]">
+                <p
+                  className="
+                    mt-[18px]
+                    max-w-[760px]
+                    text-left
+                    font-['Inter',sans-serif]
+                    text-[18px]
+                    font-semibold
+                    leading-[1.25]
+                    tracking-[-0.035em]
+                    text-[#2f4842]
+                    md:text-[20px]
+                  "
+                >
                   {card.description}
                 </p>
               </article>
@@ -79,10 +147,29 @@ export function PremiumAmenitiesCardsSection() {
           })}
         </div>
 
-        <p className="mx-auto mt-[32px] max-w-[1640px] text-center text-[24px] font-[900] leading-[1.15] tracking-[-0.06em] md:text-[51px]">
-          Every feature at Kalamangala has been thoughtfully integrated to ensure
-          residents enjoy both comfort and long-term sustainability.
-        </p>
+        <p
+  className="
+    mx-auto
+    w-full
+    max-w-none
+    px-[30px]
+    text-center
+    font-['Inter',sans-serif]
+    text-[15px]
+    font-[700]
+    leading-[1.35]
+    tracking-[-0.035em]
+    text-[#082a25]
+    sm:text-[17px]
+    md:text-[19px]
+    lg:text-[20px]
+    xl:text-[21px]
+    2xl:text-[22px]
+  "
+>
+  Every feature at Kalamangala has been thoughtfully integrated to ensure
+  residents enjoy both comfort and long-term sustainability.
+</p>
       </div>
     </section>
   );

@@ -77,8 +77,8 @@ export const AboutSection = () => {
           <span
             className="
               absolute -top-[31px] left-0 inline-flex items-center
-              gap-[5px] text-[12px] font-black uppercase leading-none
-              tracking-[-0.055em] text-[var(--home-aboutsection-text-3)]
+              gap-[5px] text-[12px] font-semibold font-sans uppercase leading-none
+              tracking-[-0.055em] text-foreground
 
               max-[768px]:-top-[29px]
               max-[768px]:text-[12px]
@@ -127,10 +127,10 @@ export const AboutSection = () => {
           <p
             className="
               max-w-[612px]
-              text-[16px] font-bold
+              text-[16px] font-medium font-sans
               leading-[1.49]
               tracking-[-0.052em]
-              text-[var(--home-aboutsection-text-3)]
+              text-foreground
 
               min-[1440px]:max-w-[590px]
               min-[1440px]:text-[16px]
@@ -157,11 +157,11 @@ export const AboutSection = () => {
             to="/about"
             className="
               mt-[31px] inline-flex items-center gap-[9px]
-              text-[13px] font-black uppercase leading-none
-              tracking-[-0.055em] text-[var(--home-aboutsection-text-3)]
+              text-[15px] font-bold font-sans uppercase leading-none
+              tracking-[-0.055em] text-foreground
 
               max-[768px]:mt-[31px]
-              max-[768px]:text-[14px]
+              max-[768px]:text-[15px]
             "
           >
             <span className="border-b-[2px] border-foreground pb-[6px]">

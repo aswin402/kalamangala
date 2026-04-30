@@ -28,7 +28,7 @@ export const MissionVisionSection = () => {
 
         {/* Content */}
         <p
-          className={`mx-auto font-medium text-[var(--about-missionvisionsection-text-4)] tracking-[-0.045em] ${
+          className={`mx-auto font-medium text-white tracking-[-0.045em] ${
             isMission
               ? "max-w-[350px] text-[20px] leading-[1.3] sm:max-w-[1190px] sm:text-[25px] sm:leading-[1.28]"
               : "max-w-[350px] text-[20px] leading-[1.3] sm:max-w-[1210px] sm:text-[38px] sm:leading-[1.2]"

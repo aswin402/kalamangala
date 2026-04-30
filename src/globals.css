@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Pathway+Gothic+One&family=Satisfy&display=swap');
 @import "tailwindcss";
 @layer base {
   :root {
@@ -79,6 +79,7 @@
   --font-sans: "Inter", sans-serif;
   --font-display: "Inter", sans-serif;
   --font-script: "Satisfy", cursive;
+  --font-pathway: "Pathway Gothic One", sans-serif;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);

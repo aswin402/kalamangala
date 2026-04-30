@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { PlotsHero } from "./sections/PlotsHero";
-import { PlotsMarquee } from "./sections/PlotsMarquee";
 import { IntroSection } from "./sections/IntroSection";
 import { PrimeLocationSection } from "./sections/PrimeLocationSection";
 import { PremiumAmenitiesSection } from "./sections/PremiumAmenitiesSection";
@@ -14,6 +13,7 @@ import { NeighbourhoodGrowthSection } from "./sections/NeighbourhoodGrowthSectio
 import { AdvantageSection } from "./sections/AdvantageSection";
 import { CTASection } from "./sections/CTASection";
 import { FooterSection } from "./sections/FooterSection";
+import { MarqueeText } from "../../../global/components/MarqueeText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,10 +55,15 @@ export const PremiumResidentialPlotsPage = () => {
       className="min-h-screen overflow-x-hidden pt-[82px] md:pt-[92px]"
     >
       {/* Full width marquee */}
-      <PlotsMarquee />
+      <MarqueeText
+        text="Premium Residential Plots. "
+        duration={60}
+        className="mt-16 mb-16 overflow-hidden pb-10 pt-20 md:pt-24"
+        repeatCount={5}
+      />
 
       {/* Main centered content */}
-      <div className="mx-auto w-full max-w-[1540px] px-5 md:px-8 lg:px-[42px]">
+      <div className="mx-auto w-full max-w-[1540px] px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8">
         <PlotsHero />
         <IntroSection />
         <PrimeLocationSection />
