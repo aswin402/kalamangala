@@ -1,6 +1,7 @@
 import img13 from "../../../assets/location-advantage/img13.webp";
 import img15 from "../../../assets/location-advantage/img15.webp";
 
+
 export function AdvantageSection() {
   return (
     <>
@@ -10,7 +11,7 @@ export function AdvantageSection() {
           mt-[92px]
           grid
           w-full
-          max-w-[1480px]
+          max-w-[1500px]
           grid-cols-1
           items-center
           gap-[44px]

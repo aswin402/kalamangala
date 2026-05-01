@@ -12,7 +12,7 @@ export function ConnectivitySection() {
     <section className="km-reveal relative mx-auto mt-[42px] w-full pb-[86px] pt-[42px] text-center">
       {/* full background pattern */}
 
-      <div className="relative mx-auto w-full max-w-[1390px]">
+      <div className="relative mx-auto w-full max-w-[1500px]">
         <h2 className="font-bold text-[50px]">
           The Neighbourhood Advantage
         </h2>

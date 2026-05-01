@@ -1,7 +1,7 @@
 export function WelcomeSection() {
   return (
-    <section className="la-reveal mx-auto mt-[34px] flex w-full max-w-[1260px] flex-col items-center px-5 pb-[58px] text-center md:mt-[42px]">
-      <h1 className="max-w-[900px] font-['Inter'] text-[44px] font-black leading-[0.82] tracking-[-0.07em] text-foreground sm:text-[56px] md:text-[108px] xl:text-[124px]">
+    <section className="la-reveal mx-auto mt-[34px] flex w-full max-w-[1540px] flex-col items-center px-5 pb-[58px] text-center md:mt-[42px]">
+      <h1 className="max-w-[900px] font-['Inter'] text-[44px] font-bold leading-[0.82] tracking-[-0.07em] text-foreground sm:text-[56px] md:text-[108px] xl:text-[124px]">
         Welcome to The
         <br />
         Waterfront

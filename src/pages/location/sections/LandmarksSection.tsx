@@ -103,9 +103,9 @@ export function LandmarksSection() {
   ];
 
   return (
-    <section className="mx-auto mt-[70px] w-full max-w-[1490px] px-5 md:mt-[92px] md:px-8">
+    <section className="mx-auto mt-[70px] w-full max-w-[1540px] px-5 md:mt-[92px] md:px-8">
       <div className="la-reveal mb-[34px]">
-        <h2 className="font-['Inter'] text-[34px] font-black leading-[0.95] tracking-[-0.065em] text-foreground md:text-[46px]">
+        <h2 className="font-['Inter'] text-[34px] font-bold leading-[0.95] tracking-[-0.065em] text-foreground md:text-[46px]">
           Erode&apos;s Landmarks — All Within Minutes
         </h2>
 

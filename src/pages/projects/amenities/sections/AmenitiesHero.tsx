@@ -26,10 +26,10 @@ export function AmenitiesHero() {
           am-hero w-full
           mt-[38px] px-[11px]
           sm:mt-[56px] sm:px-6
-          md:mt-[82px] md:px-10
-          lg:mt-[118px] lg:px-0
-          xl:mt-[138px]
-          2xl:mt-[156px]
+          md:mt-[70px] md:px-10
+          lg:mt-[80px] lg:px-0
+          xl:mt-[90px]
+          2xl:mt-[100px]
         "
       >
         <div
