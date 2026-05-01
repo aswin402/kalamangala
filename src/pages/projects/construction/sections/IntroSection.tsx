@@ -1,19 +1,74 @@
 export function IntroSection() {
   return (
-    <section className="km-reveal mx-auto max-w-[1500px] px-5 pb-[58px] pt-[24px] text-center md:pt-[30px]">
-      <h1 className="mx-auto max-w-[1060px] font-['Inter',sans-serif] text-[76px] font-[900] leading-[0.86] tracking-[-0.07em] text-[var(--projects-introsection-text-4)] sm:text-[52px] md:text-[14px]">
+    <section className="km-reveal mx-auto max-w-[1500px] px-5 pb-14 pt-6 text-center md:pt-8">
+      <h1
+        className="
+          mx-auto
+          max-w-[1080px]
+          text-center
+          font-['Inter',sans-serif]
+          text-[52px]
+          font-bold
+          leading-[0.88]
+          tracking-[-0.075em]
+          text-foreground
+          sm:text-[70px]
+          md:text-[94px]
+          lg:text-[126px]
+        "
+      >
         Top Construction
         <br />
         Companies in Erode
       </h1>
 
-      <h2 className="mt-[10px] font-['Inter',sans-serif] text-[38px] font-[900] leading-[1.34] tracking-[-0.045em] text-[var(--projects-introsection-text-4)] md:text-[48px]">
+      <h2
+        className="
+          mt-4
+          text-center
+          font-['Inter',sans-serif]
+          text-[28px]
+          font-black
+          leading-none
+          tracking-[-0.04em]
+          text-foreground
+          sm:text-[34px]
+          md:text-[46px]
+          lg:text-[52px]
+        "
+      >
         Leading Construction Company in Tamil Nadu
       </h2>
 
-      <p className="mx-auto mt-[30px] max-w-[1400px] font-['Inter',sans-serif] text-[23px] font-[800] leading-[1.42] tracking-[-0.06em] text-[var(--projects-introsection-text-4)] md:mt-[48px] md:text-[48px]">
+      <p
+        className="
+          mx-auto
+          mt-[42px]
+          w-full
+          max-w-[1540px]
+          text-center
+          font-['Inter',sans-serif]
+          text-[18px]
+          font-semibold
+          leading-[1.28]
+          tracking-[-0.045em]
+          text-foreground
+          sm:text-[21px]
+          md:text-[25px]
+          lg:text-[27px]
+        "
+      >
         Welcome to Kalamangala, one of the{" "}
-        <span className="font-[900] text-[var(--projects-introsection-text-3)] underline underline-offset-[2px]">
+        <span
+          className="
+            font-black
+            text-[#0094ff]
+            underline
+            decoration-[#0094ff]
+            decoration-[2px]
+            underline-offset-[3px]
+          "
+        >
           top construction companies in Erode
         </span>{" "}
         known for delivering excellence in every structure we create. We
@@ -23,7 +78,25 @@ export function IntroSection() {
         and craftsmanship in the construction industry of Tamil Nadu.
       </p>
 
-      <button className="mt-[39px] h-[34px] w-[198px] rounded-full bg-card-green font-['Inter',sans-serif] text-[16px] font-[800] tracking-[-0.055em] text-[var(--projects-introsection-text-5)] transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-[var(--projects-introsection-text-4)]">
+      <button
+        className="
+          mt-[38px]
+          h-[34px]
+          w-[198px]
+          rounded-full
+          bg-card-green
+          font-['Inter',sans-serif]
+          text-[14px]
+          font-bold
+          tracking-[-0.02em]
+          text-white-text
+          transition-all
+          duration-300
+          hover:scale-105
+          hover:bg-primary
+          hover:text-foreground
+        "
+      >
         Contact Us
       </button>
     </section>

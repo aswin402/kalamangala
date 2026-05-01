@@ -6,7 +6,6 @@ import { IntroSection } from "./sections/IntroSection";
 import { PhilosophySection } from "./sections/PhilosophySection";
 import { ServicesSection } from "./sections/ServicesSection";
 import { AdvantageSection } from "./sections/AdvantageSection";
-import { LifestyleBenefitsSection } from "./sections/LifestyleBenefitsSection";
 import { WhyChooseSection } from "./sections/WhyChooseSection";
 import { CTASection } from "./sections/CTASection";
 import { FooterSection } from "./sections/FooterSection";
@@ -21,7 +20,6 @@ export function ConstructionCompanyPage() {
       <PhilosophySection />
       <ServicesSection />
       <AdvantageSection />
-      <LifestyleBenefitsSection />
       <WhyChooseSection />
       <CTASection />
       <FooterSection />

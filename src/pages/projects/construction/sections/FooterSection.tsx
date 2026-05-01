@@ -7,7 +7,7 @@ export function FooterSection() {
         className="
           font-['Inter',sans-serif]
           text-[42px]
-          font-[900]
+          font-bold
           leading-none
           tracking-[-0.075em]
           text-[var(--projects-footersection-text-1)]

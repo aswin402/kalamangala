@@ -14,15 +14,6 @@ export function FooterSection() {
         md:py-[52px]
         lg:py-[48px]
       "
-      style={{
-        backgroundColor: "#fbfcf0",
-        backgroundImage: `
-          linear-gradient(120deg, rgba(13,43,34,0.055) 12px, transparent 12px),
-          linear-gradient(300deg, rgba(13,43,34,0.055) 12px, transparent 12px)
-        `,
-        backgroundSize: "42px 42px",
-        backgroundPosition: "0 0",
-      }}
     >
       <div className="mx-auto max-w-[1455px]">
         <h3

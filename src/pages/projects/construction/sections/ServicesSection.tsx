@@ -47,20 +47,8 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section className="mx-auto mt-[34px] max-w-[1430px] px-5 pb-[28px]">
-      <h2
-        className="
-          km-reveal
-          mb-[30px]
-          font-['Inter',sans-serif]
-          text-[34px]
-          font-[900]
-          leading-none
-          tracking-[-0.075em]
-          text-[var(--projects-servicessection-text-2)]
-          md:text-[44px]
-        "
-      >
+    <section className="mx-auto mt-[34px]  max-w-[1540px] px-5 pb-[28px]">
+      <h2 className="km-reveal mb-8 text-2xl font-black tracking-tight text-foreground md:text-5xl">
         Our Core Construction Services
       </h2>
 
@@ -99,33 +87,11 @@ export function ServicesSection() {
               />
 
               <div className="mt-[34px]">
-                <h3
-                  className="
-                    font-['Inter',sans-serif]
-                    text-[23px]
-                    font-[900]
-                    leading-none
-                    tracking-[-0.055em]
-                    text-[var(--projects-servicessection-text-3)]
-                    md:text-[25px]
-                  "
-                >
+                <h3 className="text-2xl font-bold tracking-tight text-white-text md:text-3xl">
                   {service.title}
                 </h3>
 
-                <p
-                  className="
-                    mt-[13px]
-                    max-w-[1360px]
-                    font-['Inter',sans-serif]
-                    text-[14px]
-                    font-[700]
-                    leading-[1.32]
-                    tracking-[-0.04em]
-                    text-[var(--projects-servicessection-text-3)]/90
-                    md:text-[16px]
-                  "
-                >
+                <p className="mt-4 max-w-[1360px] text-base font-bold leading-relaxed tracking-wide text-white-text/90 md:text-lg">
                   {service.desc}
                 </p>
               </div>

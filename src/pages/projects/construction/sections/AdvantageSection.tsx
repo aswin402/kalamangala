@@ -1,123 +1,217 @@
 import img8 from "../../../../assets/construction-company/img8.webp";
+import img10 from "../../../../assets/construction-company/img10.webp";
 
 export function AdvantageSection() {
   return (
-    <section
-      className="
-        mx-auto
-        mt-[26px]
-        grid
-        max-w-[1455px]
-        grid-cols-1
-        items-center
-        gap-[22px]
-        px-[40px]
-        pb-[42px]
-        md:mt-[38px]
-        md:grid-cols-[0.9fr_1.1fr]
-        md:gap-[70px]
-        md:px-5
-        md:pb-[26px]
-      "
-    >
-      {/* Image - First on mobile, right side on desktop */}
-      <div
+    <>
+      <section
         className="
-          km-reveal
-          order-1
-          overflow-hidden
-          rounded-[18px]
-          md:order-2
+          mx-auto
+          mt-[92px]
+          grid
+          w-full
+          max-w-[1500px]
+          grid-cols-1
+          items-center
+          gap-[44px]
+          px-5
+          md:mt-[108px]
+          md:grid-cols-[0.94fr_1.06fr]
+          lg:gap-[58px]
+          xl:px-0
         "
       >
-        <img
-          src={img8}
-          alt="Kalamangala advantage"
-          className="
-            h-[350px]
-            w-full
-            object-cover
-            object-center
-            sm:h-[390px]
-            md:h-[555px]
-          "
-        />
-      </div>
+        {/* Left Content */}
+        <div className="la-reveal md:pl-[6px]">
+          <h2
+            className="
+              max-w-[670px]
+              font-['Inter',sans-serif]
+              text-[42px]
+              font-bold
+              leading-[1.02]
+              tracking-[-0.075em]
+              text-[#0d2b22]
+              sm:text-[48px]
+              md:text-[50px]
+              lg:text-[54px]
+            "
+          >
+            Experience the Kalamangala
+            <br />
+            Advantage
+          </h2>
 
-      {/* Content - Below image on mobile, left side on desktop */}
-      <div className="km-reveal order-2 md:order-1 md:pl-[6px]">
-        <h2
-          className="
-            max-w-[610px]
-            font-['Inter',sans-serif]
-            text-[16px]
-            font-[900]
-            leading-[0.95]
-            tracking-[-0.035em]
-            text-foreground
-            md:text-[18px]
-          "
-        >
-          Experience the Kalamangala Advantage
-        </h2>
+          <p
+            className="
+              mt-[12px]
+              max-w-[700px]
+              font-['Inter',sans-serif]
+              text-[15px]
+              font-medium
+              italic
+              leading-[1.62]
+              tracking-[-0.025em]
+              text-[#263c36]/80
+              md:text-[16px]
+            "
+          >
+            Being a luxury home developer in Tamil Nadu, Kalamangala brings more
+            than just structures – we bring vision, trust, and lifestyle
+            excellence.
+          </p>
 
-        <p
-          className="
-            mt-[12px]
-            max-w-[720px]
-            font-['Inter',sans-serif]
-            text-[16px]
-            font-[400]
-            italic
-            leading-[1.22]
-            tracking-[-0.045em]
-            text-black/70
-            md:mt-[18px]
-            md:text-[15px]
-            md:leading-[1.25]
-          "
-        >
-          Being a luxury home developer in Tamil Nadu, Kalamangala brings more
-          than just structures — we bring vision, trust, and lifestyle
-          excellence.
-        </p>
+          <div
+            className="
+              mt-[10px]
+              max-w-[720px]
+              font-['Inter',sans-serif]
+              text-[16px]
+              font-medium
+              leading-[1.15]
+              tracking-[-0.02em]
+              text-black
+              md:text-[17px]
+            "
+          >
+            <p>
+              Our goal has always been to choose locations that naturally
+              enhance the quality of life.
+            </p>
 
+            <p>That’s why The Waterfront stands apart:</p>
+
+            <ul className="list-disc pl-[20px]">
+              <li>Strategically chosen for accessibility and serenity</li>
+              <li>Built with sustainable layouts and modern amenities</li>
+              <li>Designed for families, investors, and nature lovers alike</li>
+            </ul>
+
+            <p className="mt-[20px] leading-[1.3]">
+              Every home here reflects Kalamangala’s promise of{" "}
+              <span className="font-[800]">
+                luxury that lasts a lifetime.
+              </span>
+            </p>
+          </div>
+        </div>
+
+        {/* Right Image */}
         <div
           className="
-            mt-[13px]
-            max-w-[760px]
-            font-['Inter',sans-serif]
-            text-[16px]
-            font-[500]
-            leading-[1.05]
-            tracking-[-0.035em]
-            text-black
-            md:mt-[12px]
-            md:text-[15px]
-            md:leading-[1.12]
+            la-card
+            h-[340px]
+            overflow-hidden
+            rounded-[18px]
+            sm:h-[430px]
+            md:h-[520px]
+            lg:h-[555px]
+            xl:h-[555px]
           "
         >
-          <p>
-            Our goal has always been to choose locations that naturally enhance
-            the quality of life.
-          </p>
+          <img
+            src={img8}
+            alt="Kalamangala Advantage"
+            className="
+              h-full
+              w-full
+              object-cover
+              object-center
+            "
+          />
+        </div>
+      </section>
 
-          <p>That’s why The Waterfront stands apart:</p>
+      <section
+        className="
+          mx-auto
+          mt-[120px]
+          grid
+          w-full
+          max-w-[1480px]
+          grid-cols-1
+          items-center
+          gap-[44px]
+          px-5
+          pb-[90px]
+          md:grid-cols-[0.98fr_1.02fr]
+          xl:px-0
+        "
+      >
+        <div
+          className="
+            la-card
+            h-[360px]
+            overflow-hidden
+            rounded-[18px]
+            sm:h-[430px]
+            md:h-[520px]
+            lg:h-[560px]
+          "
+        >
+          <img
+            src={img10}
+            alt="Lifestyle Benefits"
+            className="h-full w-full object-cover object-center"
+          />
+        </div>
 
-          <ul className="mt-[2px] list-disc pl-[19px]">
-            <li>Strategically chosen for accessibility and serenity</li>
-            <li>Built with sustainable layouts and modern amenities</li>
-            <li>Designed for families, investors, and nature lovers alike</li>
+        <div className="la-reveal md:pl-[20px]">
+          <h2
+            className="
+              max-w-[650px]
+              font-['Inter',sans-serif]
+              text-[40px]
+              font-bold
+              leading-[1.02]
+              tracking-[-0.075em]
+              text-[#0d2b22]
+              sm:text-[48px]
+              md:text-[54px]
+            "
+          >
+            Lifestyle Benefits You’ll Love
+          </h2>
+
+          <ul
+            className="
+              mt-[22px]
+              list-disc
+              pl-[22px]
+              font-['Inter',sans-serif]
+              text-[17px]
+              font-[800]
+              leading-[1.55]
+              tracking-[-0.025em]
+              text-black
+              md:text-[18px]
+            "
+          >
+            <li>Morning walks with the river breeze</li>
+            <li>Quick temple visits without traffic</li>
+            <li>Weekend shopping in minutes</li>
+            <li>Easy school runs and daily commutes</li>
+            <li>Peaceful nights with no city noise</li>
           </ul>
 
-          <p className="mt-[22px]">
-            Every home here reflects Kalamangala’s promise of{" "}
-            <strong className="font-[900]">
-              luxury that lasts a lifetime.
-            </strong>
+          <p
+            className="
+              mt-[24px]
+              max-w-[560px]
+              font-['Inter',sans-serif]
+              text-[17px]
+              font-medium
+              leading-[1.45]
+              tracking-[-0.025em]
+              text-black
+              md:text-[18px]
+            "
+          >
+            It’s not just location — it’s a lifestyle crafted for those who
+            appreciate fine living and meaningful moments.
           </p>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

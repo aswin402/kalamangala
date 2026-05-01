@@ -4,43 +4,45 @@ export function CTASection() {
   return (
     <section
       className="
-        km-reveal
         mx-auto
-        mt-[8px]
-        w-[calc(100%-82px)]
-        max-w-[318px]
-        pb-[4px]
-        md:mt-[42px]
-        md:w-full
-        md:max-w-[1460px]
-        md:px-5
-        md:pb-[50px]
+        mt-[72px]
+        w-full
+        max-w-[1540px]
+        px-4
+        sm:px-5
+        md:mt-[96px]
+        lg:mt-[118px]
       "
     >
-      <div
+      <article
         className="
+          la-card
+          grid
+          w-full
           overflow-hidden
-          rounded-[30px]
+          rounded-[28px]
           bg-card-green
-          md:grid
-          md:min-h-[500px]
-          md:rounded-[28px]
-          md:grid-cols-[0.98fr_1.02fr]
+          text-white-text
+          lg:h-[480px]
+          lg:grid-cols-[0.98fr_1.02fr]
         "
       >
-        {/* Left Image */}
+        {/* LEFT IMAGE */}
         <div
           className="
             relative
-            h-[210px]
+            h-[280px]
             w-full
-            md:h-auto
-            md:min-h-[500px]
+            overflow-hidden
+            rounded-[28px]
+            sm:h-[340px]
+            md:h-[400px]
+            lg:h-[480px]
           "
         >
           <img
             src={img9}
-            alt="The Waterfront"
+            alt="Live Connected"
             className="
               absolute
               inset-0
@@ -52,32 +54,35 @@ export function CTASection() {
           />
         </div>
 
-        {/* Right Content */}
+        {/* RIGHT CONTENT */}
         <div
           className="
             flex
+            h-full
             flex-col
             justify-center
-            px-[28px]
-            pb-[34px]
-            pt-[38px]
-            md:px-[62px]
-            md:py-[48px]
+            px-6
+            py-8
+            sm:px-8
+            md:px-10
+            lg:px-[38px]
+            lg:py-[34px]
+            xl:px-[38px]
+            2xl:px-[38px]
           "
         >
           <h2
             className="
-              max-w-[270px]
-              font-['Inter',sans-serif]
-              text-[54px]
-              font-[900]
-              leading-[1.6]
-              tracking-[-0.065em]
-              text-white-text
-              md:max-w-[560px]
-              md:text-[54px]
-              md:leading-[0.98]
-              md:tracking-[-0.075em]
+              text-primary
+              text-[34px]
+              font-bold
+              leading-[1.04]
+              tracking-[-0.055em]
+              sm:text-[40px]
+              md:text-[46px]
+              lg:text-[48px]
+              xl:text-[50px]
+              2xl:text-[50px]
             "
           >
             Live Connected.
@@ -87,108 +92,48 @@ export function CTASection() {
             Live The Waterfront.
           </h2>
 
-          {/* Mobile Content */}
           <div
             className="
-              mt-[24px]
-              block
-              max-w-[264px]
-              font-['Inter',sans-serif]
-              text-[42px]
-              font-[600]
-              leading-[1.66]
-              tracking-[-0.07em]
-              text-[var(--projects-ctasection-text-3)]
-              md:hidden
+              mt-[32px]
+              max-w-[760px]
+              text-[14px]
+              font-semibold
+              leading-[1.68]
+              tracking-[-0.02em]
+              text-white-text
+              sm:text-[15px]
+              md:text-[15px]
+              lg:text-[14px]
+              xl:text-[14px]
+              2xl:text-[15px]
             "
           >
             <p>
-              What makes Kalamangala one of the{" "}
-              <strong className="font-[900]">
-                luxury home builders in Tamil Nadu
-              </strong>{" "}
-              is not just the architecture — it’s the philosophy. Every
-              Kalamangala project is:
-            </p>
-
-            <ul className="mt-[4px] list-disc space-y-[2px] pl-[18px]">
-              <li>
-                <strong className="font-[900]">
-                  Architecturally Distinct
-                </strong>{" "}
-                – blending local aesthetics with modern minimalism.
-              </li>
-              <li>
-                <strong className="font-[900]">
-                  Functionally Efficient
-                </strong>{" "}
-                – designed for long-term sustainability.
-              </li>
-              <li>
-                <strong className="font-[900]">
-                  Emotionally Connected
-                </strong>{" "}
-                – nurturing communities, not just houses.
-              </li>
-            </ul>
-
-            <p className="mt-[28px]">
-              The Waterfront embodies this very spirit — offering a luxurious yet
-              grounded lifestyle.
-            </p>
-          </div>
-
-          {/* Desktop / Tablet Content */}
-          <div
-            className="
-              mt-[34px]
-              hidden
-              max-w-[650px]
-              font-['Inter',sans-serif]
-              text-[42px]
-              font-[600]
-              leading-[1.65]
-              tracking-[-0.07em]
-              text-[var(--projects-ctasection-text-3)]
-              md:block
-              md:text-[50px]
-            "
-          >
-            <p>
-              At Kalamangala, we didn’t just build homes — we built a lifestyle
-              rooted in location excellence.
-            </p>
-
-            <p className="mt-[6px]">
+              At Kalamangala, we didn&apos;t just build homes — we built a
+              lifestyle rooted in location excellence.
+              <br />
               The Waterfront stands as a perfect example of how thoughtful
               planning transforms living standards.
-            </p>
-
-            <p className="mt-[6px]">
+              <br />
               From morning devotion at Thindal Kovil to evening shopping in the
               city, from weekend train trips to peaceful riverside sunsets —
               everything you love is within reach.
-            </p>
-
-            <p className="mt-[6px]">This is not just a home.</p>
-
-            <p className="mt-[6px]">
-              It’s your{" "}
-              <strong className="font-[900]">
-                gateway to premium living,
-              </strong>{" "}
-              crafted by a{" "}
-              <strong className="font-[900]">
-                luxury home developer in Tamil Nadu
-              </strong>{" "}
+              <br />
+              This is not just a home.
+              <br />
+              It&apos;s your{" "}
+              <span className="font-bold">
+                gateway to premium living, crafted by a luxury home developer in
+                Tamil Nadu
+              </span>{" "}
               who understands what modern families truly value —{" "}
-              <em className="font-[800]">
+              <span className="italic">
                 time, peace, and pride of ownership.
-              </em>
+              </span>
             </p>
           </div>
         </div>
-      </div>
+      </article>
     </section>
   );
 }
