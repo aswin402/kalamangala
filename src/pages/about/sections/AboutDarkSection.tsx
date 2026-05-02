@@ -95,23 +95,23 @@ export const AboutDarkSection = () => {
         }
       });
 
-      const counterEl = sectionRef.current?.querySelector("[data-counter]");
-      if (counterEl) {
+      const counterEls = sectionRef.current?.querySelectorAll("[data-counter]");
+      counterEls?.forEach((el) => {
         const obj = { value: 0 };
         gsap.to(obj, {
           value: 33,
           duration: 2,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: counterEl,
+            trigger: el,
             start: "top 85%",
             toggleActions: "play none none reverse",
           },
           onUpdate: () => {
-            counterEl.textContent = `${Math.round(obj.value)}+`;
+            el.textContent = `${Math.round(obj.value)}+`;
           },
         });
-      }
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -275,8 +275,8 @@ export const AboutDarkSection = () => {
                 </div>
 
                 {/* DESKTOP 33+ CARD */}
-                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] text-foreground bg-card md:flex xl:h-[260px]" data-counter>
-                  <h3 className="text-[62px] font-semibold leading-none tracking-[-0.06em] lg:text-[72px]">
+                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] bg-white text-foreground md:flex xl:h-[300px]">
+                  <h3 className="text-[100px] font-bold leading-none tracking-[-0.06em] md:text-[130px] lg:text-[150px]" data-counter>
                     33+
                   </h3>
 
@@ -319,8 +319,8 @@ export const AboutDarkSection = () => {
               </button>
 
               {/* MOBILE 33+ CARD */}
-              <div className="order-4 flex h-[200px] flex-col items-center justify-center rounded-[9px] text-foreground md:hidden" data-counter>
-                <h3 className="text-[72px] font-semibold leading-none tracking-[-0.07em]">
+              <div className="order-4 flex h-[220px] flex-col items-center justify-center rounded-[9px] bg-white text-foreground md:hidden">
+                <h3 className="text-[100px] font-bold leading-none tracking-[-0.07em]" data-counter>
                   33+
                 </h3>
 
