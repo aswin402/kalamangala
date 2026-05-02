@@ -96,11 +96,17 @@ export const ProjectsSection = () => {
             lg:left-[180px] lg:top-[12px]
           "
         >
-          <span className="grid h-[11px] w-[11px] place-items-center rounded-full border border-foreground">
-            <span className="h-[6px] w-[6px] rounded-full bg-card-green" />
-          </span>
+          <span
+            className="
+              grid h-[14px] w-[14px] place-items-center rounded-full
+              border border-foreground
+              before:block before:h-[8px] before:w-[8px] before:rounded-full before:bg-card-green
+              md:h-[16px] md:w-[16px]
+              md:before:h-[9px] md:before:w-[9px]
+            "
+          />
 
-          <span className="text-[12px] font-semibold font-sans uppercase leading-none tracking-[-0.06em] text-foreground">
+          <span className="text-[11px] font-[800] font-sans uppercase leading-none tracking-[-0.045em] text-foreground md:text-[12px]">
             Our Portfolio
           </span>
         </div>
@@ -110,13 +116,21 @@ export const ProjectsSection = () => {
           className="
             relative z-10
             font-display font-medium text-[var(--home-projectssection-text-7)]
-            text-[76px] leading-[0.76] tracking-[-0.118em]
-            sm:text-[92px]
-            md:text-[clamp(108px,12.1vw,170px)]
-            md:tracking-[-0.108em]
-            lg:text-[218px]
-            lg:leading-[0.72]
-            lg:tracking-[-0.118em]
+            text-[220px] leading-[0.76] tracking-[-0.08em]
+
+            sm:text-[82px]
+
+            md:text-[clamp(142px,13.7vw,174px)]
+            md:leading-[0.72]
+            md:tracking-[-0.08em]
+
+            lg:text-[clamp(154px,13.7vw,188px)]
+
+            xl:text-[220px]
+            xl:leading-[0.72]
+            xl:tracking-[-0.08em]
+
+            2xl:text-[220px]
           "
         >
           Projects

@@ -85,9 +85,11 @@ export const AboutSection = () => {
           >
             <span
               className="
-                grid h-[12px] w-[12px] place-items-center rounded-full
+                grid h-[14px] w-[14px] place-items-center rounded-full
                 border border-foreground
-                before:block before:h-[7px] before:w-[7px] before:rounded-full before:bg-card-green
+                before:block before:h-[8px] before:w-[8px] before:rounded-full before:bg-card-green
+                md:h-[16px] md:w-[16px]
+                md:before:h-[9px] md:before:w-[9px]
               "
             />
             ABOUT US

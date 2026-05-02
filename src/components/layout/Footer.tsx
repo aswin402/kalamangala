@@ -301,7 +301,7 @@ export const Footer = () => {
           mt-auto w-full overflow-hidden
           px-[18px] pb-[30px] pt-[40px] mb-12
 
-          max-lg:px-[14px] max-lg:pt-[56px]
+          max-lg:px-[10px] max-lg:pt-[56px]
           max-md:px-[10px] max-md:pt-[45px]
           max-sm:px-[12px] max-sm:pt-[40px] max-sm:pb-[28px]
         "

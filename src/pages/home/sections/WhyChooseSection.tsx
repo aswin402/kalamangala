@@ -202,7 +202,7 @@ export const WhyChooseSection = () => {
       id="why-choose"
       className="relative overflow-hidden px-0 pb-[95px] pt-[86px] md:px-[28px] lg:px-[44px] xl:px-[56px] 2xl:px-[88px] max-[768px]:pb-[48px] max-[768px]:pt-[36px]"
     >
-      <div className="mx-auto grid w-full max-w-[1205px] grid-cols-1 items-stretch gap-[24px] px-[20px] md:max-w-[1320px] md:px-0 xl:min-h-[640px] xl:max-w-[1360px] xl:grid-cols-[610px_1fr] xl:gap-[18px]">
+      <div className="mx-auto grid w-full max-w-[1205px] grid-cols-1 items-stretch gap-[24px] px-[20px] md:max-w-[1320px] md:px-0 xl:min-h-[640px] xl:max-w-[1520px] xl:grid-cols-[680px_1fr] xl:gap-[18px]">
         {/* IMAGE CARD */}
         <motion.div
           className="relative order-2 h-[700px] min-w-0 overflow-hidden rounded-[8px] md:h-[680px] lg:h-[700px] xl:order-1 xl:h-full"

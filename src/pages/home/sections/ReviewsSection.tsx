@@ -103,16 +103,16 @@ export const ReviewsSection = () => {
           w-fit
 
           md:mx-0
-          md:ml-[54px]
+          md:ml-[160px]
           md:mb-[64px]
 
-          lg:ml-[56px]
+          lg:ml-[160px]
           lg:mb-[66px]
 
-          xl:ml-[56px]
+          xl:ml-[160px]
           xl:mb-[66px]
 
-          2xl:ml-[56px]
+          2xl:ml-[160px]
         "
       >
         {/* Small label */}
@@ -120,58 +120,35 @@ export const ReviewsSection = () => {
           className="
             absolute
             z-20
-            flex
-            items-center
-            gap-[5px]
             whitespace-nowrap
+            ml-6
 
             left-[54px]
             top-[-17px]
 
             md:left-[116px]
-            md:top-[15px]
+            md:top-[4px]
 
             lg:left-[117px]
-            lg:top-[16px]
+            lg:top-[4px]
 
             xl:left-[117px]
-            xl:top-[16px]
+            xl:top-[4px]
 
             2xl:left-[117px]
-            2xl:top-[16px]
+            2xl:top-[4px]
           "
         >
-          <span
-            className="
-              grid
-              h-[10px]
-              w-[10px]
-              place-items-center
-              rounded-full
-              border
-              border-foreground
-
-              md:h-[11px]
-              md:w-[11px]
-            "
-          >
-            <span className="h-[5px] w-[5px] rounded-full bg-card-green md:h-[6px] md:w-[6px]" />
-          </span>
-
-          <span
-            className="
-              text-[9px]
-              font-black
-              uppercase
-              leading-none
-              tracking-[-0.06em]
-              text-foreground
-
-              md:text-[10px]
-              lg:text-[10px]
-              xl:text-[10px]
-            "
-          >
+          <span className="inline-flex items-center gap-[6px] text-[11px] font-[800] uppercase leading-none tracking-[-0.045em] text-foreground md:text-[12px]">
+            <span
+              className="
+                grid h-[14px] w-[14px] place-items-center rounded-full
+                border border-foreground
+                before:block before:h-[8px] before:w-[8px] before:rounded-full before:bg-card-green
+                md:h-[16px] md:w-[16px]
+                md:before:h-[9px] md:before:w-[9px]
+              "
+            />
             Clients&apos; Words
           </span>
         </div>
@@ -180,25 +157,24 @@ export const ReviewsSection = () => {
           ref={reviewsHeadingRef}
           className="
             font-display
-            text-[62px]
+            text-[220px]
             font-medium
             leading-[0.76]
-            tracking-[-0.108em]
+            tracking-[-0.08em]
             text-foreground
 
             sm:text-[82px]
 
             md:text-[clamp(142px,13.7vw,174px)]
             md:leading-[0.72]
-            md:tracking-[-0.112em]
+            md:tracking-[-0.08em]
 
             lg:text-[clamp(154px,13.7vw,188px)]
 
-            xl:text-[176px]
+            xl:text-[220px]
             xl:leading-[0.72]
-            xl:tracking-[-0.112em]
-
-            2xl:text-[176px]
+            xl:tracking-[-0.08em]
+            2xl:text-[220px]
           "
         >
           Reviews
@@ -221,7 +197,7 @@ export const ReviewsSection = () => {
                 w-[326px]
                 shrink-0
                 flex-col
-                bg-white-text
+                bg-[#f7f6e9]
                 px-[20px]
                 pt-[17px]
 
@@ -231,14 +207,14 @@ export const ReviewsSection = () => {
                 md:pt-[17px]
               "
             >
-              <div className="mb-[88px] md:mb-[88px]">
+              <div className="mb-[68px] md:mb-[68px]">
                 <h4
                   className="
                     font-sans
-                    text-[20px]
+                    text-[17px]
                     font-bold
                     leading-[1]
-                    tracking-[-0.04em]
+                    tracking-[-0.03em]
                     text-foreground
                   "
                 >
@@ -247,14 +223,14 @@ export const ReviewsSection = () => {
 
                 <span
                   className="
-                    mt-[7px]
+                    mt-[5px]
                     block
-                    text-[10px]
-                    font-black
+                    text-[9px]
+                    font-semibold
                     uppercase
                     leading-none
-                    tracking-[0.02em]
-                    text-[var(--home-reviewssection-text-5)]/80
+                    tracking-[0.04em]
+                    text-foreground/55
                   "
                 >
                   {review.role}
@@ -265,11 +241,11 @@ export const ReviewsSection = () => {
                 className="
                   max-w-[286px]
                   font-sans
-                  text-[20px]
-                  font-normal
-                  leading-[1.25]
-                  tracking-[-0.045em]
-                  text-[#17302a]
+                  text-[16px]
+                  font-medium
+                  leading-[1.35]
+                  tracking-[-0.02em]
+                  text-foreground
                 "
               >
                 &quot;{review.text}&quot;
