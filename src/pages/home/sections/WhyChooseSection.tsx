@@ -1,46 +1,54 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import img3 from '@/assets/homepage/img3.avif';
-import { SectionLabel } from '../components/SectionLabel';
-import { ArrowIcon14 } from '../components/icons';
+import img3 from "@/assets/homepage/img3.avif";
+import { SectionLabel } from "../components/SectionLabel";
+import { ArrowIcon14 } from "../components/icons";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const accordionItems = [
   {
-    title: 'Client-Centric Approach',
+    title: "Client-Centric Approach",
     content:
       "Our clients' needs and preferences are at the heart of everything we do, guiding our process and decisions.",
   },
   {
-    title: 'Quality',
+    title: "Quality",
     content:
-      'We use premium materials and partner with top-tier contractors to deliver structures that stand the test of time.',
+      "We use premium materials and partner with top-tier contractors to deliver structures that stand the test of time.",
   },
   {
-    title: 'Innovation',
+    title: "Innovation",
     content:
-      'We continuously integrate the latest architectural trends and smart technologies to create future-ready living spaces.',
+      "We continuously integrate the latest architectural trends and smart technologies to create future-ready living spaces.",
   },
   {
-    title: 'Sustainable Practices',
+    title: "Sustainable Practices",
     content:
-      'Our projects feature energy-efficient designs, water conservation systems, and eco-friendly materials.',
+      "Our projects feature energy-efficient designs, water conservation systems, and eco-friendly materials.",
   },
   {
-    title: 'Collaboration',
+    title: "Collaboration",
     content:
-      'We work closely with world-renowned architects, designers, and urban planners to bring visionary concepts to life.',
+      "We work closely with world-renowned architects, designers, and urban planners to bring visionary concepts to life.",
   },
   {
-    title: 'Integrity',
+    title: "Integrity",
     content:
-      'Transparency and honesty are the pillars of every relationship we build—with clients, partners, and communities.',
+      "Transparency and honesty are the pillars of every relationship we build—with clients, partners, and communities.",
   },
 ];
+
+const springTransition = {
+  type: "spring" as const,
+  stiffness: 362,
+  damping: 100,
+  mass: 1,
+};
 
 const ItemIcon = ({ index }: { index: number }) => {
   const icons = [
@@ -109,6 +117,7 @@ interface AccordionItemProps {
   index: number;
   isOpen: boolean;
   onClick: () => void;
+  prefersReducedMotion: boolean;
 }
 
 const AccordionItem = ({
@@ -117,6 +126,7 @@ const AccordionItem = ({
   index,
   isOpen,
   onClick,
+  prefersReducedMotion,
 }: AccordionItemProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -124,19 +134,28 @@ const AccordionItem = ({
     if (!contentRef.current) return;
 
     gsap.to(contentRef.current, {
-      height: isOpen ? 'auto' : 0,
+      height: isOpen ? "auto" : 0,
       opacity: isOpen ? 1 : 0,
       duration: isOpen ? 0.32 : 0.22,
-      ease: isOpen ? 'power2.out' : 'power2.in',
-      overwrite: 'auto',
+      ease: isOpen ? "power2.out" : "power2.in",
+      overwrite: "auto",
     });
   }, [isOpen]);
 
   return (
-    <div
+    <motion.div
       className={`transition-colors duration-300 ${
-        isOpen ? 'rounded-[8px] bg-white/[0.045]' : ''
+        isOpen ? "rounded-[8px] bg-white/[0.045]" : ""
       }`}
+      initial={
+        prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 90, scale: 0.98 }
+      }
+      whileInView={
+        prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }
+      }
+      viewport={{ margin: "-50px" }}
+      transition={prefersReducedMotion ? { duration: 0 } : springTransition}
+      style={prefersReducedMotion ? {} : { willChange: "transform" }}
     >
       <button
         type="button"
@@ -155,7 +174,7 @@ const AccordionItem = ({
           viewBox="0 0 14 14"
           fill="none"
           className={`shrink-0 transition-transform duration-300 ${
-            isOpen ? 'rotate-180' : ''
+            isOpen ? "rotate-180" : ""
           }`}
         >
           <path
@@ -173,7 +192,7 @@ const AccordionItem = ({
           {content}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -181,44 +200,75 @@ export const WhyChooseSection = () => {
   const whyChooseSectionRef = useRef<HTMLElement>(null);
   const whyChooseLeftColRef = useRef<HTMLDivElement>(null);
   const whyChooseRightColRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        whyChooseLeftColRef.current,
-        { opacity: 0, x: -42 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1.05,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: whyChooseSectionRef.current,
-            start: 'top 74%',
-          },
-        }
-      );
+    if (prefersReducedMotion) return;
 
-      gsap.fromTo(
-        whyChooseRightColRef.current,
-        { opacity: 0, x: 42 },
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: whyChooseSectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      tl.fromTo(
+        whyChooseLeftColRef.current,
+        {
+          opacity: 0,
+          y: 170,
+        },
         {
           opacity: 1,
-          x: 0,
+          y: 0,
           duration: 1.05,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: whyChooseSectionRef.current,
-            start: 'top 74%',
-          },
-        }
+          ease: "power3.out",
+        },
+        0
+      ).fromTo(
+        whyChooseRightColRef.current,
+        {
+          opacity: 0,
+          y: 170,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.05,
+          ease: "power3.out",
+          delay: 0.2,
+        },
+        0
       );
     }, whyChooseSectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [prefersReducedMotion]);
+
+  const handleImageHover = () => {
+    if (prefersReducedMotion || !imageRef.current) return;
+
+    gsap.to(imageRef.current, {
+      scale: 1.06,
+      duration: 0.6,
+      ease: "power2.out",
+    });
+  };
+
+  const handleImageLeave = () => {
+    if (prefersReducedMotion || !imageRef.current) return;
+
+    gsap.to(imageRef.current, {
+      scale: 1,
+      duration: 0.6,
+      ease: "power2.out",
+    });
+  };
 
   return (
     <section
@@ -228,14 +278,35 @@ export const WhyChooseSection = () => {
     >
       <div className="mx-auto grid w-full max-w-[1205px] grid-cols-1 items-stretch gap-[24px] px-[20px] md:max-w-[1320px] md:px-0 xl:min-h-[640px] xl:max-w-[1360px] xl:grid-cols-[610px_1fr] xl:gap-[18px]">
         {/* IMAGE CARD */}
-        <div
+        <motion.div
           ref={whyChooseLeftColRef}
           className="relative order-2 h-[700px] min-w-0 overflow-hidden rounded-[8px] md:h-[680px] lg:h-[700px] xl:order-1 xl:h-full"
+          initial={
+            prefersReducedMotion
+              ? { opacity: 0 }
+              : { opacity: 0, y: 170 }
+          }
+          whileInView={
+            prefersReducedMotion
+              ? { opacity: 1 }
+              : { opacity: 1, y: 0 }
+          }
+          viewport={{ once: false }}
+          transition={
+            prefersReducedMotion
+              ? { duration: 0 }
+              : { ...springTransition, delay: 0 }
+          }
+          style={prefersReducedMotion ? {} : { willChange: "transform" }}
+          onMouseEnter={handleImageHover}
+          onMouseLeave={handleImageLeave}
         >
           <img
+            ref={imageRef}
             src={img3}
             alt="Kalamangala building"
-            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            style={{ transform: "scale(1)" }}
           />
 
           <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[21px] pb-[27px] pt-[24px] backdrop-blur-[11px] md:px-[36px] md:pb-[36px] md:pt-[34px] xl:px-[34px] xl:pb-[36px] xl:pt-[34px]">
@@ -246,8 +317,8 @@ export const WhyChooseSection = () => {
 
             <p className="mb-[39px] max-w-[500px] text-[16px] font-medium leading-[1.45] tracking-[-0.025em] text-white/90 md:max-w-[570px] md:text-[17px] max-[480px]:text-[15px]">
               Our craft is a harmony of space and nature, shaping communities
-              where timeless elegance meets modern comfort, creating homes
-              that inspire and endure.
+              where timeless elegance meets modern comfort, creating homes that
+              inspire and endure.
             </p>
 
             <Link
@@ -261,12 +332,30 @@ export const WhyChooseSection = () => {
               </span>
             </Link>
           </div>
-        </div>
+        </motion.div>
 
         {/* ACCORDION CARD */}
-        <div
+        <motion.div
           ref={whyChooseRightColRef}
           className="relative order-1 flex min-w-0 flex-col xl:order-2 xl:h-full"
+          initial={
+            prefersReducedMotion
+              ? { opacity: 0 }
+              : { opacity: 0, y: 170 }
+          }
+          whileInView={
+            prefersReducedMotion
+              ? { opacity: 1 }
+              : { opacity: 1, y: 0 }
+          }
+          whileHover={prefersReducedMotion ? {} : { y: -8, scale: 1.015 }}
+          viewport={{ once: false }}
+          transition={
+            prefersReducedMotion
+              ? { duration: 0 }
+              : { ...springTransition, delay: 0.2 }
+          }
+          style={prefersReducedMotion ? {} : { willChange: "transform" }}
         >
           <div className="mb-[13px] shrink-0 max-[768px]:mb-[9px] max-[768px]:text-center">
             <div className="mb-[1px] flex max-[768px]:justify-center">
@@ -290,11 +379,12 @@ export const WhyChooseSection = () => {
                   onClick={() =>
                     setOpenIndex(openIndex === index ? null : index)
                   }
+                  prefersReducedMotion={prefersReducedMotion ?? false}
                 />
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -93,11 +93,11 @@
   }
 
   html {
-    scroll-behavior: smooth;
   }
 
   body {
     @apply m-0 overflow-x-hidden bg-background text-foreground font-sans antialiased;
+    min-height: 100%;
     
     background-image: url("https://framerusercontent.com/images/vaS0nXWH3vvzP1FenR3MFCToc.png?width=1065&height=795");
     background-repeat: repeat;
@@ -174,5 +174,33 @@
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  html.lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  html.lenis iframe {
+    pointer-events: none;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth-scroll {
+    scroll-behavior: auto !important;
   }
 }

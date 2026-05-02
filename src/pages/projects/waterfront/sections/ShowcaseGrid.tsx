@@ -112,7 +112,7 @@ export function ShowcaseGrid() {
       "
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={{ amount: 0.12 }}
       variants={sectionVariants}
     >
       <div className="mx-auto w-full max-w-[1800px]">

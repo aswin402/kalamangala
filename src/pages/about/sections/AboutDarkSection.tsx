@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Play, X } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 import img1 from "@/assets/aboutpage/img1.avif";
 import img2 from "@/assets/aboutpage/img2.avif";
@@ -9,6 +13,109 @@ import rkrish from "@/assets/aboutpage/rkrish.avif";
 
 export const AboutDarkSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const els = sectionRef.current?.querySelectorAll("[data-anim]");
+      if (!els) return;
+
+      els.forEach((el) => {
+        const delay = parseFloat(el.getAttribute("data-delay") || "0");
+        const type = el.getAttribute("data-anim");
+
+        if (type === "fade-up") {
+          gsap.fromTo(
+            el,
+            { y: 70, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1.1,
+              delay,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        } else if (type === "fade-left") {
+          gsap.fromTo(
+            el,
+            { x: -80, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 1.1,
+              delay,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        } else if (type === "fade-right") {
+          gsap.fromTo(
+            el,
+            { x: 80, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 1.1,
+              delay,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        } else if (type === "scale-in") {
+          gsap.fromTo(
+            el,
+            { scale: 0.9, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 1.2,
+              delay,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        }
+      });
+
+      const counterEl = sectionRef.current?.querySelector("[data-counter]");
+      if (counterEl) {
+        const obj = { value: 0 };
+        gsap.to(obj, {
+          value: 33,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: counterEl,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+          onUpdate: () => {
+            counterEl.textContent = `${Math.round(obj.value)}+`;
+          },
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <>
@@ -48,12 +155,12 @@ export const AboutDarkSection = () => {
         `}
       </style>
 
-      <section className="w-full overflow-hidden text-white">
+      <section ref={sectionRef} className="w-full overflow-hidden text-white">
         <div className="w-full rounded-t-[14px] bg-card-green px-[13px] pb-[33px] pt-[36px] sm:mx-auto sm:max-w-[416px] sm:rounded-[16px] sm:px-[13px] sm:pb-[33px] sm:pt-[36px] md:max-w-none md:rounded-t-[14px] md:px-[43px] md:pb-[110px] md:pt-[105px] lg:px-[43px] lg:pb-[135px] lg:pt-[110px]">
           <div className="mx-auto max-w-[1200px] xl:max-w-[1760px]">
-            {/* TEXT TOP AREA - SAME */}
+            {/* TEXT TOP AREA */}
             <div className="mb-[72px] md:mb-[100px] lg:mb-[135px]">
-              <div className="mb-[21px] md:mb-[23px]">
+              <div className="mb-[21px] md:mb-[23px]" data-anim="fade-up">
                 <div className="mb-[23px] flex items-center gap-[7px] md:mb-[22px]">
                   <span className="flex h-[11px] w-[11px] items-center justify-center rounded-full border border-primary">
                     <span className="h-[6px] w-[6px] rounded-full bg-primary" />
@@ -67,12 +174,12 @@ export const AboutDarkSection = () => {
                 <div className="h-px w-full bg-white/75" />
               </div>
 
-              <h2 className="max-w-[1120px] text-[30px] font-medium leading-[1.08] tracking-[-0.065em] text-white md:text-[36px] md:leading-[1.08] lg:text-[38px] xl:text-[40px]">
+              <h2 className="max-w-[1120px] text-[30px] font-medium leading-[1.08] tracking-[-0.065em] text-white md:text-[36px] md:leading-[1.08] lg:text-[38px] xl:text-[40px]" data-anim="fade-up" data-delay="0.1">
                 Welcome to Kalamangala – Where Quality Meets Legacy.
               </h2>
 
               <div className="mt-[22px] grid grid-cols-1 gap-[48px] md:mt-[24px] md:gap-[50px] lg:grid-cols-[1.55fr_0.78fr] lg:gap-[96px] xl:grid-cols-[1.58fr_0.78fr] xl:gap-[125px]">
-                <p className="max-w-[1210px] text-justify text-[18px] font-semibold leading-[1.32] tracking-[-0.045em] text-white md:text-left md:text-[24px] md:leading-[1.3] md:tracking-[-0.055em] lg:text-[24px] lg:leading-[1.3] xl:text-[24px]">
+                <p className="max-w-[1210px] text-justify text-[18px] font-semibold leading-[1.32] tracking-[-0.045em] text-white md:text-left md:text-[24px] md:leading-[1.3] md:tracking-[-0.055em] lg:text-[24px] lg:leading-[1.3] xl:text-[24px]" data-anim="fade-left" data-delay="0.2">
                   With over 33 years of expertise in construction, we craft
                   premium living spaces designed to stand the test of time. Our
                   projects blend superior infrastructure, modern amenities, and
@@ -82,7 +189,7 @@ export const AboutDarkSection = () => {
                   connection with nature.
                 </p>
 
-                <div className="flex items-start lg:items-end lg:pb-[3px] xl:pb-[5px]">
+                <div className="flex items-start lg:items-end lg:pb-[3px] xl:pb-[5px]" data-anim="fade-right" data-delay="0.35">
                   <p className="max-w-[550px] text-[18px] font-semibold leading-[1.28] tracking-[-0.045em] text-white md:text-[20px] md:leading-[1.28] lg:text-[20px] xl:text-[20px]">
                     We seamlessly blend nature with modern living, designing
                     communities with lush gardens and green spaces for a serene
@@ -94,8 +201,8 @@ export const AboutDarkSection = () => {
 
             {/* IMAGE GRID */}
             <div className="grid min-h-0 grid-cols-1 gap-[10px] xl:min-h-[870px] xl:grid-cols-[2.05fr_1fr_1fr]">
-              {/* LEFT BIG IMAGE - SAME */}
-              <div className="relative order-1 h-[420px] overflow-hidden rounded-[10px] md:h-[620px] xl:h-auto">
+              {/* LEFT BIG IMAGE */}
+              <div className="relative order-1 h-[420px] overflow-hidden rounded-[10px] md:h-[620px] xl:h-auto" data-anim="scale-in">
                 <img
                   src={img1}
                   alt="Kalamangala aerial community"
@@ -132,8 +239,8 @@ export const AboutDarkSection = () => {
 
               {/* MIDDLE STACK */}
               <div className="order-2 grid gap-[10px] md:grid-rows-[1fr_220px] xl:grid-rows-[1fr_260px]">
-                {/* UPPER CARD - SAME */}
-                <div className="relative min-h-[420px] overflow-hidden rounded-[10px] md:min-h-[560px] xl:min-h-0">
+                {/* UPPER CARD */}
+                <div className="relative min-h-[420px] overflow-hidden rounded-[10px] md:min-h-[560px] xl:min-h-0" data-anim="scale-in" data-delay="0.15">
                   <img
                     src={img2}
                     alt="Kalamangala green community"
@@ -168,8 +275,8 @@ export const AboutDarkSection = () => {
                 </div>
 
                 {/* DESKTOP 33+ CARD */}
-                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] text-foreground bg-card md:flex xl:h-[260px]">
-                  <h3 className="text-[62px] font-semibold leading-none tracking-[-0.06em]   lg:text-[72px]">
+                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] text-foreground bg-card md:flex xl:h-[260px]" data-counter>
+                  <h3 className="text-[62px] font-semibold leading-none tracking-[-0.06em] lg:text-[72px]">
                     33+
                   </h3>
 
@@ -179,12 +286,14 @@ export const AboutDarkSection = () => {
                 </div>
               </div>
 
-              {/* VIDEO THUMBNAIL - MOBILE COMES BEFORE 33+ */}
+              {/* VIDEO THUMBNAIL */}
               <button
                 type="button"
                 onClick={() => setIsVideoOpen(true)}
                 aria-label="Play Kalamangala video"
                 className="group relative order-3 h-[410px] overflow-hidden rounded-[9px] text-left md:h-[560px] xl:h-auto xl:rounded-[10px]"
+                data-anim="scale-in"
+                data-delay="0.25"
               >
                 <img
                   src={img3}
@@ -209,8 +318,8 @@ export const AboutDarkSection = () => {
                 </p>
               </button>
 
-              {/* MOBILE 33+ CARD - EXACTLY AFTER VIDEO */}
-              <div className="order-4 flex h-[200px] flex-col items-center justify-center rounded-[9px] text-foreground md:hidden">
+              {/* MOBILE 33+ CARD */}
+              <div className="order-4 flex h-[200px] flex-col items-center justify-center rounded-[9px] text-foreground md:hidden" data-counter>
                 <h3 className="text-[72px] font-semibold leading-none tracking-[-0.07em]">
                   33+
                 </h3>

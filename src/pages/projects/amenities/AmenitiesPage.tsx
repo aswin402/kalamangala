@@ -14,8 +14,6 @@ export function AmenitiesPage() {
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     const ctx = gsap.context(() => {
       gsap.from(".am-hero", {
         opacity: 0,

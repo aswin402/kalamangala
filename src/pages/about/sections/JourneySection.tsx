@@ -1,3 +1,9 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 import img4 from "../../../assets/aboutpage/img4.avif";
 import img5 from "../../../assets/aboutpage/img5.avif";
 import img6 from "../../../assets/aboutpage/img6.avif";
@@ -31,10 +37,82 @@ const journey = [
 ];
 
 export const JourneySection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const header = sectionRef.current?.querySelector("[data-anim='header']");
+      if (header) {
+        gsap.fromTo(
+          header,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: header,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      const cards = sectionRef.current?.querySelectorAll("[data-anim='card']");
+      cards?.forEach((card, i) => {
+        const isLeft = i % 2 === 0;
+        gsap.fromTo(
+          card,
+          {
+            x: isLeft ? -100 : 100,
+            opacity: 0,
+            scale: 0.95,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            delay: i * 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 84%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+
+        const img = card.querySelector("img");
+        if (img) {
+          gsap.fromTo(
+            img,
+            { scale: 1.15, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 1.4,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 84%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative w-full overflow-hidden px-4 pb-[96px] pt-[72px] md:px-8 md:pb-[125px] md:pt-[96px]">
+    <section ref={sectionRef} className="relative w-full overflow-hidden px-4 pb-[96px] pt-[72px] md:px-8 md:pb-[125px] md:pt-[96px]">
       {/* HEADER */}
-      <div className="mb-[68px] text-center md:mb-[78px]">
+      <div className="mb-[68px] text-center md:mb-[78px]" data-anim="header">
         <p className="mb-[7px] text-[11px] font-[800] uppercase leading-none tracking-[-0.045em] text-foreground md:text-[12px]">
           ✺ Our Approach
         </p>
@@ -53,6 +131,7 @@ export const JourneySection = () => {
           return (
             <div
               key={item.num}
+              data-anim="card"
               className={`relative flex w-full ${
                 isLeft ? "justify-start" : "justify-end"
               } ${

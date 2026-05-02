@@ -16,26 +16,43 @@ export function TheWaterfrontPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     const ctx = gsap.context(() => {
       const sections = gsap.utils.toArray<HTMLElement>(".waterfront-animate");
 
       sections.forEach((section) => {
         gsap.fromTo(
           section,
-          { opacity: 0, y: 26 },
+          { opacity: 0, y: 40, scale: 0.98 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.9,
+            scale: 1,
+            duration: 1.1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: section,
-              start: "top 88%",
-              once: true,
+              start: "top 86%",
+              toggleActions: "play none none reverse",
             },
           },
+        );
+      });
+
+      const images = containerRef.current?.querySelectorAll("[data-parallax-img]");
+      images?.forEach((img) => {
+        gsap.fromTo(
+          img,
+          { yPercent: 8 },
+          {
+            yPercent: -8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: img,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1,
+            },
+          }
         );
       });
     }, containerRef);

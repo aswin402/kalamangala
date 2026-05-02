@@ -19,8 +19,6 @@ export function LocationAdvantagePage() {
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>(".la-reveal").forEach((el) => {
         gsap.fromTo(
@@ -34,7 +32,7 @@ export function LocationAdvantagePage() {
             scrollTrigger: {
               trigger: el,
               start: "top 86%",
-              once: true,
+              toggleActions: "play none none reverse",
             },
           }
         );
@@ -53,7 +51,7 @@ export function LocationAdvantagePage() {
             scrollTrigger: {
               trigger: el,
               start: "top 88%",
-              once: true,
+              toggleActions: "play none none reverse",
             },
           }
         );
