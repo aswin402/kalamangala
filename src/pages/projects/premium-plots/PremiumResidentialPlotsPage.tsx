@@ -1,7 +1,3 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useScrollAnimations } from "@/hooks/useScrollAnimations";
 
 import { PlotsHero } from "./sections/PlotsHero";
 import { IntroSection } from "./sections/IntroSection";
@@ -16,25 +12,13 @@ import { CTASection } from "./sections/CTASection";
 import { FooterSection } from "./sections/FooterSection";
 import { MarqueeText } from "../../../global/components/MarqueeText";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export const PremiumResidentialPlotsPage = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  const { fadeInUp } = useScrollAnimations();
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      fadeInUp(".km-reveal");
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [fadeInUp]);
 
   return (
     <main
-      ref={containerRef}
-      className="min-h-screen overflow-x-hidden pt-[82px] md:pt-[92px]"
+      className="min-h-screen pt-[82px] md:pt-[92px]"
     >
       {/* Full width marquee */}
       <MarqueeText

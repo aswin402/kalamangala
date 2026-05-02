@@ -104,7 +104,7 @@ export function FeatureRows() {
         {features.map((item) => (
           <article
             key={item.title}
-            className="am-reveal grid grid-cols-1 items-center gap-[34px] md:grid-cols-2 md:gap-[88px]"
+            className="km-reveal grid grid-cols-1 items-center gap-[34px] md:grid-cols-2 md:gap-[88px]"
           >
             {/* CONTENT */}
             <div
@@ -157,7 +157,7 @@ export function FeatureRows() {
         ))}
       </div>
 
-      <section className="am-reveal mt-[92px] w-full">
+      <section className="km-reveal mt-[92px] w-full">
         <h3 className="text-[34px] font-bold leading-[0.95] tracking-[-0.07em] text-foreground md:text-[50px]">
           Safe, Secure, and Serene
         </h3>

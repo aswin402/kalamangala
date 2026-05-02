@@ -36,7 +36,7 @@ export function StandApartSection() {
   return (
     <section
       className="
-        am-reveal mx-auto w-full max-w-[1420px]
+        km-reveal mx-auto w-full max-w-[1420px]
 
         mt-[34px] px-[39px] pb-[40px]
 

@@ -23,7 +23,7 @@ export function AmenitiesHero() {
       {/* HERO IMAGE */}
       <section
         className="
-          am-hero w-full
+          km-hero w-full
           mt-[38px] px-[11px]
           sm:mt-[56px] sm:px-6
           md:mt-[70px] md:px-10

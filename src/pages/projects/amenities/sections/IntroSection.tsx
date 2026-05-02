@@ -1,6 +1,6 @@
 export function IntroSection() {
   return (
-    <section className="am-hero mx-auto mt-[32px] w-full px-6 text-center">
+    <section className="km-reveal mx-auto mt-[32px] w-full px-6 text-center">
       <h1 className="mx-auto max-w-[760px] text-[38px] font-semibold leading-[0.86] tracking-[-0.03em] text-foreground sm:text-[48px] md:text-[118px]">
         Why choose
         <br />

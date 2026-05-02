@@ -43,7 +43,7 @@ export function useScrollAnimations() {
               scrollTrigger: {
                 trigger: el,
                 start,
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
               },
             }
           );
@@ -81,7 +81,7 @@ export function useScrollAnimations() {
               scrollTrigger: {
                 trigger: el,
                 start,
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
               },
             }
           );
@@ -119,7 +119,7 @@ export function useScrollAnimations() {
               scrollTrigger: {
                 trigger: el,
                 start,
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
               },
             }
           );
@@ -164,7 +164,7 @@ export function useScrollAnimations() {
               scrollTrigger: {
                 trigger: el,
                 start,
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
               },
             }
           );
@@ -202,7 +202,7 @@ export function useScrollAnimations() {
               scrollTrigger: {
                 trigger: el,
                 start,
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
               },
             }
           );
@@ -238,7 +238,7 @@ export function useScrollAnimations() {
               scrollTrigger: {
                 trigger: el,
                 start,
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
               },
             }
           );
@@ -305,7 +305,7 @@ export function useScrollAnimations() {
         scrollTrigger: {
           trigger: element,
           start,
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
         onUpdate: () => {
           element.textContent = `${prefix}${Math.round(obj.value)}${suffix}`;

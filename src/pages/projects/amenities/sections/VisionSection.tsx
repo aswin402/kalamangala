@@ -2,7 +2,7 @@ export function VisionSection() {
   return (
     <>
       {/* CENTER VISION TEXT */}
-      <section className="am-reveal mx-auto mt-[84px] w-full px-5 text-center md:mt-[112px] md:px-6">
+      <section className="km-reveal mx-auto mt-[84px] w-full px-5 text-center md:mt-[112px] md:px-6">
         <h2 className="text-[34px] font-bold leading-[0.95] tracking-[-0.06em] text-foreground md:text-[46px]">
           Crafted by Visionaries, Built for You
         </h2>
@@ -24,7 +24,7 @@ export function VisionSection() {
       </section>
 
       {/* LEFT CONTENT SECTION */}
-      <section className="am-reveal mx-auto mt-[78px] w-full max-w-[1540px] px-5 md:mt-[108px] md:px-[90px]">
+      <section className="km-reveal mx-auto mt-[78px] w-full max-w-[1540px] px-5 md:mt-[108px] md:px-[90px]">
         <h3 className="text-[32px] font-bold leading-[0.95] tracking-[-0.06em] text-foreground md:text-[48px]">
           Key Highlights of The Waterfront
         </h3>

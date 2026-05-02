@@ -82,7 +82,7 @@ export function LifestyleSection() {
           <article
             key={item.title}
             className="
-              am-reveal grid overflow-hidden bg-card-green
+              km-reveal grid overflow-hidden bg-card-green
 
               /* mobile */
               rounded-[27px]

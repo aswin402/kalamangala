@@ -203,4 +203,14 @@
   .lenis.lenis-smooth-scroll {
     scroll-behavior: auto !important;
   }
+
+  .km-animate-ready .km-reveal,
+  .km-animate-ready .km-reveal-slow,
+  .km-animate-ready .km-card,
+  .km-animate-ready .km-fade-left,
+  .km-animate-ready .km-fade-right {
+    will-change: transform, opacity, filter;
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+  }
 }

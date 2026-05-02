@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 
 import img1 from "../../../../assets/thewaterfront/img1.avif";
 import img2 from "../../../../assets/thewaterfront/img2.png";
@@ -65,39 +65,13 @@ const showcaseItems = [
   },
 ];
 
-const sectionVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const fadeUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 70,
-    filter: "blur(8px)",
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  },
-};
-
 export function ShowcaseGrid() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
-    <motion.section
+    <section
       className="
-        waterfront-animate
+        km-stagger
         w-full
         px-[13px]
         pb-[72px]
@@ -110,16 +84,12 @@ export function ShowcaseGrid() {
         md:pb-[120px]
         md:pt-[70px]
       "
-      initial="hidden"
-      whileInView="show"
-      viewport={{ amount: 0.12 }}
-      variants={sectionVariants}
     >
       <div className="mx-auto w-full max-w-[1800px]">
         {/* HEADING */}
-        <motion.div
-          variants={fadeUp}
+        <div
           className="
+            km-reveal-slow
             relative
             mb-[24px]
             flex
@@ -182,12 +152,11 @@ export function ShowcaseGrid() {
           >
             Showcase
           </h2>
-        </motion.div>
+        </div>
 
         {/* IMAGE GRID */}
-        <motion.div
-          variants={sectionVariants}
-          className="grid grid-cols-1 gap-[10px] md:grid-cols-2"
+        <div
+          className="km-stagger grid grid-cols-1 gap-[10px] md:grid-cols-2"
         >
           {showcaseItems.map((item, index) => {
             const isActive = activeCard === index;
@@ -195,7 +164,6 @@ export function ShowcaseGrid() {
             return (
               <motion.div
                 key={index}
-                variants={fadeUp}
                 initial="rest"
                 animate={isActive ? "hover" : "rest"}
                 whileHover="hover"
@@ -315,8 +283,8 @@ export function ShowcaseGrid() {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
