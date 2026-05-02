@@ -2,7 +2,10 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// ── Single global GSAP + ScrollTrigger registration ──
 gsap.registerPlugin(ScrollTrigger);
+gsap.config({ nullTargetWarn: false });
+ScrollTrigger.config({ limitCallbacks: true });
 
 let lenisInstance: Lenis | null = null;
 

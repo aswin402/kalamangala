@@ -1,8 +1,5 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const reviews = [
   {
@@ -45,6 +42,7 @@ export const ReviewsSection = () => {
           scrollTrigger: {
             trigger: reviewsSectionRef.current,
             start: "top 78%",
+            once: true,
           },
         }
       );
@@ -61,6 +59,7 @@ export const ReviewsSection = () => {
           scrollTrigger: {
             trigger: reviewsMarqueeRef.current,
             start: "top 84%",
+            once: true,
           },
         }
       );

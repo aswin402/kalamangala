@@ -48,12 +48,12 @@ const SocialCard = ({
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
       className="
-        group flex h-[160px] flex-col items-center justify-center gap-[13px]
+        group flex h-[112px] flex-col items-center justify-center gap-[13px]
         rounded-[9px] border border-transparent bg-white/[0.055] text-white-text
         no-underline transition-all duration-500
         hover:border-primary hover:bg-white/[0.075]
 
-        max-md:h-[160px]
+        max-md:h-[130px]
         max-sm:h-[117px] max-sm:gap-[14px] max-sm:rounded-[8px]
       "
     >
@@ -78,10 +78,10 @@ export const Footer = () => {
   return (
     <footer
       className="
-        relative mx-[39px] my-[15px] flex min-h-[690px]
+        relative mx-[39px] my-[15px] flex min-h-[900px]
         flex-col overflow-hidden rounded-[10px] bg-footer text-white
 
-        max-xl:mx-9 max-xl:my-5 max-xl:min-h-[690px]
+        max-xl:mx-9 max-xl:my-5 max-xl:min-h-[760px]
         max-lg:min-h-0
         max-md:mx-4 max-md:my-4
         max-sm:mx-3 max-sm:my-[31px] max-sm:rounded-[8px]
@@ -89,7 +89,7 @@ export const Footer = () => {
     >
       <div
         className="
-          w-full px-[30px] pt-[39px]
+          w-full px-[30px] pt-[37px]
 
           max-xl:px-[30px]
           max-lg:px-7 max-lg:pt-9
@@ -99,18 +99,22 @@ export const Footer = () => {
       >
         <div
           className="
-            grid w-full grid-cols-[535px_minmax(360px,1fr)_100px]
-            items-start gap-x-[83px]
+            mx-auto grid w-full max-w-[1120px]
+            grid-cols-[535px_290px_100px]
+            items-start gap-x-[97px]
 
-            max-[1180px]:grid-cols-[535px_minmax(320px,1fr)_95px]
-            max-[1180px]:gap-x-[55px]
+            max-[1280px]:max-w-[1080px]
+            max-[1280px]:grid-cols-[520px_280px_95px]
+            max-[1280px]:gap-x-[92px]
 
-            max-xl:grid-cols-[535px_minmax(300px,1fr)_90px]
-            max-xl:gap-x-[45px]
+            max-[1180px]:max-w-[1000px]
+            max-[1180px]:grid-cols-[500px_260px_90px]
+            max-[1180px]:gap-x-[75px]
 
             max-lg:grid-cols-1 max-lg:gap-y-0
           "
         >
+          {/* SOCIAL CARDS */}
           <div
             className="
               order-1 col-start-1 row-start-1 w-full
@@ -118,8 +122,8 @@ export const Footer = () => {
               max-sm:mt-[54px]
             "
           >
-            <div className="flex flex-col gap-[11px] max-sm:gap-[11px]">
-              <div className="grid grid-cols-2 gap-[11px] max-sm:gap-[11px]">
+            <div className="flex flex-col gap-[10px] max-sm:gap-[11px]">
+              <div className="grid grid-cols-2 gap-[10px] max-sm:gap-[11px]">
                 <SocialCard
                   href="https://instagram.com"
                   label="Instagram"
@@ -143,7 +147,7 @@ export const Footer = () => {
                 </SocialCard>
               </div>
 
-              <div className="grid grid-cols-3 gap-[13px] max-sm:gap-[10px]">
+              <div className="grid grid-cols-3 gap-[10px] max-sm:gap-[10px]">
                 <SocialCard href="tel:+91" label="Call">
                   <Phone
                     size={30}
@@ -174,16 +178,17 @@ export const Footer = () => {
             </div>
           </div>
 
+          {/* NEWSLETTER */}
           <div
             className="
-              order-2 col-start-1 row-start-2 mt-[31px] w-full
+              order-2 col-start-1 row-start-2 mt-[28px] w-full
               max-lg:order-4 max-lg:row-auto
               max-sm:mt-[29px]
             "
           >
             <p
               className="
-                mb-[11px] text-[22px] font-medium leading-[1.2] text-white
+                mb-[10px] text-[20px] font-medium leading-[1.2] text-white
                 max-sm:mb-[12px] max-sm:text-[18px]
               "
             >
@@ -198,8 +203,8 @@ export const Footer = () => {
                 type="email"
                 placeholder="Info@Kalamangala.com"
                 className="
-                  h-[41px] w-full rounded-[8px] border border-white/[0.08]
-                  bg-white/[0.055] px-[12px] text-[16px] text-white outline-none
+                  h-[38px] w-full rounded-[8px] border border-white/[0.08]
+                  bg-white/[0.055] px-[12px] text-[15px] text-white outline-none focus:border-primary
                   placeholder:text-white/45
 
                   max-sm:h-[40px] max-sm:rounded-[8px] max-sm:px-[12px]
@@ -210,10 +215,10 @@ export const Footer = () => {
               <button
                 type="submit"
                 className="
-                  h-[40px] w-full cursor-pointer rounded-[8px] border border-primary
-                  bg-primary text-[16px] font-semibold text-foreground
+                  h-[38px] w-full cursor-pointer rounded-[8px] border border-primary
+                  bg-primary text-[15px] font-semibold text-foreground
                   transition-all duration-500 ease-out
-                  hover:border-primary hover:bg-primary hover:text-white
+                  hover:border-[#FF894D] hover:bg-[#FF894D] hover:text-white
 
                   max-sm:h-[40px] max-sm:rounded-[8px] max-sm:text-[16px]
                 "
@@ -223,9 +228,10 @@ export const Footer = () => {
             </form>
           </div>
 
+          {/* SERVICES */}
           <div
             className="
-              order-3 col-start-2 row-start-1 w-full pt-[2px]
+              order-3 col-start-2 row-start-1 w-full pt-[3px]
               max-lg:order-1 max-lg:col-start-auto max-lg:row-auto max-lg:pt-0
             "
           >
@@ -236,10 +242,10 @@ export const Footer = () => {
                   href="#"
                   className={`
                     ${footerLinkAnimation}
-                    text-[16px] font-medium leading-[1.25]
-                    max-sm:text-[16px]
+                    whitespace-nowrap text-[16px] font-medium leading-[1.25]
+                    max-sm:whitespace-normal max-sm:text-[16px]
                     ${
-                      index === 2
+                      index === 1
                         ? "text-primary"
                         : index === 0
                           ? "font-semibold text-white"
@@ -253,15 +259,16 @@ export const Footer = () => {
             </div>
           </div>
 
+          {/* MENU */}
           <div
             className="
-              order-4 col-start-3 row-start-1 w-full pt-[2px]
+              order-4 col-start-3 row-start-1 w-full pt-[3px] ml-10
               max-lg:order-2 max-lg:col-start-auto max-lg:row-auto max-lg:mt-[44px] max-lg:pt-0
             "
           >
             <span
               className="
-                mb-[20px] block text-[18px] font-extrabold uppercase tracking-[0.04em] text-white
+                mb-[20px] block text-[18px] font-extrabold uppercase tracking-[0.04em] text-primary
                 max-sm:mb-[18px] max-sm:text-[17px]
               "
             >
@@ -277,7 +284,7 @@ export const Footer = () => {
                     ${footerLinkAnimation}
                     text-[16px] font-medium leading-none
                     max-sm:text-[16px]
-                    ${link.name === "About" ? "text-primary" : "text-white"}
+                    ${link.name === "Home" ? "text-primary" : "text-white"}
                   `}
                 >
                   {link.name}
@@ -288,24 +295,25 @@ export const Footer = () => {
         </div>
       </div>
 
+      {/* BIG BRAND TEXT */}
       <div
         className="
-          w-full overflow-hidden
-          pl-[18px] pt-[54px] pb-[24px]
+          mt-auto w-full overflow-hidden
+          px-[18px] pb-[30px] pt-[40px] mb-12
 
-          max-lg:pt-[56px]
-          max-md:pt-[45px]
-          max-sm:pl-[12px] max-sm:pt-[40px] max-sm:pb-[28px]
+          max-lg:px-[14px] max-lg:pt-[56px]
+          max-md:px-[10px] max-md:pt-[45px]
+          max-sm:px-[12px] max-sm:pt-[40px] max-sm:pb-[28px]
         "
       >
         <h2
           className="
-            mb-20 select-none whitespace-nowrap text-primary
-            text-[clamp(132px,15.6vw,235px)] font-extrabold
-            leading-[0.78] tracking-[-0.065em]
+            select-none whitespace-nowrap text-center text-primary
+            text-[16.4vw] font-extrabold
+            leading-[0.97] tracking-[-0.065em]
 
-            max-lg:text-[clamp(78px,21vw,190px)] max-lg:tracking-[-0.055em]
-            max-sm:text-[64px] max-sm:leading-[0.72] max-sm:tracking-[-0.075em] max-sm:mb-8
+            max-lg:text-[15.2vw] max-lg:tracking-[-0.055em]
+            max-sm:text-[64px] max-sm:leading-[0.72] max-sm:tracking-[-0.075em]
           "
         >
           Kalamangala

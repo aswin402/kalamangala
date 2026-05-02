@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import img2 from '@/assets/homepage/img2.webp';
 import { ArrowIcon14 } from '../components/icons';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const ProjectsSection = () => {
   const [hovered, setHovered] = useState(false);
@@ -29,6 +26,7 @@ export const ProjectsSection = () => {
           scrollTrigger: {
             trigger: projectsSectionRef.current,
             start: 'top 78%',
+            once: true,
           },
         }
       );
@@ -45,6 +43,7 @@ export const ProjectsSection = () => {
           scrollTrigger: {
             trigger: projectsCardRef.current,
             start: 'top 84%',
+            once: true,
           },
         }
       );
@@ -60,6 +59,7 @@ export const ProjectsSection = () => {
           scrollTrigger: {
             trigger: projectsBtnRef.current,
             start: 'top 92%',
+            once: true,
           },
         }
       );

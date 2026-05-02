@@ -4,6 +4,7 @@ import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { initLenis, destroyLenis } from '@/lib/lenis';
 import { initScrollAnimations } from '@/lib/scrollAnimations';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export function RootLayout() {
   const { pathname } = useLocation();
@@ -27,16 +28,18 @@ export function RootLayout() {
       window.scrollTo(0, 0);
     }
 
-    // Initialize/Refresh scroll animations after a short delay
+    // Initialize scroll animations after DOM settles, then refresh triggers
     let cleanup: (() => void) | undefined;
+    let rafId: number;
     
-    const initTimeoutId = setTimeout(() => {
+    rafId = requestAnimationFrame(() => {
       cleanup = initScrollAnimations(document.body);
-      ScrollTrigger.refresh();
-    }, 100);
+      // safe refresh recalculates all trigger positions
+      ScrollTrigger.refresh(true);
+    });
     
     return () => {
-      clearTimeout(initTimeoutId);
+      cancelAnimationFrame(rafId);
       if (cleanup) cleanup();
     };
   }, [pathname]);

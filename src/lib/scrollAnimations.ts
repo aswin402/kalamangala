@@ -1,8 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function initScrollAnimations(container: HTMLElement | Document = document) {
   // Respect user preference for reduced motion
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -39,18 +37,16 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
           {
             opacity: 0,
             y: getY(70),
-            filter: "blur(8px)",
           },
           {
             scrollTrigger: {
               trigger: el,
               start: "top 82%",
-              end: "bottom 20%",
               toggleActions: "play none none none",
+              once: true,
             },
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
             duration: getDuration(1.15),
             ease: "power3.out",
           }
@@ -63,8 +59,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
           scrollTrigger: {
             trigger: el,
             start: "top 82%",
-            end: "bottom 20%",
             toggleActions: "play none none none",
+            once: true,
           },
           opacity: 0,
           y: getY(100),
@@ -83,6 +79,7 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
             trigger: parent,
             start: "top 82%",
             toggleActions: "play none none none",
+            once: true,
           },
           opacity: 0,
           y: getY(60),
@@ -107,6 +104,7 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
               trigger: el,
               start: "top 85%",
               toggleActions: "play none none none",
+              once: true,
             },
             yPercent: 100,
             opacity: 0,
@@ -121,6 +119,7 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
               trigger: el,
               start: "top 85%",
               toggleActions: "play none none none",
+              once: true,
             },
             opacity: 0,
             yPercent: getY(100),
@@ -130,26 +129,28 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
         }
       });
 
-      // .km-image-parallax
-      gsap.utils.toArray(".km-image-parallax").forEach((el: any) => {
-        gsap.fromTo(el, 
-          { 
-            scale: 1.08,
-            yPercent: isMobile ? -4 : -8
-          },
-          {
-            scale: 1,
-            yPercent: isMobile ? 4 : 8,
-            ease: "none",
-            scrollTrigger: {
-              trigger: el,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1.3,
+      // .km-image-parallax (desktop only — scrub is too heavy for mobile)
+      if (isDesktop) {
+        gsap.utils.toArray(".km-image-parallax").forEach((el: any) => {
+          gsap.fromTo(el, 
+            { 
+              scale: 1.08,
+              yPercent: -8
+            },
+            {
+              scale: 1,
+              yPercent: 8,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.3,
+              }
             }
-          }
-        );
-      });
+          );
+        });
+      }
 
       // .km-card
       gsap.utils.toArray(".km-card, .la-card").forEach((el: any) => {
@@ -158,6 +159,7 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
             trigger: el,
             start: "top 85%",
             toggleActions: "play none none none",
+            once: true,
           },
           opacity: 0,
           y: getY(55),
@@ -174,6 +176,7 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
             trigger: el,
             start: "top 85%",
             toggleActions: "play none none none",
+            once: true,
           },
           opacity: 0,
           x: getX(-80),
@@ -189,6 +192,7 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
             trigger: el,
             start: "top 85%",
             toggleActions: "play none none none",
+            once: true,
           },
           opacity: 0,
           x: getX(80),

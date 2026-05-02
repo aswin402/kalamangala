@@ -1,9 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Play, X } from "lucide-react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 import img1 from "@/assets/aboutpage/img1.avif";
 import img2 from "@/assets/aboutpage/img2.avif";
@@ -37,7 +34,8 @@ export const AboutDarkSection = () => {
               scrollTrigger: {
                 trigger: el,
                 start: "top 85%",
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
+                once: true,
               },
             }
           );
@@ -54,7 +52,8 @@ export const AboutDarkSection = () => {
               scrollTrigger: {
                 trigger: el,
                 start: "top 85%",
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
+                once: true,
               },
             }
           );
@@ -71,7 +70,8 @@ export const AboutDarkSection = () => {
               scrollTrigger: {
                 trigger: el,
                 start: "top 85%",
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
+                once: true,
               },
             }
           );
@@ -88,7 +88,8 @@ export const AboutDarkSection = () => {
               scrollTrigger: {
                 trigger: el,
                 start: "top 85%",
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
+                once: true,
               },
             }
           );
@@ -105,7 +106,8 @@ export const AboutDarkSection = () => {
           scrollTrigger: {
             trigger: el,
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
+                once: true,
           },
           onUpdate: () => {
             el.textContent = `${Math.round(obj.value)}+`;

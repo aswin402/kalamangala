@@ -209,8 +209,7 @@
   .km-animate-ready .km-card,
   .km-animate-ready .km-fade-left,
   .km-animate-ready .km-fade-right {
-    will-change: transform, opacity, filter;
-    transform: translate3d(0,0,0);
-    backface-visibility: hidden;
+    /* GSAP manages will-change automatically during animations.
+       Permanent will-change wastes GPU memory on mobile. */
   }
 }

@@ -1,12 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import img1 from '@/assets/homepage/img1.webp';
 import { ArrowIcon12 } from '../components/icons';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const AboutSection = () => {
   const aboutSectionRef = useRef<HTMLElement>(null);
@@ -26,6 +23,7 @@ export const AboutSection = () => {
           scrollTrigger: {
             trigger: aboutSectionRef.current,
             start: 'top 78%',
+            once: true,
           },
         }
       );
@@ -42,6 +40,7 @@ export const AboutSection = () => {
           scrollTrigger: {
             trigger: aboutSectionRef.current,
             start: 'top 78%',
+            once: true,
           },
         }
       );

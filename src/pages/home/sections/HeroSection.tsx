@@ -1,9 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import herovideo from "@/assets/homepage/herovideo.mp4";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -12,7 +9,6 @@ export const HeroSection = () => {
   const videoInnerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-
     const ctx = gsap.context(() => {
       gsap.set(heroTitleRef.current, {
         y: 80,
@@ -63,6 +59,7 @@ export const HeroSection = () => {
           "-=1.3"
         );
 
+      // Single scroll timeline for all hero parallax effects
       const scrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -103,23 +100,6 @@ export const HeroSection = () => {
           },
           0
         );
-
-      ScrollTrigger.create({
-        trigger: videoWrapRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1.2,
-        animation: gsap.fromTo(
-          videoInnerRef.current,
-          { yPercent: 0 },
-          {
-            yPercent: -5,
-            ease: "none",
-          }
-        ),
-      });
-
-      ScrollTrigger.refresh();
     }, sectionRef);
 
     return () => ctx.revert();
@@ -129,7 +109,7 @@ export const HeroSection = () => {
     <section
       ref={sectionRef}
       id="home"
-      className="relative overflow-hidden bg-background"
+      className="relative overflow-hidden"
     >
       {/* TITLE AREA */}
       <div

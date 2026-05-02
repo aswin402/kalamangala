@@ -177,8 +177,8 @@ export const Navbar = () => {
       transition-all duration-200
       ${
         active
-          ? "bg-[#e8e6dc] text-foreground"
-          : "text-foreground hover:bg-[#e8e6dc]"
+          ? "bg-[#e8e6dc] text-foreground hover:text-primary"
+          : "text-foreground hover:text-primary"
       }
     `;
   };
@@ -231,7 +231,7 @@ export const Navbar = () => {
                 hidden h-[42px] items-center rounded-[8px]
                 bg-[#f1efe6] px-[5px]
                 shadow-[0_3px_12px_rgba(23,55,47,0.07),inset_0_0_0_1px_rgba(20,40,32,0.025)]
-                md:flex
+                md:flex 
               "
             >
               {navLinks.map((link) => (

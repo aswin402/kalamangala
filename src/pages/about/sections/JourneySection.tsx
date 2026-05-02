@@ -1,8 +1,5 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 import img4 from "../../../assets/aboutpage/img4.avif";
 import img5 from "../../../assets/aboutpage/img5.avif";
@@ -54,7 +51,8 @@ export const JourneySection = () => {
             scrollTrigger: {
               trigger: header,
               start: "top 85%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
+              once: true,
             },
           }
         );
@@ -80,7 +78,8 @@ export const JourneySection = () => {
             scrollTrigger: {
               trigger: card,
               start: "top 84%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
+              once: true,
             },
           }
         );
@@ -98,7 +97,8 @@ export const JourneySection = () => {
               scrollTrigger: {
                 trigger: card,
                 start: "top 84%",
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
+                once: true,
               },
             }
           );

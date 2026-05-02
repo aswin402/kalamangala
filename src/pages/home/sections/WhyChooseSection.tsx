@@ -2,13 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import img3 from "@/assets/homepage/img3.avif";
 import { SectionLabel } from "../components/SectionLabel";
 import { ArrowIcon14 } from "../components/icons";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const accordionItems = [
   {
@@ -197,89 +194,17 @@ const AccordionItem = ({
 };
 
 export const WhyChooseSection = () => {
-  const whyChooseSectionRef = useRef<HTMLElement>(null);
-  const whyChooseLeftColRef = useRef<HTMLDivElement>(null);
-  const whyChooseRightColRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: whyChooseSectionRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      tl.fromTo(
-        whyChooseLeftColRef.current,
-        {
-          opacity: 0,
-          y: 170,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.05,
-          ease: "power3.out",
-        },
-        0
-      ).fromTo(
-        whyChooseRightColRef.current,
-        {
-          opacity: 0,
-          y: 170,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.05,
-          ease: "power3.out",
-          delay: 0.2,
-        },
-        0
-      );
-    }, whyChooseSectionRef);
-
-    return () => ctx.revert();
-  }, [prefersReducedMotion]);
-
-  const handleImageHover = () => {
-    if (prefersReducedMotion || !imageRef.current) return;
-
-    gsap.to(imageRef.current, {
-      scale: 1.06,
-      duration: 0.6,
-      ease: "power2.out",
-    });
-  };
-
-  const handleImageLeave = () => {
-    if (prefersReducedMotion || !imageRef.current) return;
-
-    gsap.to(imageRef.current, {
-      scale: 1,
-      duration: 0.6,
-      ease: "power2.out",
-    });
-  };
-
   return (
     <section
-      ref={whyChooseSectionRef}
       id="why-choose"
       className="relative overflow-hidden px-0 pb-[95px] pt-[86px] md:px-[28px] lg:px-[44px] xl:px-[56px] 2xl:px-[88px] max-[768px]:pb-[48px] max-[768px]:pt-[36px]"
     >
       <div className="mx-auto grid w-full max-w-[1205px] grid-cols-1 items-stretch gap-[24px] px-[20px] md:max-w-[1320px] md:px-0 xl:min-h-[640px] xl:max-w-[1360px] xl:grid-cols-[610px_1fr] xl:gap-[18px]">
         {/* IMAGE CARD */}
         <motion.div
-          ref={whyChooseLeftColRef}
           className="relative order-2 h-[700px] min-w-0 overflow-hidden rounded-[8px] md:h-[680px] lg:h-[700px] xl:order-1 xl:h-full"
           initial={
             prefersReducedMotion
@@ -291,22 +216,18 @@ export const WhyChooseSection = () => {
               ? { opacity: 1 }
               : { opacity: 1, y: 0 }
           }
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={
             prefersReducedMotion
               ? { duration: 0 }
               : { ...springTransition, delay: 0 }
           }
           style={prefersReducedMotion ? {} : { willChange: "transform" }}
-          onMouseEnter={handleImageHover}
-          onMouseLeave={handleImageLeave}
         >
           <img
-            ref={imageRef}
             src={img3}
             alt="Kalamangala building"
-            className="absolute inset-0 h-full w-full object-cover object-center"
-            style={{ transform: "scale(1)" }}
+            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-600 hover:scale-[1.06]"
           />
 
           <div className="absolute bottom-[7px] left-[10px] right-[10px] rounded-[8px] bg-[#8f6a54]/58 px-[21px] pb-[27px] pt-[24px] backdrop-blur-[11px] md:px-[36px] md:pb-[36px] md:pt-[34px] xl:px-[34px] xl:pb-[36px] xl:pt-[34px]">
@@ -336,7 +257,6 @@ export const WhyChooseSection = () => {
 
         {/* ACCORDION CARD */}
         <motion.div
-          ref={whyChooseRightColRef}
           className="relative order-1 flex min-w-0 flex-col xl:order-2 xl:h-full"
           initial={
             prefersReducedMotion
@@ -349,7 +269,7 @@ export const WhyChooseSection = () => {
               : { opacity: 1, y: 0 }
           }
           whileHover={prefersReducedMotion ? {} : { y: -8, scale: 1.015 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={
             prefersReducedMotion
               ? { duration: 0 }

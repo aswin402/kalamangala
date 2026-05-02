@@ -1,9 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import waterfrontImg from "../../../../assets/thewaterfront/img1.avif";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export function WaterfrontHero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,7 +25,8 @@ export function WaterfrontHero() {
             scrollTrigger: {
               trigger: imgWrap,
               start: "top 85%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
+              once: true,
             },
           }
         );
@@ -46,7 +44,8 @@ export function WaterfrontHero() {
             scrollTrigger: {
               trigger: details,
               start: "top 85%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
+              once: true,
             },
           }
         );
@@ -64,7 +63,8 @@ export function WaterfrontHero() {
             scrollTrigger: {
               trigger: heading,
               start: "top 85%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
+              once: true,
             },
           }
         );
@@ -85,7 +85,8 @@ export function WaterfrontHero() {
               scrollTrigger: {
                 trigger: content,
                 start: "top 85%",
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
+              once: true,
               },
             }
           );
