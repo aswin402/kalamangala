@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 import img4 from "../../../assets/aboutpage/img4.avif";
 import img5 from "../../../assets/aboutpage/img5.avif";
@@ -113,17 +114,8 @@ export const JourneySection = () => {
     <section ref={sectionRef} className="relative w-full overflow-hidden px-4 pb-[96px] pt-[72px] md:px-8 md:pb-[125px] md:pt-[96px]">
       {/* HEADER */}
       <div className="mb-[68px] text-center md:mb-[78px]" data-anim="header">
-        <p className="mb-[7px] inline-flex items-center gap-[6px] text-[11px] font-[800] uppercase leading-none tracking-[-0.045em] text-foreground md:text-[12px]">
-          <span
-            className="
-              grid h-[14px] w-[14px] place-items-center rounded-full
-              border border-foreground
-              before:block before:h-[8px] before:w-[8px] before:rounded-full before:bg-card-green
-              md:h-[16px] md:w-[16px]
-              md:before:h-[9px] md:before:w-[9px]
-            "
-          />
-          Our Approach
+        <p className="mb-[7px]">
+          <SectionLabel>Our Approach</SectionLabel>
         </p>
 
         <h2 className="text-[34px] font-[800] leading-[0.95] tracking-[-0.07em] text-foreground sm:text-[42px] md:text-[54px] lg:text-[58px]">

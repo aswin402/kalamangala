@@ -161,7 +161,7 @@ const AccordionItem = ({
       >
         <ItemIcon index={index} />
 
-        <span className="flex-1 text-[17px] font-bold leading-none tracking-[-0.035em] text-white md:text-[18px] xl:text-[19px] max-[520px]:text-[17px]">
+        <span className="flex-1 text-[17px] font-medium leading-none tracking-[-0.035em] text-white md:text-[18px] xl:text-[19px] max-[520px]:text-[17px]">
           {title}
         </span>
 
@@ -279,10 +279,10 @@ export const WhyChooseSection = () => {
         >
           <div className="mb-[13px] shrink-0 max-[768px]:mb-[9px] max-[768px]:text-center">
             <div className="mb-[1px] flex max-[768px]:justify-center">
-              <SectionLabel>Our Specialities</SectionLabel>
+              <SectionLabel className="font-semibold">Our Specialities</SectionLabel>
             </div>
 
-            <h2 className="font-display text-[43px] font-black leading-[0.96] tracking-[-0.07em] text-[var(--home-whychoosesection-text-5)] md:text-[60px] xl:text-[58px]">
+            <h2 className="font-display text-[43px] font-bold leading-[0.96] tracking-[-0.07em] text-[var(--home-whychoosesection-text-5)] md:text-[60px] xl:text-[58px]">
               Why choose Kalamangala
             </h2>
           </div>

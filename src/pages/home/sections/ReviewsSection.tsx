@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const reviews = [
   {
@@ -118,19 +119,22 @@ export const ReviewsSection = () => {
         {/* Small label */}
         <div
           className="
-            absolute
+            relative
+            flex
+            justify-center
             z-20
             whitespace-nowrap
-            ml-6
+            mb-[15px]
 
-            left-[54px]
-            top-[-17px]
-
+            md:absolute
+            md:block
             md:left-[116px]
             md:top-[4px]
+            md:mb-0
 
             lg:left-[117px]
             lg:top-[4px]
+            lg:ml-[20px]
 
             xl:left-[117px]
             xl:top-[4px]
@@ -139,31 +143,20 @@ export const ReviewsSection = () => {
             2xl:top-[4px]
           "
         >
-          <span className="inline-flex items-center gap-[6px] text-[11px] font-[800] uppercase leading-none tracking-[-0.045em] text-foreground md:text-[12px]">
-            <span
-              className="
-                grid h-[14px] w-[14px] place-items-center rounded-full
-                border border-foreground
-                before:block before:h-[8px] before:w-[8px] before:rounded-full before:bg-card-green
-                md:h-[16px] md:w-[16px]
-                md:before:h-[9px] md:before:w-[9px]
-              "
-            />
-            Clients&apos; Words
-          </span>
+          <SectionLabel className="font-semibold">Clients&apos; Words</SectionLabel>
         </div>
 
         <h2
           ref={reviewsHeadingRef}
           className="
             font-display
-            text-[220px]
+            text-[82px]
             font-medium
             leading-[0.76]
             tracking-[-0.08em]
             text-foreground
 
-            sm:text-[82px]
+            sm:text-[120px]
 
             md:text-[clamp(142px,13.7vw,174px)]
             md:leading-[0.72]
@@ -225,12 +218,12 @@ export const ReviewsSection = () => {
                   className="
                     mt-[5px]
                     block
-                    text-[9px]
-                    font-semibold
+                    text-[12px]
+                    font-medium
                     uppercase
                     leading-none
                     tracking-[0.04em]
-                    text-foreground/55
+                    text-foreground
                   "
                 >
                   {review.role}

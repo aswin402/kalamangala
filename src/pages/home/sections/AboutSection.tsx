@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import { SectionLabel } from '@/components/ui/SectionLabel';
 
 import img1 from '@/assets/homepage/img1.webp';
 import { ArrowIcon12 } from '../components/icons';
@@ -54,7 +55,7 @@ export const AboutSection = () => {
       ref={aboutSectionRef}
       id="about"
       className="
-        relative overflow-hidden mt-20
+        relative overflow-hidden mt-15 mb-30
         pb-[52px] pt-[59px]
         max-[1024px]:pb-[74px] max-[1024px]:pt-[50px]
         max-[768px]:pb-[70px] max-[768px]:pt-[50px]
@@ -62,10 +63,10 @@ export const AboutSection = () => {
     >
       <div
         className="
-          mx-auto grid w-full items-center
-          grid-cols-[minmax(0,48.35vw)_minmax(0,1fr)]
-          gap-[39px]
-          px-[42px]
+          mx-auto grid w-full items-center max-w-[1800px]
+          grid-cols-[minmax(0,45vw)_minmax(0,1fr)]
+          gap-[46px]
+          px-[40px]
 
           max-[1024px]:grid-cols-1
           max-[1024px]:gap-0
@@ -73,27 +74,9 @@ export const AboutSection = () => {
         "
       >
         <div ref={aboutImgRef} className="relative w-full">
-          <span
-            className="
-              absolute -top-[31px] left-0 inline-flex items-center
-              gap-[5px] text-[12px] font-semibold font-sans uppercase leading-none
-              tracking-[-0.055em] text-foreground
-
-              max-[768px]:-top-[29px]
-              max-[768px]:text-[12px]
-            "
-          >
-            <span
-              className="
-                grid h-[14px] w-[14px] place-items-center rounded-full
-                border border-foreground
-                before:block before:h-[8px] before:w-[8px] before:rounded-full before:bg-card-green
-                md:h-[16px] md:w-[16px]
-                md:before:h-[9px] md:before:w-[9px]
-              "
-            />
-            ABOUT US
-          </span>
+          <div className="mb-[20px]">
+            <SectionLabel className="font-semibold">ABOUT US</SectionLabel>
+          </div>
 
           <div
             className="
@@ -127,24 +110,19 @@ export const AboutSection = () => {
         >
           <p
             className="
-              max-w-[612px]
               text-[16px] font-medium font-sans
-              leading-[1.49]
-              tracking-[-0.052em]
+              leading-[1.42]
+              tracking-[-0.035em]
               text-foreground
 
-              min-[1440px]:max-w-[590px]
-              min-[1440px]:text-[16px]
-              max-[1280px]:max-w-[535px]
-              max-[1024px]:max-w-none
               max-[768px]:text-[16px]
               max-[768px]:leading-[1.49]
               max-[768px]:tracking-[-0.055em]
             "
           >
-            At <strong className="font-black">Kalamangala</strong>, quality
+            At <strong className="font-bold">Kalamangala</strong>, quality
             isn&apos;t just a standard—it&apos;s a{' '}
-            <strong className="font-black">PROMISE</strong>. With 33+ years of
+           PROMISE. With 33+ years of
             expertise, we create lasting communities built on quality,
             innovation, and sustainability. Every project is designed with
             premium materials, advanced infrastructure, and thoughtful
@@ -157,7 +135,8 @@ export const AboutSection = () => {
           <Link
             to="/about"
             className="
-              mt-[31px] inline-flex items-center gap-[9px]
+              group relative
+              mt-[28px] inline-flex items-center gap-[9px] pb-[6px]
               text-[15px] font-bold font-sans uppercase leading-none
               tracking-[-0.055em] text-foreground
 
@@ -165,18 +144,26 @@ export const AboutSection = () => {
               max-[768px]:text-[15px]
             "
           >
-            <span className="border-b-[2px] border-foreground pb-[6px]">
-              Know More
-            </span>
+            <span>Know More</span>
 
             <span
               className="
                 grid h-[16px] w-[16px] place-items-center rounded-full
                 border border-foreground/45
+                transition-colors duration-300
+                group-hover:bg-primary group-hover:border-primary
               "
             >
-              <ArrowIcon12 />
+              <ArrowIcon12 className="transition-colors duration-300 text-[#14352d] group-hover:text-white" />
             </span>
+
+            <span 
+              className="
+                absolute bottom-0 left-0 h-[2px] bg-foreground 
+                w-[35px] transition-all duration-300 ease-out
+                group-hover:w-full
+              " 
+            />
           </Link>
         </div>
       </div>

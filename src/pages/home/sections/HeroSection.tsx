@@ -5,105 +5,171 @@ import herovideo from "@/assets/homepage/herovideo.mp4";
 export const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const heroTitleRef = useRef<HTMLDivElement>(null);
+  const line1Ref = useRef<HTMLParagraphElement>(null);
+  const line2Ref = useRef<HTMLHeadingElement>(null);
+  const videoAreaRef = useRef<HTMLDivElement>(null);
   const videoWrapRef = useRef<HTMLDivElement>(null);
   const videoInnerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    const section = sectionRef.current;
+    const heroTitle = heroTitleRef.current;
+    const line1 = line1Ref.current;
+    const line2 = line2Ref.current;
+    const videoWrap = videoWrapRef.current;
+    const videoInner = videoInnerRef.current;
+
+    if (!section || !heroTitle || !line1 || !line2 || !videoWrap || !videoInner)
+      return;
+
     const ctx = gsap.context(() => {
-      gsap.set(heroTitleRef.current, {
-        y: 80,
-        opacity: 0,
-      });
-
-      gsap.set(videoWrapRef.current, {
-        y: 120,
-        scale: 0.92,
-        borderRadius: 28,
+      // ── Initial states ──
+      gsap.set(heroTitle, { y: 60, opacity: 0 });
+      gsap.set(videoWrap, {
+        y: 160,
+        scale: 0.88,
+        borderRadius: 32,
         opacity: 0,
         transformOrigin: "center center",
       });
-
-      gsap.set(videoInnerRef.current, {
-        scale: 1.14,
+      gsap.set(videoInner, {
+        scale: 1.18,
         transformOrigin: "center center",
       });
 
+      // ── INTRO TIMELINE (on-load entrance) ──
       const introTl = gsap.timeline({
-        defaults: {
-          ease: "power4.out",
-        },
+        delay: 0.15,
+        defaults: { ease: "power4.out" },
+      });
+
+      // Word-by-word stagger for "Redefining"
+      const words1 = line1.querySelectorAll(".hero-word");
+      const words2 = line2.querySelectorAll(".hero-word");
+
+      // Set initial word states
+      gsap.set([words1, words2], {
+        y: 45,
+        opacity: 0,
+        rotateX: 40,
       });
 
       introTl
-        .to(heroTitleRef.current, {
+        // Fade in the title container
+        .to(heroTitle, {
           y: 0,
           opacity: 1,
-          duration: 1.25,
+          duration: 0.6,
+          ease: "power3.out",
         })
+        // Stagger "Redefining" words
         .to(
-          videoWrapRef.current,
+          words1,
+          {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            duration: 1.0,
+            stagger: 0.08,
+            ease: "power4.out",
+          },
+          "-=0.3"
+        )
+        // Stagger "Luxury Living" words
+        .to(
+          words2,
+          {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            duration: 1.2,
+            stagger: 0.12,
+            ease: "power4.out",
+          },
+          "-=0.7"
+        )
+        // Video entrance — slow and dramatic
+        .to(
+          videoWrap,
           {
             y: 0,
             scale: 1,
             opacity: 1,
-            duration: 1.45,
+            duration: 1.8,
+            ease: "power3.out",
           },
-          "-=0.7"
+          "-=0.8"
         )
         .to(
-          videoInnerRef.current,
+          videoInner,
           {
             scale: 1,
-            duration: 1.6,
+            duration: 2.2,
+            ease: "power3.out",
           },
-          "-=1.3"
+          "-=1.6"
         );
 
-      // Single scroll timeline for all hero parallax effects
-      const scrollTl = gsap.timeline({
+      // ── SCROLL ANIMATION: Hero title subtle parallax (no fade) ──
+      gsap.to(heroTitle, {
+        y: -60,
+        ease: "none",
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: section,
           start: "top top",
-          end: "bottom top",
-          scrub: 1.15,
+          end: "40% top",
+          scrub: 1.5, // Slow, buttery scrub
         },
       });
 
-      scrollTl
+      // ── SCROLL ANIMATION: Video rises up, scales, loses radius ──
+      const videoScrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.8, // Extra smooth scrub
+        },
+      });
+
+      videoScrollTl
         .fromTo(
-          heroTitleRef.current,
-          { y: 0, opacity: 1 },
-          {
-            y: -260,
-            opacity: 0,
-            ease: "none",
-          },
-          0
-        )
-        .fromTo(
-          videoWrapRef.current,
+          videoWrap,
           { y: 0, scale: 1, borderRadius: 28 },
           {
-            y: -90,
-            scale: 1.035,
-            borderRadius: 18,
+            y: -160,
+            scale: 1.04,
+            borderRadius: 12,
             ease: "none",
           },
           0
         )
         .fromTo(
-          videoInnerRef.current,
+          videoInner,
           { scale: 1 },
           {
-            scale: 1.09,
+            scale: 1.1,
             ease: "none",
           },
           0
         );
-    }, sectionRef);
+    }, section);
 
     return () => ctx.revert();
   }, []);
+
+  // Helper: wrap each word in a span for stagger animation
+  const renderWords = (text: string) =>
+    text.split(" ").map((word, i) => (
+      <span
+        key={i}
+        className="hero-word inline-block will-change-transform"
+        style={{ perspective: "600px" }}
+      >
+        {word}
+        {i < text.split(" ").length - 1 && "\u00A0"}
+      </span>
+    ));
 
   return (
     <section
@@ -115,6 +181,7 @@ export const HeroSection = () => {
       <div
         className="
           relative
+          z-10
           w-full
           h-[345px]
           sm:h-[430px]
@@ -147,46 +214,52 @@ export const HeroSection = () => {
           "
         >
           <p
+            ref={line1Ref}
             className="
               font-pathway
               font-normal
-              leading-[0.88]
-              tracking-[-0.055em]
+              leading-[1]
+              tracking-[-0.02em]
               text-foreground
+            
 
-              text-[44px]
-              sm:text-[52px]
-              md:text-[64px]
-              lg:text-[74px]
+              text-[40px]
+              sm:text-[46px]
+              md:text-[54px]
+              lg:text-[62px]
             "
+            style={{ perspective: "800px" }}
           >
-            Redefining
+            {renderWords("Redefining")}
           </p>
 
           <h1
+            ref={line2Ref}
             className="
-              mt-[18px]
+              mt-[40px]
               font-script
               font-normal
-              leading-[0.72]
-              tracking-[-0.055em]
+              leading-[0.85]
+              tracking-[-0.02em]
               text-foreground
 
-              text-[64px]
-              sm:text-[78px]
-              md:text-[96px]
-              lg:mt-[26px]
-              lg:text-[132px]
-              xl:text-[148px]
+              text-[52px]
+              sm:text-[62px]
+              md:text-[78px]
+              lg:mt-[40px]
+              lg:text-[100px]
+              xl:text-[110px]
             "
+            style={{ perspective: "800px" }}
           >
-            Luxury Living
+            {renderWords("Luxury Living")}
           </h1>
         </div>
       </div>
 
       {/* VIDEO AREA */}
       <div
+        ref={videoAreaRef}
         className="
           relative
           z-20

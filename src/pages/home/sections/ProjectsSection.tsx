@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import { SectionLabel } from '@/components/ui/SectionLabel';
 
 import img2 from '@/assets/homepage/img2.webp';
 import { ArrowIcon14 } from '../components/icons';
@@ -73,6 +74,7 @@ export const ProjectsSection = () => {
       ref={projectsSectionRef}
       id="projects"
       className="
+        
         relative overflow-hidden
         pt-[54px] pb-[64px]
         md:pt-[54px] md:pb-[82px]
@@ -91,24 +93,12 @@ export const ProjectsSection = () => {
           className="
             absolute z-30 flex items-center gap-[5px]
             left-1/2 top-[-13px]
-            -translate-x-[72px]
+            -translate-x-1/2
             md:left-[160px] md:top-[12px] md:translate-x-0
-            lg:left-[180px] lg:top-[12px]
+            lg:left-[160px] lg:top-[6px] 
           "
         >
-          <span
-            className="
-              grid h-[14px] w-[14px] place-items-center rounded-full
-              border border-foreground
-              before:block before:h-[8px] before:w-[8px] before:rounded-full before:bg-card-green
-              md:h-[16px] md:w-[16px]
-              md:before:h-[9px] md:before:w-[9px]
-            "
-          />
-
-          <span className="text-[11px] font-[800] font-sans uppercase leading-none tracking-[-0.045em] text-foreground md:text-[12px]">
-            Our Portfolio
-          </span>
+          <SectionLabel className="font-semibold">Our Portfolio</SectionLabel>
         </div>
 
         <h2
@@ -116,9 +106,9 @@ export const ProjectsSection = () => {
           className="
             relative z-10
             font-display font-medium text-[var(--home-projectssection-text-7)]
-            text-[220px] leading-[0.76] tracking-[-0.08em]
+            text-[82px] leading-[0.76] tracking-[-0.08em]
 
-            sm:text-[82px]
+            sm:text-[120px]
 
             md:text-[clamp(142px,13.7vw,174px)]
             md:leading-[0.72]
@@ -138,11 +128,11 @@ export const ProjectsSection = () => {
       </div>
 
       {/* Project card area */}
-      <div className="relative w-full bg-white-text/95 py-[12px] md:py-[22px]">
+      <div className="relative w-full bg-white py-[12px] md:py-[22px]">
         <div
           ref={projectsCardRef}
           className="
-            mx-auto w-full max-w-[1164px]
+            mx-auto w-full max-w-[1240px]
             px-[22px]
             sm:px-[30px]
             md:px-[18px]
@@ -150,7 +140,7 @@ export const ProjectsSection = () => {
         >
           <div
             className="
-              overflow-hidden rounded-[8px] bg-[#f0ecde]
+              overflow-hidden rounded-[8px] bg-[#f7f6e9]
               min-h-[454px]
               px-[10px] pt-[10px] pb-[42px]
               sm:min-h-[500px] sm:px-[14px] sm:pt-[14px]
@@ -168,8 +158,8 @@ export const ProjectsSection = () => {
                   relative z-20 overflow-hidden rounded-[7px]
                   h-[206px] w-[329px] max-w-full
                   sm:h-[245px] sm:w-[430px]
-                  md:h-[360px] md:w-full
-                  lg:h-[407px]
+                  md:h-[340px] md:w-full
+                  lg:h-[380px]
                 "
               >
                 <img
@@ -208,7 +198,7 @@ export const ProjectsSection = () => {
                     pointerEvents: hovered ? 'auto' : 'none',
                   }}
                 >
-                  <span className="text-[14px] font-bold tracking-[-0.04em] text-[var(--home-projectssection-text-8)]/70">
+                  <span className="text-[14px] font-medium tracking-[-0.04em] text-[var(--home-projectssection-text-8)]/70">
                     View Project
                   </span>
 
@@ -232,16 +222,16 @@ export const ProjectsSection = () => {
                   flex h-full flex-col
                   px-[56px] pt-[58px]
                   sm:px-[64px] sm:pt-[68px]
-                  md:justify-center md:pl-[120px] md:pr-[55px] md:pt-[44px] md:pb-[44px]
+                  md:justify-center md:pl-[140px] md:pr-[55px] md:pt-[44px] md:pb-[44px]
                   max-[1024px]:md:pl-[58px] max-[1024px]:md:pr-[32px]
                 "
               >
                 <h3
                   className="
-                    mb-[4px]
-                    font-sans text-[30px] font-bold leading-none
-                    tracking-[-0.062em] text-foreground
-                    md:mb-[29px] md:text-[30px]
+                    mb-[24px]
+                    font-sans text-[26px] font-bold leading-none
+                    tracking-[-0.02em] text-foreground
+                    md:mb-[24px] md:text-[26px]
                   "
                 >
                   The Waterfront
@@ -249,10 +239,10 @@ export const ProjectsSection = () => {
 
                 <p
                   className="
-                    max-w-[395px]
-                    text-[16px] font-medium font-sans leading-[1.43]
-                    tracking-[-0.047em] text-foreground
-                    md:text-[16px]
+                    max-w-[340px]
+                    text-[14px] font-medium font-sans leading-[1.6]
+                    tracking-[-0.01em] text-foreground/80
+                    md:text-[14px]
                   "
                 >
                   Welcome to The Waterfront by Kalamangala – Erode&apos;s first
