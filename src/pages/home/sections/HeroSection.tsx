@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import herovideo from "@/assets/homepage/herovideo.mp4";
 
 export const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const heroTitleRef = useRef<HTMLDivElement>(null);
+  const titlePanelRef = useRef<HTMLDivElement>(null);
   const line1Ref = useRef<HTMLParagraphElement>(null);
   const line2Ref = useRef<HTMLHeadingElement>(null);
   const videoAreaRef = useRef<HTMLDivElement>(null);
@@ -14,12 +16,23 @@ export const HeroSection = () => {
   useEffect(() => {
     const section = sectionRef.current;
     const heroTitle = heroTitleRef.current;
+    const titlePanel = titlePanelRef.current;
     const line1 = line1Ref.current;
     const line2 = line2Ref.current;
+    const videoArea = videoAreaRef.current;
     const videoWrap = videoWrapRef.current;
     const videoInner = videoInnerRef.current;
 
-    if (!section || !heroTitle || !line1 || !line2 || !videoWrap || !videoInner)
+    if (
+      !section ||
+      !heroTitle ||
+      !titlePanel ||
+      !line1 ||
+      !line2 ||
+      !videoArea ||
+      !videoWrap ||
+      !videoInner
+    )
       return;
 
     const ctx = gsap.context(() => {
@@ -110,16 +123,32 @@ export const HeroSection = () => {
           "-=1.6"
         );
 
-      // ── SCROLL ANIMATION: Hero title subtle parallax (no fade) ──
+      // ── PHASE 1: Scrub the title upward toward the navbar ──
+      // Calculate how far the title needs to travel upward
+      // Use the CSS `top` value directly — getBoundingClientRect includes the GSAP y:60 intro offset
+      const titleCssTop = parseFloat(getComputedStyle(heroTitle).top) || 0;
+      const targetTop = 100; // where the title should end up (just below navbar)
+      const travelDistance = titleCssTop - targetTop;
+
       gsap.to(heroTitle, {
-        y: -60,
+        y: -travelDistance,
         ease: "none",
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "40% top",
-          scrub: 1.5, // Slow, buttery scrub
+          end: () => `+=${travelDistance}`,
+          scrub: 1.2,
         },
+      });
+
+      // ── PHASE 2: Pin the title panel so the video scrolls over it ──
+      ScrollTrigger.create({
+        trigger: titlePanel,
+        start: "top top",
+        endTrigger: videoArea,
+        end: "top top",
+        pin: true,
+        pinSpacing: false,
       });
 
       // ── SCROLL ANIMATION: Video rises up, scales, loses radius ──
@@ -128,7 +157,7 @@ export const HeroSection = () => {
           trigger: section,
           start: "top top",
           end: "bottom top",
-          scrub: 1.8, // Extra smooth scrub
+          scrub: 1.8,
         },
       });
 
@@ -175,14 +204,16 @@ export const HeroSection = () => {
     <section
       ref={sectionRef}
       id="home"
-      className="relative overflow-hidden"
+      className="relative"
     >
-      {/* TITLE AREA */}
+      {/* ── TITLE PANEL — gets pinned by ScrollTrigger ── */}
       <div
+        ref={titlePanelRef}
         className="
           relative
-          z-10
+          z-[1]
           w-full
+          overflow-visible
           h-[345px]
           sm:h-[430px]
           md:h-[560px]
@@ -257,12 +288,12 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* VIDEO AREA */}
+      {/* ── VIDEO AREA — scrolls over the pinned title ── */}
       <div
         ref={videoAreaRef}
         className="
           relative
-          z-20
+          z-[2]
           mx-auto
           w-full
 
