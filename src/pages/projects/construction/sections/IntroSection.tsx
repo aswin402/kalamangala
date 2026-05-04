@@ -61,7 +61,7 @@ export function IntroSection() {
         Welcome to Kalamangala, one of the{" "}
         <span
           className="
-            font-black
+            font-bold
             text-[#0094ff]
             underline
             decoration-[#0094ff]

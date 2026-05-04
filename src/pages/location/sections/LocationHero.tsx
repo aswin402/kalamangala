@@ -29,7 +29,7 @@ export function LocationHero() {
           mx-auto
           mt-[58px]
           w-full
-          max-w-[1500px]
+          max-w-[1600px]
           px-[13px]
           pb-[25px]
           sm:mt-[64px]

@@ -40,7 +40,7 @@ export function FooterSection() {
             max-w-[980px]
             font-['Inter',sans-serif]
             text-[16px]
-            font-[700]
+            font-medium
             leading-[1.25]
             tracking-[-0.045em]
             text-[#0d2b22]

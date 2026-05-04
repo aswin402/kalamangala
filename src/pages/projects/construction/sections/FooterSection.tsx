@@ -22,7 +22,7 @@ export function FooterSection() {
           mt-[16px]
           font-['Inter',sans-serif]
           text-[20px]
-          font-[800]
+          font-medium
           leading-none
           tracking-[-0.055em]
           text-[var(--projects-footersection-text-1)]

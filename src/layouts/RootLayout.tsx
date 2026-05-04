@@ -32,7 +32,7 @@ export function RootLayout() {
     let cleanup: (() => void) | undefined;
     let rafId: number;
     let resizeObserver: ResizeObserver | undefined;
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     
     rafId = requestAnimationFrame(() => {
       cleanup = initScrollAnimations(document.body);

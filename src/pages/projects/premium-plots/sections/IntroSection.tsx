@@ -55,7 +55,7 @@ export function IntroSection() {
         >
           Welcome to Kalamangala, where modern living meets timeless serenity.
           If you are looking for{" "}
-          <a href="#" className="font-black text-[#008cff] underline">
+          <a href="#" className="font-bold text-[#008cff] underline">
             premium residential plots in Coimbatore
           </a>
           , your search ends here. Nestled amidst nature yet connected to the

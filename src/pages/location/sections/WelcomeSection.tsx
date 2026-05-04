@@ -11,7 +11,7 @@ export function WelcomeSection() {
         Erode&apos;s Most Connected Riverside Address
       </h2>
 
-      <p className="mx-auto mt-[32px] max-w-[1060px] font-['Inter'] text-[16px] font-bold leading-[1.36] tracking-[-0.03em] text-foreground md:mt-[48px] md:text-[23px] xl:text-[26px]">
+      <p className="mx-auto mt-[32px] max-w-[1060px] font-['Inter'] text-[16px] font-semibold leading-[1.36] tracking-[-0.03em] text-foreground md:mt-[48px] md:text-[23px] xl:text-[26px] xl:leading-[1.48] xl:mt-[56px] xl:max-w-[1300px]">
         Every masterpiece begins with a perfect setting. At{" "}
         <span className="font-black">Kalamangala</span>, we believe the soul of
         every luxury home lies in its location — where life feels effortless,

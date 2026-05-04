@@ -23,24 +23,24 @@ export function AmenitiesHero() {
       {/* HERO IMAGE */}
       <section
         className="
-          km-hero w-full
-          mt-[38px] px-[11px]
-          sm:mt-[56px] sm:px-6
-          md:mt-[70px] md:px-10
-          lg:mt-[80px] lg:px-0
-          xl:mt-[90px]
-          2xl:mt-[100px]
+          km-hero mx-auto w-full max-w-[1600px]
+          mt-[38px] px-[13px]
+          sm:mt-[56px] sm:px-4
+          md:mt-[0px] md:px-8
+          lg:mt-[0px]
+          xl:mt-[0px]
+          2xl:mt-[0px]
         "
       >
         <div
           className="
             mx-auto overflow-hidden
-            h-[426px] w-full rounded-[6px]
+            h-[426px] w-full rounded-[8px]
             sm:h-[520px]
             md:h-[560px]
-            lg:h-[620px] lg:w-full lg:rounded-none
-            xl:h-[620px]
-            2xl:h-[620px]
+            lg:h-[520px]
+            xl:h-[520px]
+            2xl:h-[520px]
           "
         >
           <img

@@ -109,7 +109,7 @@ export function LandmarksSection() {
           Erode&apos;s Landmarks — All Within Minutes
         </h2>
 
-        <p className="mt-[14px] max-w-[1040px] font-['Inter'] text-[18px] font-black leading-[1.16] tracking-[-0.052em] text-foreground md:text-[24px]">
+        <p className="mt-[14px] max-w-[1040px] font-['Inter'] text-[18px] font-semibold leading-[1.16] tracking-[-0.052em] text-foreground md:text-[24px]">
           When we say convenience redefined, we mean it. Every major landmark of
           Erode is just around the corner. Here&apos;s how close your next home
           truly is 👇
@@ -182,7 +182,7 @@ export function LandmarksSection() {
                     max-w-[292px]
                     font-['Inter']
                     text-[34px]
-                    font-black
+                    font-bold
                     leading-[0.87]
                     tracking-[-0.075em]
                     md:mt-0
@@ -203,7 +203,7 @@ export function LandmarksSection() {
                     max-w-[292px]
                     font-['Inter']
                     text-[15px]
-                    font-black
+                    font-semibold
                     leading-[1.32]
                     tracking-[-0.038em]
                     md:mt-[46px]

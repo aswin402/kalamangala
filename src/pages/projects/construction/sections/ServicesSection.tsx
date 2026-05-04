@@ -48,7 +48,7 @@ const services = [
 export function ServicesSection() {
   return (
     <section className="mx-auto mt-[34px]  max-w-[1540px] px-5 pb-[28px]">
-      <h2 className="km-reveal mb-8 text-2xl font-black tracking-tight text-foreground md:text-5xl">
+      <h2 className="km-reveal mb-8 text-2xl font-bold tracking-tight text-foreground md:text-5xl">
         Our Core Construction Services
       </h2>
 
@@ -91,7 +91,7 @@ export function ServicesSection() {
                   {service.title}
                 </h3>
 
-                <p className="mt-4 max-w-[1360px] text-base font-bold leading-relaxed tracking-wide text-white-text/90 md:text-lg">
+                <p className="mt-4 max-w-[1360px] text-base font-medium leading-relaxed tracking-wide text-white-text/90 md:text-lg">
                   {service.desc}
                 </p>
               </div>

@@ -85,7 +85,7 @@ export function NeighbourhoodGrowthSection() {
           >
             Erode is not just growing — it&apos;s evolving into a hub of premium
             residential communities. The{" "}
-            <span className="font-[900]">
+            <span className="font-bold">
               Modakurichi – Thindal – Saminathapuram
             </span>{" "}
             corridor is now a preferred destination for professionals,
