@@ -16,7 +16,7 @@ export function IntroSection() {
         luxury.
       </p>
 
-      <button className="mt-[34px] h-[36px] min-w-[198px] rounded-full bg-card-green px-[38px] text-[14px] font-bold tracking-[-0.02em] text-white">
+      <button className="mt-[34px] h-[36px] min-w-[198px] rounded-full bg-card-green px-[38px] text-[14px] font-bold tracking-[-0.02em] text-white hover:bg-[#f3ac85]">
         Contact Us
       </button>
     </section>

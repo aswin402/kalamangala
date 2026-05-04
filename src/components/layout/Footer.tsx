@@ -78,7 +78,7 @@ export const Footer = () => {
   return (
     <footer
       className="
-        relative mx-[39px] my-[15px] flex min-h-[900px]
+        relative z-[2] mx-[39px] my-[15px] flex min-h-[900px]
         flex-col overflow-hidden rounded-[10px] bg-footer text-white
 
         max-xl:mx-9 max-xl:my-5 max-xl:min-h-[760px]

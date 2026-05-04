@@ -1,14 +1,94 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MarqueeText } from "../../../global/components/MarqueeText";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const MARQUEE = "Innovation. Community. Quality. ";
 
 export const MarqueeSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titlePanelRef = useRef<HTMLDivElement>(null);
+  const titleContentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const titlePanel = titlePanelRef.current;
+    const titleContentEl = titleContentRef.current;
+
+    if (!section || !titlePanel || !titleContentEl) return;
+
+    const ctx = gsap.context(() => {
+      // ── Entrance animation ──
+      gsap.set(titleContentEl, { y: 50, opacity: 0 });
+
+      gsap.to(titleContentEl, {
+        y: 0,
+        opacity: 1,
+        duration: 1.0,
+        delay: 0.15,
+        ease: "power3.out",
+        force3D: true,
+      });
+
+      // ── Scrub the marquee upward toward the navbar ──
+      const titleRect = titleContentEl.getBoundingClientRect();
+      const sectionRect = section.getBoundingClientRect();
+      const currentOffsetFromSectionTop = titleRect.top - sectionRect.top;
+      const targetTop = 80;
+      const travelDistance = Math.max(currentOffsetFromSectionTop - targetTop, 60);
+
+      gsap.to(titleContentEl, {
+        y: -travelDistance,
+        ease: "none",
+        force3D: true,
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => `+=${travelDistance}`,
+          scrub: 0.6,
+        },
+      });
+
+      // ── Pin the title panel so the next section scrolls over it ──
+      ScrollTrigger.create({
+        trigger: titlePanel,
+        start: "top top",
+        end: () => `+=${titlePanel.offsetHeight}`,
+        pin: true,
+        pinSpacing: false,
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <MarqueeText 
-      text={MARQUEE} 
-      duration={300} 
-      className="relative flex h-[250px] w-full items-center overflow-hidden bg-transparent sm:h-[300px] md:h-[340px] lg:h-[384px] mt-14 mb-14" 
-      repeatCount={5}
-    />
+    <section ref={sectionRef} className="relative">
+      <div
+        ref={titlePanelRef}
+        className="
+          relative z-[1] w-full overflow-visible
+          h-[250px]
+          sm:h-[300px]
+          md:h-[340px]
+          lg:h-[384px]
+        "
+      >
+        <div
+          ref={titleContentRef}
+          className="will-change-transform"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <MarqueeText
+            text={MARQUEE}
+            duration={300}
+            className="relative flex w-full items-center overflow-hidden bg-transparent h-[250px] sm:h-[300px] md:h-[340px] lg:h-[384px] mt-14"
+            repeatCount={5}
+          />
+        </div>
+      </div>
+    </section>
   );
 };

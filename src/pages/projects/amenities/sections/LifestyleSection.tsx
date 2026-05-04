@@ -71,7 +71,7 @@ export function LifestyleSection() {
   return (
     <section
       className="
-        mx-auto w-full max-w-[1160px]
+        mx-auto w-full max-w-[1160px] mb-20
         px-5 pt-[82px]
         sm:px-6
         md:mt-[88px] md:px-6 md:pt-0

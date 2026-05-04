@@ -161,7 +161,7 @@ export const AboutDarkSection = () => {
         `}
       </style>
 
-      <section ref={sectionRef} className="w-full overflow-hidden text-white">
+      <section ref={sectionRef} className="relative z-[2] w-full overflow-hidden text-white">
         <div className="w-full rounded-t-[14px] bg-card-green px-[13px] pb-[33px] pt-[36px] sm:mx-auto sm:max-w-[416px] sm:rounded-[16px] sm:px-[13px] sm:pb-[33px] sm:pt-[36px] md:max-w-none md:rounded-t-[14px] md:px-[43px] md:pb-[110px] md:pt-[105px] lg:px-[43px] lg:pb-[135px] lg:pt-[110px]">
           <div className="mx-auto max-w-[1200px] xl:max-w-[1760px]">
             {/* TEXT TOP AREA */}

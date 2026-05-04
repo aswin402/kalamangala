@@ -7,8 +7,8 @@ export function VideoSection() {
   const videoId = "MzczJI7bn34";
 
   return (
-    <section className="waterfront-animate mx-auto mb-[95px] w-full px-6 pt-[70px]">
-      <div className="mx-auto w-full max-w-[1250px]">
+    <section className="waterfront-animate mx-auto mb-[95px] w-full px-5 pt-[70px] md:px-10 lg:px-[110px]">
+      <div className="mx-auto w-full max-w-[1260px]">
         <div className="relative aspect-video w-full overflow-hidden rounded-[6px] bg-black">
           {!isPlaying ? (
             <>

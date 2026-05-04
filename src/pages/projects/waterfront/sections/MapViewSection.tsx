@@ -154,7 +154,7 @@ export function MapViewSection() {
           {/* CENTER LINE */}
           {showDivider && (
             <div
-              className="pointer-events-none absolute top-0 z-30 h-full w-[2px] -translate-x-1/2 bg-white"
+              className="pointer-events-none absolute top-0 z-50 h-full w-[4px] -translate-x-1/2 bg-white shadow-[0_0_8px_rgba(0,0,0,0.3)]"
               style={{ left: `${position}%` }}
             />
           )}
@@ -164,30 +164,34 @@ export function MapViewSection() {
             className="
               absolute
               top-1/2
-              z-50
+              z-40
               flex
-              h-[42px]
-              w-[42px]
+              h-[48px]
+              w-[48px]
               -translate-y-1/2
               items-center
               justify-center
               rounded-full
-              bg-white/90
-              text-[20px]
-              font-bold
-              text-[var(--projects-mapviewsection-text-1)]
-              shadow-md
-              backdrop-blur-sm
-              md:h-[54px]
-              md:w-[54px]
-              md:text-[28px]
+              bg-white/10
+              text-neutral-900
+              shadow-[0_4px_12px_rgba(0,0,0,0.1)]
+              backdrop-blur-[4px]
+              md:h-[64px]
+              md:w-[64px]
             "
             style={{
-              left: `clamp(21px, ${position}%, calc(100% - 21px))`,
+              left: `clamp(32px, ${position}%, calc(100% - 32px))`,
               transform: "translateX(-50%) translateY(-50%)",
             }}
           >
-            <span className="pointer-events-none leading-none">‹›</span>
+            <div className="pointer-events-none flex items-center gap-[8px] md:gap-[12px]">
+              <svg width="14" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="md:h-[22px] md:w-[16px]">
+                <path d="m15 18-6-6 6-6"/>
+              </svg>
+              <svg width="14" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="md:h-[22px] md:w-[16px]">
+                <path d="m9 18 6-6-6-6"/>
+              </svg>
+            </div>
           </div>
         </div>
       </div>

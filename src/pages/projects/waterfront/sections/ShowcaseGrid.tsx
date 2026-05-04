@@ -108,19 +108,16 @@ export function ShowcaseGrid() {
       className="
         km-stagger
         w-full
-        px-[13px]
         pb-[72px]
         pt-[24px]
         text-foreground
-        sm:px-[22px]
         sm:pb-[90px]
         sm:pt-[44px]
-        md:px-[38px]
         md:pb-[120px]
         md:pt-[70px]
       "
     >
-      <div className="mx-auto w-full max-w-[1800px]">
+      <div className="mx-[39px] max-xl:mx-9 max-md:mx-4 max-sm:mx-3">
         {/* HEADING */}
         <div
           className="
@@ -162,7 +159,7 @@ export function ShowcaseGrid() {
                 md:top-[12%]
               "
             >
-              <SectionLabel className="font-extrabold !text-[9px] sm:!text-[11px] md:!text-[13px] tracking-[-0.02em]">
+              <SectionLabel className="font-bold !text-[9px] sm:!text-[11px] md:!text-[13px] tracking-[-0.02em]">
                 Project Images
               </SectionLabel>
             </div>
