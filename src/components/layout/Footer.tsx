@@ -309,11 +309,13 @@ export const Footer = () => {
         <h2
           className="
             select-none whitespace-nowrap text-center text-primary
-            text-[16.4vw] font-extrabold
+            text-[calc((100vw-78px)*0.164)] font-extrabold
             leading-[0.97] tracking-[-0.065em]
 
-            max-lg:text-[15.2vw] max-lg:tracking-[-0.055em]
-            max-sm:text-[64px] max-sm:leading-[0.72] max-sm:tracking-[-0.075em]
+            max-xl:text-[calc((100vw-72px)*0.162)]
+            max-lg:text-[calc((100vw-20px)*0.152)] max-lg:tracking-[-0.055em]
+            max-md:text-[calc((100vw-32px)*0.152)]
+            max-sm:text-[clamp(40px,14vw,64px)] max-sm:leading-[0.72] max-sm:tracking-[-0.075em]
           "
         >
           Kalamangala
