@@ -6,10 +6,10 @@ export function DescriptionSection() {
           THE WATERFRONT - WHERE LUXURY MEETS LEGACY
         </h2>
 
-        <p className="mb-[34px] max-w-[1040px] text-[22px] font-semibold leading-[1.42] tracking-[-0.045em] md:text-[26px] lg:text-[30px]">
+        <p className="mb-[34px] max-w-[1040px] text-[22px] font-medium leading-[1.42] tracking-[-0.045em] md:text-[26px] lg:text-[30px]">
           This isn’t just another address—it’s a statement of refined living.
           Designed for discerning homeowners,{" "}
-          <strong className="font-extrabold">The Waterfront</strong> seamlessly
+          <strong className="font-bold">The Waterfront</strong> seamlessly
           blends modern sophistication with the tranquility of nature, offering
           an unparalleled residential experience. With a thoughtfully balanced
           layout, the design ensures ample built-up space while preserving
@@ -17,7 +17,7 @@ export function DescriptionSection() {
           and the benefits of a well-connected, vibrant community.
         </p>
 
-        <p className="mb-[34px] max-w-[1040px] text-[22px] font-semibold leading-[1.42] tracking-[-0.045em] md:text-[26px] lg:text-[30px]">
+        <p className="mb-[34px] max-w-[1040px] text-[22px] font-medium leading-[1.42] tracking-[-0.045em] md:text-[26px] lg:text-[30px]">
           Multiple premium amenities await, including an underground drainage
           system, advanced intercom connectivity, automatic water trip lines and
           timer-controlled street lighting—all in place from day one. Now is your
@@ -25,11 +25,11 @@ export function DescriptionSection() {
           community.
         </p>
 
-        <p className="max-w-[1040px] text-[22px] font-semibold leading-[1.42] tracking-[-0.045em] md:text-[26px] lg:text-[30px]">
-          <strong className="font-extrabold">The Waterfront</strong> is more
+        <p className="max-w-[1040px] text-[22px] font-medium leading-[1.42] tracking-[-0.045em] md:text-[26px] lg:text-[30px]">
+          <strong className="font-bold">The Waterfront</strong> is more
           than a promise—it’s a legacy in the making. Your vision. Our
           infrastructure. Erode’s finest address{" "}
-          <strong className="font-extrabold">“Welcomes You!”</strong>
+          <strong className="font-bold">“Welcomes You!”</strong>
         </p>
       </div>
     </section>

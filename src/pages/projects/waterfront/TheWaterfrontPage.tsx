@@ -19,13 +19,14 @@ export function TheWaterfrontPage() {
       sections.forEach((section) => {
         gsap.fromTo(
           section,
-          { opacity: 0, y: 40, scale: 0.98 },
+          { opacity: 0, y: 30, scale: 0.98 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1.1,
+            duration: 1.35,
             ease: "power3.out",
+            force3D: true,
             scrollTrigger: {
               trigger: section,
               start: "top 86%",
@@ -47,11 +48,12 @@ export function TheWaterfrontPage() {
             {
               yPercent: -8,
               ease: "none",
+              force3D: true,
               scrollTrigger: {
                 trigger: img,
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 1,
+                scrub: 0.6,
               },
             }
           );

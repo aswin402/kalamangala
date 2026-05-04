@@ -40,11 +40,16 @@ const accordionItems = [
   },
 ];
 
-const springTransition = {
-  type: "spring" as const,
-  stiffness: 362,
-  damping: 100,
-  mass: 1,
+const smoothTransition = {
+  type: "tween" as const,
+  duration: 1.0,
+  ease: [0.25, 0.1, 0.25, 1] as const, // cubic-bezier — smooth deceleration, no bounce
+};
+
+const itemTransition = {
+  type: "tween" as const,
+  duration: 0.75,
+  ease: [0.25, 0.1, 0.25, 1] as const,
 };
 
 const ItemIcon = ({ index }: { index: number }) => {
@@ -145,14 +150,18 @@ const AccordionItem = ({
         isOpen ? "rounded-[8px] bg-white/[0.045]" : ""
       }`}
       initial={
-        prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 90, scale: 0.98 }
+        prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 30 }
       }
       whileInView={
-        prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }
+        prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }
       }
-      viewport={{ margin: "-50px" }}
-      transition={prefersReducedMotion ? { duration: 0 } : springTransition}
-      style={prefersReducedMotion ? {} : { willChange: "transform" }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0 }
+          : { ...itemTransition, delay: index * 0.06 }
+      }
+      style={{ backfaceVisibility: "hidden" }}
     >
       <button
         type="button"
@@ -209,7 +218,7 @@ export const WhyChooseSection = () => {
           initial={
             prefersReducedMotion
               ? { opacity: 0 }
-              : { opacity: 0, y: 170 }
+              : { opacity: 0, y: 60 }
           }
           whileInView={
             prefersReducedMotion
@@ -220,9 +229,9 @@ export const WhyChooseSection = () => {
           transition={
             prefersReducedMotion
               ? { duration: 0 }
-              : { ...springTransition, delay: 0 }
+              : smoothTransition
           }
-          style={prefersReducedMotion ? {} : { willChange: "transform" }}
+          style={{ backfaceVisibility: "hidden" }}
         >
           <img
             src={img3}
@@ -261,21 +270,20 @@ export const WhyChooseSection = () => {
           initial={
             prefersReducedMotion
               ? { opacity: 0 }
-              : { opacity: 0, y: 170 }
+              : { opacity: 0, y: 60 }
           }
           whileInView={
             prefersReducedMotion
               ? { opacity: 1 }
               : { opacity: 1, y: 0 }
           }
-          whileHover={prefersReducedMotion ? {} : { y: -8, scale: 1.015 }}
           viewport={{ once: true }}
           transition={
             prefersReducedMotion
               ? { duration: 0 }
-              : { ...springTransition, delay: 0.2 }
+              : { ...smoothTransition, delay: 0.15 }
           }
-          style={prefersReducedMotion ? {} : { willChange: "transform" }}
+          style={{ backfaceVisibility: "hidden" }}
         >
           <div className="mb-[13px] shrink-0 max-[768px]:mb-[9px] max-[768px]:text-center">
             <div className="mb-[1px] flex max-[768px]:justify-center">

@@ -24,13 +24,14 @@ export const AboutDarkSection = () => {
         if (type === "fade-up") {
           gsap.fromTo(
             el,
-            { y: 70, opacity: 0 },
+            { y: 45, opacity: 0 },
             {
               y: 0,
               opacity: 1,
-              duration: 1.1,
+              duration: 1.35,
               delay,
               ease: "power3.out",
+              force3D: true,
               scrollTrigger: {
                 trigger: el,
                 start: "top 85%",
@@ -42,13 +43,14 @@ export const AboutDarkSection = () => {
         } else if (type === "fade-left") {
           gsap.fromTo(
             el,
-            { x: -80, opacity: 0 },
+            { x: -50, opacity: 0 },
             {
               x: 0,
               opacity: 1,
-              duration: 1.1,
+              duration: 1.35,
               delay,
               ease: "power3.out",
+              force3D: true,
               scrollTrigger: {
                 trigger: el,
                 start: "top 85%",
@@ -60,13 +62,14 @@ export const AboutDarkSection = () => {
         } else if (type === "fade-right") {
           gsap.fromTo(
             el,
-            { x: 80, opacity: 0 },
+            { x: 50, opacity: 0 },
             {
               x: 0,
               opacity: 1,
-              duration: 1.1,
+              duration: 1.35,
               delay,
               ease: "power3.out",
+              force3D: true,
               scrollTrigger: {
                 trigger: el,
                 start: "top 85%",
@@ -78,13 +81,14 @@ export const AboutDarkSection = () => {
         } else if (type === "scale-in") {
           gsap.fromTo(
             el,
-            { scale: 0.9, opacity: 0 },
+            { scale: 0.95, opacity: 0 },
             {
               scale: 1,
               opacity: 1,
-              duration: 1.2,
+              duration: 1.45,
               delay,
               ease: "power3.out",
+              force3D: true,
               scrollTrigger: {
                 trigger: el,
                 start: "top 85%",
@@ -212,7 +216,7 @@ export const AboutDarkSection = () => {
                 />
 
                 <div className="absolute inset-x-[12px] bottom-[12px] rounded-[8px] bg-black/45 px-4 pb-4 pt-4 backdrop-blur-[14px] md:px-[24px] md:pb-[22px] md:pt-[24px] lg:px-[30px] lg:pb-[30px] lg:pt-[34px]">
-                  <p className="max-w-[900px] text-[15px] font-bold leading-[1.35] tracking-[-0.02em] text-white md:text-[18px] lg:text-[21px]">
+                  <p className="max-w-[900px] text-[15px] font-medium leading-[1.35] tracking-[-0.02em] text-white md:text-[18px] lg:text-[21px]">
                     &quot;With over 33 years in the construction industry,
                     I&apos;ve learned that quality is everything — that&apos;s
                     why I&apos;ve made it the top priority in every project at
@@ -227,7 +231,7 @@ export const AboutDarkSection = () => {
                     />
 
                     <div>
-                      <p className="text-[18px] font-semibold leading-none tracking-[-0.035em] text-white md:text-[22px] lg:text-[24px]">
+                      <p className="text-[6px] font-medium leading-none tracking-[-0.035em] text-white md:text-[22px] lg:text-8px]">
                         R.Krishnamurthy
                       </p>
 
@@ -250,7 +254,7 @@ export const AboutDarkSection = () => {
                   />
 
                   <div className="absolute left-1/2 top-1/2 w-[calc(100%-24px)] -translate-x-1/2 -translate-y-1/2 rounded-[8px] bg-card-green/60 px-[14px] pb-[13px] pt-[13px] backdrop-blur-[14px] md:w-[calc(100%-32px)] md:px-[18px] md:pb-[16px] md:pt-[16px] lg:w-[calc(100%-24px)] lg:px-[22px] lg:pb-[18px] lg:pt-[18px]">
-                    <p className="text-[13px] font-bold leading-[1.24] tracking-[-0.02em] text-white md:text-[16px] md:leading-[1.25] lg:text-[18px]">
+                    <p className="text-[13px] font-medium leading-[1.24] tracking-[-0.02em] text-white md:text-[16px] md:leading-[1.25] lg:text-[18px]">
                       &quot;At Kalamangala, we don&apos;t just build spaces — we
                       create lasting legacies, where quality, innovation and
                       nature come together to redefine modern living&quot;
@@ -264,7 +268,7 @@ export const AboutDarkSection = () => {
                       />
 
                       <div>
-                        <p className="text-[15px] font-semibold leading-none tracking-[-0.03em] text-white md:text-[18px] lg:text-[20px]">
+                        <p className="text-[15px] font-medium leading-none tracking-[-0.03em] text-white md:text-[18px] lg:text-[20px]">
                           Ramji S.K
                         </p>
 
@@ -277,8 +281,8 @@ export const AboutDarkSection = () => {
                 </div>
 
                 {/* DESKTOP 33+ CARD */}
-                <div className="hidden h-[220px] flex-col items-center justify-center rounded-[10px] bg-white text-foreground md:flex xl:h-[300px]">
-                  <h3 className="text-[100px] font-bold leading-none tracking-[-0.06em] md:text-[130px] lg:text-[150px]" data-counter>
+                <div className="hidden h-[200px] flex-col items-center justify-center rounded-[10px] bg-[#f7f6e9] text-foreground md:flex xl:h-[260px]">
+                  <h3 className="text-[60px] font-bold leading-none tracking-[-0.06em] md:text-[40px] lg:text-[60px]" data-counter>
                     33+
                   </h3>
 
@@ -313,7 +317,7 @@ export const AboutDarkSection = () => {
                   <Play className="ml-[4px] h-[22px] w-[22px] fill-foreground text-foreground md:h-[25px] md:w-[25px] lg:h-[28px] lg:w-[28px]" />
                 </span>
 
-                <p className="absolute left-1/2 top-[67%] w-[230px] -translate-x-1/2 text-center text-[16px] font-bold leading-[1.08] tracking-[-0.035em] text-white md:top-[62%] md:text-[20px] lg:text-[22px]">
+                <p className="absolute left-1/2 top-[67%] w-[230px] -translate-x-1/2 text-center text-[16px] font-medium leading-[1.08] tracking-[-0.035em] text-white md:top-[62%] md:text-[20px] lg:text-[18px]">
                   Learn more
                   <br />
                   About Kalamangala

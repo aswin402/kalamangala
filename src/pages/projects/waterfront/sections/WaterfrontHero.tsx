@@ -15,13 +15,14 @@ export function WaterfrontHero() {
       if (imgWrap) {
         gsap.fromTo(
           imgWrap,
-          { y: 80, opacity: 0, scale: 0.97 },
+          { y: 50, opacity: 0, scale: 0.98 },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 1.2,
+            duration: 1.45,
             ease: "power3.out",
+            force3D: true,
             scrollTrigger: {
               trigger: imgWrap,
               start: "top 85%",
@@ -35,12 +36,13 @@ export function WaterfrontHero() {
       if (details) {
         gsap.fromTo(
           details,
-          { x: 60, opacity: 0 },
+          { x: 40, opacity: 0 },
           {
             x: 0,
             opacity: 1,
-            duration: 1.1,
+            duration: 1.35,
             ease: "power3.out",
+            force3D: true,
             scrollTrigger: {
               trigger: details,
               start: "top 85%",
@@ -54,12 +56,13 @@ export function WaterfrontHero() {
       if (heading) {
         gsap.fromTo(
           heading,
-          { y: 50, opacity: 0 },
+          { y: 35, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 1.1,
+            duration: 1.35,
             ease: "power3.out",
+            force3D: true,
             scrollTrigger: {
               trigger: heading,
               start: "top 85%",
@@ -75,13 +78,14 @@ export function WaterfrontHero() {
         Array.from(children).forEach((child, i) => {
           gsap.fromTo(
             child,
-            { y: 30, opacity: 0 },
+            { y: 25, opacity: 0 },
             {
               y: 0,
               opacity: 1,
-              duration: 0.9,
+              duration: 1.1,
               delay: i * 0.15,
               ease: "power3.out",
+              force3D: true,
               scrollTrigger: {
                 trigger: content,
                 start: "top 85%",
@@ -146,7 +150,7 @@ export function WaterfrontHero() {
         <div className="mt-[42px] grid grid-cols-1 gap-[64px] md:mt-[84px] md:gap-[38px] lg:mt-[110px] lg:grid-cols-[1.15fr_0.85fr] lg:gap-[55px]">
           {/* LEFT BIG HEADING */}
           <div className="pl-0" data-anim="heading">
-            <h2 className="max-w-none text-[18px] font-semibold leading-[1.34] tracking-[-0.045em] text-foreground md:max-w-[850px] md:text-[40px] md:leading-[1.08] md:tracking-[-0.06em] lg:text-[44px]">
+            <h2 className="max-w-none text-[18px] font-medium leading-[1.34] tracking-[-0.045em] text-foreground md:max-w-[850px] md:text-[40px] md:leading-[1.08] md:tracking-[-0.06em] lg:text-[44px]">
               Welcome to The Waterfront by Kalamangala – Erode&apos;s first premium
               community living, where nature and modern comforts come together.
               Choose your plot, build your dream home and be part of a secure,
@@ -156,7 +160,7 @@ export function WaterfrontHero() {
 
           {/* RIGHT CONTENT */}
           <div className="pt-0 lg:pt-[2px]" data-anim="content">
-            <h3 className="text-[25px] font-extrabold leading-none tracking-[-0.055em] text-foreground md:text-[32px] md:font-semibold md:tracking-[-0.06em]">
+            <h3 className="text-[25px] font-bold leading-none tracking-[-0.055em] text-foreground md:text-[32px] md:font-bold md:tracking-[-0.06em]">
               The Waterfront
             </h3>
 

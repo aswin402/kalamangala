@@ -43,12 +43,13 @@ export const JourneySection = () => {
       if (header) {
         gsap.fromTo(
           header,
-          { y: 60, opacity: 0 },
+          { y: 45, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 1.1,
+            duration: 1.35,
             ease: "power3.out",
+            force3D: true,
             scrollTrigger: {
               trigger: header,
               start: "top 85%",
@@ -65,17 +66,18 @@ export const JourneySection = () => {
         gsap.fromTo(
           card,
           {
-            x: isLeft ? -100 : 100,
+            x: isLeft ? -60 : 60,
             opacity: 0,
-            scale: 0.95,
+            scale: 0.97,
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            duration: 1.2,
+            duration: 1.45,
             delay: i * 0.15,
             ease: "power3.out",
+            force3D: true,
             scrollTrigger: {
               trigger: card,
               start: "top 84%",
@@ -89,12 +91,13 @@ export const JourneySection = () => {
         if (img) {
           gsap.fromTo(
             img,
-            { scale: 1.15, opacity: 0 },
+            { scale: 1.1, opacity: 0 },
             {
               scale: 1,
               opacity: 1,
-              duration: 1.4,
+              duration: 1.7,
               ease: "power3.out",
+              force3D: true,
               scrollTrigger: {
                 trigger: card,
                 start: "top 84%",
@@ -115,10 +118,10 @@ export const JourneySection = () => {
       {/* HEADER */}
       <div className="mb-[68px] text-center md:mb-[78px]" data-anim="header">
         <p className="mb-[7px]">
-          <SectionLabel>Our Approach</SectionLabel>
+          <SectionLabel className="font-medium">Our Approach</SectionLabel>
         </p>
 
-        <h2 className="text-[34px] font-[800] leading-[0.95] tracking-[-0.07em] text-foreground sm:text-[42px] md:text-[54px] lg:text-[58px]">
+        <h2 className="text-[34px] font-bold leading-[0.95] tracking-[-0.07em] text-foreground sm:text-[42px] md:text-[54px] lg:text-[58px]">
           This is our journey with you
         </h2>
       </div>
@@ -167,7 +170,7 @@ export const JourneySection = () => {
                   >
                     <path
                       d="M13 0H115C119.5 0 122.5 3.2 122.8 7.7L128 119.5C128.25 124.4 124.5 128 119.7 128H8.7C3.65 128 -0.25 123.65 0.35 118.65L7.25 7.55C7.75 3.1 10.55 0 13 0Z"
-                      fill="#17392f"
+                      fill="#1f3630"
                     />
                   </svg>
 
@@ -179,11 +182,11 @@ export const JourneySection = () => {
                 <div className="grid h-full grid-cols-1 overflow-hidden rounded-[8px] md:grid-cols-[1fr_455px]">
                   {/* TEXT */}
                   <div className="flex min-h-[260px] flex-col justify-end px-[28px] pb-[34px] pt-[70px] md:min-h-0 md:px-[34px] md:pb-[68px] md:pt-[120px]">
-                    <h3 className="max-w-[420px] text-[27px] font-[800] leading-[0.96] tracking-[-0.065em] text-foreground md:text-[31px] lg:text-[32px]">
+                    <h3 className="max-w-[420px] text-[27px] font-bold leading-[0.96] tracking-[-0.065em] text-foreground md:text-[31px] lg:text-[32px]">
                       {item.title}
                     </h3>
 
-                    <p className="mt-[12px] max-w-[455px] text-[15px] font-[600] leading-[1.45] tracking-[-0.035em] text-foreground/70 md:mt-[14px] md:text-[17px]">
+                    <p className="mt-[12px] max-w-[455px] text-[15px] font-medium leading-[1.45] tracking-[-0.035em] text-foreground/70 md:mt-[14px] md:text-[17px]">
                       {item.desc}
                     </p>
                   </div>

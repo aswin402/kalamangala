@@ -204,12 +204,67 @@
     scroll-behavior: auto !important;
   }
 
+  /* Prevent FOUC: Hide GSAP animated elements initially */
+  .km-reveal,
+  .la-reveal,
+  .km-service,
+  .km-reveal-slow,
+  .km-card,
+  .la-card,
+  .km-fade-left,
+  .km-fade-right,
+  .km-stagger > *,
+  .km-hero h1,
+  .km-hero .km-hero-heading,
+  .km-hero p,
+  .km-hero .km-hero-subtitle,
+  .km-hero .km-hero-actions > * {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .km-reveal,
+    .la-reveal,
+    .km-service,
+    .km-reveal-slow,
+    .km-card,
+    .la-card,
+    .km-fade-left,
+    .km-fade-right,
+    .km-stagger > *,
+    .km-hero h1,
+    .km-hero .km-hero-heading,
+    .km-hero p,
+    .km-hero .km-hero-subtitle,
+    .km-hero .km-hero-actions > * {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   .km-animate-ready .km-reveal,
+  .km-animate-ready .la-reveal,
+  .km-animate-ready .km-service,
   .km-animate-ready .km-reveal-slow,
   .km-animate-ready .km-card,
+  .km-animate-ready .la-card,
   .km-animate-ready .km-fade-left,
   .km-animate-ready .km-fade-right {
     /* GSAP manages will-change automatically during animations.
        Permanent will-change wastes GPU memory on mobile. */
+  }
+
+  /* ── Chrome GPU compositing fix ──
+     Force compositor layers on elements GSAP scroll-animates.
+     Prevents Chrome from falling back to software paint mid-scroll,
+     which causes visible jitter/shaking on scrub animations. */
+  .hero-word,
+  .km-word-inner,
+  .review-card,
+  .waterfront-animate,
+  [data-anim],
+  [data-parallax-img] {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }

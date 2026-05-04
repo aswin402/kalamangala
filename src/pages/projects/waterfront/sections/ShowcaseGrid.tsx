@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 import img1 from "../../../../assets/thewaterfront/img1.avif";
 import img2 from "../../../../assets/thewaterfront/img2.png";
@@ -67,9 +71,40 @@ const showcaseItems = [
 
 export function ShowcaseGrid() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const parallaxRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      parallaxRefs.current.forEach((ref) => {
+        if (!ref) return;
+
+        gsap.fromTo(
+          ref,
+          { yPercent: -15 },
+          {
+            yPercent: 15,
+            ease: "none",
+            force3D: true, // Enforce hardware acceleration
+            scrollTrigger: {
+              trigger: ref.parentElement,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.2, // Smooth, slow lag
+            },
+          }
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
+      ref={sectionRef}
       className="
         km-stagger
         w-full
@@ -90,7 +125,6 @@ export function ShowcaseGrid() {
         <div
           className="
             km-reveal-slow
-            relative
             mb-[24px]
             flex
             justify-center
@@ -99,46 +133,10 @@ export function ShowcaseGrid() {
             md:mb-[78px]
           "
         >
-          <span
-            className="
-              absolute
-              left-1/2
-              top-[2px]
-              z-10
-              flex
-              -translate-x-[14px]
-              items-center
-              gap-[4px]
-              text-[10px]
-              font-extrabold
-              uppercase
-              leading-none
-              tracking-[-0.04em]
-              text-foreground
-              sm:top-[6px]
-              sm:text-[12px]
-              md:top-[12px]
-              md:-translate-x-[16px]
-              md:gap-[5px]
-              md:text-[13px]
-            "
-          >
-            <span
-              className="
-                h-[7px]
-                w-[7px]
-                rounded-full
-                border-[2px]
-                border-foreground
-                md:h-[8px]
-                md:w-[8px]
-              "
-            />
-            Project Images
-          </span>
-
           <h2
             className="
+              relative
+              inline-block
               text-[clamp(70px,19vw,92px)]
               font-medium
               leading-[0.82]
@@ -150,6 +148,24 @@ export function ShowcaseGrid() {
               md:tracking-[-0.095em]
             "
           >
+            <div 
+              className="
+                absolute 
+                left-[28%] 
+                top-[6%] 
+                z-10 
+                flex 
+                -translate-y-1/2 
+                sm:left-[30%]
+                md:left-[26%] 
+                lg:left-[26%]
+                md:top-[12%]
+              "
+            >
+              <SectionLabel className="font-extrabold !text-[9px] sm:!text-[11px] md:!text-[13px] tracking-[-0.02em]">
+                Project Images
+              </SectionLabel>
+            </div>
             Showcase
           </h2>
         </div>
@@ -178,30 +194,38 @@ export function ShowcaseGrid() {
                   overflow-hidden
                   rounded-[18px]
                   sm:h-[390px]
-                  md:h-[520px]
+                  md:h-[420px]
                   md:rounded-[16px]
-                  lg:h-[640px]
+                  lg:h-[520px]
                 "
               >
-                <motion.img
-                  src={item.img}
-                  alt={item.title}
-                  variants={{
-                    rest: {
-                      scale: 1,
-                      filter: "blur(0px)",
-                    },
-                    hover: {
-                      scale: 1.08,
-                      filter: "blur(6px)",
-                    },
+                <div
+                  ref={(el) => {
+                    parallaxRefs.current[index] = el;
                   }}
-                  transition={{
-                    duration: 0.65,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="h-full w-full object-cover"
-                />
+                  className="absolute left-0 top-[-15%] h-[130%] w-full will-change-transform"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  <motion.img
+                    src={item.img}
+                    alt={item.title}
+                    variants={{
+                      rest: {
+                        scale: 1,
+                        filter: "blur(0px)",
+                      },
+                      hover: {
+                        scale: 1.08,
+                        filter: "blur(6px)",
+                      },
+                    }}
+                    transition={{
+                      duration: 0.65,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
 
                 <motion.div
                   variants={{

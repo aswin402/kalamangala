@@ -36,7 +36,7 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
         gsap.fromTo(el, 
           {
             opacity: 0,
-            y: getY(70),
+            y: getY(50),
           },
           {
             scrollTrigger: {
@@ -47,26 +47,31 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
             },
             opacity: 1,
             y: 0,
-            duration: getDuration(1.15),
+            duration: getDuration(1.4),
             ease: "power3.out",
+            force3D: true,
           }
         );
       });
 
       // .km-reveal-slow
       gsap.utils.toArray(".km-reveal-slow").forEach((el: any) => {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 82%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-          opacity: 0,
-          y: getY(100),
-          duration: getDuration(1.45),
-          ease: "power4.out",
-        });
+        gsap.fromTo(el, 
+          { opacity: 0, y: getY(60) },
+          {
+            scrollTrigger: {
+              trigger: el,
+              start: "top 82%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            opacity: 1,
+            y: 0,
+            duration: getDuration(1.8),
+            ease: "power4.out",
+            force3D: true,
+          }
+        );
       });
 
       // .km-stagger (Animates immediate children sequentially)
@@ -74,19 +79,23 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
         const children = Array.from(parent.children);
         if (children.length === 0) return;
         
-        gsap.from(children, {
-          scrollTrigger: {
-            trigger: parent,
-            start: "top 82%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-          opacity: 0,
-          y: getY(60),
-          duration: getDuration(1),
-          stagger: 0.12,
-          ease: "power3.out",
-        });
+        gsap.fromTo(children, 
+          { opacity: 0, y: getY(40) },
+          {
+            scrollTrigger: {
+              trigger: parent,
+              start: "top 82%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            opacity: 1,
+            y: 0,
+            duration: getDuration(1.25),
+            stagger: 0.14,
+            ease: "power3.out",
+            force3D: true,
+          }
+        );
       });
 
       // .km-text-reveal (For headings)
@@ -95,37 +104,45 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
         
         if (isSafeToSplit && el.textContent) {
           const text = el.textContent;
-          const words = text.split(" ").map((word: string) => `<span style="display:inline-block; overflow:hidden; vertical-align:top;"><span style="display:inline-block; will-change:transform;" class="km-word-inner">${word}</span></span>`);
+          const words = text.split(" ").map((word: string) => `<span style="display:inline-block; overflow:hidden; vertical-align:top;"><span style="display:inline-block; backface-visibility:hidden;" class="km-word-inner">${word}</span></span>`);
           el.innerHTML = words.join(" ");
           
           const inners = el.querySelectorAll(".km-word-inner");
-          gsap.from(inners, {
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play none none none",
-              once: true,
-            },
-            yPercent: 100,
-            opacity: 0,
-            duration: getDuration(1),
-            stagger: 0.04,
-            ease: "power4.out",
-          });
+          gsap.fromTo(inners, 
+            { yPercent: 100, opacity: 0 },
+            {
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+              yPercent: 0,
+              opacity: 1,
+              duration: getDuration(1.2),
+              stagger: 0.05,
+              ease: "power4.out",
+              force3D: true,
+            }
+          );
         } else {
           // Fallback if not safe to split
-          gsap.from(el, {
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play none none none",
-              once: true,
-            },
-            opacity: 0,
-            yPercent: getY(100),
-            duration: getDuration(1),
-            ease: "power4.out",
-          });
+          gsap.fromTo(el, 
+            { opacity: 0, yPercent: getY(100) },
+            {
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+              opacity: 1,
+              yPercent: 0,
+              duration: getDuration(1.2),
+              ease: "power4.out",
+              force3D: true,
+            }
+          );
         }
       });
 
@@ -141,11 +158,12 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
               scale: 1,
               yPercent: 8,
               ease: "none",
+              force3D: true,
               scrollTrigger: {
                 trigger: el,
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 1.3,
+                scrub: 0.8,
               }
             }
           );
@@ -154,51 +172,63 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
 
       // .km-card
       gsap.utils.toArray(".km-card, .la-card").forEach((el: any) => {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-          opacity: 0,
-          y: getY(55),
-          scale: 0.96,
-          duration: getDuration(1),
-          ease: "power3.out",
-        });
+        gsap.fromTo(el, 
+          { opacity: 0, y: getY(40), scale: 0.97 },
+          {
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: getDuration(1.25),
+            ease: "power3.out",
+            force3D: true,
+          }
+        );
       });
 
       // .km-fade-left
       gsap.utils.toArray(".km-fade-left").forEach((el: any) => {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-          opacity: 0,
-          x: getX(-80),
-          duration: getDuration(1.15),
-          ease: "power3.out",
-        });
+        gsap.fromTo(el, 
+          { opacity: 0, x: getX(-50) },
+          {
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            opacity: 1,
+            x: 0,
+            duration: getDuration(1.4),
+            ease: "power3.out",
+            force3D: true,
+          }
+        );
       });
 
       // .km-fade-right
       gsap.utils.toArray(".km-fade-right").forEach((el: any) => {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-          opacity: 0,
-          x: getX(80),
-          duration: getDuration(1.15),
-          ease: "power3.out",
-        });
+        gsap.fromTo(el, 
+          { opacity: 0, x: getX(50) },
+          {
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+            opacity: 1,
+            x: 0,
+            duration: getDuration(1.4),
+            ease: "power3.out",
+            force3D: true,
+          }
+        );
       });
 
       // .km-hero
@@ -209,40 +239,56 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
         if (media) {
           tl.from(media, {
             scale: 1.15,
-            duration: getDuration(2),
+            duration: getDuration(2.4),
             ease: "power3.out",
+            force3D: true,
           }, 0);
         }
         
         const heading = hero.querySelector("h1, .km-hero-heading");
         if (heading) {
-          tl.from(heading, {
-            y: getY(50),
-            opacity: 0,
-            duration: getDuration(1.4),
-            ease: "power4.out",
-          }, 0.2);
+          tl.fromTo(heading, 
+            { y: getY(50), opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: getDuration(1.6),
+              ease: "power4.out",
+              force3D: true,
+            }, 
+            0.2
+          );
         }
 
         const subtitle = hero.querySelector("p, .km-hero-subtitle");
         if (subtitle) {
-          tl.from(subtitle, {
-            y: getY(30),
-            opacity: 0,
-            duration: getDuration(1.2),
-            ease: "power3.out",
-          }, 0.6);
+          tl.fromTo(subtitle, 
+            { y: getY(30), opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: getDuration(1.4),
+              ease: "power3.out",
+              force3D: true,
+            }, 
+            0.6
+          );
         }
 
         const actions = hero.querySelector(".km-hero-actions");
         if (actions) {
-          tl.from(actions.children, {
-            y: getY(20),
-            opacity: 0,
-            duration: getDuration(1),
-            stagger: 0.1,
-            ease: "power3.out",
-          }, 0.8);
+          tl.fromTo(actions.children, 
+            { y: getY(20), opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: getDuration(1.2),
+              stagger: 0.12,
+              ease: "power3.out",
+              force3D: true,
+            }, 
+            0.8
+          );
         }
       });
 

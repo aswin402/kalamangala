@@ -19,8 +19,9 @@ export const AboutSection = () => {
         {
           x: 0,
           opacity: 1,
-          duration: 1.05,
+          duration: 1.3,
           ease: 'power3.out',
+          force3D: true,
           scrollTrigger: {
             trigger: aboutSectionRef.current,
             start: 'top 78%',
@@ -35,9 +36,10 @@ export const AboutSection = () => {
         {
           y: 0,
           opacity: 1,
-          duration: 1.05,
+          duration: 1.3,
           delay: 0.08,
           ease: 'power3.out',
+          force3D: true,
           scrollTrigger: {
             trigger: aboutSectionRef.current,
             start: 'top 78%',

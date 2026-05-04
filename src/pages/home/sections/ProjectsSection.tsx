@@ -18,12 +18,13 @@ export const ProjectsSection = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         projectsHeadingRef.current,
-        { y: 70, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1.15,
+          duration: 1.4,
           ease: 'power3.out',
+          force3D: true,
           scrollTrigger: {
             trigger: projectsSectionRef.current,
             start: 'top 78%',
@@ -34,13 +35,14 @@ export const ProjectsSection = () => {
 
       gsap.fromTo(
         projectsCardRef.current,
-        { y: 54, opacity: 0 },
+        { y: 40, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1.05,
+          duration: 1.3,
           delay: 0.05,
           ease: 'power3.out',
+          force3D: true,
           scrollTrigger: {
             trigger: projectsCardRef.current,
             start: 'top 84%',
@@ -51,12 +53,13 @@ export const ProjectsSection = () => {
 
       gsap.fromTo(
         projectsBtnRef.current,
-        { y: 26, opacity: 0 },
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.85,
+          duration: 1.05,
           ease: 'power3.out',
+          force3D: true,
           scrollTrigger: {
             trigger: projectsBtnRef.current,
             start: 'top 92%',

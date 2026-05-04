@@ -28,6 +28,7 @@ export function MarqueeText({
           duration: duration,
           ease: "none",
           repeat: -1,
+          force3D: true,
         }
       );
     });

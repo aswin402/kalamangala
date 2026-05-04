@@ -12,13 +12,14 @@ export const MissionVisionSection = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         sectionRef.current,
-        { y: 80, opacity: 0, scale: 0.97 },
+        { y: 50, opacity: 0, scale: 0.98 },
         {
           y: 0,
           opacity: 1,
           scale: 1,
-          duration: 1.2,
+          duration: 1.45,
           ease: "power3.out",
+          force3D: true,
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 85%",
@@ -36,22 +37,23 @@ export const MissionVisionSection = () => {
     if (contentRef.current) {
       gsap.fromTo(
         contentRef.current,
-        { y: 20, opacity: 0 },
+        { y: 15, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.6,
           ease: "power3.out",
+          force3D: true,
         }
       );
     }
   }, [tab]);
 
   return (
-    <section ref={sectionRef} className="w-full px-[13px] pb-[51px] pt-[24px] sm:px-[34px] sm:pt-[31px]">
-      <div className="mx-auto flex min-h-[430px] w-full max-w-[1360px] flex-col items-center rounded-[18px] bg-card-green px-[25px] pt-[59px] text-center sm:min-h-[400px] sm:px-[46px] sm:pt-[80px]">
+    <section ref={sectionRef} className="w-full px-[39px] pb-[90px] pt-[24px] max-xl:px-9 max-md:px-4 max-sm:px-3 sm:pt-[31px] mb-20">
+      <div className="mx-auto flex min-h-[340px] w-full flex-col items-center rounded-[18px] bg-card-green px-[25px] pb-[45px] pt-[48px] text-center sm:min-h-[320px] sm:px-[46px] sm:pb-[60px] sm:pt-[60px]">
         {/* Tabs */}
-        <div className="mb-[42px] inline-flex h-[51px] rounded-[9px] border border-white/50 bg-transparent p-[1px] sm:mb-[44px]">
+        <div className="mb-[48px] inline-flex h-[51px] rounded-[9px] border border-white/50 bg-transparent p-[1px] sm:mb-[40px]">
           {(["mission", "vision"] as const).map((item) => (
             <button
               key={item}
@@ -73,8 +75,8 @@ export const MissionVisionSection = () => {
           <p
             className={`mx-auto font-medium text-white tracking-[-0.045em] ${
               isMission
-                ? "max-w-[350px] text-[20px] leading-[1.3] sm:max-w-[1190px] sm:text-[25px] sm:leading-[1.28]"
-                : "max-w-[350px] text-[20px] leading-[1.3] sm:max-w-[1210px] sm:text-[38px] sm:leading-[1.2]"
+                ? "max-w-[350px] text-[20px] leading-[1.3] sm:max-w-none sm:text-[25px] sm:leading-[1.28]"
+                : "max-w-[350px] text-[20px] leading-[1.3] sm:max-w-none sm:text-[38px] sm:leading-[1.2]"
             }`}
           >
             {isMission

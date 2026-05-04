@@ -34,12 +34,13 @@ export const ReviewsSection = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         reviewsHeadingRef.current,
-        { y: 70, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1.15,
+          duration: 1.4,
           ease: "power3.out",
+          force3D: true,
           scrollTrigger: {
             trigger: reviewsSectionRef.current,
             start: "top 78%",
@@ -50,13 +51,14 @@ export const ReviewsSection = () => {
 
       gsap.fromTo(
         ".review-card",
-        { y: 42, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.9,
+          duration: 1.1,
           stagger: 0.08,
           ease: "power3.out",
+          force3D: true,
           scrollTrigger: {
             trigger: reviewsMarqueeRef.current,
             start: "top 84%",
@@ -72,6 +74,7 @@ export const ReviewsSection = () => {
         duration: 58,
         ease: "none",
         repeat: -1,
+        force3D: true,
       });
 
       return () => marquee.kill();

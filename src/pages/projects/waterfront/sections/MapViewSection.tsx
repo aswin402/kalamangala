@@ -115,7 +115,7 @@ export function MapViewSection() {
             <span
               className={`
                 text-[26px]
-                font-extrabold
+                font-semibold
                 leading-none
                 tracking-[-0.04em]
                 text-white
@@ -134,7 +134,7 @@ export function MapViewSection() {
             <span
               className={`
                 text-[26px]
-                font-extrabold
+                font-semibold
                 leading-none
                 tracking-[-0.04em]
                 text-white

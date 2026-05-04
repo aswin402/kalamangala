@@ -151,7 +151,7 @@ export function LifestyleSection() {
               <p
                 className="
                   mt-[17px] max-w-[540px]
-                  text-[16px] font-bold
+                  text-[16px] font-medium
                   leading-[1.6]
                   tracking-[-0.035em]
                   text-white
@@ -170,7 +170,7 @@ export function LifestyleSection() {
                     mt-[3px] max-w-[540px]
                     list-disc space-y-[2px]
                     pl-[19px]
-                    text-[16px] font-bold
+                    text-[16px] font-medium
                     leading-[1.58]
                     tracking-[-0.035em]
                     text-white
@@ -193,7 +193,7 @@ export function LifestyleSection() {
                 <p
                   className="
                     mt-[28px] max-w-[540px]
-                    text-[16px] font-bold
+                    text-[16px] font-medium
                     leading-[1.62]
                     tracking-[-0.035em]
                     text-white

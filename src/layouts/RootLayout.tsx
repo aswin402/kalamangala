@@ -31,16 +31,34 @@ export function RootLayout() {
     // Initialize scroll animations after DOM settles, then refresh triggers
     let cleanup: (() => void) | undefined;
     let rafId: number;
+    let resizeObserver: ResizeObserver | undefined;
+    let timeoutId: NodeJS.Timeout;
     
     rafId = requestAnimationFrame(() => {
       cleanup = initScrollAnimations(document.body);
+      
       // safe refresh recalculates all trigger positions
       ScrollTrigger.refresh(true);
+
+      // React router transitions or lazy-loaded images often change page height after mount.
+      // A ResizeObserver on document.body ensures ScrollTrigger recalculates trigger positions
+      // whenever the height changes, preventing animations from breaking across all pages.
+      if (typeof window !== "undefined" && window.ResizeObserver) {
+        resizeObserver = new ResizeObserver(() => {
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => {
+            ScrollTrigger.refresh();
+          }, 150);
+        });
+        resizeObserver.observe(document.body);
+      }
     });
     
     return () => {
       cancelAnimationFrame(rafId);
+      clearTimeout(timeoutId);
       if (cleanup) cleanup();
+      if (resizeObserver) resizeObserver.disconnect();
     };
   }, [pathname]);
 

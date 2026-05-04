@@ -133,11 +133,12 @@ export const HeroSection = () => {
       gsap.to(heroTitle, {
         y: -travelDistance,
         ease: "none",
+        force3D: true,
         scrollTrigger: {
           trigger: section,
           start: "top top",
           end: () => `+=${travelDistance}`,
-          scrub: 1.2,
+          scrub: 0.6,
         },
       });
 
@@ -157,7 +158,7 @@ export const HeroSection = () => {
           trigger: section,
           start: "top top",
           end: "bottom top",
-          scrub: 1.8,
+          scrub: 0.8,
         },
       });
 
@@ -193,7 +194,7 @@ export const HeroSection = () => {
       <span
         key={i}
         className="hero-word inline-block will-change-transform"
-        style={{ perspective: "600px" }}
+        style={{ backfaceVisibility: "hidden" }}
       >
         {word}
         {i < text.split(" ").length - 1 && "\u00A0"}
@@ -259,7 +260,7 @@ export const HeroSection = () => {
               md:text-[54px]
               lg:text-[62px]
             "
-            style={{ perspective: "800px" }}
+            style={{ backfaceVisibility: "hidden" }}
           >
             {renderWords("Redefining")}
           </p>
@@ -281,7 +282,7 @@ export const HeroSection = () => {
               lg:text-[100px]
               xl:text-[110px]
             "
-            style={{ perspective: "800px" }}
+            style={{ backfaceVisibility: "hidden" }}
           >
             {renderWords("Luxury Living")}
           </h1>

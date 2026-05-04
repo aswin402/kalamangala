@@ -4,14 +4,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // ── Single global GSAP + ScrollTrigger registration ──
 gsap.registerPlugin(ScrollTrigger);
-gsap.config({ nullTargetWarn: false });
+gsap.config({ nullTargetWarn: false, force3D: true });
 ScrollTrigger.config({ limitCallbacks: true });
 
 let lenisInstance: Lenis | null = null;
-
-const updateRaf = (time: number) => {
-  lenisInstance?.raf(time * 1000);
-};
 
 export function initLenis() {
   if (lenisInstance) return lenisInstance;
@@ -21,26 +17,32 @@ export function initLenis() {
   if (prefersReducedMotion) return null;
 
   lenisInstance = new Lenis({
-    lerp: 0.04, // Very slow and buttery
-    wheelMultiplier: 0.6, // Heavy, deliberate scroll
+    duration: 1.2, // Smooth glide duration — premium but not sluggish
+    easing: (t: number) => 1 - Math.pow(1 - t, 4), // Quartic ease-out: responsive start, smooth tail
+    wheelMultiplier: 0.7, // Natural scroll distance — easy to navigate, not restrictive
     smoothWheel: true,
     orientation: "vertical",
     gestureOrientation: "vertical",
-    touchMultiplier: 1.5,
+    touchMultiplier: 1.2, // Natural touch scroll on mobile
     infinite: false,
+    autoRaf: false, // We drive the RAF loop ourselves via GSAP ticker
   });
 
   lenisInstance.on("scroll", ScrollTrigger.update);
 
-  gsap.ticker.add(updateRaf);
-  gsap.ticker.lagSmoothing(0);
+  // Use GSAP ticker for RAF — keeps Lenis and ScrollTrigger in lockstep on the same frame
+  gsap.ticker.add((time: number) => {
+    lenisInstance?.raf(time * 1000);
+  });
+
+  // Wider lag smoothing window — Chrome uses this to gracefully handle dropped frames
+  gsap.ticker.lagSmoothing(1000, 16);
 
   return lenisInstance;
 }
 
 export function destroyLenis() {
   if (lenisInstance) {
-    gsap.ticker.remove(updateRaf);
     lenisInstance.destroy();
     lenisInstance = null;
   }
