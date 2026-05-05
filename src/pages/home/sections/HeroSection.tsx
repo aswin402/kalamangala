@@ -152,6 +152,39 @@ export const HeroSection = () => {
         pinSpacing: false,
       });
 
+      // ── PHASE 3: Fade hero text from bottom-up as the video overlaps ──
+      // Gradient mask: the opaque zone shrinks upward, text disappears from bottom first
+      const fadeGradient =
+        "linear-gradient(to bottom, black 0%, black calc(var(--mask-end, 150) * 1%), transparent calc(var(--mask-end, 150) * 1% + 50px))";
+
+
+      gsap.fromTo(
+        heroTitle,
+        { "--mask-end": 150 },
+        {
+          "--mask-end": -30,
+          filter: "blur(6px)",
+          scale: 0.97,
+          ease: "power1.in",
+          force3D: true,
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: videoArea,
+            start: "top 55%",
+            end: "top 10%",
+            scrub: 0.6,
+            onEnter: () => {
+              heroTitle.style.maskImage = fadeGradient;
+              heroTitle.style.webkitMaskImage = fadeGradient;
+            },
+            onLeaveBack: () => {
+              heroTitle.style.maskImage = "none";
+              heroTitle.style.webkitMaskImage = "none";
+            },
+          },
+        }
+      );
+
       // ── SCROLL ANIMATION: Video rises up, scales, loses radius ──
       const videoScrollTl = gsap.timeline({
         scrollTrigger: {
@@ -229,6 +262,8 @@ export const HeroSection = () => {
             z-10
             max-w-[900px]
             will-change-transform
+            pb-10
+            px-10
 
             left-[24px]
             top-[92px]

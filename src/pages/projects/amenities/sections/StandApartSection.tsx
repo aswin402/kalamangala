@@ -36,12 +36,13 @@ export function StandApartSection() {
   return (
     <section
       className="
-        km-reveal mx-auto w-full max-w-[1420px]
+        km-reveal mx-auto w-full max-w-[1600px]
 
-        mt-[34px] px-[39px] pb-[40px]
+        mt-[34px] px-[13px] pb-[40px]
 
-        sm:mt-[50px] sm:px-8
-        lg:mt-[72px] lg:px-0 lg:pb-0
+        sm:mt-[50px] sm:px-4
+        md:px-8
+        lg:mt-[72px] lg:px-[38px] lg:pb-0
       "
     >
       <h2
@@ -150,7 +151,7 @@ function ApartCard({
         <p
           className="
             mt-[13px] max-w-[285px]
-            text-[16px] font-bold leading-[1.28] tracking-[-0.04em]
+            text-[16px] font-semibold leading-[1.28] tracking-[-0.04em]
             text-white/90
 
             sm:max-w-[360px] sm:text-[17px]

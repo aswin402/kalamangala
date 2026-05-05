@@ -18,7 +18,7 @@ export function WelcomeSection() {
         nature feels near, and the city stays within reach.
       </p>
 
-      <button className="mt-[38px] h-[34px] min-w-[198px] rounded-full bg-card-green px-10 font-['Inter'] text-[14px] font-bold tracking-[-0.04em] text-white transition duration-300 hover:scale-105 hover:bg-card-green">
+      <button className="mt-[38px] h-[34px] min-w-[198px] rounded-full bg-card-green px-10 font-['Inter'] text-[14px] font-bold tracking-[-0.04em] text-white transition duration-300 hover:scale-105 hover:bg-primary">
         Contact Us
       </button>
     </section>

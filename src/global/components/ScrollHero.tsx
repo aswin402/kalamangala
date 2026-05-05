@@ -140,7 +140,38 @@ export function ScrollHero({
         pinSpacing: false,
       });
 
-      // ── PHASE 3: Media rises up with parallax, scales, loses radius ──
+      // ── PHASE 3: Fade title from bottom-up as media overlaps ──
+      const fadeGradient =
+        "linear-gradient(to bottom, black 0%, black calc(var(--mask-end, 150) * 1%), transparent calc(var(--mask-end, 150) * 1% + 50px))";
+
+      gsap.fromTo(
+        titleContentEl,
+        { "--mask-end": 150 },
+        {
+          "--mask-end": -30,
+          filter: "blur(6px)",
+          scale: 0.97,
+          ease: "power1.in",
+          force3D: true,
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: mediaArea,
+            start: "top 55%",
+            end: "top 10%",
+            scrub: 0.6,
+            onEnter: () => {
+              titleContentEl.style.maskImage = fadeGradient;
+              titleContentEl.style.webkitMaskImage = fadeGradient;
+            },
+            onLeaveBack: () => {
+              titleContentEl.style.maskImage = "none";
+              titleContentEl.style.webkitMaskImage = "none";
+            },
+          },
+        }
+      );
+
+      // ── PHASE 4: Media rises up with parallax, scales, loses radius ──
       const mediaScrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: section,

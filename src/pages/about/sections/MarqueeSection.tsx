@@ -59,6 +59,40 @@ export const MarqueeSection = () => {
         pin: true,
         pinSpacing: false,
       });
+
+      // ── Fade title from bottom-up as the next section overlaps ──
+      const fadeGradient =
+        "linear-gradient(to bottom, black 0%, black calc(var(--mask-end, 150) * 1%), transparent calc(var(--mask-end, 150) * 1% + 50px))";
+
+      gsap.fromTo(
+        titleContentEl,
+        { 
+          "--mask-end": 150,
+          filter: "blur(0px)",
+          scale: 1 
+        },
+        {
+          "--mask-end": -30,
+          filter: "blur(6px)",
+          scale: 0.97,
+          ease: "power1.in",
+          force3D: true,
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${titlePanel.offsetHeight}`,
+            scrub: 0.6,
+            onEnter: () => {
+              titleContentEl.style.maskImage = fadeGradient;
+              titleContentEl.style.webkitMaskImage = fadeGradient;
+            },
+            onLeaveBack: () => {
+              titleContentEl.style.maskImage = "none";
+              titleContentEl.style.webkitMaskImage = "none";
+            },
+          },
+        }
+      );
     }, section);
 
     return () => ctx.revert();
@@ -83,8 +117,14 @@ export const MarqueeSection = () => {
         >
           <MarqueeText
             text={MARQUEE}
-            duration={300}
-            className="relative flex w-full items-center overflow-hidden bg-transparent h-[250px] sm:h-[300px] md:h-[340px] lg:h-[384px] mt-14"
+            duration={60}
+            className="
+              w-full overflow-hidden
+              pt-[115px] pb-[12px]
+              sm:pt-[120px] sm:pb-[14px]
+              md:pt-[130px] md:pb-[20px]
+              lg:pt-[140px] lg:pb-[24px]
+            "
             repeatCount={5}
           />
         </div>

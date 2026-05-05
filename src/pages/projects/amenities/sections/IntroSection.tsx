@@ -7,10 +7,10 @@ export function IntroSection() {
         Kalamangala
       </h1>
 
-      <p className="mx-auto mt-[28px] max-w-[1285px] text-[16px] font-bold leading-[1.34] tracking-[-0.035em] text-foreground md:mt-[42px] md:text-[23px]">
-        The Waterfront by Kalamangala redefines the idea of home. Located in
-        Modakurichi, Erode, this master-planned gated community is crafted by
-        the leading home developers in Tamil Nadu, known for their precision,
+      <p className="mx-auto mt-[28px] max-w-[1285px] text-[16px] font-semibold leading-[1.34] tracking-[-0.035em] text-foreground md:mt-[42px] md:text-[23px]">
+        The Waterfront by <strong className="font-bold">Kalamangala</strong> redefines the idea of home. Located in
+        Modakurichi, Erode, this master-planned gated community is <strong className="font-bold">craftedby
+        the leading home developers in Tamil Nadu,</strong>  known for their precision,
         vision, and dedication to perfection. Here, every sunrise greets you
         with serenity, every pathway leads to peace, and every corner echoes
         luxury.
