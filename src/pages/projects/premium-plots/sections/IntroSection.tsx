@@ -17,6 +17,7 @@ export function IntroSection() {
           md:text-[62px]
           lg:text-[68px]
           xl:text-[72px]
+          2xl:text-[78px]
         "
       >
         <span className="block">Discover Premium Residential</span>

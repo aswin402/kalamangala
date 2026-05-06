@@ -209,12 +209,12 @@ export const WhyChooseSection = () => {
   return (
     <section
       id="why-choose"
-      className="relative overflow-hidden px-0 pb-[95px] pt-[86px] md:px-[28px] lg:px-[44px] xl:px-[56px] 2xl:px-[88px] max-[768px]:pb-[48px] max-[768px]:pt-[36px]"
+      className="relative overflow-hidden px-0 pb-[70px] pt-[60px] md:px-[28px] lg:px-[44px] xl:px-[56px] 2xl:px-[88px] max-[768px]:pb-[40px] max-[768px]:pt-[32px]"
     >
-      <div className="mx-auto grid w-full max-w-[1205px] grid-cols-1 items-stretch gap-[24px] px-[20px] md:max-w-[1320px] md:px-0 xl:min-h-[640px] xl:max-w-[1520px] xl:grid-cols-[680px_1fr] xl:gap-[18px]">
+      <div className="mx-auto grid w-full max-w-[1205px] grid-cols-1 items-stretch gap-[24px] px-[20px] md:max-w-[1320px] md:px-0 xl:min-h-[640px] xl:max-w-[1520px] xl:grid-cols-[minmax(500px,680px)_1fr] xl:gap-[18px] 3xl:max-w-[1800px]">
         {/* IMAGE CARD */}
         <motion.div
-          className="relative order-2 h-[700px] min-w-0 overflow-hidden rounded-[8px] md:h-[680px] lg:h-[700px] xl:order-1 xl:h-full"
+          className="relative order-2 h-[500px] min-w-0 overflow-hidden rounded-[8px] sm:h-[600px] md:h-[680px] lg:h-[700px] xl:order-1 xl:h-full"
           initial={
             prefersReducedMotion
               ? { opacity: 0 }

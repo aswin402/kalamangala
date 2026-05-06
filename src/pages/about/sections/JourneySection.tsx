@@ -114,7 +114,7 @@ export const JourneySection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full overflow-hidden px-4 pb-[96px] pt-[72px] md:px-8 md:pb-[125px] md:pt-[96px]">
+    <section ref={sectionRef} className="relative w-full overflow-hidden px-4 pb-[96px] pt-[72px] md:px-8 md:pb-[125px] md:pt-[96px] 3xl:px-12">
       {/* HEADER */}
       <div className="mb-[68px] text-center md:mb-[78px]" data-anim="header">
         <p className="mb-[7px]">
@@ -127,7 +127,7 @@ export const JourneySection = () => {
       </div>
 
       {/* CARDS WRAPPER */}
-      <div className="mx-auto w-full max-w-[1240px]">
+      <div className="mx-auto w-full max-w-[1240px] xl:max-w-[1400px] 3xl:max-w-[1600px]">
         {journey.map((item, index) => {
           const isLeft = index % 2 === 0;
           const isEvenBadge = item.num === "02" || item.num === "04";
@@ -179,7 +179,7 @@ export const JourneySection = () => {
                   </span>
                 </div>
 
-                <div className="grid h-full grid-cols-1 overflow-hidden rounded-[8px] md:grid-cols-[1fr_455px]">
+                <div className="grid h-full grid-cols-1 overflow-hidden rounded-[8px] md:grid-cols-[1fr_minmax(300px,455px)]">
                   {/* TEXT */}
                   <div className="flex min-h-[260px] flex-col justify-end px-[28px] pb-[34px] pt-[70px] md:min-h-0 md:px-[34px] md:pb-[68px] md:pt-[120px]">
                     <h3 className="max-w-[420px] text-[27px] font-bold leading-[0.96] tracking-[-0.065em] text-foreground md:text-[31px] lg:text-[32px]">

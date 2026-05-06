@@ -8,7 +8,7 @@ export function AdvantageSection() {
       <section
         className="
           mx-auto
-          mt-[92px]
+          mt-[55px]
           grid
           w-full
           max-w-[1500px]
@@ -16,10 +16,12 @@ export function AdvantageSection() {
           items-center
           gap-[44px]
           px-5
-          md:mt-[108px]
+          md:mt-[75px]
           md:grid-cols-[0.94fr_1.06fr]
           lg:gap-[58px]
-          xl:px-0
+          xl:px-4
+          2xl:px-0
+          3xl:max-w-[1800px]
         "
       >
         {/* Left Content */}
@@ -82,7 +84,7 @@ export function AdvantageSection() {
 
             <p>That’s why The Waterfront stands apart:</p>
 
-            <ul className="list-disc pl-[20px]">
+            <ul className="list-disc">
               <li>Strategically chosen for accessibility and serenity</li>
               <li>Built with sustainable layouts and modern amenities</li>
               <li>Designed for families, investors, and nature lovers alike</li>
@@ -90,7 +92,7 @@ export function AdvantageSection() {
 
             <p className="mt-[20px] leading-[1.3]">
               Every home here reflects Kalamangala’s promise of{" "}
-              <span className="font-[800]">
+              <span className="font-bold">
                 luxury that lasts a lifetime.
               </span>
             </p>
@@ -126,7 +128,7 @@ export function AdvantageSection() {
       <section
         className="
           mx-auto
-          mt-[120px]
+          mt-[70px]
           grid
           w-full
           max-w-[1480px]
@@ -134,9 +136,11 @@ export function AdvantageSection() {
           items-center
           gap-[44px]
           px-5
-          pb-[90px]
+          pb-[60px]
           md:grid-cols-[0.98fr_1.02fr]
-          xl:px-0
+          xl:px-4
+          2xl:px-0
+          3xl:max-w-[1800px]
         "
       >
         <div
@@ -178,10 +182,9 @@ export function AdvantageSection() {
             className="
               mt-[22px]
               list-disc
-              pl-[22px]
               font-['Inter',sans-serif]
               text-[17px]
-              font-[800]
+              font-bold
               leading-[1.55]
               tracking-[-0.025em]
               text-black

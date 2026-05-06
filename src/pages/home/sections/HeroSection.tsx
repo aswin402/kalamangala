@@ -253,6 +253,8 @@ export const HeroSection = () => {
           md:h-[560px]
           lg:h-[645px]
           xl:h-[690px]
+          2xl:h-[720px]
+          3xl:h-[760px]
         "
       >
         <div
@@ -360,6 +362,9 @@ export const HeroSection = () => {
             lg:rounded-[30px]
 
             xl:h-[800px]
+
+            2xl:h-[860px]
+            3xl:h-[920px]
           "
         >
           <video

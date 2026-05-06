@@ -52,7 +52,20 @@ const blocks = [
     title: "A Lifestyle You Deserve",
     image: img5,
     reverse: false,
-    text: "Every plot at The Waterfront is an opportunity — to build a home that reflects you, in a community crafted by Kalamangala, one of the best property developers in Tamil Nadu. With flexible plot sizes and world-class infrastructure, you can bring your dream home to life with ease. Your mornings begin with the sound of flowing water, your evenings end with golden sunsets over landscaped greens — and your every day is surrounded by like-minded residents who value quality living.",
+    text: (
+      <>
+        Every plot at The Waterfront is an opportunity — to build a home that
+        reflects you, in a community crafted by <strong>Kalamangala</strong>,
+        one of the <strong>best property developers in Tamil Nadu.</strong> With
+        flexible plot sizes and world-class infrastructure, you can bring your
+        dream home to life with ease.
+        <span className="block mt-[15px]">
+          Your mornings begin with the sound of flowing water, your evenings end
+          with golden sunsets over landscaped greens — and your every day is
+          surrounded by like-minded residents who value quality living.
+        </span>
+      </>
+    ),
     points: [],
     bottom: "",
   },
@@ -71,10 +84,10 @@ export function LifestyleSection() {
   return (
     <section
       className="
-        mx-auto w-full max-w-[1160px] mb-20
-        px-5 pt-[82px]
+        mx-auto w-full max-w-[1160px] mb-16
+        px-5 pt-[60px]
         sm:px-6
-        md:mt-[88px] md:px-6 md:pt-0
+        md:mt-[65px] md:px-6 md:pt-0
       "
     >
       <div className="flex flex-col gap-[22px]">
@@ -150,7 +163,7 @@ export function LifestyleSection() {
 
               <p
                 className="
-                  mt-[17px] max-w-[540px]
+                  mt-[17px] max-w-[540px] 
                   text-[16px] font-medium
                   leading-[1.6]
                   tracking-[-0.035em]
@@ -167,16 +180,16 @@ export function LifestyleSection() {
               {item.points.length > 0 && (
                 <ul
                   className="
-                    mt-[3px] max-w-[540px]
-                    list-disc space-y-[2px]
-                    pl-[19px]
+                    !mt-[3px] max-w-[540px]
+                    list-disc list-inside space-y-[2px]
+                    !ml-0 !mb-0 pl-0
                     text-[16px] font-medium
                     leading-[1.58]
                     tracking-[-0.035em]
                     text-white
                     marker:text-[8px]
 
-                    md:mt-[25px]
+                    md:!mt-[25px]
                     md:space-y-[8px]
                     md:leading-[1.55]
                     md:text-white/90

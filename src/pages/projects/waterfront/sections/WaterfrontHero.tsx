@@ -102,7 +102,7 @@ export function WaterfrontHero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full px-[14px] pb-[34px] pt-[38px] text-foreground md:px-10 md:pb-[110px] md:pt-[62px] lg:px-[110px] lg:pb-[120px] lg:pt-[70px]">
+    <section ref={sectionRef} className="w-full px-[14px] pb-[34px] pt-[38px] text-foreground md:px-10 md:pb-[110px] md:pt-[62px] lg:px-12 lg:pb-[120px] lg:pt-[70px] xl:px-[110px]">
       <div className="mx-auto max-w-[1680px]">
         {/* TOP IMAGE + DETAILS */}
         <div className="grid grid-cols-1 gap-[30px] lg:grid-cols-[1fr_390px] lg:gap-[36px]">

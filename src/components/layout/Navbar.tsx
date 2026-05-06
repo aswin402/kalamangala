@@ -209,9 +209,9 @@ export const Navbar = () => {
         <div
           className="
             flex h-[61px] w-full items-center justify-between bg-white-text
-            px-[108px]
+            px-[31px]
             shadow-[0_4px_14px_rgba(23,55,47,0.14)]
-            max-[520px]:px-[31px]
+            sm:px-[40px]
             md:mx-auto md:h-[72px] md:max-w-[1920px] md:justify-center md:px-5
             md:shadow-[0_4px_14px_rgba(23,55,47,0.14)]
           "
@@ -305,7 +305,7 @@ export const Navbar = () => {
               onMouseEnter={openDesktopProjects}
               onMouseLeave={closeDesktopProjects}
               className="
-                absolute left-1/2 top-[64px] hidden w-[560px]
+                absolute left-1/2 top-[64px] hidden w-[min(560px,90vw)]
                 -translate-x-1/2 rounded-[28px]
                 border border-foreground/5 bg-white-text/95 p-8
                 shadow-[0_24px_60px_rgba(0,0,0,0.08)]
@@ -454,7 +454,7 @@ export const Navbar = () => {
           {/* Contact Card Down */}
           <div
             className="
-              mx-auto mt-[46px] h-[324px] w-[367px] max-w-full rounded-[7px]
+              mx-auto mt-[46px] h-[324px] w-full max-w-[367px] rounded-[7px]
               bg-card-green px-[22px] pt-[27px] text-center text-white
             "
           >

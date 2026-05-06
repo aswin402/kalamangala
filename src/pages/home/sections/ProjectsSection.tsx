@@ -77,19 +77,18 @@ export const ProjectsSection = () => {
       ref={projectsSectionRef}
       id="projects"
       className="
-        
         relative overflow-hidden
-        pt-[54px] pb-[64px]
-        md:pt-[54px] md:pb-[82px]
-        lg:pt-[74px]
+        pt-[40px] pb-[48px]
+        md:pt-[40px] md:pb-[60px]
+        lg:pt-[54px]
       "
     >
       {/* Heading */}
       <div
         className="
-          relative mx-auto mb-[47px] w-full max-w-[705px] text-center
-          md:mb-[112px]
-          lg:mb-[112px] lg:max-w-[705px]
+          relative mx-auto mb-[30px] w-full max-w-[705px] text-center
+          md:mb-[70px]
+          lg:mb-[70px] lg:max-w-[705px]
         "
       >
         <div
@@ -124,6 +123,7 @@ export const ProjectsSection = () => {
             xl:tracking-[-0.08em]
 
             2xl:text-[220px]
+            3xl:text-[260px]
           "
         >
           Projects
@@ -139,6 +139,8 @@ export const ProjectsSection = () => {
             px-[22px]
             sm:px-[30px]
             md:px-[18px]
+            xl:max-w-[1320px]
+            3xl:max-w-[1500px]
           "
         >
           <div
@@ -150,7 +152,7 @@ export const ProjectsSection = () => {
               md:min-h-0 md:px-[18px] md:py-[19px]
             "
           >
-            <div className="grid grid-cols-1 items-stretch md:grid-cols-[548px_1fr] max-[1024px]:md:grid-cols-[50%_1fr]">
+            <div className="grid grid-cols-1 items-stretch [&>*]:min-w-0 md:grid-cols-[minmax(300px,548px)_1fr] lg:grid-cols-[minmax(350px,548px)_1fr]">
               {/* Image */}
               <div
                 onPointerEnter={() => setHovered(true)}
@@ -262,7 +264,7 @@ export const ProjectsSection = () => {
       {/* All Projects button */}
       <div
         ref={projectsBtnRef}
-        className="mt-[40px] flex justify-center md:mt-[98px]"
+        className="mt-[30px] flex justify-center md:mt-[60px]"
       >
         <Link
           to="/projects"

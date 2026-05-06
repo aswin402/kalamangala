@@ -194,6 +194,8 @@ export function ShowcaseGrid() {
                   md:h-[420px]
                   md:rounded-[16px]
                   lg:h-[520px]
+                  xl:h-[560px]
+                  2xl:h-[600px]
                 "
               >
                 <div

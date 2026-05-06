@@ -45,7 +45,7 @@ export function MapViewSection() {
   const showDivider = position > 0 && position < 100;
 
   return (
-    <section className="waterfront-animate w-full overflow-hidden px-5 pb-[78px] pt-[46px] md:px-10 md:pb-[96px] md:pt-[62px] lg:px-[110px] lg:pb-[105px] lg:pt-[70px]">
+    <section className="waterfront-animate w-full overflow-hidden px-5 pb-[78px] pt-[46px] md:px-10 md:pb-[96px] md:pt-[62px] lg:px-12 lg:pb-[105px] lg:pt-[70px] xl:px-[110px]">
       <div className="mx-auto w-full max-w-[1260px] overflow-hidden">
         <div
           ref={containerRef}

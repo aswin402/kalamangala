@@ -53,9 +53,9 @@ export function LandmarksSection() {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto px-6 mb-40">
+    <section className="mx-auto mt-[34px] max-w-[1540px] px-5 pb-[28px] 3xl:max-w-[1800px]">
       <div className="mb-20 text-center scroll-reveal">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground tracking-tighter italic">
+        <h2 className="text-[34px] font-bold leading-none tracking-[-0.055em] text-foreground sm:text-[42px] md:text-[50px] italic">
           Why Choose Kalamangala?
         </h2>
       </div>
@@ -63,10 +63,10 @@ export function LandmarksSection() {
         {landmarks.map((l, i) => (
           <div
             key={i}
-            className={`flex flex-col md:flex-row items-stretch rounded-[3rem] overflow-hidden scroll-reveal shadow-xl ${l.dark ? "bg-card-green text-white" : "bg-white text-foreground"}`}
+            className={`flex flex-col md:flex-row items-stretch rounded-[22px] md:rounded-[28px] overflow-hidden scroll-reveal shadow-xl ${l.dark ? "bg-card-green text-white" : "bg-white text-foreground"}`}
           >
             <div
-              className={`flex-1 min-h-[300px] ${i % 2 === 0 ? "" : "md:order-2"}`}
+              className={`flex-1 min-h-[200px] sm:min-h-[300px] ${i % 2 === 0 ? "" : "md:order-2"}`}
             >
               <img
                 src={l.img}
@@ -75,7 +75,7 @@ export function LandmarksSection() {
               />
             </div>
             <div
-              className={`flex-1 p-12 md:p-16 flex flex-col justify-center gap-6 ${i % 2 === 0 ? "" : "md:order-1"}`}
+              className={`flex-1 p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center gap-6 ${i % 2 === 0 ? "" : "md:order-1"}`}
             >
               <h3 className="text-3xl font-heading font-bold">{l.title}</h3>
               <p

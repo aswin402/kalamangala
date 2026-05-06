@@ -57,10 +57,10 @@ export const AboutSection = () => {
       ref={aboutSectionRef}
       id="about"
       className="
-        relative overflow-hidden mt-15 mb-30
-        pb-[52px] pt-[59px]
-        max-[1024px]:pb-[74px] max-[1024px]:pt-[50px]
-        max-[768px]:pb-[70px] max-[768px]:pt-[50px]
+        relative overflow-hidden
+        pb-[40px] pt-[50px]
+        max-[1024px]:pb-[54px] max-[1024px]:pt-[40px]
+        max-[768px]:pb-[50px] max-[768px]:pt-[38px]
       "
     >
       <div
@@ -68,11 +68,15 @@ export const AboutSection = () => {
           mx-auto grid w-full items-center max-w-[1800px]
           grid-cols-[minmax(0,45vw)_minmax(0,1fr)]
           gap-[46px]
-          px-[40px]
+          px-4
+          sm:px-5
+          md:px-6
+          lg:px-8
+          xl:px-[40px]
+          3xl:max-w-[2200px] 3xl:px-[60px]
 
           max-[1024px]:grid-cols-1
           max-[1024px]:gap-0
-          max-[1024px]:px-[15px]
         "
       >
         <div ref={aboutImgRef} className="relative w-full">
@@ -86,6 +90,8 @@ export const AboutSection = () => {
 
               max-[1024px]:h-[420px]
               max-[768px]:h-[306px]
+              lg:h-[480px]
+              xl:h-[565px]
             "
           >
             <img

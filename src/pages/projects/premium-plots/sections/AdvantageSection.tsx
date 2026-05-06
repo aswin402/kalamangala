@@ -5,9 +5,9 @@ export function AdvantageSection() {
   return (
     <>
       <section
-        className="
+className="
           mx-auto
-          mt-[92px]
+          mt-[55px]
           grid
           w-full
           max-w-[1480px]
@@ -15,10 +15,11 @@ export function AdvantageSection() {
           items-center
           gap-[44px]
           px-5
-          md:mt-[108px]
+          md:mt-[75px]
           md:grid-cols-[0.94fr_1.06fr]
           lg:gap-[58px]
           xl:px-0
+          3xl:max-w-[1800px]
         "
       >
         {/* Left Content */}
@@ -125,7 +126,7 @@ export function AdvantageSection() {
       <section
         className="
           mx-auto
-          mt-[120px]
+          mt-[70px]
           grid
           w-full
           max-w-[1480px]
@@ -133,9 +134,10 @@ export function AdvantageSection() {
           items-center
           gap-[44px]
           px-5
-          pb-[90px]
+          pb-[60px]
           md:grid-cols-[0.98fr_1.02fr]
           xl:px-0
+          3xl:max-w-[1800px]
         "
       >
         <div

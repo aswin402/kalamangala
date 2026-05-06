@@ -16,7 +16,7 @@ export function ConnectivitySection() {
         mt-[68px]
         w-full
         max-w-[1480px]
-        px-[41px]
+        px-4
         pb-[58px]
         sm:mt-[82px]
         sm:px-5
@@ -24,6 +24,7 @@ export function ConnectivitySection() {
         md:mt-[96px]
         md:pb-[76px]
         lg:mt-[112px]
+        3xl:max-w-[1800px]
       "
     >
       <h2
@@ -39,7 +40,7 @@ export function ConnectivitySection() {
         The Neighbourhood Advantage
       </h2>
 
-      <div className="mx-auto w-full max-w-[1328px]">
+      <div className="mx-auto w-full max-w-[1328px] overflow-x-auto">
         <table
           className="
             w-full

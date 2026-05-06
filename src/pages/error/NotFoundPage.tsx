@@ -3,9 +3,9 @@ import { MoveLeft } from 'lucide-react';
 
 export function NotFoundPage() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center p-8 text-center animate-in fade-in duration-700">
+    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-5 text-center animate-in fade-in duration-700">
       <div className="relative mb-8">
-        <h1 className="text-[12rem] font-black leading-none tracking-tighter text-muted-foreground/10 select-none">
+        <h1 className="text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-black leading-none tracking-tighter text-muted-foreground/10 select-none">
           404
         </h1>
         <div className="absolute inset-0 flex items-center justify-center">

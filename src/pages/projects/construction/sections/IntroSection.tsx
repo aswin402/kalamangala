@@ -1,6 +1,6 @@
 export function IntroSection() {
   return (
-    <section className="km-reveal mx-auto max-w-[1500px] px-5 pb-14 pt-6 text-center md:pt-8">
+    <section className="km-reveal mx-auto max-w-[1500px] px-5 pb-14 pt-6 text-center md:pt-8 3xl:max-w-[1800px]">
       <h1
         className="
           mx-auto

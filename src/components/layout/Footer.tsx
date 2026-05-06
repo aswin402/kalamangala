@@ -78,13 +78,16 @@ export const Footer = () => {
   return (
     <footer
       className="
-        relative z-[2] mx-[39px] my-[15px] flex min-h-[900px]
+        relative z-[2] flex min-h-[900px]
         flex-col overflow-hidden rounded-[10px] bg-footer text-white
 
-        max-xl:mx-9 max-xl:my-5 max-xl:min-h-[760px]
-        max-lg:min-h-0
-        max-md:mx-4 max-md:my-4
-        max-sm:mx-3 max-sm:my-[31px] max-sm:rounded-[8px]
+        mx-3 my-[31px] rounded-[8px]
+        sm:mx-4 sm:my-4
+        md:mx-4 md:my-4
+        lg:mx-6 lg:my-5 lg:min-h-[760px]
+        xl:mx-9 xl:my-5
+        2xl:mx-[39px] 2xl:my-[15px] 2xl:min-h-[900px]
+        3xl:mx-[56px]
       "
     >
       <div
@@ -99,27 +102,23 @@ export const Footer = () => {
       >
         <div
           className="
-            mx-auto grid w-full max-w-[1120px]
-            grid-cols-[535px_290px_100px]
-            items-start gap-x-[97px]
+            mx-auto grid w-full
+            grid-cols-1 gap-y-0
+            items-start
 
-            max-[1280px]:max-w-[1080px]
-            max-[1280px]:grid-cols-[520px_280px_95px]
-            max-[1280px]:gap-x-[92px]
-
-            max-[1180px]:max-w-[1000px]
-            max-[1180px]:grid-cols-[500px_260px_90px]
-            max-[1180px]:gap-x-[75px]
-
-            max-lg:grid-cols-1 max-lg:gap-y-0
+            lg:max-w-[960px] lg:grid-cols-[5fr_2.8fr_1fr] lg:gap-x-[50px]
+            xl:max-w-[1080px] xl:gap-x-[75px]
+            2xl:max-w-[1120px] 2xl:gap-x-[97px]
+            3xl:max-w-[1300px] 3xl:gap-x-[110px]
+            [&>*]:min-w-0
           "
         >
           {/* SOCIAL CARDS */}
           <div
             className="
-              order-1 col-start-1 row-start-1 w-full
-              max-lg:order-3 max-lg:row-auto
-              max-sm:mt-[54px]
+              order-3 w-full
+              mt-[54px] sm:mt-[54px]
+              lg:order-1 lg:col-start-1 lg:row-start-1 lg:mt-0
             "
           >
             <div className="flex flex-col gap-[10px] max-sm:gap-[11px]">
@@ -181,9 +180,9 @@ export const Footer = () => {
           {/* NEWSLETTER */}
           <div
             className="
-              order-2 col-start-1 row-start-2 mt-[28px] w-full
-              max-lg:order-4 max-lg:row-auto
-              max-sm:mt-[29px]
+              order-4 mt-[29px] w-full
+              sm:mt-[28px]
+              lg:order-2 lg:col-start-1 lg:row-start-2 lg:mt-[28px]
             "
           >
             <p
@@ -231,8 +230,8 @@ export const Footer = () => {
           {/* SERVICES */}
           <div
             className="
-              order-3 col-start-2 row-start-1 w-full pt-[3px]
-              max-lg:order-1 max-lg:col-start-auto max-lg:row-auto max-lg:pt-0
+              order-1 w-full pt-0
+              lg:order-3 lg:col-start-2 lg:row-start-1 lg:pt-[3px]
             "
           >
             <div className="flex flex-col items-start gap-[15px] max-sm:gap-[18px]">
@@ -262,8 +261,10 @@ export const Footer = () => {
           {/* MENU */}
           <div
             className="
-              order-4 col-start-3 row-start-1 w-full pt-[3px] ml-10
-              max-lg:order-2 max-lg:col-start-auto max-lg:row-auto max-lg:mt-[44px] max-lg:pt-0
+              order-2 w-full pt-0 mt-[44px]
+              lg:order-4 lg:col-start-3 lg:row-start-1 lg:mt-0 lg:pt-[3px] lg:ml-4
+              xl:ml-6
+              2xl:ml-10
             "
           >
             <span
@@ -299,11 +300,13 @@ export const Footer = () => {
       <div
         className="
           mt-auto w-full overflow-hidden
-          px-[18px] pb-[30px] pt-[40px] mb-12
+          px-[12px] pb-[28px] pt-[40px] mb-12
 
-          max-lg:px-[10px] max-lg:pt-[56px]
-          max-md:px-[10px] max-md:pt-[45px]
-          max-sm:px-[12px] max-sm:pt-[40px] max-sm:pb-[28px]
+          sm:px-[10px] sm:pt-[45px] sm:pb-[30px]
+          md:px-[10px] md:pt-[45px]
+          lg:px-[10px] lg:pt-[56px]
+          xl:px-[18px] xl:pt-[40px] xl:pb-[30px]
+          3xl:px-[24px]
         "
       >
         <h2

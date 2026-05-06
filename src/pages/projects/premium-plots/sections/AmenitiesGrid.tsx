@@ -35,10 +35,11 @@ export function AmenitiesGrid() {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto px-6 mb-40">
+    <section className="mx-auto mt-[34px] max-w-[1540px] px-5 pb-[28px]">
       <div className="mb-20 text-center scroll-reveal">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground tracking-tighter">
-          A Premium Gated Community with <br />
+        <h2 className="text-[34px] font-bold leading-none tracking-[-0.055em] text-foreground sm:text-[42px] md:text-[50px]">
+          A Premium Gated Community with{" "}
+          <br className="hidden sm:block" />
           <span className="text-primary italic">World-Class Amenities</span>
         </h2>
       </div>
@@ -46,7 +47,7 @@ export function AmenitiesGrid() {
         {amenities.map((a, i) => (
           <div
             key={i}
-            className="bg-[#edeae0] p-10 rounded-[2.5rem] border border-foreground/5 shadow-sm hover:shadow-xl transition-all group"
+            className="bg-[#edeae0] p-6 sm:p-8 md:p-10 rounded-[22px] md:rounded-[2.5rem] border border-foreground/5 shadow-sm hover:shadow-xl transition-all group"
           >
             <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
               {a.icon}

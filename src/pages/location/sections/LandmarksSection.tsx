@@ -9,7 +9,7 @@ type Landmark = {
   title: string;
   time: string;
   intro?: string;
-  desc: string;
+  desc: React.ReactNode;
   points: string[];
   outro?: string;
   img: string;
@@ -22,7 +22,15 @@ export function LandmarksSection() {
       title: "Erode Railway Station",
       time: "Just 15 Minutes Away",
       intro: "Start your day connected to the world.",
-      desc: "The Erode Junction Railway Station, one of South India’s busiest transport hubs, is just 15 minutes from The Waterfront. Whether you’re a daily commuter or a frequent traveler, this advantage means less time on the road and more time at home.",
+      desc: (
+        <>
+          The <strong>Erode Junction Railway Station</strong>, one of South
+          India’s busiest transport hubs, is just{" "}
+          <strong>15 minutes from The Waterfront.</strong> Whether you’re a
+          daily commuter or a frequent traveler, this advantage means less time
+          on the road and more time at home.
+        </>
+      ),
       points: [
         "Quick access to major routes like Coimbatore, Chennai, Trichy, and Salem",
         "Excellent connectivity for professionals working across cities",
@@ -103,7 +111,7 @@ export function LandmarksSection() {
   ];
 
   return (
-    <section className="mx-auto mt-[70px] w-full max-w-[1540px] px-5 md:mt-[92px] md:px-8">
+    <section className="mx-auto mt-[70px] w-full max-w-[1540px] px-5 md:mt-[92px] md:px-8 3xl:max-w-[1800px]">
       <div className="la-reveal mb-[34px]">
         <h2 className="font-['Inter'] text-[34px] font-bold leading-[0.95] tracking-[-0.065em] text-foreground md:text-[46px]">
           Erode&apos;s Landmarks — All Within Minutes
@@ -127,12 +135,13 @@ export function LandmarksSection() {
                 la-card
                 mx-auto
                 w-full
-                max-w-[332px]
+                max-w-[420px]
                 overflow-hidden
                 rounded-[22px]
                 px-[20px]
                 pb-[22px]
                 pt-[20px]
+                sm:max-w-[480px]
                 md:grid
                 md:min-h-[395px]
                 md:max-w-none
@@ -218,19 +227,19 @@ export function LandmarksSection() {
                     }
                   `}
                 >
-                  {item.intro && <p>{item.intro}</p>}
+                  {item.intro && <p className="!mt-0">{item.intro}</p>}
 
-                  <p>{item.desc}</p>
+                  <p className="!mt-0">{item.desc}</p>
 
                   {item.points.length > 0 && (
-                    <ul className="mt-[2px] list-disc pl-[18px]">
+                    <ul className="!my-0 !ml-0 list-disc list-inside pl-0 space-y-[2px]">
                       {item.points.map((point) => (
                         <li key={point}>{point}</li>
                       ))}
                     </ul>
                   )}
 
-                  {item.outro && <p>{item.outro}</p>}
+                  {item.outro && <p className="!mt-0">{item.outro}</p>}
                 </div>
               </div>
             </article>

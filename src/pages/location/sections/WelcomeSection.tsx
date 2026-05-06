@@ -1,13 +1,13 @@
 export function WelcomeSection() {
   return (
-    <section className="la-reveal mx-auto mt-[34px] flex w-full max-w-[1540px] flex-col items-center px-5 pb-[58px] text-center md:mt-[42px]">
+    <section className="la-reveal mx-auto mt-[34px] flex w-full max-w-[1540px] flex-col items-center px-5 pb-[58px] text-center md:mt-[42px] 3xl:max-w-[1800px]">
       <h1 className="max-w-[900px] font-['Inter'] text-[44px] font-bold leading-[0.82] tracking-[-0.07em] text-foreground sm:text-[56px] md:text-[108px] xl:text-[124px]">
         Welcome to The
         <br />
         Waterfront
       </h1>
 
-      <h2 className="mt-[16px] font-['Inter'] text-[20px] font-black leading-[1.05] tracking-[-0.05em] text-foreground md:text-[38px] xl:text-[45px]">
+      <h2 className="mt-[16px] font-['Inter'] text-[20px] font-black leading-[1.05] tracking-[-0.05em] text-foreground sm:text-[28px] md:text-[38px] xl:text-[45px]">
         Erode&apos;s Most Connected Riverside Address
       </h2>
 

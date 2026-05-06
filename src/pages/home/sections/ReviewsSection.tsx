@@ -90,12 +90,12 @@ export const ReviewsSection = () => {
       className="
         relative
         overflow-hidden
-        pt-[54px]
-        pb-[82px]
+        pt-[40px]
+        pb-[60px]
 
-        md:pt-[60px]
-        lg:pt-[60px]
-        xl:pt-[61px]
+        md:pt-[46px]
+        lg:pt-[46px]
+        xl:pt-[48px]
       "
     >
       {/* Heading area */}
@@ -103,20 +103,21 @@ export const ReviewsSection = () => {
         className="
           relative
           mx-auto
-          mb-[58px]
+          mb-[36px]
           w-fit
 
           md:mx-0
-          md:ml-[160px]
-          md:mb-[64px]
+          md:ml-[80px]
+          md:mb-[44px]
 
-          lg:ml-[160px]
-          lg:mb-[66px]
+          lg:ml-[120px]
+          lg:mb-[44px]
 
           xl:ml-[160px]
-          xl:mb-[66px]
+          xl:mb-[46px]
 
           2xl:ml-[160px]
+          3xl:ml-[200px]
         "
       >
         {/* Small label */}
@@ -131,11 +132,11 @@ export const ReviewsSection = () => {
 
             md:absolute
             md:block
-            md:left-[116px]
+            md:left-[76px]
             md:top-[4px]
             md:mb-0
 
-            lg:left-[117px]
+            lg:left-[97px]
             lg:top-[4px]
             lg:ml-[20px]
 
@@ -171,6 +172,7 @@ export const ReviewsSection = () => {
             xl:leading-[0.72]
             xl:tracking-[-0.08em]
             2xl:text-[220px]
+            3xl:text-[260px]
           "
         >
           Reviews
@@ -188,6 +190,7 @@ export const ReviewsSection = () => {
               key={`${review.name}-${index}`}
               className="
                 review-card
+                rounded-[14px]
                 flex
                 h-[515px]
                 w-[326px]

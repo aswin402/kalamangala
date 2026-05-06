@@ -50,7 +50,7 @@ export const MissionVisionSection = () => {
   }, [tab]);
 
   return (
-    <section ref={sectionRef} className="w-full px-[39px] pb-[90px] pt-[24px] max-xl:px-9 max-md:px-4 max-sm:px-3 sm:pt-[31px] mb-20">
+    <section ref={sectionRef} className="w-full px-3 pb-[90px] pt-[24px] sm:px-4 md:px-4 lg:px-9 xl:px-9 2xl:px-[39px] sm:pt-[31px] mb-20 3xl:px-[56px]">
       <div className="mx-auto flex min-h-[340px] w-full flex-col items-center rounded-[18px] bg-card-green px-[25px] pb-[45px] pt-[48px] text-center sm:min-h-[320px] sm:px-[46px] sm:pb-[60px] sm:pt-[60px]">
         {/* Tabs */}
         <div className="mb-[48px] inline-flex h-[51px] rounded-[9px] border border-white/50 bg-transparent p-[1px] sm:mb-[40px]">

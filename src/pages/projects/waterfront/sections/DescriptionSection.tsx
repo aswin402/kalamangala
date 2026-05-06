@@ -1,6 +1,6 @@
 export function DescriptionSection() {
   return (
-    <section className="waterfront-animate mx-auto w-full max-w-[1120px] px-6 pb-[150px] pt-[95px] md:px-10 lg:px-0">
+    <section className="waterfront-animate mx-auto w-full max-w-[1120px] px-6 pb-[100px] pt-[65px] md:px-10 lg:px-0">
       <div className="text-left text-foreground">
         <h2 className="mb-[34px] text-[22px] font-extrabold uppercase leading-[1.12] tracking-[-0.035em] md:text-[26px] lg:text-[30px]">
           THE WATERFRONT - WHERE LUXURY MEETS LEGACY

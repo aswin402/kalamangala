@@ -26,9 +26,9 @@ interface ScrollHeroProps {
 export function ScrollHero({
   titleContent,
   mediaContent,
-  titlePanelClassName = "h-[260px] sm:h-[300px] md:h-[360px] lg:h-[400px] xl:h-[420px]",
+  titlePanelClassName = "h-[260px] sm:h-[300px] md:h-[360px] lg:h-[400px] xl:h-[420px] 2xl:h-[450px]",
   mediaWrapperClassName = "px-[12px] sm:px-[20px] md:px-[28px] lg:px-[38px]",
-  mediaInnerClassName = "h-[300px] sm:h-[440px] md:h-[500px] lg:h-[520px] xl:h-[540px] rounded-[18px] sm:rounded-[22px] md:rounded-[26px] lg:rounded-[30px]",
+  mediaInnerClassName = "h-[300px] sm:h-[440px] md:h-[500px] lg:h-[520px] xl:h-[540px] 2xl:h-[580px] rounded-[18px] sm:rounded-[22px] md:rounded-[26px] lg:rounded-[30px]",
 }: ScrollHeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const titlePanelRef = useRef<HTMLDivElement>(null);
@@ -210,7 +210,7 @@ export function ScrollHero({
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative">
+    <section ref={sectionRef} className="relative overflow-hidden">
       {/* ── TITLE PANEL — gets pinned by ScrollTrigger ── */}
       <div
         ref={titlePanelRef}

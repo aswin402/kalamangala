@@ -9,6 +9,7 @@ export function PhilosophySection() {
         max-w-[1500px]
         px-5
         md:mt-[92px]
+        3xl:max-w-[1800px]
       "
     >
       <h2

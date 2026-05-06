@@ -97,7 +97,7 @@ export function WhyChooseSection() {
   ];
 
   return (
-    <section className="mx-auto mt-[48px] w-full max-w-[1530px] px-5 md:mt-[58px] xl:px-0">
+    <section className="mx-auto mt-[48px] w-full max-w-[1530px] px-5 md:mt-[58px] xl:px-4 2xl:px-0 3xl:max-w-[1800px]">
       <h2
         className="
           km-reveal

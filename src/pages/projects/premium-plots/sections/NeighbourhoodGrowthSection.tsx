@@ -40,15 +40,15 @@ export function NeighbourhoodGrowthSection() {
     <section
       className="
         relative
-        mt-[118px]
+        mt-[70px]
         w-full
         overflow-hidden
-        pb-[70px]
-        pt-[64px]
+        pb-[50px]
+        pt-[48px]
       "
     >
 
-      <div className="relative z-10 mx-auto w-full max-w-[1450px]">
+      <div className="relative z-10 mx-auto w-full max-w-[1450px] px-4 sm:px-5 md:px-6 lg:px-0 3xl:max-w-[1800px]">
         {/* Header */}
         <div className="la-reveal mb-[27px]">
           <h2

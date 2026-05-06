@@ -100,7 +100,7 @@ const features = [
 export function FeatureRows() {
   return (
     <>
-      <section className="mx-auto mt-[82px] w-full max-w-[1160px] px-5 md:mt-[130px] md:px-6">
+      <section className="mx-auto mt-[60px] w-full max-w-[1160px] px-5 md:mt-[90px] md:px-6 xl:max-w-[1300px] 3xl:max-w-[1500px]">
         <div className="flex flex-col gap-[78px] md:gap-[88px]">
           {features.map((item) => (
             <article
@@ -167,7 +167,7 @@ export function FeatureRows() {
                     mt-[15px]
                     max-w-[500px]
                     list-disc
-                    pl-[20.6667px]
+                    pl-[14.6667px]
                     font-['Inter',sans-serif]
                     text-[16px]
                     font-medium
@@ -231,12 +231,12 @@ export function FeatureRows() {
         className="
           km-reveal
           mx-auto
-          mt-[72px]
+          mt-[52px]
           w-full
           max-w-[1600px]
           px-[13px]
           sm:px-4
-          md:mt-[108px]
+          md:mt-[80px]
           md:px-8
           lg:px-[38px]
         "

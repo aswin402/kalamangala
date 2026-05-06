@@ -34,6 +34,7 @@ export function WhyChooseSection() {
         px-5
         pb-[34px]
         md:mt-[58px]
+        3xl:max-w-[1800px]
       "
     >
       <h2

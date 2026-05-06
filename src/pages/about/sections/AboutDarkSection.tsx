@@ -162,10 +162,10 @@ export const AboutDarkSection = () => {
       </style>
 
       <section ref={sectionRef} className="relative z-[2] w-full overflow-hidden text-white">
-        <div className="w-full rounded-t-[14px] bg-card-green px-[13px] pb-[33px] pt-[36px] sm:mx-auto sm:max-w-[416px] sm:rounded-[16px] sm:px-[13px] sm:pb-[33px] sm:pt-[36px] md:max-w-none md:rounded-t-[14px] md:px-[43px] md:pb-[110px] md:pt-[105px] lg:px-[43px] lg:pb-[135px] lg:pt-[110px]">
-          <div className="mx-auto max-w-[1200px] xl:max-w-[1760px]">
+        <div className="w-full rounded-t-[14px] bg-card-green px-[13px] pb-[26px] pt-[30px] sm:px-[18px] sm:pb-[28px] sm:pt-[32px] md:rounded-t-[14px] md:px-[43px] md:pb-[80px] md:pt-[80px] lg:px-[43px] lg:pb-[100px] lg:pt-[85px]">
+          <div className="mx-auto max-w-[1200px] xl:max-w-[1760px] 3xl:max-w-[2100px]">
             {/* TEXT TOP AREA */}
-            <div className="mb-[72px] md:mb-[100px] lg:mb-[135px]">
+            <div className="mb-[52px] md:mb-[70px] lg:mb-[90px]">
               <div className="mb-[21px] md:mb-[23px]" data-anim="fade-up">
                 <div className="mb-[23px] flex items-center gap-[7px] md:mb-[22px]">
                   <span className="flex h-[11px] w-[11px] items-center justify-center rounded-full border border-primary">
@@ -206,7 +206,7 @@ export const AboutDarkSection = () => {
             </div>
 
             {/* IMAGE GRID */}
-            <div className="grid min-h-0 grid-cols-1 gap-[10px] xl:min-h-[870px] xl:grid-cols-[2.05fr_1fr_1fr]">
+            <div className="grid min-h-0 grid-cols-1 gap-[10px] md:grid-cols-2 xl:min-h-[870px] xl:grid-cols-[2.05fr_1fr_1fr]">
               {/* LEFT BIG IMAGE */}
               <div className="relative order-1 h-[420px] overflow-hidden rounded-[10px] md:h-[620px] xl:h-auto" data-anim="scale-in">
                 <img

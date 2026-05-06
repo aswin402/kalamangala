@@ -12,6 +12,7 @@ export function CTASection() {
         sm:px-5
         md:mt-[96px]
         lg:mt-[118px]
+        3xl:max-w-[1800px]
       "
     >
       <article
@@ -25,6 +26,8 @@ export function CTASection() {
           text-white-text
           lg:h-[480px]
           lg:grid-cols-[0.98fr_1.02fr]
+          xl:h-[520px]
+          2xl:h-[540px]
         "
       >
         {/* LEFT IMAGE */}

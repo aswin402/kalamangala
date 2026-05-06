@@ -1,6 +1,6 @@
 export function QuoteSection() {
   return (
-    <section className="waterfront-animate w-full px-5 pb-[88px] md:px-10 md:pb-[110px] lg:px-[110px] lg:pb-[120px]">
+    <section className="waterfront-animate w-full px-5 pb-[60px] md:px-10 md:pb-[80px] lg:px-12 lg:pb-[90px] xl:px-[110px] 3xl:px-[140px]">
       <div className="mx-auto w-full max-w-[1260px] rounded-[12px] bg-[#f7f6e9] px-5 pb-[24px] pt-[24px] text-center md:px-10 md:pb-[32px] md:pt-[32px] lg:px-[30px] lg:pb-[36px] lg:pt-[36px] xl:px-[50px]">
         <div className="mb-[6px] flex justify-center md:mb-[4px]">
           <svg
