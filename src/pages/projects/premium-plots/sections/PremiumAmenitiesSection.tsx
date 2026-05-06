@@ -1,6 +1,6 @@
 export function PremiumAmenitiesSection() {
   return (
-    <section className="km-reveal relative w-full overflow-hidden px-5 text-center sm:px-6">
+    <section className="km-reveal relative w-full overflow-hidden px-5 text-left xl:px-0">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.42]"
         style={{
@@ -18,9 +18,11 @@ export function PremiumAmenitiesSection() {
           relative
           mx-auto
           flex
-          max-w-[1680px]
+          w-full
+          max-w-[1480px]
+          3xl:max-w-[1800px]
           flex-col
-          items-center
+          items-start
           pb-[42px]
           pt-[34px]
           md:pb-[52px]
@@ -29,7 +31,7 @@ export function PremiumAmenitiesSection() {
       >
         <h2
           className="
-            mx-auto
+            text-left
             max-w-[1260px]
             font-['Inter',sans-serif]
             text-[34px]
@@ -48,12 +50,11 @@ export function PremiumAmenitiesSection() {
 
         <div
           className="
-            mx-auto
             mt-8
             flex
             max-w-[1530px]
             flex-col
-            items-center
+            items-start
             gap-6
             md:mt-9
             md:gap-7
@@ -61,9 +62,8 @@ export function PremiumAmenitiesSection() {
         >
           <p
             className="
-              mx-auto
               max-w-[1530px]
-              text-center
+              text-left
               font-['Inter',sans-serif]
               text-[17px]
               font-bold
@@ -83,7 +83,7 @@ export function PremiumAmenitiesSection() {
 
           <p
             className="
-              text-center
+              text-left
               font-['Inter',sans-serif]
               text-[17px]
               font-bold

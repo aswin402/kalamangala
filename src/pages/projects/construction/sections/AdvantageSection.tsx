@@ -83,7 +83,7 @@ export function AdvantageSection() {
 
             <p>That’s why The Waterfront stands apart:</p>
 
-            <ul className="list-disc pl-[20px]">
+            <ul className="list-disc">
               <li>Strategically chosen for accessibility and serenity</li>
               <li>Built with sustainable layouts and modern amenities</li>
               <li>Designed for families, investors, and nature lovers alike</li>
@@ -91,7 +91,7 @@ export function AdvantageSection() {
 
             <p className="mt-[20px] leading-[1.3]">
               Every home here reflects Kalamangala’s promise of{" "}
-              <span className="font-[800]">
+              <span className="font-bold">
                 luxury that lasts a lifetime.
               </span>
             </p>
@@ -181,10 +181,9 @@ export function AdvantageSection() {
             className="
               mt-[22px]
               list-disc
-              pl-[22px]
               font-['Inter',sans-serif]
               text-[17px]
-              font-[800]
+              font-bold
               leading-[1.55]
               tracking-[-0.025em]
               text-black

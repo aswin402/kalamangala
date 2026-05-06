@@ -1,27 +1,16 @@
 export function PrimeLocationSection() {
   return (
-    <section className="km-reveal relative w-full overflow-hidden px-5 text-center sm:px-6">
-      {/* Background pattern */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.42]"
-        style={{
-          backgroundImage: `
-            linear-gradient(30deg, transparent 24%, rgba(13,43,34,0.105) 25%, rgba(13,43,34,0.105) 26%, transparent 27%, transparent 74%, rgba(13,43,34,0.105) 75%, rgba(13,43,34,0.105) 76%, transparent 77%),
-            linear-gradient(150deg, transparent 24%, rgba(13,43,34,0.105) 25%, rgba(13,43,34,0.105) 26%, transparent 27%, transparent 74%, rgba(13,43,34,0.105) 75%, rgba(13,43,34,0.105) 76%, transparent 77%)
-          `,
-          backgroundSize: "42px 72px",
-          backgroundPosition: "0 0",
-        }}
-      />
-
+    <section className="km-reveal relative w-full overflow-hidden px-5 text-left xl:px-0">
       <div
         className="
           relative
           mx-auto
           flex
-          max-w-[1680px]
+          w-full
+          max-w-[1480px]
+          3xl:max-w-[1800px]
           flex-col
-          items-center
+          items-start
           pb-[56px]
           pt-[34px]
           md:pb-[64px]
@@ -30,8 +19,7 @@ export function PrimeLocationSection() {
       >
         <h2
           className="
-            mx-auto
-            max-w-[980px]
+            text-left
             font-['Inter',sans-serif]
             text-[36px]
             font-bold
@@ -50,12 +38,11 @@ export function PrimeLocationSection() {
 
         <div
           className="
-            mx-auto
             mt-8
             flex
             max-w-[1500px]
             flex-col
-            items-center
+            items-start
             gap-6
             md:mt-9
             md:gap-7
@@ -63,9 +50,8 @@ export function PrimeLocationSection() {
         >
           <p
             className="
-              mx-auto
               max-w-[1420px]
-              text-center
+              text-left
               font-['Inter',sans-serif]
               text-[17px]
               font-bold
@@ -87,9 +73,8 @@ export function PrimeLocationSection() {
 
           <p
             className="
-              mx-auto
               max-w-[1460px]
-              text-center
+              text-left
               font-['Inter',sans-serif]
               text-[17px]
               font-semibold

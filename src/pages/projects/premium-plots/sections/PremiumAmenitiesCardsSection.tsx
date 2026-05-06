@@ -60,7 +60,7 @@ export function PremiumAmenitiesCardsSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1680px] pb-[56px] pt-[12px]">
+      <div className="relative mx-auto w-full max-w-[1480px] 3xl:max-w-[1800px] px-5 xl:px-0 pb-[56px] pt-[12px]">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {amenityCards.map((card) => {
             const Icon = card.icon;

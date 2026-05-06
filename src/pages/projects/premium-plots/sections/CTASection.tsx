@@ -7,11 +7,12 @@ export function CTASection() {
         mx-auto
         mt-[72px]
         w-full
-        max-w-[1540px]
-        px-4
-        sm:px-5
+        max-w-[1480px]
+        px-5
+        xl:px-0
         md:mt-[96px]
         lg:mt-[118px]
+        3xl:max-w-[1800px]
       "
     >
       <article

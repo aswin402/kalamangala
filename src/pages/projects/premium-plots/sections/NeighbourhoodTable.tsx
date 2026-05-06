@@ -12,7 +12,7 @@ export function NeighbourhoodTable() {
     <section className="km-reveal relative mx-auto mt-[42px] w-full pb-[86px] pt-[42px] text-center">
       {/* full background pattern */}
 
-      <div className="relative mx-auto w-full max-w-[1390px] px-5 md:px-8">
+      <div className="relative mx-auto w-full max-w-[1480px] px-5 xl:px-0 3xl:max-w-[1800px]">
         <h2 className="font-bold text-[34px] sm:text-[42px] md:text-[50px]">
           The Neighbourhood Advantage
         </h2>

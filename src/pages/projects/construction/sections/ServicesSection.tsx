@@ -92,7 +92,7 @@ export function ServicesSection() {
                   {service.title}
                 </h3>
 
-                <p className="mt-4 max-w-[1360px] text-base font-medium leading-relaxed tracking-wide text-white-text/90 md:text-lg">
+                <p className="mt-4 w-full text-base font-medium leading-relaxed tracking-wide text-white-text/90 md:text-lg">
                   {service.desc}
                 </p>
               </div>

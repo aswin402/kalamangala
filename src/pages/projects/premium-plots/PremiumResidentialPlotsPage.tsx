@@ -18,7 +18,7 @@ export const PremiumResidentialPlotsPage = () => {
       <PlotsHero />
 
       {/* Main centered content */}
-      <div className="mx-auto w-full max-w-[1540px] px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8">
+      <div className="w-full">
         <IntroSection />
         <PrimeLocationSection />
         <PremiumAmenitiesSection />

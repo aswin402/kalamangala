@@ -45,7 +45,7 @@ export function IntroSection() {
             text-center
             font-['Inter',sans-serif]
             text-[17px]
-            font-bold
+            font-semibold
             leading-[1.42]
             tracking-[-0.045em]
             text-[#0d2b22]
@@ -72,7 +72,7 @@ export function IntroSection() {
             text-center
             font-['Inter',sans-serif]
             text-[17px]
-            font-bold
+            font-semibold
             leading-[1.42]
             tracking-[-0.045em]
             text-[#0d2b22]
@@ -97,15 +97,16 @@ export function IntroSection() {
           h-[34px]
           w-[196px]
           rounded-full
+          bg-[#0d2b22]
           text-sm
           font-bold
           text-white
           transition
           duration-300
-          hover:scale-[1.04]
+          hover:scale-[1.04] 
+          hover:bg-[#f3ac85]
           md:mt-9
         "
-        style={{ backgroundColor: DARK }}
       >
         Contact Us
       </button>

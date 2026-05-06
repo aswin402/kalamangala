@@ -48,7 +48,7 @@ export function NeighbourhoodGrowthSection() {
       "
     >
 
-      <div className="relative z-10 mx-auto w-full max-w-[1450px] px-4 sm:px-5 md:px-6 lg:px-0 3xl:max-w-[1800px]">
+      <div className="relative z-10 mx-auto w-full max-w-[1480px] px-5 xl:px-0 3xl:max-w-[1800px]">
         {/* Header */}
         <div className="la-reveal mb-[27px]">
           <h2
