@@ -5,7 +5,7 @@ import { ConnectivitySection } from "./sections/ConnectivitySection";
 import { GrowthSection } from "./sections/GrowthSection";
 import { AdvantageSection } from "./sections/AdvantageSection";
 import { WhyChooseSection } from "./sections/WhyChooseSection";
-import { CTASection } from "./sections/CTASection";
+import { CTASection } from "../../components/CTASection";
 import { FooterSection } from "./sections/FooterSection";
 
 export function LocationAdvantagePage() {

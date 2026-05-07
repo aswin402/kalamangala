@@ -17,5 +17,9 @@ export { ContactPage } from "./contact/ContactPage";
 // Location
 export { LocationAdvantagePage } from "./location/LocationAdvantagePage";
 
+// Blog
+export { BlogPage } from "./blog/BlogPage";
+export { BlogPostPage } from "./blog/post/BlogPostPage";
+
 // Error
 export { NotFoundPage } from "./error/NotFoundPage";

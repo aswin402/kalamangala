@@ -8,7 +8,7 @@ const navLinks = [
   { name: "Home", href: "/", route: true },
   { name: "About", href: "/about", route: true },
   { name: "Projects", href: "#", route: false, dropdown: true },
-  { name: "Blog", href: `${import.meta.env.BASE_URL}#blog`, route: false },
+  { name: "Blog", href: "/blog", route: true },
   { name: "Contact", href: "/contact", route: true },
 ];
 
@@ -401,13 +401,13 @@ export const Navbar = () => {
               Projects
             </button>
 
-            <a
-              href={`${import.meta.env.BASE_URL}#blog`}
+            <Link
+              to="/blog"
               onClick={closeMenu}
-              className={mobileItemClass(false)}
+              className={mobileItemClass(pathname === "/blog")}
             >
               Blog
-            </a>
+            </Link>
 
             <Link
               to="/contact"

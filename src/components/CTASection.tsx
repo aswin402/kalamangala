@@ -1,4 +1,4 @@
-import img9 from "../../../../assets/construction-company/img9.webp";
+import img9 from "../assets/construction-company/img9.webp";
 
 export function CTASection() {
   return (
@@ -7,9 +7,9 @@ export function CTASection() {
         mx-auto
         mt-[72px]
         w-full
-        max-w-[1540px]
-        px-4
-        sm:px-5
+        max-w-[1480px]
+        px-5
+        xl:px-0
         md:mt-[96px]
         lg:mt-[118px]
         3xl:max-w-[1800px]
@@ -26,8 +26,6 @@ export function CTASection() {
           text-white-text
           lg:h-[480px]
           lg:grid-cols-[0.98fr_1.02fr]
-          xl:h-[520px]
-          2xl:h-[540px]
         "
       >
         {/* LEFT IMAGE */}

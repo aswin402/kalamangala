@@ -153,14 +153,7 @@ export const JourneySection = () => {
                       : "top-[-40px] md:top-[-60px]"
                   }`}
                 >
-                  {/* cream shadow */}
-                  <div
-                    className="absolute left-[10px] top-[10px] h-full w-full bg-[#f4f1e5]"
-                    style={{
-                      borderRadius: "8px",
-                    }}
-                  />
-
+                
                   {/* green shape */}
                   <svg
                     viewBox="0 0 128 128"

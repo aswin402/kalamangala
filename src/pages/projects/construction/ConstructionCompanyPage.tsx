@@ -4,7 +4,7 @@ import { PhilosophySection } from "./sections/PhilosophySection";
 import { ServicesSection } from "./sections/ServicesSection";
 import { AdvantageSection } from "./sections/AdvantageSection";
 import { WhyChooseSection } from "./sections/WhyChooseSection";
-import { CTASection } from "./sections/CTASection";
+import { CTASection } from "../../../components/CTASection";
 import { FooterSection } from "./sections/FooterSection";
 
 export function ConstructionCompanyPage() {

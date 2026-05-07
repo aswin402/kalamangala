@@ -48,18 +48,6 @@ const amenityCards = [
 export function PremiumAmenitiesCardsSection() {
   return (
     <section className="km-reveal relative w-full overflow-hidden px-5 text-[#0d2b22] sm:px-6">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.42]"
-        style={{
-          backgroundImage: `
-            linear-gradient(30deg, transparent 24%, rgba(13,43,34,0.105) 25%, rgba(13,43,34,0.105) 26%, transparent 27%, transparent 74%, rgba(13,43,34,0.105) 75%, rgba(13,43,34,0.105) 76%, transparent 77%),
-            linear-gradient(150deg, transparent 24%, rgba(13,43,34,0.105) 25%, rgba(13,43,34,0.105) 26%, transparent 27%, transparent 74%, rgba(13,43,34,0.105) 75%, rgba(13,43,34,0.105) 76%, transparent 77%)
-          `,
-          backgroundSize: "42px 72px",
-          backgroundPosition: "0 0",
-        }}
-      />
-
       <div className="relative mx-auto w-full max-w-[1480px] 3xl:max-w-[1800px] px-5 xl:px-0 pb-[56px] pt-[12px]">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {amenityCards.map((card) => {
@@ -133,7 +121,7 @@ export function PremiumAmenitiesCardsSection() {
                     text-left
                     font-['Inter',sans-serif]
                     text-[18px]
-                    font-semibold
+                    font-medium
                     leading-[1.25]
                     tracking-[-0.035em]
                     text-[#2f4842]

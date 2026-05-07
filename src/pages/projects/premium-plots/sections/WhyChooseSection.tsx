@@ -217,7 +217,7 @@ export function WhyChooseSection() {
                 >
                   <p>{item.text}</p>
 
-                  <ul className="mt-[6px] list-disc space-y-[2px] pl-[18px]">
+                  <ul className="mt-[6px] !my-0 !ml-0 list-disc list-inside pl-0  list-disc space-y-[2px]">
                     {item.points.map((point) => (
                       <li key={point}>{point}</li>
                     ))}

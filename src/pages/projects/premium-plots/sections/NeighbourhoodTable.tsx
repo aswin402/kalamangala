@@ -38,7 +38,7 @@ export function NeighbourhoodTable() {
                   {row.map((cell) => (
                     <td
                       key={cell}
-                      className="border-r-[8px] border-t-[10px] border-[#fbfbef] bg-[#eee9cf] px-4 py-[28px] text-center text-lg font-bold last:border-r-0 md:text-xl"
+                      className="border-r-[8px] border-t-[10px] border-[#fbfbef] bg-table-row px-4 py-[28px] text-center text-lg font-bold last:border-r-0 md:text-xl"
                     >
                       {cell}
                     </td>

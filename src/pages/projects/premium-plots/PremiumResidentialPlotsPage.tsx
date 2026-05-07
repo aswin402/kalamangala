@@ -8,7 +8,7 @@ import { WhyChooseSection } from "./sections/WhyChooseSection";
 import { NeighbourhoodTable } from "./sections/NeighbourhoodTable";
 import { NeighbourhoodGrowthSection } from "./sections/NeighbourhoodGrowthSection";
 import { AdvantageSection } from "./sections/AdvantageSection";
-import { CTASection } from "./sections/CTASection";
+import { CTASection } from "../../../components/CTASection";
 import { FooterSection } from "./sections/FooterSection";
 
 export const PremiumResidentialPlotsPage = () => {

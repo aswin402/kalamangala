@@ -1,5 +1,3 @@
-const DARK = "#0d2b22";
-
 export function IntroSection() {
   return (
     <section className="km-reveal w-full px-5 py-10 text-center sm:px-6 md:py-12 lg:py-6">

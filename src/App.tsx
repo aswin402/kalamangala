@@ -9,6 +9,8 @@ import {
   LocationAdvantagePage,
   ConstructionCompanyPage,
   PremiumResidentialPlotsPage,
+  BlogPage,
+  BlogPostPage,
   NotFoundPage,
 } from "@/pages";
 import "./App.css";
@@ -29,6 +31,8 @@ const router = createBrowserRouter(
           path: "residential-plots-coimbatore",
           element: <PremiumResidentialPlotsPage />,
         },
+        { path: "blog", element: <BlogPage /> },
+        { path: "blog/:slug", element: <BlogPostPage /> },
         { path: "contact", element: <ContactPage /> },
         { path: "*", element: <NotFoundPage /> },
       ],
