@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { BlogPost } from "../data/blogPosts";
+import type { BlogPostUI } from "../data/blogPostsSupabase";
 
 export type { BlogPost };
 
-export function BlogCard({ post }: { post: BlogPost }) {
+type AnyBlogPost = BlogPost | BlogPostUI;
+
+export function BlogCard({ post }: { post: AnyBlogPost }) {
   const [hovered, setHovered] = useState(false);
+  const cardId = typeof post.id === 'number' ? post.id : post.id.slice(0, 8);
 
   return (
     <article
@@ -16,7 +20,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
       {/* SVG clipPath — objectBoundingBox scales with element */}
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
-          <clipPath id={`mc-${post.id}`} clipPathUnits="objectBoundingBox">
+          <clipPath id={`mc-${cardId}`} clipPathUnits="objectBoundingBox">
             <path d="
               M 0.035,0
               L 0.965,0
@@ -39,7 +43,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
       <div className="blog-card__media">
         <div
           className="blog-card__image-shape"
-          style={{ clipPath: `url(#mc-${post.id})` }}
+          style={{ clipPath: `url(#mc-${cardId})` }}
         >
           <img
             src={post.image}
@@ -51,20 +55,6 @@ export function BlogCard({ post }: { post: BlogPost }) {
             }}
             loading="lazy"
           />
-
-          {/* Normal image overlay text — dims on hover */}
-          <div
-            className="blog-card__overlay"
-            style={{
-              opacity: hovered ? 0.15 : 1,
-              filter: hovered ? "blur(1px)" : "blur(0px)",
-              transition: "opacity 500ms ease-out, filter 500ms ease-out",
-            }}
-          >
-            <div className="blog-card__overlay-content">
-              {post.overlayContent}
-            </div>
-          </div>
 
           {/* Dark luxury overlay — fades in on hover */}
           <div

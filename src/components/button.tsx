@@ -9,18 +9,18 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ 
-    children, 
-    variant = 'primary', 
-    size = 'default', 
-    className = '', 
-    ...props 
+  ({
+    children,
+    variant = 'primary',
+    size = 'default',
+    className = '',
+    ...props
   }, ref) => {
-    
+
     const baseClasses = "inline-flex items-center justify-center font-medium font-body rounded-button transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary";
 
     const variantClasses = {
-      primary: "bg-primary text-primary-foreground shadow-sm hover:shadow-md hover:bg-primary/90",
+      primary: "bg-primary text-primary-foreground shadow-sm hover:shadow-md",
       secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
       outline: "border border-border bg-transparent hover:bg-muted hover:text-foreground",
       ghost: "hover:bg-muted hover:text-foreground",

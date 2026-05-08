@@ -1,10 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MarqueeText } from "../../global/components/MarqueeText";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { BlogCard } from "./components/BlogCard";
 import { BLOG_POSTS } from "./data/blogPosts";
+import { fetchPublishedPosts, type BlogPostUI } from "./data/blogPostsSupabase";
 import "./blog.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -17,6 +18,21 @@ export function BlogPage() {
   const titleContentRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const [posts, setPosts] = useState<BlogPostUI[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      const publishedPosts = await fetchPublishedPosts();
+      if (publishedPosts.length > 0) {
+        setPosts(publishedPosts);
+      } else {
+        setPosts(BLOG_POSTS as unknown as BlogPostUI[]);
+      }
+      setIsLoading(false);
+    };
+    loadPosts();
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -26,7 +42,6 @@ export function BlogPage() {
     if (!section || !titlePanel || !titleContentEl) return;
 
     const ctx = gsap.context(() => {
-      // ── Entrance animation for marquee ──
       gsap.set(titleContentEl, { y: 50, opacity: 0 });
 
       gsap.to(titleContentEl, {
@@ -38,7 +53,6 @@ export function BlogPage() {
         force3D: true,
       });
 
-      // ── Scrub the marquee upward toward the navbar ──
       const titleRect = titleContentEl.getBoundingClientRect();
       const sectionRect = section.getBoundingClientRect();
       const currentOffsetFromSectionTop = titleRect.top - sectionRect.top;
@@ -57,7 +71,6 @@ export function BlogPage() {
         },
       });
 
-      // ── Pin the title panel so the next section scrolls over it ──
       ScrollTrigger.create({
         trigger: titlePanel,
         start: "top top",
@@ -66,7 +79,6 @@ export function BlogPage() {
         pinSpacing: false,
       });
 
-      // ── Fade title from bottom-up as the next section overlaps ──
       const fadeGradient =
         "linear-gradient(to bottom, black 0%, black calc(var(--mask-end, 150) * 1%), transparent calc(var(--mask-end, 150) * 1% + 50px))";
 
@@ -100,7 +112,6 @@ export function BlogPage() {
         }
       );
 
-      // ── Animate heading entrance ──
       if (headingRef.current) {
         gsap.fromTo(
           headingRef.current,
@@ -120,7 +131,6 @@ export function BlogPage() {
         );
       }
 
-      // ── Stagger-reveal cards ──
       if (gridRef.current) {
         const cards = gridRef.current.querySelectorAll(".blog-card");
         gsap.fromTo(
@@ -145,11 +155,10 @@ export function BlogPage() {
     }, section);
 
     return () => ctx.revert();
-  }, []);
+  }, [posts]);
 
   return (
     <>
-      {/* ── MARQUEE HERO ── */}
       <section ref={sectionRef} className="relative">
         <div
           ref={titlePanelRef}
@@ -182,10 +191,8 @@ export function BlogPage() {
         </div>
       </section>
 
-      {/* ── BLOG CONTENT ── */}
       <section className="relative z-[3] pt-[40px] pb-[72px] md:pt-[52px] md:pb-[100px]">
         <div className="w-full max-w-[1600px] px-[20px] sm:px-[30px] md:pl-[40px] md:pr-[30px] lg:pl-[60px] lg:pr-[40px] 3xl:max-w-[1900px]">
-          {/* Section heading */}
           <div ref={headingRef} className="mb-[24px] md:mb-[32px]">
             <SectionLabel className="font-semibold">Information</SectionLabel>
             <h2
@@ -202,21 +209,29 @@ export function BlogPage() {
             </h2>
           </div>
 
-          {/* Blog cards grid */}
-          <div
-            ref={gridRef}
-            className="
-              grid gap-[14px]
-              grid-cols-1
-              sm:grid-cols-2
-              lg:grid-cols-3
-              md:gap-[16px]
-            "
-          >
-            {BLOG_POSTS.map((post) => (
-              <BlogCard key={post.id} post={post} />
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="flex items-center justify-center py-20">
+              <svg className="animate-spin h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            </div>
+          ) : (
+            <div
+              ref={gridRef}
+              className="
+                grid gap-[14px]
+                grid-cols-1
+                sm:grid-cols-2
+                lg:grid-cols-3
+                md:gap-[16px]
+              "
+            >
+              {posts.map((post) => (
+                <BlogCard key={post.id} post={post} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </>

@@ -21,5 +21,9 @@ export { LocationAdvantagePage } from "./location/LocationAdvantagePage";
 export { BlogPage } from "./blog/BlogPage";
 export { BlogPostPage } from "./blog/post/BlogPostPage";
 
+// Admin
+export { AdminLoginPage } from "./admin/login";
+export { AdminDashboardPage } from "./admin/dashboard";
+
 // Error
 export { NotFoundPage } from "./error/NotFoundPage";

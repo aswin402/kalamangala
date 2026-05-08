@@ -54,6 +54,18 @@
   max-width: 640px;
 }
 
+/* ── Sub header ── */
+.blog-detail__sub-header {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--muted-foreground);
+  margin: 0 0 20px;
+  max-width: 580px;
+}
+
 /* ── Meta bar (below title) ── */
 .blog-detail__meta {
   display: flex;

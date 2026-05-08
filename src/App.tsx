@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "@/layouts/RootLayout";
+import { AdminLayout } from "@/layouts/AdminLayout";
+import { AdminRoute } from "@/components/auth/AdminRoute";
 import {
   HomePage,
   AboutPage,
@@ -12,6 +14,8 @@ import {
   BlogPage,
   BlogPostPage,
   NotFoundPage,
+  AdminLoginPage,
+  AdminDashboardPage,
 } from "@/pages";
 import "./App.css";
 
@@ -36,6 +40,20 @@ const router = createBrowserRouter(
         { path: "contact", element: <ContactPage /> },
         { path: "*", element: <NotFoundPage /> },
       ],
+    },
+    {
+      path: "/admin-kalamangala",
+      element: <AdminLoginPage />,
+    },
+    {
+      path: "/admin-dashboard",
+      element: (
+        <AdminRoute>
+          <AdminLayout>
+            <AdminDashboardPage />
+          </AdminLayout>
+        </AdminRoute>
+      ),
     },
   ],
   {

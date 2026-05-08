@@ -15,3 +15,29 @@ export const LoginFormSchema = z.object({
 });
 
 export type LoginFormValues = z.infer<typeof LoginFormSchema>;
+
+export const BlogPostSchema = z.object({
+  id: z.string().uuid(),
+  thumbnail_url: z.string().url().nullable(),
+  slug: z.string(),
+  meta_title: z.string().nullable(),
+  meta_description: z.string().nullable(),
+  header: z.string(),
+  sub_header: z.string().nullable(),
+  body: z.string(),
+  published: z.boolean().default(false),
+  published_at: z.string().datetime().nullable(),
+  created_at: z.string().datetime(),
+  updated_at: z.string().datetime(),
+  read_time_minutes: z.number().int().positive().nullable(),
+});
+
+export type BlogPost = z.infer<typeof BlogPostSchema>;
+
+export const BlogPostInputSchema = BlogPostSchema.omit({
+  id: true,
+  created_at: true,
+  updated_at: true,
+});
+
+export type BlogPostInput = z.infer<typeof BlogPostInputSchema>;

@@ -1,7 +1,6 @@
-/* BlogPostMeta — category pill + date + read time */
-import type { BlogPost } from "../../data/blogPosts";
+import type { BlogPostUI } from '../../data/blogPostsSupabase';
 
-export function BlogPostMeta({ post }: { post: BlogPost }) {
+export function BlogPostMeta({ post }: { post: BlogPostUI }) {
   return (
     <div className="blog-detail__meta">
       <span className="blog-detail__meta-pill">{post.category}</span>
