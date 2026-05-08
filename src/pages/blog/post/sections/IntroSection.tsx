@@ -9,7 +9,11 @@ export function IntroSection({ post }: { post: BlogPostUI }): JSX.Element {
       style={{ maxWidth: '1660px' }}
     >
       <div className="grid grid-cols-1 gap-10 items-start sm:grid-cols-2 sm:gap-[clamp(32px,3.5vw,60px)] lg:grid-cols-[1.15fr_1fr] lg:gap-[clamp(48px,4vw,72px)]">
-        <div>
+        <div
+          data-reveal
+          data-x="-40"
+          data-duration="1.2"
+        >
           <h1
             className="font-['Inter',sans-serif] text-[clamp(30px,4.2vw,52px)] font-black leading-[1.04] tracking-[-0.05em] text-foreground mb-4 max-w-[640px]"
           >
@@ -23,7 +27,13 @@ export function IntroSection({ post }: { post: BlogPostUI }): JSX.Element {
           )}
         </div>
 
-        <div className="w-full self-end pb-2">
+        <div
+          data-reveal
+          data-x="40"
+          data-duration="1.2"
+          data-delay="0.15"
+          className="w-full self-end pb-2"
+        >
           <div className="relative rounded-xl overflow-hidden w-full">
             <img
               src={post.image}

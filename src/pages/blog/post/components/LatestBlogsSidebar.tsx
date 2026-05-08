@@ -1,24 +1,18 @@
-import { type JSX, useEffect, useState } from 'react';
+import { type JSX } from 'react';
 import { Link } from "react-router-dom";
-import { fetchPublishedPosts, type BlogPostUI } from "../../data/blogPostsSupabase";
+import type { BlogPostUI } from "../../data/blogPostsSupabase";
 
-export function LatestBlogsSidebar(): JSX.Element {
-  const [posts, setPosts] = useState<BlogPostUI[]>([]);
+interface Props {
+  posts: BlogPostUI[];
+}
 
-  useEffect(() => {
-    const loadPosts = async () => {
-      const data = await fetchPublishedPosts();
-      setPosts(data.slice(0, 5));
-    };
-    loadPosts();
-  }, []);
-
+export function LatestBlogsSidebar({ posts }: Props): JSX.Element {
   if (posts.length === 0) {
-    return <div className="p-6 text-muted-foreground text-sm bg-black/8 rounded-xl">No articles yet</div>;
+    return <div className="p-6 bg-black/8 rounded-xl text-sm text-muted-foreground">No articles yet</div>;
   }
 
   return (
-    <div className="p-6 bg-black/8 rounded-xl">
+    <div data-reveal data-x="-30" data-duration="0.9" data-delay="0.05" className="p-6 bg-black/8 rounded-xl">
       <div className="flex items-center gap-2 mb-1">
         <span className="w-2.5 h-2.5 rounded-full border-2 border-foreground bg-transparent shrink-0" />
         <span className="text-[10px] font-extrabold tracking-[0.12em] uppercase text-foreground">MORE ARTICLES</span>
@@ -28,7 +22,7 @@ export function LatestBlogsSidebar(): JSX.Element {
         Latest Blogs
       </h3>
 
-      <ul className="list-none m-0 p-0 flex flex-col gap-0">
+      <ul className="list-none m-0 p-0 flex flex-col gap-0" data-reveal-stagger>
         {posts.map((p) => (
           <li key={p.id} className="border-b border-border first:border-t border-border">
             <Link to={`/blog/${p.slug}`} className="flex gap-3 items-start py-3.5 no-underline text-inherit opacity-75 hover:opacity-100 transition-opacity">

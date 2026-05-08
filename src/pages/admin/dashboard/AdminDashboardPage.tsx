@@ -5,6 +5,7 @@ import { type BlogPost } from '@/types/schema';
 import { BlogPostForm } from './components/BlogPostForm';
 import type { SupabaseBlogPost } from '@/pages/blog/data/blogPostsSupabase';
 import Button from '@/components/button';
+import { Skeleton } from '@/components/ui/Skeleton';
 
 type SortField = 'header' | 'created_at';
 type SortOrder = 'asc' | 'desc';
@@ -100,7 +101,7 @@ export function AdminDashboardPage(): JSX.Element {
   }, [posts, searchQuery, sortField, sortOrder]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <div className="mx-auto w-full max-w-[1380px] px-[30px] py-10">
         <div className="mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -145,11 +146,19 @@ export function AdminDashboardPage(): JSX.Element {
 
         <div className="overflow-hidden rounded-xl border border-border bg-card shadow-lg">
           {isLoading ? (
-            <div className="flex items-center justify-center py-20">
-              <svg className="animate-spin h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
+            <div className="p-6 space-y-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div key={i} className="flex items-center gap-6">
+                  <Skeleton className="w-20 h-12 rounded-lg shrink-0" />
+                  <Skeleton className="flex-1 h-5 rounded-md" />
+                  <Skeleton className="w-24 h-5 rounded-md" />
+                  <Skeleton className="w-20 h-6 rounded-full" />
+                  <div className="flex gap-2">
+                    <Skeleton className="w-8 h-8 rounded-lg" />
+                    <Skeleton className="w-8 h-8 rounded-lg" />
+                  </div>
+                </div>
+              ))}
             </div>
           ) : (
             <table className="w-full">

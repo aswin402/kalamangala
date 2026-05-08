@@ -59,11 +59,13 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
     }
   };
 
-  const validateForm = () => {
+  const validateForm = (requireAll: boolean = true) => {
     const newErrors: Record<string, string> = {};
     if (!formData.header.trim()) newErrors.header = 'Title is required';
-    if (!formData.slug.trim()) newErrors.slug = 'Slug is required';
-    if (!formData.body.trim() || formData.body === '<p></p>') newErrors.body = 'Content is required';
+    if (requireAll) {
+      if (!formData.slug.trim()) newErrors.slug = 'Slug is required';
+      if (!formData.body.trim() || formData.body === '<p></p>') newErrors.body = 'Content is required';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -91,7 +93,7 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validateForm(true)) return;
 
     setIsLoading(true);
 
@@ -160,10 +162,10 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-card rounded-xl shadow-2xl">
-        <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-border bg-card">
-          <h2 className="text-xl font-bold text-foreground">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+      <div className="flex flex-col w-screen h-screen max-w-[1600px] max-h-screen bg-card shadow-2xl">
+        <div className="shrink-0 flex items-center justify-between px-8 py-5 border-b border-border bg-card">
+          <h2 className="text-2xl font-bold text-foreground">
             {post ? 'Edit Post' : 'Create New Post'}
           </h2>
           <button
@@ -175,7 +177,7 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <form id="blog-post-form" onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-8 space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="space-y-5">
               <div className="space-y-2">
@@ -196,30 +198,14 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
 
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-foreground">
-                  Slug *
-                </label>
-                <input
-                  type="text"
-                  value={formData.slug}
-                  onChange={(e) => setFormData((p) => ({ ...p, slug: e.target.value }))}
-                  placeholder="post-url-slug"
-                  className={`w-full px-4 py-3 bg-background border rounded-lg text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary ${
-                    errors.slug ? 'border-red-500' : 'border-border'
-                  }`}
-                />
-                {errors.slug && <p className="text-xs text-red-600">{errors.slug}</p>}
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-foreground">
                   Sub Header
                 </label>
-                <input
-                  type="text"
+                <textarea
                   value={formData.sub_header}
                   onChange={(e) => setFormData((p) => ({ ...p, sub_header: e.target.value }))}
                   placeholder="Optional sub header"
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary"
+                  rows={6}
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                 />
               </div>
 
@@ -244,9 +230,25 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
                   value={formData.meta_description}
                   onChange={(e) => setFormData((p) => ({ ...p, meta_description: e.target.value }))}
                   placeholder="SEO description"
-                  rows={3}
+                  rows={6}
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                 />
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-foreground">
+                  Slug *
+                </label>
+                <input
+                  type="text"
+                  value={formData.slug}
+                  onChange={(e) => setFormData((p) => ({ ...p, slug: e.target.value }))}
+                  placeholder="post-url-slug"
+                  className={`w-full px-4 py-3 bg-background border rounded-lg text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary ${
+                    errors.slug ? 'border-red-500' : 'border-border'
+                  }`}
+                />
+                {errors.slug && <p className="text-xs text-red-600">{errors.slug}</p>}
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -371,13 +373,16 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
               </div>
             </div>
           </div>
+        </form>
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
-            <Button type="button" variant="outline" onClick={onClose}>
-              Cancel
-            </Button>
+        <div className="shrink-0 flex items-center justify-end gap-3 px-8 py-5 border-t border-border bg-card">
+          <Button type="button" variant="outline" onClick={onClose}>
+            Cancel
+          </Button>
+          {formData.published ? (
             <Button
               type="submit"
+              form="blog-post-form"
               variant="primary"
               className="!hover:bg-[#f26422] !hover:text-white rounded-lg"
               disabled={isLoading}
@@ -391,11 +396,76 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
                   {post ? 'Updating...' : 'Creating...'}
                 </span>
               ) : (
-                post ? 'Update Post' : 'Create Post'
+                post ? 'Update Post' : 'Publish Post'
               )}
             </Button>
-          </div>
-        </form>
+          ) : (
+            <div className="flex items-center gap-3">
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={async (e) => {
+                  e.preventDefault();
+                  if (!validateForm(false)) return;
+                  setIsLoading(true);
+                  try {
+                    let thumbnail_url = formData.thumbnail_url;
+                    if (imageFile) {
+                      const uploadedUrl = await uploadImage(imageFile);
+                      if (uploadedUrl) thumbnail_url = uploadedUrl;
+                    }
+                    const postData = {
+                      header: formData.header,
+                      slug: formData.slug,
+                      meta_title: formData.meta_title || null,
+                      meta_description: formData.meta_description || null,
+                      sub_header: formData.sub_header || null,
+                      body: formData.body,
+                      thumbnail_url: thumbnail_url || null,
+                      read_time_minutes: formData.read_time_minutes,
+                      published: false,
+                      published_at: null,
+                    };
+                    if (post?.id) {
+                      await supabase.from(SUPABASE_TABLE.BLOG_POSTS).update(postData).eq('id', post.id);
+                    } else {
+                      await supabase.from(SUPABASE_TABLE.BLOG_POSTS).insert([postData]);
+                    }
+                    onSuccess();
+                    onClose();
+                  } catch (error) {
+                    console.error('Save draft error:', error);
+                    alert('Failed to save draft. Please try again.');
+                  } finally {
+                    setIsLoading(false);
+                  }
+                }}
+                disabled={isLoading}
+                className="rounded-lg"
+              >
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Saving...
+                  </span>
+                ) : (
+                  'Save as Draft'
+                )}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setFormData((p) => ({ ...p, published: true }))}
+                className="rounded-lg text-green-600 border-green-600 hover:bg-green-50"
+              >
+                Publish Instead
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

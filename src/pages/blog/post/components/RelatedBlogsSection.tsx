@@ -1,39 +1,31 @@
-import { type JSX, useEffect, useState } from 'react';
+import { type JSX } from 'react';
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { BlogCard } from "../../components/BlogCard";
-import { fetchPublishedPosts, type BlogPostUI } from "../../data/blogPostsSupabase";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import type { BlogPostUI } from "../../data/blogPostsSupabase";
 
 interface Props {
-  excludeId?: string;
+  posts: BlogPostUI[];
 }
 
-export function RelatedBlogsSection({ excludeId }: Props): JSX.Element {
-  const [posts, setPosts] = useState<BlogPostUI[]>([]);
-
-  useEffect(() => {
-    const loadPosts = async () => {
-      const data = await fetchPublishedPosts();
-      setPosts(data.filter((p) => p.id !== excludeId).slice(0, 3));
-    };
-    loadPosts();
-  }, [excludeId]);
-
+export function RelatedBlogsSection({ posts }: Props): JSX.Element {
   return (
     <section className="px-0 pt-[clamp(48px,6vw,80px)] pb-[clamp(56px,7vw,96px)]">
       <div className="mx-auto px-5 sm:px-[30px] md:px-10 lg:px-[60px]" style={{ maxWidth: '1600px' }}>
-        <div className="mb-8">
+        <div data-reveal data-y="30" className="mb-8">
           <SectionLabel className="font-semibold">Similar Topic</SectionLabel>
           <h2 className="font-['Inter',sans-serif] text-[clamp(28px,3.5vw,40px)] font-black tracking-[-0.045em] text-foreground mt-2 leading-none">
             Related Blogs
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+
+        <div data-reveal-stagger className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {posts.map((p) => (
             <BlogCard key={p.id} post={p} />
           ))}
         </div>
+
         <div className="flex items-center justify-center gap-0 mt-10">
           <Link
             to="/blog"

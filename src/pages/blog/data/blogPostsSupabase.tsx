@@ -70,18 +70,35 @@ export function mapSupabasePostToBlogPost(post: SupabaseBlogPost): BlogPostUI {
   };
 }
 
-export async function fetchPublishedPosts(): Promise<BlogPostUI[]> {
+export async function fetchPublishedPosts(
+  page: number = 0,
+  pageSize: number = 6
+): Promise<BlogPostUI[]> {
   const { data, error } = await supabase
     .from(SUPABASE_TABLE.BLOG_POSTS)
     .select('*')
     .eq('published', true)
-    .order('published_at', { ascending: false });
+    .order('published_at', { ascending: false })
+    .range(page * pageSize, (page + 1) * pageSize - 1);
 
   if (error || !data || data.length === 0) {
     return [];
   }
 
   return data.map(mapSupabasePostToBlogPost);
+}
+
+export async function fetchPublishedPostsCount(): Promise<number> {
+  const { count, error } = await supabase
+    .from(SUPABASE_TABLE.BLOG_POSTS)
+    .select('*', { count: 'exact', head: true })
+    .eq('published', true);
+
+  if (error || !count) {
+    return 0;
+  }
+
+  return count;
 }
 
 export async function fetchPostBySlug(slug: string): Promise<BlogPostUI | null> {
