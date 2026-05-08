@@ -13,42 +13,38 @@ export function BlogCard({ post }: { post: BlogPost }) {
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
     >
-      {/* Inline SVG clipPath — scales with element via objectBoundingBox */}
-      <svg width="0" height="0" className="absolute">
+      {/* SVG clipPath — objectBoundingBox scales with element */}
+      <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
-          <clipPath id={`mc-clip-${post.id}`} clipPathUnits="objectBoundingBox">
+          <clipPath id={`mc-${post.id}`} clipPathUnits="objectBoundingBox">
             <path d="
-              M 0.037,0
-              L 0.963,0
-              Q 1,0 1,0.049
-              L 1,0.951
-              Q 1,1 0.963,1
-              L 0.650,1
-              Q 0.617,1 0.617,0.956
-              L 0.617,0.929
-              Q 0.617,0.885 0.584,0.885
-              L 0.037,0.885
-              Q 0,0.885 0,0.836
-              L 0,0.049
-              Q 0,0 0.037,0
+              M 0.035,0
+              L 0.965,0
+              Q 1,0 1,0.04
+              L 1,0.96
+              Q 1,1 0.965,1
+              L 0.68,1
+              C 0.635,1 0.62,0.98 0.62,0.955
+              C 0.62,0.93 0.615,0.91 0.585,0.91
+              L 0.035,0.91
+              Q 0,0.91 0,0.87
+              L 0,0.04
+              Q 0,0 0.035,0
               Z
             " />
           </clipPath>
         </defs>
       </svg>
 
-      {/* Visual container */}
-      <div className="relative">
-        {/* Image card — clipped to memory-card shape */}
+      <div className="blog-card__media">
         <div
-          className="relative aspect-[4/3]"
-          style={{ clipPath: `url(#mc-clip-${post.id})` }}
+          className="blog-card__image-shape"
+          style={{ clipPath: `url(#mc-${post.id})` }}
         >
-          {/* Image */}
           <img
             src={post.image}
             alt={post.title}
-            className="h-full w-full object-cover"
+            className="blog-card__image"
             style={{
               transform: hovered ? "scale(1.04)" : "scale(1)",
               transition: "transform 700ms ease-out",
@@ -72,7 +68,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
 
           {/* Dark luxury overlay — fades in on hover */}
           <div
-            className="absolute inset-0 z-[3] bg-black"
+            className="blog-card__hover-scrim"
             style={{
               opacity: hovered ? 0.65 : 0,
               transition: "opacity 500ms ease-out",
@@ -81,7 +77,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
 
           {/* Hover title — slides up and fades in */}
           <div
-            className="absolute inset-0 z-[4] flex items-center justify-center px-8 text-center"
+            className="blog-card__hover-title-wrap"
             style={{
               opacity: hovered ? 1 : 0,
               pointerEvents: "none",
@@ -89,7 +85,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
             }}
           >
             <h3
-              className="max-w-[520px] text-[28px] font-black leading-[1.05] tracking-[-0.045em] text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.5)] md:text-[34px] lg:text-[38px]"
+              className="blog-card__hover-title"
               style={{
                 transform: hovered ? "translateY(0)" : "translateY(20px)",
                 transition: "transform 500ms ease-out",
@@ -100,27 +96,17 @@ export function BlogCard({ post }: { post: BlogPost }) {
           </div>
         </div>
 
-        {/* Badges — bg-transparent, page bg shows through the clip notch */}
-        <div
-          className="
-            absolute bottom-[6px] left-[6px] z-20
-            flex gap-[6px]
-            bg-transparent
-          "
-        >
+        <div className="blog-card__meta">
           <span className="blog-card__tag">{post.date}</span>
           <span className="blog-card__tag">{post.category}</span>
           <span className="blog-card__tag">{post.readTime}</span>
         </div>
       </div>
 
-      {/* Title below */}
-      <div className="pt-[14px]">
-        <Link to={`/blog/${post.slug}`} className="blog-card__title">
-          <span className="blog-card__title-arrow">↳</span>
-          <span className="blog-card__title-text">{post.title}</span>
-        </Link>
-      </div>
+      <Link className="blog-card__title" to={`/blog/${post.slug}`}>
+        <span className="blog-card__title-arrow">↳</span>
+        <span className="blog-card__title-text">{post.title}</span>
+      </Link>
     </article>
   );
 }
