@@ -11,8 +11,6 @@ import img1 from "@/assets/construction-company/img1.webp";
 import img2 from "@/assets/construction-company/img2.webp";
 import img7 from "@/assets/construction-company/img7.webp";
 import img8 from "@/assets/construction-company/img8.webp";
-import "./blog-post.css";
-import "../blog.css";
 
 const MOSAIC_IMAGES = [img1, img2, img7, img8];
 
@@ -56,22 +54,21 @@ export function BlogPostPage(): JSX.Element {
   }
 
   return (
-    <div className="blog-detail">
+    <div className="min-h-screen bg-background">
       <IntroSection post={post} />
 
       <ArticleSection
         post={post}
         sidebar={
-          <div className="blog-detail__sidebar-stack">
+          <div className="flex flex-col gap-8">
             <LatestBlogsSidebar />
             <NewsletterCard />
           </div>
         }
       />
-       <GallerySection images={MOSAIC_IMAGES} />
-      <RelatedBlogsSection excludeId={post.id} />
 
-     
+      <GallerySection images={MOSAIC_IMAGES} />
+      <RelatedBlogsSection excludeId={post.id} />
     </div>
   );
 }

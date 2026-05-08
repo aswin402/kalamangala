@@ -6,7 +6,6 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { BlogCard } from "./components/BlogCard";
 import { BLOG_POSTS } from "./data/blogPosts";
 import { fetchPublishedPosts, type BlogPostUI } from "./data/blogPostsSupabase";
-import "./blog.css";
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -1,4 +1,3 @@
-/* NewsletterCard — dark green card with email input + social share */
 import { useState } from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
@@ -6,24 +5,24 @@ export function NewsletterCard() {
   const [email, setEmail] = useState("");
 
   return (
-    <div className="blog-detail__newsletter">
-      {/* Title + input */}
-      <div className="blog-detail__newsletter-inner">
-        <p className="blog-detail__newsletter-heading">Join our newsletter list</p>
-        <p className="blog-detail__newsletter-body">
-          Sign up to get the most recent blog articles in
-          your email every week.
+    <div className="bg-card-green rounded-xl overflow-hidden flex flex-col sticky top-[120px]">
+      <div className="p-[26px_22px_0] flex flex-col gap-3">
+        <p className="font-['Inter',sans-serif] text-[18px] font-extrabold tracking-[-0.03em] text-footer-foreground m-0">
+          Join our newsletter list
         </p>
-        <div className="blog-detail__newsletter-form">
+        <p className="font-['Inter',sans-serif] text-[13.5px] leading-[1.6] text-[rgba(244,242,227,0.72)] m-0">
+          Sign up to get the most recent blog articles in your email every week.
+        </p>
+        <div className="flex flex-col gap-2.5 mt-2">
           <input
             type="email"
             placeholder="ramji@kalamangala.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="blog-detail__newsletter-input"
+            className="w-full px-[14px] py-[11px] rounded-lg border border-[rgba(255,255,255,0.15)] bg-[rgba(255,255,255,0.08)] text-footer-foreground font-['Inter',sans-serif] text-[13px] outline-none focus:border-primary transition-colors placeholder:text-[rgba(244,242,227,0.45)]"
           />
           <button
-            className="blog-detail__newsletter-btn"
+            className="w-full px-[22px] py-3 rounded-lg bg-primary text-card-green font-['Inter',sans-serif] text-[13px] font-bold border-none cursor-pointer hover:opacity-[0.88] transition-opacity"
             onClick={() => setEmail("")}
           >
             Submit
@@ -31,38 +30,21 @@ export function NewsletterCard() {
         </div>
       </div>
 
-      {/* Social share */}
-      <div className="blog-detail__social">
-        <p className="blog-detail__social-label">
+      <div className="p-[50px_22px_28px] flex flex-col gap-3">
+        <p className="font-['Inter',sans-serif] text-[11.5px] font-normal text-[rgba(244,242,227,0.72)] m-0">
           Share this post to the social medias
         </p>
-        <div className="blog-detail__social-icons">
-          <a
-            href="#"
-            className="blog-detail__social-icon"
-            aria-label="Share on Facebook"
-          >
+        <div className="flex justify-between items-center bg-[rgba(255,255,255,0.10)] rounded-lg p-[16px_22px]">
+          <a href="#" className="text-white no-underline hover:opacity-70 transition-opacity" aria-label="Share on Facebook">
             <FaFacebook size={18} />
           </a>
-          <a
-            href="#"
-            className="blog-detail__social-icon"
-            aria-label="Share on Instagram"
-          >
+          <a href="#" className="text-white no-underline hover:opacity-70 transition-opacity" aria-label="Share on Instagram">
             <FaInstagram size={18} />
           </a>
-          <a
-            href="#"
-            className="blog-detail__social-icon"
-            aria-label="Share on LinkedIn"
-          >
+          <a href="#" className="text-white no-underline hover:opacity-70 transition-opacity" aria-label="Share on LinkedIn">
             <FaLinkedin size={18} />
           </a>
-          <a
-            href="#"
-            className="blog-detail__social-icon"
-            aria-label="Share on Twitter"
-          >
+          <a href="#" className="text-white no-underline hover:opacity-70 transition-opacity" aria-label="Share on Twitter">
             <FaXTwitter size={18} />
           </a>
         </div>

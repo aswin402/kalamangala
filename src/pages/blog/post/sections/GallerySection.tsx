@@ -7,7 +7,7 @@ interface Props {
 
 export function GallerySection({ images }: Props) {
   return (
-    <section className="blog-detail__gallery-wrap">
+    <section className="mx-auto px-[clamp(20px,4vw,64px)] pt-[clamp(24px,3vw,48px)] pb-[clamp(40px,5vw,72px)]" style={{ maxWidth: '1380px' }}>
       <ImageMosaic images={images} />
     </section>
   );

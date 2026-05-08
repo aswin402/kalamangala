@@ -1,45 +1,44 @@
-/* ImageMosaic — 3-col / 2-row grid with grayscale on two images */
+/* ImageMosaic — 2-row mosaic grid */
+import { type FC } from "react";
+
 interface Props {
   images: string[];
 }
 
-export function ImageMosaic({ images }: Props) {
-  // Expects at least 4 images; pad if fewer
+export const ImageMosaic: FC<Props> = ({ images }) => {
   const imgs = [...images];
   while (imgs.length < 4) imgs.push(images[0]);
 
   return (
-    <div className="blog-detail__mosaic">
-      {/* Row 1: big left (2-col) + small right (1-col, grayscale) */}
-      <div className="blog-detail__mosaic-row blog-detail__mosaic-row--top">
+    <div className="flex flex-col gap-2.5">
+      <div className="grid gap-2.5 grid-cols-[2fr_1fr]">
         <img
           src={imgs[0]}
           alt="Gallery 1"
-          className="blog-detail__mosaic-img blog-detail__mosaic-img--wide"
+          className="w-full h-[clamp(200px,26vw,360px)] object-cover rounded-lg"
           loading="lazy"
         />
         <img
           src={imgs[1]}
           alt="Gallery 2"
-          className="blog-detail__mosaic-img blog-detail__mosaic-img--grayscale"
+          className="w-full h-[clamp(200px,26vw,360px)] object-cover rounded-lg grayscale"
           loading="lazy"
         />
       </div>
-      {/* Row 2: small left (1-col, grayscale) + big right (2-col) */}
-      <div className="blog-detail__mosaic-row blog-detail__mosaic-row--bottom">
+      <div className="grid gap-2.5 grid-cols-[1fr_2fr]">
         <img
           src={imgs[2]}
           alt="Gallery 3"
-          className="blog-detail__mosaic-img blog-detail__mosaic-img--grayscale"
+          className="w-full h-[clamp(220px,28vw,420px)] object-cover rounded-lg grayscale"
           loading="lazy"
         />
         <img
           src={imgs[3]}
           alt="Gallery 4"
-          className="blog-detail__mosaic-img blog-detail__mosaic-img--wide"
+          className="w-full h-[clamp(220px,28vw,420px)] object-cover rounded-lg"
           loading="lazy"
         />
       </div>
     </div>
   );
-}
+};
