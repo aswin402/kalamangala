@@ -43,7 +43,7 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
     setFormData((prev) => ({
       ...prev,
       header: value,
-      slug: prev.slug || generateSlug(value),
+      slug: generateSlug(value),
     }));
   };
 
@@ -301,10 +301,10 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
             <div className="space-y-5">
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-foreground">
-                  Thumbnail Image
+                  Thumbnail Image (675 × 524 px)
                 </label>
                 <div className="relative">
-                  <div className="w-full h-48 rounded-lg border-2 border-dashed border-border bg-background flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-primary transition-colors overflow-hidden">
+                  <div className="w-full h-[524px] rounded-lg border-2 border-dashed border-border bg-background flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-primary transition-colors overflow-hidden">
                     {imagePreview ? (
                       <img
                         src={imagePreview}
@@ -359,7 +359,7 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
                 </div>
                 {showPreview ? (
                   <div
-                    className="w-full min-h-[300px] p-4 bg-background border border-border rounded-lg prose prose-sm max-w-none overflow-y-auto"
+                    className="w-full min-h-[300px] p-4 bg-background border border-border rounded-lg blog-content max-w-none overflow-y-auto"
                     dangerouslySetInnerHTML={{ __html: formData.body }}
                   />
                 ) : (

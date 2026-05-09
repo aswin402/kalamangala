@@ -132,7 +132,7 @@ export function BlogPostPage(): JSX.Element {
       <div className="min-h-screen">
         <section
           className="mx-auto px-[clamp(20px,4vw,64px)] pt-[clamp(48px,7vw,88px)] pb-[clamp(32px,4vw,56px)]"
-          style={{ maxWidth: "1660px" }}
+          style={{ maxWidth: "1800px" }}
         >
           <div className="grid grid-cols-1 gap-10 items-start sm:grid-cols-2 sm:gap-[clamp(32px,3.5vw,60px)] lg:grid-cols-[1.15fr_1fr] lg:gap-[clamp(48px,4vw,72px)]">
             <div className="space-y-4">
@@ -150,7 +150,7 @@ export function BlogPostPage(): JSX.Element {
           </div>
         </section>
         <section className="px-[clamp(20px,4vw,64px)] pb-[clamp(32px,4vw,56px)]">
-          <div className="max-w-[1660px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10">
+          <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10">
             <div className="space-y-4">
               <Skeleton className="w-full h-64 rounded-xl" />
               <Skeleton className="w-full h-40 rounded-xl" />

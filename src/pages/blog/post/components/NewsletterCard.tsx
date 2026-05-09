@@ -6,11 +6,11 @@ export function NewsletterCard() {
 
   return (
     <div className="bg-card-green rounded-xl overflow-hidden flex flex-col sticky top-[120px]">
-      <div className="p-[26px_22px_0] flex flex-col gap-3">
-        <p className="font-['Inter',sans-serif] text-[18px] font-extrabold tracking-[-0.03em] text-footer-foreground m-0">
+      <div className="p-[30px_26px_0] flex flex-col gap-3.5">
+        <p className="font-['Inter',sans-serif] text-[20px] font-extrabold tracking-[-0.03em] text-footer-foreground m-0">
           Join our newsletter list
         </p>
-        <p className="font-['Inter',sans-serif] text-[13.5px] leading-[1.6] text-[rgba(244,242,227,0.72)] m-0">
+        <p className="font-['Inter',sans-serif] text-[14.5px] leading-[1.6] text-[rgba(244,242,227,0.72)] m-0">
           Sign up to get the most recent blog articles in your email every week.
         </p>
         <div className="flex flex-col gap-2.5 mt-2">
@@ -30,7 +30,7 @@ export function NewsletterCard() {
         </div>
       </div>
 
-      <div className="p-[50px_22px_28px] flex flex-col gap-3">
+      <div className="p-[50px_26px_30px] flex flex-col gap-3.5">
         <p className="font-['Inter',sans-serif] text-[11.5px] font-normal text-[rgba(244,242,227,0.72)] m-0">
           Share this post to the social medias
         </p>

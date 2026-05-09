@@ -269,7 +269,7 @@ export function BlogPage() {
       </section>
 
       <section className="relative z-[3] pt-[40px] pb-[72px] md:pt-[52px] md:pb-[100px]">
-        <div className="w-full max-w-[1600px] px-[20px] sm:px-[30px] md:pl-[40px] md:pr-[30px] lg:pl-[60px] lg:pr-[40px] 3xl:max-w-[1900px]">
+        <div className="mx-auto w-full max-w-[1720px] px-[16px] sm:px-[20px] md:px-[28px] lg:px-[44px] 3xl:max-w-[2000px]">
           <div ref={headingRef} className="mb-[24px] md:mb-[32px]">
             <SectionLabel className="font-semibold">Information</SectionLabel>
             <h2

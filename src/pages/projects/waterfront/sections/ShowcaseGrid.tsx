@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -71,51 +69,10 @@ const showcaseItems = [
 
 export function ShowcaseGrid() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const parallaxRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      parallaxRefs.current.forEach((ref) => {
-        if (!ref) return;
-
-        gsap.fromTo(
-          ref,
-          { yPercent: -15 },
-          {
-            yPercent: 15,
-            ease: "none",
-            force3D: true, // Enforce hardware acceleration
-            scrollTrigger: {
-              trigger: ref.parentElement,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1.2, // Smooth, slow lag
-            },
-          }
-        );
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
-      className="
-        km-stagger
-        w-full
-        pb-[72px]
-        pt-[24px]
-        text-foreground
-        sm:pb-[90px]
-        sm:pt-[44px]
-        md:pb-[120px]
-        md:pt-[70px]
-      "
+      className="w-full pb-[72px] pt-[24px] text-foreground sm:pb-[90px] sm:pt-[44px] md:pb-[120px] md:pt-[70px]"
     >
       <div className="mx-[39px] max-xl:mx-9 max-md:mx-4 max-sm:mx-3">
         {/* HEADING */}
@@ -199,9 +156,7 @@ export function ShowcaseGrid() {
                 "
               >
                 <div
-                  ref={(el) => {
-                    parallaxRefs.current[index] = el;
-                  }}
+                  data-parallax-img
                   className="absolute left-0 top-[-15%] h-[130%] w-full will-change-transform"
                   style={{ backfaceVisibility: "hidden" }}
                 >

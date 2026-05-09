@@ -31,8 +31,54 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
       const getY = (base: number) => isMobile ? base * 0.6 : base;
       const getX = (base: number) => isMobile ? base * 0.6 : base;
 
+      document.querySelectorAll("[data-reveal], [data-reveal-stagger]").forEach((el) => {
+        el.removeAttribute("data-anim");
+        el.removeAttribute("data-parallax-img");
+      });
+
+      document.querySelectorAll("[data-anim]").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: getY(40), scale: 0.97 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: getDuration(1.25),
+            ease: "power3.out",
+            force3D: true,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+          }
+        );
+      });
+
+      document.querySelectorAll("[data-parallax-img]").forEach((el) => {
+        if (!isDesktop) return;
+        gsap.fromTo(
+          el,
+          { yPercent: 8 },
+          {
+            yPercent: -8,
+            ease: "none",
+            force3D: true,
+            scrollTrigger: {
+              trigger: el,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.8,
+            },
+          }
+        );
+      });
+
       // .km-reveal
       gsap.utils.toArray(".km-reveal, .la-reveal, .km-service").forEach((el: any) => {
+        if (el.hasAttribute("data-reveal")) return;
         gsap.fromTo(el, 
           {
             opacity: 0,
@@ -56,6 +102,7 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
 
       // .km-reveal-slow
       gsap.utils.toArray(".km-reveal-slow").forEach((el: any) => {
+        if (el.hasAttribute("data-reveal")) return;
         gsap.fromTo(el, 
           { opacity: 0, y: getY(60) },
           {
@@ -76,6 +123,7 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
 
       // .km-stagger (Animates immediate children sequentially)
       gsap.utils.toArray(".km-stagger").forEach((parent: any) => {
+        if (parent.hasAttribute("data-reveal-stagger")) return;
         const children = Array.from(parent.children);
         if (children.length === 0) return;
         

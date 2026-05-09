@@ -12,7 +12,7 @@ export function LatestBlogsSidebar({ posts }: Props): JSX.Element {
   }
 
   return (
-    <div data-reveal data-x="-30" data-duration="0.9" data-delay="0.05" className="p-6 bg-black/8 rounded-xl">
+    <div data-reveal data-x="-30" data-duration="0.9" data-delay="0.05" className="p-8 bg-black/8 rounded-xl">
       <div className="flex items-center gap-2 mb-1">
         <span className="w-2.5 h-2.5 rounded-full border-2 border-foreground bg-transparent shrink-0" />
         <span className="text-[10px] font-extrabold tracking-[0.12em] uppercase text-foreground">MORE ARTICLES</span>
@@ -26,7 +26,7 @@ export function LatestBlogsSidebar({ posts }: Props): JSX.Element {
         {posts.map((p) => (
           <li key={p.id} className="border-b border-border first:border-t border-border">
             <Link to={`/blog/${p.slug}`} className="flex gap-3 items-start py-3.5 no-underline text-inherit opacity-75 hover:opacity-100 transition-opacity">
-              <div className="shrink-0 w-[116px] h-[104px] rounded-lg overflow-hidden">
+              <div className="shrink-0 w-[130px] h-[116px] rounded-lg overflow-hidden">
                 <img
                   src={p.image}
                   alt={p.title}

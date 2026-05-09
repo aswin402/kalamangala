@@ -12,7 +12,7 @@ interface Props {
 export function RelatedBlogsSection({ posts }: Props): JSX.Element {
   return (
     <section className="px-0 pt-[clamp(48px,6vw,80px)] pb-[clamp(56px,7vw,96px)]">
-      <div className="mx-auto px-5 sm:px-[30px] md:px-10 lg:px-[60px]" style={{ maxWidth: '1600px' }}>
+      <div className="mx-auto px-5 sm:px-[30px] md:px-10 lg:px-[60px]" style={{ maxWidth: '1800px' }}>
         <div data-reveal data-y="30" className="mb-8">
           <SectionLabel className="font-semibold">Similar Topic</SectionLabel>
           <h2 className="font-['Inter',sans-serif] text-[clamp(28px,3.5vw,40px)] font-black tracking-[-0.045em] text-foreground mt-2 leading-none">
