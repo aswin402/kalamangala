@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode: _mode }) => ({
   plugins: [
     react(),
     tailwindcss(),
@@ -14,10 +14,11 @@ export default defineConfig({
       overlay: true,
     },
   },
-  base: "/kalamangala/",
+  base: process.env.VITE_DEPLOY_TARGET === "ghpages" ? "/kalamangala/" : "/",
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
-})
+}))
+

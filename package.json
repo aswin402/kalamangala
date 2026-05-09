@@ -43,9 +43,10 @@
   "name": "offpkg-vite-react",
   "private": true,
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:ghpages",
     "deploy": "gh-pages -d dist",
     "build": "tsc -b && vite build",
+    "build:ghpages": "VITE_DEPLOY_TARGET=ghpages tsc -b && VITE_DEPLOY_TARGET=ghpages vite build",
     "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
