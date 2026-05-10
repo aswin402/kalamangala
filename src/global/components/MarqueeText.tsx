@@ -1,6 +1,3 @@
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-
 interface MarqueeTextProps {
   text: string;
   duration?: number;
@@ -14,33 +11,15 @@ export function MarqueeText({
   className = "pb-10 pt-20 md:pt-24 mt-16 mb-16",
   repeatCount = 10,
 }: MarqueeTextProps) {
-  const marqueeRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    if (!marqueeRef.current) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        marqueeRef.current,
-        { xPercent: 0 },
-        {
-          xPercent: -50,
-          duration: duration,
-          ease: "none",
-          repeat: -1,
-          force3D: true,
-        }
-      );
-    });
-
-    return () => ctx.revert();
-  }, [duration]);
-
   return (
     <section className={`relative w-full overflow-hidden bg-transparent ${className}`}>
       <div
-        ref={marqueeRef}
-        className="flex w-max whitespace-nowrap will-change-transform"
+        className="marquee-track flex w-max whitespace-nowrap"
+        style={
+          {
+            "--marquee-duration": `${duration}s`,
+          } as React.CSSProperties
+        }
       >
         {[0, 1].map((group) => (
           <div key={group} className="flex shrink-0">

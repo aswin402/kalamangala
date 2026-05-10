@@ -4,6 +4,7 @@ import Button from '@/components/button';
 import { supabase, SUPABASE_TABLE } from '@/api/supabase';
 import type { SupabaseBlogPost } from '@/pages/blog/data/blogPostsSupabase';
 import { RichTextEditor } from './RichTextEditor';
+import { toast } from '@/store/useToastStore';
 
 interface BlogPostFormProps {
   post?: SupabaseBlogPost;
@@ -67,7 +68,14 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
       if (!formData.body.trim() || formData.body === '<p></p>') newErrors.body = 'Content is required';
     }
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+
+    const errorKeys = Object.keys(newErrors);
+    if (errorKeys.length > 0) {
+      const fields = Object.values(newErrors).join(', ');
+      toast.warning('Required fields missing', fields);
+    }
+
+    return errorKeys.length === 0;
   };
 
   const uploadImage = async (file: File): Promise<string | null> => {
@@ -105,7 +113,7 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
         if (uploadedUrl) {
           thumbnail_url = uploadedUrl;
         } else {
-          alert('Failed to upload thumbnail image. Please try again.');
+          toast.error('Upload failed', 'Failed to upload thumbnail image. Please try again.');
           setIsLoading(false);
           return;
         }
@@ -134,7 +142,7 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
 
         if (error) {
           console.error('Update error:', error);
-          alert(`Failed to update post: ${error.message}`);
+          toast.error('Update failed', error.message);
           setIsLoading(false);
           return;
         }
@@ -145,7 +153,7 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
 
         if (error) {
           console.error('Insert error:', error);
-          alert(`Failed to create post: ${error.message}`);
+          toast.error('Create failed', error.message);
           setIsLoading(false);
           return;
         }
@@ -155,7 +163,7 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
       onClose();
     } catch (error) {
       console.error('Submit error:', error);
-      alert('Failed to save post. Please try again.');
+      toast.error('Save failed', 'Failed to save post. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -435,7 +443,7 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
                     onClose();
                   } catch (error) {
                     console.error('Save draft error:', error);
-                    alert('Failed to save draft. Please try again.');
+                    toast.error('Draft save failed', 'Failed to save draft. Please try again.');
                   } finally {
                     setIsLoading(false);
                   }

@@ -55,9 +55,11 @@ export function ScrollHero({
     )
       return;
 
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
     const ctx = gsap.context(() => {
       // ── Initial states ──
-      gsap.set(titleContentEl, { y: 50, opacity: 0 });
+      gsap.set(titleContentEl, { opacity: 0, filter: "blur(0px)" });
       gsap.set(mediaWrap, {
         y: 160,
         scale: 0.88,
@@ -79,11 +81,9 @@ export function ScrollHero({
       introTl
         // Fade in the title content
         .to(titleContentEl, {
-          y: 0,
           opacity: 1,
           duration: 1.0,
           ease: "power3.out",
-          force3D: true,
         })
         // Media entrance — slow and dramatic
         .to(
@@ -110,18 +110,17 @@ export function ScrollHero({
         );
 
       // ── PHASE 1: Scrub the title upward toward the navbar ──
-      // For absolutely-positioned content, use CSS `top`.
-      // For flow-positioned content, use offsetTop relative to the title panel.
       const titleRect = titleContentEl.getBoundingClientRect();
       const sectionRect = section.getBoundingClientRect();
       const currentOffsetFromSectionTop = titleRect.top - sectionRect.top;
-      const targetTop = 80; // where the title should end up (just below navbar)
+      const targetTop = 80;
       const travelDistance = Math.max(currentOffsetFromSectionTop - targetTop, 60);
 
       gsap.to(titleContentEl, {
         y: -travelDistance,
         ease: "none",
-        force3D: true,
+        force3D: false,
+        immediateRender: false,
         scrollTrigger: {
           trigger: section,
           start: "top top",
@@ -131,82 +130,100 @@ export function ScrollHero({
       });
 
       // ── PHASE 2: Pin the title panel so the media scrolls over it ──
-      ScrollTrigger.create({
-        trigger: titlePanel,
-        start: "top top",
-        endTrigger: mediaArea,
-        end: "top top",
-        pin: true,
-        pinSpacing: false,
-      });
+      // Skip pinning on mobile — it breaks downstream ScrollTrigger calculations
+      // for km-reveal elements, causing them to stay at opacity:0.
+      if (!isMobile) {
+        ScrollTrigger.create({
+          trigger: titlePanel,
+          start: "top top",
+          endTrigger: mediaArea,
+          end: "top top",
+          pin: true,
+          pinSpacing: false,
+        });
+      }
 
-      // ── PHASE 3: Fade title from bottom-up as media overlaps ──
+      // ── PHASE 3 + 4: Media rises with parallax; title fades with blur ──
+      // Combining these into a single timeline avoids conflicting ScrollTrigger
+      // instances on titleContentEl (PHASE 1 already tweens it).
       const fadeGradient =
         "linear-gradient(to bottom, black 0%, black calc(var(--mask-end, 150) * 1%), transparent calc(var(--mask-end, 150) * 1% + 50px))";
 
-      gsap.fromTo(
-        titleContentEl,
-        { "--mask-end": 150 },
-        {
-          "--mask-end": -30,
-          filter: "blur(6px)",
-          scale: 0.97,
-          ease: "power1.in",
-          force3D: true,
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: mediaArea,
-            start: "top 55%",
-            end: "top 10%",
-            scrub: 0.6,
-            onEnter: () => {
-              titleContentEl.style.maskImage = fadeGradient;
-              titleContentEl.style.webkitMaskImage = fadeGradient;
-            },
-            onLeaveBack: () => {
-              titleContentEl.style.maskImage = "none";
-              titleContentEl.style.webkitMaskImage = "none";
-            },
-          },
-        }
-      );
-
-      // ── PHASE 4: Media rises up with parallax, scales, loses radius ──
       const mediaScrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top top",
           end: "bottom top",
           scrub: 0.8,
+          onEnter: () => {
+            titleContentEl.style.maskImage = fadeGradient;
+            titleContentEl.style.webkitMaskImage = fadeGradient;
+          },
+          onLeaveBack: () => {
+            titleContentEl.style.maskImage = "none";
+            titleContentEl.style.webkitMaskImage = "none";
+            titleContentEl.style.filter = "blur(0px)";
+          },
         },
       });
 
-      mediaScrollTl
-        .fromTo(
-          mediaWrap,
-          { y: 0, scale: 1, borderRadius: 28 },
-          {
-            y: -160,
-            scale: 1.04,
-            borderRadius: 12,
-            ease: "none",
-            force3D: true,
-          },
-          0
-        )
-        .fromTo(
-          mediaInner,
-          { scale: 1 },
-          {
-            scale: 1.1,
-            ease: "none",
-            force3D: true,
-          },
-          0
-        );
+      // Title blur + scale-down: happens in the first 40% of scroll
+      mediaScrollTl.fromTo(
+        titleContentEl,
+        {
+          "--mask-end": 150,
+          filter: "blur(0px)",
+          scale: 1,
+        },
+        {
+          "--mask-end": -30,
+          filter: "blur(6px)",
+          scale: 0.97,
+          ease: "power1.in",
+          duration: 0.4,
+        },
+        0
+      );
+
+      // Media wrapper: rises up, scales, loses radius
+      mediaScrollTl.fromTo(
+        mediaWrap,
+        { y: 0, scale: 1, borderRadius: 28 },
+        {
+          y: -160,
+          scale: 1.04,
+          borderRadius: 12,
+          ease: "none",
+          force3D: true,
+          duration: 1,
+        },
+        0
+      );
+
+      // Inner media: subtle zoom
+      mediaScrollTl.fromTo(
+        mediaInner,
+        { scale: 1 },
+        {
+          scale: 1.1,
+          ease: "none",
+          force3D: true,
+          duration: 1,
+        },
+        0
+      );
     }, section);
 
-    return () => ctx.revert();
+    // After all hero ScrollTrigger instances are created, refresh global triggers
+    // so that downstream km-reveal elements recalculate their positions correctly.
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh(true);
+    }, 100);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -218,8 +235,6 @@ export function ScrollHero({
       >
         <div
           ref={titleContentRef}
-          className="will-change-transform"
-          style={{ backfaceVisibility: "hidden" }}
         >
           {titleContent}
         </div>

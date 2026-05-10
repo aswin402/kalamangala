@@ -20,15 +20,13 @@ export function ContactPage() {
     if (!section || !titlePanel || !titleContentEl) return;
 
     const ctx = gsap.context(() => {
-      gsap.set(titleContentEl, { y: 50, opacity: 0 });
+      gsap.set(titleContentEl, { opacity: 0, filter: "blur(0px)" });
 
       gsap.to(titleContentEl, {
-        y: 0,
         opacity: 1,
         duration: 1.0,
         delay: 0.15,
         ease: "power3.out",
-        force3D: true,
       });
 
       const titleRect = titleContentEl.getBoundingClientRect();
@@ -40,7 +38,8 @@ export function ContactPage() {
       gsap.to(titleContentEl, {
         y: -travelDistance,
         ease: "none",
-        force3D: true,
+        force3D: false,
+        immediateRender: false,
         scrollTrigger: {
           trigger: section,
           start: "top top",
@@ -73,7 +72,8 @@ export function ContactPage() {
           filter: "blur(6px)",
           scale: 0.97,
           ease: "power1.in",
-          force3D: true,
+          force3D: false,
+          immediateRender: false,
           scrollTrigger: {
             trigger: section,
             start: "top top",
@@ -86,6 +86,7 @@ export function ContactPage() {
             onLeaveBack: () => {
               titleContentEl.style.maskImage = "none";
               titleContentEl.style.webkitMaskImage = "none";
+              titleContentEl.style.filter = "blur(0px)";
             },
           },
         }
@@ -109,8 +110,6 @@ export function ContactPage() {
       >
         <div
           ref={titleContentRef}
-          className="will-change-transform"
-          style={{ backfaceVisibility: "hidden" }}
         >
           <MarqueeText
             text={TEXT}

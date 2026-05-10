@@ -9,7 +9,13 @@ export function PlotsHero() {
         <MarqueeText
           text="Premium Residential Plots. "
           duration={60}
-          className="overflow-hidden pb-10 pt-20 md:pt-24"
+          className="
+            w-full overflow-hidden
+            pt-[115px] pb-[12px]
+            sm:pt-[120px] sm:pb-[14px]
+            md:pt-[130px] md:pb-[20px]
+            lg:pt-[140px] lg:pb-[24px]
+          "
           repeatCount={5}
         />
       }
@@ -21,11 +27,10 @@ export function PlotsHero() {
         />
       }
       titlePanelClassName="
-        h-[260px]
+        h-[250px]
         sm:h-[300px]
-        md:h-[360px]
-        lg:h-[400px]
-        xl:h-[420px]
+        md:h-[340px]
+        lg:h-[384px]
       "
       mediaWrapperClassName="px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8"
       mediaInnerClassName="

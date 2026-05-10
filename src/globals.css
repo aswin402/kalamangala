@@ -302,6 +302,67 @@
     scroll-behavior: auto !important;
   }
 
+  /* ── Skeleton shimmer animation ── */
+  .skeleton-shimmer {
+    position: relative;
+    overflow: hidden;
+    background: var(--muted);
+  }
+
+  .skeleton-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--border) 50%, transparent) 30%,
+      color-mix(in srgb, var(--primary) 18%, transparent) 50%,
+      color-mix(in srgb, var(--border) 50%, transparent) 70%,
+      transparent 100%
+    );
+    animation: skeleton-sweep 1.8s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  @keyframes skeleton-sweep {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* ── Marquee infinite scroll ── */
+  .marquee-track {
+    animation: marquee-scroll var(--marquee-duration, 60s) linear infinite;
+  }
+
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+
+  @keyframes toast-progress {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0%;
+    }
+  }
+
   /* Prevent FOUC: Hide GSAP animated elements initially */
   .km-reveal,
   .la-reveal,

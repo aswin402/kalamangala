@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { LogOut, LayoutDashboard } from 'lucide-react';
 import { supabase } from '@/api/supabase';
 import Button from '@/components/button';
+import { Toaster } from '@/components/ui/Toaster';
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -45,6 +46,7 @@ export function AdminLayout({ children }: AdminLayoutProps): JSX.Element {
       </header>
 
       <main>{children}</main>
+      <Toaster />
     </div>
   );
 }

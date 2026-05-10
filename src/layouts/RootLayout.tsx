@@ -33,12 +33,21 @@ export function RootLayout() {
     let rafId: number;
     let resizeObserver: ResizeObserver | undefined;
     let timeoutId: ReturnType<typeof setTimeout>;
+    let mutationObserver: MutationObserver | undefined;
+    let reInitTimer: ReturnType<typeof setTimeout>;
+
+    const doInit = () => {
+      // Clean up previous instance before re-initializing
+      if (cleanup) {
+        cleanup();
+        cleanup = undefined;
+      }
+      cleanup = initScrollAnimations(document.body);
+      ScrollTrigger.refresh(true);
+    };
     
     rafId = requestAnimationFrame(() => {
-      cleanup = initScrollAnimations(document.body);
-      
-      // safe refresh recalculates all trigger positions
-      ScrollTrigger.refresh(true);
+      doInit();
 
       // React router transitions or lazy-loaded images often change page height after mount.
       // A ResizeObserver on document.body ensures ScrollTrigger recalculates trigger positions
@@ -52,13 +61,49 @@ export function RootLayout() {
         });
         resizeObserver.observe(document.body);
       }
+
+      // Lazy-loaded pages (via React.lazy + Suspense) render AFTER this RAF fires.
+      // A MutationObserver detects when new animated elements (.km-reveal, etc.)
+      // appear in the DOM and re-initializes scroll animations to pick them up.
+      mutationObserver = new MutationObserver((mutations) => {
+        let hasNewAnimatedElements = false;
+        for (const mutation of mutations) {
+          for (const node of mutation.addedNodes) {
+            if (!(node instanceof HTMLElement)) continue;
+            // Check if the added node or any of its descendants need animation
+            if (
+              node.matches?.('.km-reveal, .km-reveal-slow, .km-stagger, .km-card, .la-card, .km-fade-left, .km-fade-right, .la-reveal, .km-service') ||
+              node.querySelector?.('.km-reveal, .km-reveal-slow, .km-stagger, .km-card, .la-card, .km-fade-left, .km-fade-right, .la-reveal, .km-service')
+            ) {
+              hasNewAnimatedElements = true;
+              break;
+            }
+          }
+          if (hasNewAnimatedElements) break;
+        }
+
+        if (hasNewAnimatedElements) {
+          // Debounce: wait for the full lazy component tree to render
+          clearTimeout(reInitTimer);
+          reInitTimer = setTimeout(() => {
+            doInit();
+          }, 50);
+        }
+      });
+
+      mutationObserver.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
     });
     
     return () => {
       cancelAnimationFrame(rafId);
       clearTimeout(timeoutId);
+      clearTimeout(reInitTimer);
       if (cleanup) cleanup();
       if (resizeObserver) resizeObserver.disconnect();
+      if (mutationObserver) mutationObserver.disconnect();
     };
   }, [pathname]);
 

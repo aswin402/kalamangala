@@ -6,6 +6,7 @@ import { BlogPostForm } from './components/BlogPostForm';
 import type { SupabaseBlogPost } from '@/pages/blog/data/blogPostsSupabase';
 import Button from '@/components/button';
 import { Skeleton } from '@/components/ui/Skeleton';
+import { toast } from '@/store/useToastStore';
 
 type SortField = 'header' | 'created_at';
 type SortOrder = 'asc' | 'desc';
@@ -26,7 +27,9 @@ export function AdminDashboardPage(): JSX.Element {
       .select('*')
       .order('created_at', { ascending: false });
 
-    if (!error && data) {
+    if (error) {
+      toast.error('Failed to load posts', error.message);
+    } else if (data) {
       setPosts(data);
     }
     setIsLoading(false);
@@ -53,8 +56,11 @@ export function AdminDashboardPage(): JSX.Element {
       .delete()
       .eq('id', id);
 
-    if (!error) {
+    if (error) {
+      toast.error('Delete failed', error.message);
+    } else {
       setPosts(posts.filter((p) => p.id !== id));
+      toast.success('Post deleted', 'The post has been permanently removed.');
     }
   };
 
@@ -76,6 +82,7 @@ export function AdminDashboardPage(): JSX.Element {
   const handleFormSuccess = () => {
     fetchPosts();
     handleFormClose();
+    toast.success('Post saved', 'Your blog post has been saved successfully.');
   };
 
   const filteredAndSortedPosts = useMemo(() => {

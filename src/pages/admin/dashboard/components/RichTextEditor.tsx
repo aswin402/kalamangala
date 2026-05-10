@@ -27,10 +27,153 @@ function cleanStyles(body: HTMLElement): void {
   });
 }
 
+/** Detect whether HTML originates from Google Docs */
+function isGoogleDocsHTML(html: string): boolean {
+  return /docs-internal-guid|id="docs-internal-guid/i.test(html);
+}
+
+/** Parse a CSS-like font-size value to points */
+function parseFontSizePt(style: string): number {
+  // font-size in pt
+  const ptMatch = style.match(/font-size:\s*([\d.]+)\s*pt/i);
+  if (ptMatch) return parseFloat(ptMatch[1]);
+
+  // font-size in px → approximate pt (1pt ≈ 1.333px)
+  const pxMatch = style.match(/font-size:\s*([\d.]+)\s*px/i);
+  if (pxMatch) return parseFloat(pxMatch[1]) / 1.333;
+
+  return 0;
+}
+
+/**
+ * Convert Google Docs inline-styled HTML into semantic HTML.
+ *
+ * Google Docs uses <p> with large font-size for headings, font-weight:700
+ * for bold, font-style:italic for italic — never semantic tags.
+ */
+function cleanGoogleDocsHTML(body: HTMLElement, doc: Document): void {
+  // ── 1. Convert inline bold/italic spans into <strong>/<em> ──
+  body.querySelectorAll('span').forEach((span) => {
+    const style = span.getAttribute('style') || '';
+
+    const isBold = /font-weight:\s*(700|bold)/i.test(style);
+    const isItalic = /font-style:\s*italic/i.test(style);
+
+    if (isBold) {
+      const strong = doc.createElement('strong');
+      strong.innerHTML = span.innerHTML;
+      span.replaceWith(strong);
+      // If also italic, wrap the strong content
+      if (isItalic) {
+        const em = doc.createElement('em');
+        em.innerHTML = strong.innerHTML;
+        strong.innerHTML = '';
+        strong.appendChild(em);
+      }
+    } else if (isItalic) {
+      const em = doc.createElement('em');
+      em.innerHTML = span.innerHTML;
+      span.replaceWith(em);
+    }
+  });
+
+  // ── 2. Also handle <b> wrappers Google Docs sometimes uses ──
+  body.querySelectorAll('b').forEach((b) => {
+    const strong = doc.createElement('strong');
+    strong.innerHTML = b.innerHTML;
+    b.replaceWith(strong);
+  });
+
+  // ── 3. Convert paragraphs with large font-size into headings ──
+  // Collect the dominant (most common) font-size to use as body baseline
+  const fontSizes: number[] = [];
+  body.querySelectorAll('p, span, strong, em').forEach((el) => {
+    const style = (el as HTMLElement).getAttribute?.('style') || '';
+    const size = parseFontSizePt(style);
+    if (size > 0) fontSizes.push(size);
+  });
+
+  // If we got font sizes, find the most common one as the baseline
+  let baselinePt = 11; // Google Docs default
+  if (fontSizes.length > 0) {
+    const freq = new Map<number, number>();
+    fontSizes.forEach((s) => {
+      const rounded = Math.round(s);
+      freq.set(rounded, (freq.get(rounded) || 0) + 1);
+    });
+    let maxCount = 0;
+    freq.forEach((count, size) => {
+      if (count > maxCount) { maxCount = count; baselinePt = size; }
+    });
+  }
+
+  body.querySelectorAll('p').forEach((p) => {
+    // Check the paragraph or its first child span for font-size
+    const pStyle = p.getAttribute('style') || '';
+    let size = parseFontSizePt(pStyle);
+
+    if (size === 0) {
+      const firstChild = p.querySelector('span, strong, em, b');
+      if (firstChild) {
+        size = parseFontSizePt((firstChild as HTMLElement).getAttribute?.('style') || '');
+      }
+    }
+
+    // Heading detection by font-size ratio to baseline
+    // Google Docs typical: H1 ≈ 20-26pt, H2 ≈ 16-18pt, H3 ≈ 14pt, body ≈ 11pt
+    if (size > 0) {
+      const ratio = size / baselinePt;
+      let tag: string | null = null;
+
+      if (ratio >= 1.8) tag = 'h1';
+      else if (ratio >= 1.4) tag = 'h2';
+      else if (ratio >= 1.15) tag = 'h3';
+
+      if (tag) {
+        const heading = doc.createElement(tag);
+        heading.innerHTML = p.innerHTML;
+        p.replaceWith(heading);
+      }
+    }
+  });
+
+  // ── 4. Unwrap remaining non-semantic spans ──
+  body.querySelectorAll('span').forEach((span) => {
+    // Replace span with its children (unwrap)
+    const parent = span.parentNode;
+    if (!parent) return;
+    while (span.firstChild) {
+      parent.insertBefore(span.firstChild, span);
+    }
+    parent.removeChild(span);
+  });
+
+  // ── 5. Remove Google Docs internal attributes ──
+  body.querySelectorAll('[id^="docs-internal-guid"]').forEach((el) => {
+    el.removeAttribute('id');
+  });
+
+  // Remove all remaining style/class attributes
+  cleanStyles(body);
+
+  // ── 6. Clean up empty paragraphs (Google Docs inserts many) ──
+  body.querySelectorAll('p').forEach((p) => {
+    if (!p.textContent?.trim() && !p.querySelector('img, br')) {
+      p.remove();
+    }
+  });
+}
+
 function transformPastedHTML(html: string): string {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
   const body = doc.body;
+
+  // Google Docs-specific cleaning
+  if (isGoogleDocsHTML(html)) {
+    cleanGoogleDocsHTML(body, doc);
+    return body.innerHTML;
+  }
 
   cleanStyles(body);
 
@@ -131,6 +274,20 @@ export function RichTextEditor({ content, onChange, placeholder = 'Write your co
       handlePaste(view, event) {
         const clipboardHTML = event.clipboardData?.getData('text/html') || '';
         const clipboardText = event.clipboardData?.getData('text/plain') || '';
+
+        // CASE 0: Google Docs paste — convert inline styles to semantic HTML first
+        if (clipboardHTML.trim() && isGoogleDocsHTML(clipboardHTML)) {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(clipboardHTML, 'text/html');
+          cleanGoogleDocsHTML(doc.body, doc);
+
+          const wrapper = document.createElement('div');
+          wrapper.innerHTML = doc.body.innerHTML;
+          const pmParser = PmDOMParser.fromSchema(view.state.schema);
+          const slice = pmParser.parseSlice(wrapper);
+          view.dispatch(view.state.tr.replaceSelection(slice));
+          return true;
+        }
 
         // CASE 1: HTML paste with existing structure (from website) → clean styles, preserve structure
         if (clipboardHTML.trim()) {

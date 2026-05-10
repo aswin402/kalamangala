@@ -31,11 +31,10 @@ export function LocationHero() {
         />
       }
       titlePanelClassName="
-        h-[280px]
-        sm:h-[320px]
-        md:h-[380px]
-        lg:h-[420px]
-        xl:h-[440px]
+        h-[250px]
+        sm:h-[300px]
+        md:h-[340px]
+        lg:h-[384px]
       "
       mediaWrapperClassName="px-[13px] sm:px-4 md:px-8 lg:px-[38px]"
       mediaInnerClassName="

@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // ── Single global GSAP + ScrollTrigger registration ──
 gsap.registerPlugin(ScrollTrigger);
-gsap.config({ nullTargetWarn: false, force3D: true });
+gsap.config({ nullTargetWarn: false });
 ScrollTrigger.config({ limitCallbacks: true });
 
 let lenisInstance: Lenis | null = null;

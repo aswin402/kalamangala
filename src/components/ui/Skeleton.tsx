@@ -14,7 +14,7 @@ export function Skeleton({
   style,
   ...props
 }: SkeletonProps) {
-  const baseClasses = 'animate-pulse bg-muted';
+  const baseClasses = 'skeleton-shimmer';
 
   const variantClasses = {
     text: 'rounded-md h-4',
