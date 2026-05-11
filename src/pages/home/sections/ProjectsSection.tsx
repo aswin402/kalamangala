@@ -247,7 +247,7 @@ export const ProjectsSection = () => {
                     max-w-[340px]
                     text-[14px] font-medium font-sans leading-[1.6]
                     tracking-[-0.01em] text-foreground/80
-                    md:text-[14px]
+                    md:text-[18px]
                   "
                 >
                   Welcome to The Waterfront by Kalamangala – Erode&apos;s first

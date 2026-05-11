@@ -212,7 +212,7 @@ export const Navbar = () => {
             px-[31px]
             shadow-[0_4px_14px_rgba(23,55,47,0.14)]
             sm:px-[40px]
-            md:mx-auto md:h-[72px] md:max-w-[1920px] md:justify-center md:px-5
+            md:h-[72px] md:justify-center md:px-5
             md:shadow-[0_4px_14px_rgba(23,55,47,0.14)]
           "
         >

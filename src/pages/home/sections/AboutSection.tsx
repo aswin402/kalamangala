@@ -66,7 +66,7 @@ export const AboutSection = () => {
       <div
         className="
           mx-auto grid w-full items-center max-w-[1800px]
-          grid-cols-[minmax(0,45vw)_minmax(0,1fr)]
+          grid-cols-[1fr_minmax(0,40%)]
           gap-[46px]
           px-4
           sm:px-5
@@ -118,8 +118,8 @@ export const AboutSection = () => {
         >
           <p
             className="
-              text-[16px] font-medium font-sans
-              leading-[1.42]
+              text-[24px] font-medium font-sans
+              leading-[1.5]
               tracking-[-0.035em]
               text-foreground
 

@@ -156,6 +156,7 @@ export function AdminDashboardPage(): JSX.Element {
             <div className="p-6 space-y-4">
               {Array.from({ length: 5 }).map((_, i) => (
                 <div key={i} className="flex items-center gap-6">
+                  <Skeleton className="w-8 h-5 rounded-md shrink-0" />
                   <Skeleton className="w-20 h-12 rounded-lg shrink-0" />
                   <Skeleton className="flex-1 h-5 rounded-md" />
                   <Skeleton className="w-24 h-5 rounded-md" />
@@ -171,6 +172,9 @@ export function AdminDashboardPage(): JSX.Element {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-border bg-muted/40">
+                  <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wide text-muted-foreground w-12">
+                    No.
+                  </th>
                   <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                     Thumbnail
                   </th>
@@ -203,16 +207,19 @@ export function AdminDashboardPage(): JSX.Element {
               <tbody>
                 {filteredAndSortedPosts.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-6 py-12 text-center text-muted-foreground">
+                    <td colSpan={6} className="px-6 py-12 text-center text-muted-foreground">
                       No blog posts found. Create your first post!
                     </td>
                   </tr>
                 ) : (
-                  filteredAndSortedPosts.map((post) => (
+                  filteredAndSortedPosts.map((post, index) => (
                     <tr
                       key={post.id}
                       className="border-b border-border last:border-0 hover:bg-muted/20"
                     >
+                      <td className="px-6 py-4 text-sm text-muted-foreground font-medium">
+                        {(index + 1).toString().padStart(2, '0')}
+                      </td>
                       <td className="px-6 py-4">
                         {post.thumbnail_url ? (
                           <img

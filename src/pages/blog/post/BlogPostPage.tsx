@@ -9,14 +9,8 @@ import { ArticleSection } from "./sections/ArticleSection";
 import { LatestBlogsSidebar } from "./components/LatestBlogsSidebar";
 import { NewsletterCard } from "./components/NewsletterCard";
 import { RelatedBlogsSection } from "./components/RelatedBlogsSection";
-import img1 from "@/assets/construction-company/img1.webp";
-import img2 from "@/assets/construction-company/img2.webp";
-import img7 from "@/assets/construction-company/img7.webp";
-import img8 from "@/assets/construction-company/img8.webp";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const MOSAIC_IMAGES = [img1, img2, img7, img8];
 
 export function BlogPostPage(): JSX.Element {
   const { slug } = useParams<{ slug: string }>();
@@ -26,7 +20,7 @@ export function BlogPostPage(): JSX.Element {
   const [loading, setLoading] = useState(true);
 
   const pageRef = useRef<HTMLDivElement>(null);
-
+//new
   useEffect(() => {
     const loadPost = async () => {
       setLoading(true);
