@@ -1,26 +1,17 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MarqueeText } from "../../global/components/MarqueeText";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { BlogCard } from "./components/BlogCard";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { BLOG_POSTS } from "./data/blogPosts";
 import { fetchPublishedPosts, fetchPublishedPostsCount, type BlogPostUI } from "./data/blogPostsSupabase";
-
-gsap.registerPlugin(ScrollTrigger);
+import "./blog-page.css";
 
 const MARQUEE_TEXT = "Blogs. Articles. Informations. Blogs. Articles. ";
 const PAGE_SIZE = 6;
 
 export function BlogPage() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titlePanelRef = useRef<HTMLDivElement>(null);
-  const titleContentRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   const [posts, setPosts] = useState<BlogPostUI[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +21,7 @@ export function BlogPage() {
 
   const loadedPagesRef = useRef<Set<number>>(new Set([0]));
 
+  /* ── Data fetching ── */
   const loadPosts = useCallback(async (pageNum: number, append: boolean) => {
     if (append && !hasMore) return;
 
@@ -72,8 +64,10 @@ export function BlogPage() {
       }
     };
     init();
-  }, [loadPosts]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  /* ── Infinite scroll observer ── */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -98,159 +92,20 @@ export function BlogPage() {
     };
   }, [hasMore, isLoadingMore, isLoading, page, loadPosts]);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const titlePanel = titlePanelRef.current;
-    const titleContentEl = titleContentRef.current;
-
-    if (!section || !titlePanel || !titleContentEl) return;
-
-    const ctx = gsap.context(() => {
-      gsap.set(titleContentEl, { opacity: 0, filter: "blur(0px)" });
-
-      gsap.to(titleContentEl, {
-        opacity: 1,
-        duration: 1.0,
-        delay: 0.15,
-        ease: "power3.out",
-      });
-
-      const titleRect = titleContentEl.getBoundingClientRect();
-      const sectionRect = section.getBoundingClientRect();
-      const currentOffsetFromSectionTop = titleRect.top - sectionRect.top;
-      const targetTop = 80;
-      const travelDistance = Math.max(currentOffsetFromSectionTop - targetTop, 60);
-
-      gsap.to(titleContentEl, {
-        y: -travelDistance,
-        ease: "none",
-        force3D: false,
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${travelDistance}`,
-          scrub: 0.6,
-        },
-      });
-
-      ScrollTrigger.create({
-        trigger: titlePanel,
-        start: "top top",
-        end: () => `+=${titlePanel.offsetHeight}`,
-        pin: true,
-        pinSpacing: false,
-      });
-
-      const fadeGradient =
-        "linear-gradient(to bottom, black 0%, black calc(var(--mask-end, 150) * 1%), transparent calc(var(--mask-end, 150) * 1% + 50px))";
-
-      gsap.fromTo(
-        titleContentEl,
-        {
-          "--mask-end": 150,
-          filter: "blur(0px)",
-          scale: 1,
-        },
-        {
-          "--mask-end": -30,
-          filter: "blur(6px)",
-          scale: 0.97,
-          ease: "power1.in",
-          force3D: false,
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: () => `+=${titlePanel.offsetHeight}`,
-            scrub: 0.6,
-            onEnter: () => {
-              titleContentEl.style.maskImage = fadeGradient;
-              titleContentEl.style.webkitMaskImage = fadeGradient;
-            },
-            onLeaveBack: () => {
-              titleContentEl.style.maskImage = "none";
-              titleContentEl.style.webkitMaskImage = "none";
-              titleContentEl.style.filter = "blur(0px)";
-            },
-          },
-        }
-      );
-
-      if (headingRef.current) {
-        gsap.fromTo(
-          headingRef.current,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1.2,
-            ease: "power3.out",
-            force3D: true,
-            scrollTrigger: {
-              trigger: headingRef.current,
-              start: "top 85%",
-              once: true,
-            },
-          }
-        );
-      }
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
-
-  useEffect(() => {
-    if (isLoading || posts.length === 0) return;
-
-    const grid = gridRef.current;
-    if (!grid) return;
-
-    const ctx = gsap.context(() => {
-      const newCards = Array.from(grid.querySelectorAll(".blog-card:not(.animated)"));
-      if (newCards.length === 0) return;
-
-      newCards.forEach((card) => card.classList.add("animated"));
-
-      gsap.fromTo(
-        newCards,
-        { y: 60, opacity: 0, scale: 0.96 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1.1,
-          stagger: 0.1,
-          ease: "power3.out",
-          force3D: true,
-          scrollTrigger: {
-            trigger: grid,
-            start: "top 88%",
-            once: true,
-          },
-        }
-      );
-    }, grid);
-
-    return () => ctx.revert();
-  }, [posts, isLoading]);
-
   return (
     <>
-      <section ref={sectionRef} className="relative">
+      {/* ── Hero marquee ── */}
+      <section className="relative">
         <div
-          ref={titlePanelRef}
           className="
-            relative z-[1] w-full overflow-visible
+            relative w-full overflow-hidden
             h-[250px]
             sm:h-[300px]
             md:h-[340px]
             lg:h-[384px]
           "
         >
-          <div
-            ref={titleContentRef}
-          >
+          <div className="blog-hero-fade-in">
             <MarqueeText
               text={MARQUEE_TEXT}
               duration={60}
@@ -267,9 +122,10 @@ export function BlogPage() {
         </div>
       </section>
 
-      <section className="relative z-[3] pt-[40px] pb-[72px] md:pt-[52px] md:pb-[100px]">
+      {/* ── Blog grid section ── */}
+      <section className="relative pt-[40px] pb-[72px] md:pt-[52px] md:pb-[100px]">
         <div className="mx-auto w-full max-w-[1720px] px-[16px] sm:px-[20px] md:px-[28px] lg:px-[44px] 3xl:max-w-[2000px]">
-          <div ref={headingRef} className="mb-[24px] md:mb-[32px]">
+          <div className="mb-[24px] md:mb-[32px] blog-heading-enter">
             <SectionLabel className="font-semibold">Information</SectionLabel>
             <h2
               className="
@@ -298,7 +154,6 @@ export function BlogPage() {
           ) : (
             <>
               <div
-                ref={gridRef}
                 className="
                   grid gap-[14px]
                   grid-cols-1
@@ -307,13 +162,10 @@ export function BlogPage() {
                   md:gap-[16px]
                 "
               >
-                {posts.map((post) => (
+                {posts.map((post, index) => (
                   <div
                     key={post.id}
-                    ref={(el) => {
-                      if (el) cardRefs.current.set(post.id, el);
-                    }}
-                    className="blog-card"
+                    className="km-reveal"
                   >
                     <BlogCard post={post} />
                   </div>
@@ -323,14 +175,8 @@ export function BlogPage() {
               <div ref={sentinelRef} className="h-4" />
 
               {isLoadingMore && (
-                <div className="grid gap-[14px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-[16px] mt-[16px]">
-                  {Array.from({ length: PAGE_SIZE }).map((_, i) => (
-                    <div key={`skeleton-more-${i}`} className="flex flex-col gap-3">
-                      <Skeleton className="w-full aspect-[4/3] rounded-xl" />
-                      <Skeleton className="w-3/4 h-5 rounded-md" />
-                      <Skeleton className="w-1/2 h-4 rounded-md" />
-                    </div>
-                  ))}
+                <div className="flex justify-center w-full mt-8 mb-4">
+                  <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
                 </div>
               )}
 

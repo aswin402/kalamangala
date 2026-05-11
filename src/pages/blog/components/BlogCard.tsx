@@ -20,8 +20,8 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
           <clipPath id={`mc-${cardId}`} clipPathUnits="objectBoundingBox">
-            <path d="M 0.035,0 L 0.965,0 Q 1,0 1,0.04 L 1,0.96 Q 1,1 0.965,1 L 0.68,1 C 0.635,1 0.62,0.98 0.62,0.955 C 0.62,0.93 0.615,0.91 0.585,0.91 L 0.035,0.91 Q 0,0.91 0,0.87 L 0,0.04 Q 0,0 0.035,0 Z" />
-          </clipPath>
+  <path d="M 0.035,0 L 0.965,0 Q 1,0 1,0.04 L 1,0.96 Q 1,1 0.965,1 L 0.52,1 C 0.485,1 0.47,0.98 0.47,0.955 C 0.47,0.93 0.465,0.91 0.435,0.91 L 0.035,0.91 Q 0,0.91 0,0.87 L 0,0.04 Q 0,0 0.035,0 Z" />
+</clipPath>
         </defs>
       </svg>
 

@@ -37,6 +37,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
       });
 
       document.querySelectorAll("[data-anim]").forEach((el) => {
+        if ((el as HTMLElement).dataset.kmInit) return;
+        (el as HTMLElement).dataset.kmInit = "1";
         gsap.fromTo(
           el,
           { opacity: 0, y: getY(40), scale: 0.97 },
@@ -59,6 +61,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
 
       document.querySelectorAll("[data-parallax-img]").forEach((el) => {
         if (!isDesktop) return;
+        if ((el as HTMLElement).dataset.kmInit) return;
+        (el as HTMLElement).dataset.kmInit = "1";
         gsap.fromTo(
           el,
           { yPercent: 8 },
@@ -79,6 +83,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
       // .km-reveal
       gsap.utils.toArray(".km-reveal, .la-reveal, .km-service").forEach((el: any) => {
         if (el.hasAttribute("data-reveal")) return;
+        if (el.dataset.kmInit) return;
+        el.dataset.kmInit = "1";
         gsap.fromTo(el, 
           {
             opacity: 0,
@@ -103,6 +109,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
       // .km-reveal-slow
       gsap.utils.toArray(".km-reveal-slow").forEach((el: any) => {
         if (el.hasAttribute("data-reveal")) return;
+        if (el.dataset.kmInit) return;
+        el.dataset.kmInit = "1";
         gsap.fromTo(el, 
           { opacity: 0, y: getY(60) },
           {
@@ -124,6 +132,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
       // .km-stagger (Animates immediate children sequentially)
       gsap.utils.toArray(".km-stagger").forEach((parent: any) => {
         if (parent.hasAttribute("data-reveal-stagger")) return;
+        if (parent.dataset.kmInit) return;
+        parent.dataset.kmInit = "1";
         const children = Array.from(parent.children);
         if (children.length === 0) return;
         
@@ -148,6 +158,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
 
       // .km-text-reveal (For headings)
       gsap.utils.toArray(".km-text-reveal").forEach((el: any) => {
+        if (el.dataset.kmInit) return;
+        el.dataset.kmInit = "1";
         const isSafeToSplit = !el.children.length;
         
         if (isSafeToSplit && el.textContent) {
@@ -197,6 +209,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
       // .km-image-parallax (desktop only — scrub is too heavy for mobile)
       if (isDesktop) {
         gsap.utils.toArray(".km-image-parallax").forEach((el: any) => {
+          if (el.dataset.kmInit) return;
+          el.dataset.kmInit = "1";
           gsap.fromTo(el, 
             { 
               scale: 1.08,
@@ -220,6 +234,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
 
       // .km-card
       gsap.utils.toArray(".km-card, .la-card").forEach((el: any) => {
+        if (el.dataset.kmInit) return;
+        el.dataset.kmInit = "1";
         gsap.fromTo(el, 
           { opacity: 0, y: getY(40), scale: 0.97 },
           {
@@ -241,6 +257,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
 
       // .km-fade-left
       gsap.utils.toArray(".km-fade-left").forEach((el: any) => {
+        if (el.dataset.kmInit) return;
+        el.dataset.kmInit = "1";
         gsap.fromTo(el, 
           { opacity: 0, x: getX(-50) },
           {
@@ -261,6 +279,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
 
       // .km-fade-right
       gsap.utils.toArray(".km-fade-right").forEach((el: any) => {
+        if (el.dataset.kmInit) return;
+        el.dataset.kmInit = "1";
         gsap.fromTo(el, 
           { opacity: 0, x: getX(50) },
           {
@@ -281,6 +301,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
 
       // .km-hero
       gsap.utils.toArray(".km-hero").forEach((hero: any) => {
+        if (hero.dataset.kmInit) return;
+        hero.dataset.kmInit = "1";
         const tl = gsap.timeline();
         
         const media = hero.querySelector("video, img, .hero-media");
@@ -343,6 +365,8 @@ export function initScrollAnimations(container: HTMLElement | Document = documen
       // .km-pin-section (Optional desktop-only pinning)
       if (isDesktop) {
         gsap.utils.toArray(".km-pin-section").forEach((el: any) => {
+          if (el.dataset.kmInit) return;
+          el.dataset.kmInit = "1";
           ScrollTrigger.create({
             trigger: el,
             start: "top top",

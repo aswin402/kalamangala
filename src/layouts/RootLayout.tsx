@@ -56,15 +56,24 @@ export function RootLayout() {
         resizeObserver = new ResizeObserver(() => {
           clearTimeout(timeoutId);
           timeoutId = setTimeout(() => {
-            ScrollTrigger.refresh();
-          }, 150);
+            // Only refresh if there are active ScrollTrigger instances
+            // and the user isn't currently scrolling (avoids Lenis desync)
+            if (ScrollTrigger.getAll().length > 0) {
+              ScrollTrigger.refresh(true);
+            }
+            // Also notify Lenis that the page height changed so its
+            // internal scroll limit stays accurate (critical for infinite scroll)
+            lenisRef.current?.resize();
+          }, 50);
         });
         resizeObserver.observe(document.body);
       }
 
       // Lazy-loaded pages (via React.lazy + Suspense) render AFTER this RAF fires.
       // A MutationObserver detects when new animated elements (.km-reveal, etc.)
-      // appear in the DOM and re-initializes scroll animations to pick them up.
+      // appear in the DOM and processes ONLY the new elements incrementally.
+      // Previous approach called doInit() which reverted ALL existing GSAP animations,
+      // causing already-visible cards to flash back to opacity:0 (the "blog page glitch").
       mutationObserver = new MutationObserver((mutations) => {
         let hasNewAnimatedElements = false;
         for (const mutation of mutations) {
@@ -83,10 +92,15 @@ export function RootLayout() {
         }
 
         if (hasNewAnimatedElements) {
-          // Debounce: wait for the full lazy component tree to render
+          // Debounce: wait for the full lazy component tree to render.
+          // Instead of ripping out all animations (doInit), run an incremental pass
+          // that only processes elements not yet marked with [data-km-init].
+          // Then refresh ScrollTrigger so the new elements get correct positions.
           clearTimeout(reInitTimer);
           reInitTimer = setTimeout(() => {
-            doInit();
+            initScrollAnimations(document.body);
+            ScrollTrigger.refresh();
+            lenisRef.current?.resize();
           }, 50);
         }
       });

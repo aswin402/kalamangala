@@ -1,0 +1,45 @@
+/* ── Blog page entrance animations ── */
+/* Pure CSS — zero conflict with Lenis / GSAP ScrollTrigger */
+
+@keyframes blog-hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blog-heading-slide {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blog-card-slide {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.blog-hero-fade-in {
+  animation: blog-hero-fade 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.blog-heading-enter {
+  animation: blog-heading-slide 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.blog-card-enter {
+  animation: blog-card-slide 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
