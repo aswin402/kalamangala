@@ -6,7 +6,6 @@ import { fetchPostBySlug, fetchPublishedPosts, type BlogPostUI } from "../data/b
 import { Skeleton } from "@/components/ui/Skeleton";
 import { IntroSection } from "./sections/IntroSection";
 import { ArticleSection } from "./sections/ArticleSection";
-import { GallerySection } from "./sections/GallerySection";
 import { LatestBlogsSidebar } from "./components/LatestBlogsSidebar";
 import { NewsletterCard } from "./components/NewsletterCard";
 import { RelatedBlogsSection } from "./components/RelatedBlogsSection";
@@ -190,7 +189,6 @@ export function BlogPostPage(): JSX.Element {
         }
       />
 
-      <GallerySection images={MOSAIC_IMAGES} />
       <RelatedBlogsSection posts={relatedPosts} />
     </div>
   );

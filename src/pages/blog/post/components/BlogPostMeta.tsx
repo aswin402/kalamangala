@@ -2,7 +2,7 @@ import type { BlogPostUI } from '../../data/blogPostsSupabase';
 
 export function BlogPostMeta({ post }: { post: BlogPostUI }) {
   return (
-    <div className="flex items-center gap-[10px] flex-wrap mt-4">
+    <div className="flex items-center gap-[10px] flex-wrap justify-center">
       <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-primary text-[10px] font-extrabold tracking-[0.08em] uppercase text-primary-foreground">
         {post.category}
       </span>

@@ -13,6 +13,10 @@ export default defineConfig(({ mode: _mode }) => ({
     hmr: {
       overlay: true,
     },
+    watch: {
+      usePolling: true,
+      interval: 1000,
+    },
   },
   base: process.env.VITE_DEPLOY_TARGET === "ghpages" ? "/kalamangala/" : "/",
   resolve: {

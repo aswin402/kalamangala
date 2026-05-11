@@ -4,7 +4,6 @@ import StarterKit from '@tiptap/starter-kit';
 
 import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
-import { DOMParser as PmDOMParser } from '@tiptap/pm/model';
 import {
   Bold,
   Italic,
@@ -125,9 +124,9 @@ function cleanGoogleDocsHTML(body: HTMLElement, doc: Document): void {
       const ratio = size / baselinePt;
       let tag: string | null = null;
 
-      if (ratio >= 1.8) tag = 'h1';
-      else if (ratio >= 1.4) tag = 'h2';
-      else if (ratio >= 1.15) tag = 'h3';
+      if (ratio >= 1.8) tag = 'h2';
+      else if (ratio >= 1.4) tag = 'h3';
+      else if (ratio >= 1.15) tag = 'h4';
 
       if (tag) {
         const heading = doc.createElement(tag);
@@ -164,6 +163,21 @@ function cleanGoogleDocsHTML(body: HTMLElement, doc: Document): void {
   });
 }
 
+/**
+ * Downgrade h1 → h2 from external sources.
+ * h2, h3, h4 stay unchanged since the editor uses those levels directly.
+ */
+function downgradeHeadings(body: HTMLElement, doc: Document): void {
+  body.querySelectorAll('h1').forEach((el) => {
+    const replacement = doc.createElement('h2');
+    replacement.innerHTML = el.innerHTML;
+    for (const attr of Array.from(el.attributes)) {
+      replacement.setAttribute(attr.name, attr.value);
+    }
+    el.replaceWith(replacement);
+  });
+}
+
 function transformPastedHTML(html: string): string {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
@@ -172,19 +186,22 @@ function transformPastedHTML(html: string): string {
   // Google Docs-specific cleaning
   if (isGoogleDocsHTML(html)) {
     cleanGoogleDocsHTML(body, doc);
+    // Headings from Google Docs detection already output h2/h3/h4
     return body.innerHTML;
   }
 
   cleanStyles(body);
 
-  // If paste already has heading tags, return cleaned HTML as-is
+  // If paste already has heading tags, downgrade them and return
   if (body.querySelector('h1, h2, h3, h4, h5, h6')) {
+    downgradeHeadings(body, doc);
     return body.innerHTML;
   }
 
-  // Auto-detect structure from plain text paste (everything is <p>/<div>)
-  const blocks = Array.from(body.children);
-  if (blocks.length < 3) return body.innerHTML;
+  // Auto-detect structure: find all leaf <p> and <div> elements
+  const blocks = Array.from(body.querySelectorAll('p, div')).filter(el => {
+    return !el.querySelector('p, div, ul, ol, li, table, h1, h2, h3, h4, h5, h6');
+  });
 
   let firstHeadingDone = false;
   let i = 0;
@@ -226,9 +243,9 @@ function transformPastedHTML(html: string): string {
     const noMultiSentence = !/[.!?]\s+[A-Z]/.test(text);
 
     if (isShort && noPeriod && noColon && noMultiSentence) {
-      const tag = !firstHeadingDone ? 'h1' : 'h2';
+      const tag = !firstHeadingDone ? 'h2' : 'h3';
       const heading = doc.createElement(tag);
-      heading.textContent = text;
+      heading.innerHTML = el.innerHTML; // Preserve inline formatting like <strong>
       el.replaceWith(heading);
       if (!firstHeadingDone) firstHeadingDone = true;
     }
@@ -250,7 +267,7 @@ export function RichTextEditor({ content, onChange, placeholder = 'Write your co
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
-        heading: { levels: [1, 2, 3] },
+        heading: { levels: [2, 3, 4] },
       }),
       Link.configure({
         openOnClick: false,
@@ -270,101 +287,6 @@ export function RichTextEditor({ content, onChange, placeholder = 'Write your co
       },
       transformPastedHTML(html) {
         return transformPastedHTML(html);
-      },
-      handlePaste(view, event) {
-        const clipboardHTML = event.clipboardData?.getData('text/html') || '';
-        const clipboardText = event.clipboardData?.getData('text/plain') || '';
-
-        // CASE 0: Google Docs paste — convert inline styles to semantic HTML first
-        if (clipboardHTML.trim() && isGoogleDocsHTML(clipboardHTML)) {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(clipboardHTML, 'text/html');
-          cleanGoogleDocsHTML(doc.body, doc);
-
-          const wrapper = document.createElement('div');
-          wrapper.innerHTML = doc.body.innerHTML;
-          const pmParser = PmDOMParser.fromSchema(view.state.schema);
-          const slice = pmParser.parseSlice(wrapper);
-          view.dispatch(view.state.tr.replaceSelection(slice));
-          return true;
-        }
-
-        // CASE 1: HTML paste with existing structure (from website) → clean styles, preserve structure
-        if (clipboardHTML.trim()) {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(clipboardHTML, 'text/html');
-          cleanStyles(doc.body);
-
-          const hasStructure = doc.body.querySelector('h1, h2, h3, h4, h5, h6, ul, ol');
-          if (hasStructure) {
-            // Already has headings/lists — insert cleaned HTML
-            const wrapper = document.createElement('div');
-            wrapper.innerHTML = doc.body.innerHTML;
-            const pmParser = PmDOMParser.fromSchema(view.state.schema);
-            const slice = pmParser.parseSlice(wrapper);
-            view.dispatch(view.state.tr.replaceSelection(slice));
-            return true;
-          }
-        }
-
-        // CASE 2: No structure found — use plain text auto-detection
-        if (!clipboardText.trim()) return false;
-
-        const lines = clipboardText.split('\n');
-        const htmlParts: string[] = [];
-        let firstHeadingDone = false;
-        let i = 0;
-
-        while (i < lines.length) {
-          const raw = lines[i];
-          const text = raw.trim();
-
-          if (!text) { i++; continue; }
-
-          // Detect indented or bulleted lines → <ul>
-          if (/^\s{3,}\S/.test(raw) || /^\s*[•●○►▸–—]\s/.test(raw)) {
-            const items: string[] = [];
-            while (i < lines.length) {
-              const lr = lines[i];
-              const lt = lr.trim();
-              if (!lt) { i++; continue; }
-              if (!/^\s{3,}\S/.test(lr) && !/^\s*[•●○►▸–—]\s/.test(lr)) break;
-              items.push(lt.replace(/^[•●○►▸–—*\-]\s*/, ''));
-              i++;
-            }
-            htmlParts.push('<ul>' + items.map(it => `<li>${it}</li>`).join('') + '</ul>');
-            continue;
-          }
-
-          // Detect headings: short, no trailing period/colon, single-clause
-          const isShort = text.length <= 80;
-          const noPeriod = !text.endsWith('.');
-          const noColon = !text.endsWith(':');
-          const noMultiSentence = !/[.!?]\s+[A-Z]/.test(text);
-
-          if (isShort && noPeriod && noColon && noMultiSentence) {
-            if (!firstHeadingDone) {
-              htmlParts.push(`<h1>${text}</h1>`);
-              firstHeadingDone = true;
-            } else {
-              htmlParts.push(`<h2>${text}</h2>`);
-            }
-          } else {
-            htmlParts.push(`<p>${text}</p>`);
-          }
-
-          i++;
-        }
-
-        const structuredHTML = htmlParts.join('');
-        const wrapper = document.createElement('div');
-        wrapper.innerHTML = structuredHTML;
-
-        const pmParser = PmDOMParser.fromSchema(view.state.schema);
-        const slice = pmParser.parseSlice(wrapper);
-        view.dispatch(view.state.tr.replaceSelection(slice));
-
-        return true;
       },
     },
   });
@@ -431,24 +353,24 @@ export function RichTextEditor({ content, onChange, placeholder = 'Write your co
         <div className="w-px h-6 bg-border mx-1" />
 
         <ToolbarButton
-          onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          active={editor.isActive('heading', { level: 1 })}
+          onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+          active={editor.isActive('heading', { level: 2 })}
           title="Heading 1"
         >
           <Heading1 className="w-4 h-4" />
         </ToolbarButton>
 
         <ToolbarButton
-          onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          active={editor.isActive('heading', { level: 2 })}
+          onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+          active={editor.isActive('heading', { level: 3 })}
           title="Heading 2"
         >
           <Heading2 className="w-4 h-4" />
         </ToolbarButton>
 
         <ToolbarButton
-          onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-          active={editor.isActive('heading', { level: 3 })}
+          onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+          active={editor.isActive('heading', { level: 4 })}
           title="Heading 3"
         >
           <Heading3 className="w-4 h-4" />

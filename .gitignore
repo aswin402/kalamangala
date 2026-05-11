@@ -26,3 +26,6 @@ dist-ssr
 .claude/*
 .env
 .env.production
+.kalamangaladata/*
+.test_paste.js
+.test_wrapper.js
