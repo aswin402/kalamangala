@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { BlogPost } from "../data/blogPosts";
 import type { BlogPostUI } from "../data/blogPostsSupabase";
@@ -9,32 +9,102 @@ type AnyBlogPost = BlogPost | BlogPostUI;
 
 export function BlogCard({ post }: { post: AnyBlogPost }) {
   const [hovered, setHovered] = useState(false);
-  const cardId = typeof post.id === 'number' ? post.id : post.id.slice(0, 8);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const cardId = typeof post.id === "number" ? post.id : post.id.slice(0, 8);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsSmallScreen(window.innerWidth < 640);
+    };
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  const clipPathId = isSmallScreen
+    ? `mc-mobile-${cardId}`
+    : `mc-desktop-${cardId}`;
 
   return (
     <article
-      className="flex flex-col cursor-pointer group relative"
+      className="group relative flex cursor-pointer flex-col"
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
     >
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
-          <clipPath id={`mc-${cardId}`} clipPathUnits="objectBoundingBox">
-  <path d="M 0.035,0 L 0.965,0 Q 1,0 1,0.04 L 1,0.96 Q 1,1 0.965,1 L 0.52,1 C 0.485,1 0.47,0.98 0.47,0.955 C 0.47,0.93 0.465,0.91 0.435,0.91 L 0.035,0.91 Q 0,0.91 0,0.87 L 0,0.04 Q 0,0 0.035,0 Z" />
-</clipPath>
+          {/* Desktop */}
+          <clipPath
+            id={`mc-desktop-${cardId}`}
+            clipPathUnits="objectBoundingBox"
+          >
+            <path
+              d="
+                M 0.035,0
+                L 0.965,0
+                Q 1,0 1,0.04
+                L 1,0.96
+                Q 1,1 0.965,1
+
+                L 0.62,1
+                C 0.585,1 0.57,0.98 0.57,0.955
+                C 0.57,0.93 0.565,0.91 0.535,0.91
+
+                L 0.035,0.91
+                Q 0,0.91 0,0.87
+                L 0,0.04
+                Q 0,0 0.035,0
+                Z
+              "
+            />
+          </clipPath>
+
+          {/* Mobile: wider badge shelf + more top spacing above badges */}
+          <clipPath
+            id={`mc-mobile-${cardId}`}
+            clipPathUnits="objectBoundingBox"
+          >
+            <path
+              d="
+                M 0.035,0
+                L 0.965,0
+                Q 1,0 1,0.04
+                L 1,0.96
+                Q 1,1 0.965,1
+
+                L 0.91,1
+                C 0.855,1 0.83,0.975 0.82,0.94
+                C 0.805,0.885 0.775,0.86 0.725,0.86
+
+                L 0.035,0.86
+                Q 0,0.86 0,0.82
+                L 0,0.04
+                Q 0,0 0.035,0
+                Z
+              "
+            />
+          </clipPath>
         </defs>
       </svg>
 
-      <Link to={`/blog/${post.slug}`} className="absolute inset-0 z-10 no-underline" aria-label={post.title} />
+      <Link
+        to={`/blog/${post.slug}`}
+        className="absolute inset-0 z-10 no-underline"
+        aria-label={post.title}
+      />
+
       <div className="relative">
         <div
-          className="relative overflow-hidden rounded-xl aspect-[4/3]"
-          style={{ clipPath: `url(#mc-${cardId})` }}
+          className="relative aspect-[4/3] overflow-hidden rounded-xl"
+          style={{ clipPath: `url(#${clipPathId})` }}
         >
           <img
             src={post.image}
             alt={post.title}
-            className="block w-full h-full object-cover"
+            className="block h-full w-full object-cover"
             style={{
               transform: hovered ? "scale(1.04)" : "scale(1)",
               transition: "transform 700ms ease-out",
@@ -43,7 +113,7 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
           />
 
           <div
-            className="absolute inset-0 z-[3] bg-black pointer-events-none"
+            className="pointer-events-none absolute inset-0 z-[3] bg-black"
             style={{
               opacity: hovered ? 0.65 : 0,
               transition: "opacity 500ms ease-out",
@@ -51,18 +121,18 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
           />
 
           <div
-            className="absolute inset-0 z-[4] flex items-center justify-center p-8 text-center pointer-events-none"
+            className="pointer-events-none absolute inset-0 z-[4] flex items-center justify-center p-6 text-center sm:p-8"
             style={{
               opacity: hovered ? 1 : 0,
               transition: "opacity 500ms ease-out",
             }}
           >
             <h3
-              className="max-w-[520px] font-['Inter',sans-serif] text-[clamp(24px,2.6vw,38px)] font-black leading-[1.05] tracking-[-0.045em] text-white"
+              className="max-w-[520px] font-['Inter',sans-serif] text-[clamp(22px,7vw,38px)] font-black leading-[1.05] tracking-[-0.045em] text-white sm:text-[clamp(24px,2.6vw,38px)]"
               style={{
                 transform: hovered ? "translateY(0)" : "translateY(20px)",
                 transition: "transform 500ms ease-out",
-                textShadow: '0 4px 18px rgba(0,0,0,0.5)',
+                textShadow: "0 4px 18px rgba(0,0,0,0.5)",
               }}
             >
               {post.title}
@@ -70,14 +140,16 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
           </div>
         </div>
 
-        <div className="absolute bottom-1.5 left-1.5 z-20 flex gap-1.5">
-          <span className="inline-flex items-center h-[25px] px-2.5 rounded-md border border-border bg-background text-[10px] font-bold tracking-[0.02em] uppercase leading-none text-foreground whitespace-nowrap">
+        <div className="absolute bottom-1.5 left-1.5 z-20 flex max-w-[calc(100%-12px)] flex-nowrap gap-1.5">
+          <span className="inline-flex h-[25px] items-center whitespace-nowrap rounded-md border border-border bg-background px-2.5 text-[10px] font-bold uppercase leading-none tracking-[0.02em] text-foreground">
             {post.date}
           </span>
-          <span className="inline-flex items-center h-[25px] px-2.5 rounded-md border border-border bg-background text-[10px] font-bold tracking-[0.02em] uppercase leading-none text-foreground whitespace-nowrap">
+
+          <span className="inline-flex h-[25px] items-center whitespace-nowrap rounded-md border border-border bg-background px-2.5 text-[10px] font-bold uppercase leading-none tracking-[0.02em] text-foreground">
             {post.category}
           </span>
-          <span className="inline-flex items-center h-[25px] px-2.5 rounded-md border border-border bg-background text-[10px] font-bold tracking-[0.02em] uppercase leading-none text-foreground whitespace-nowrap">
+
+          <span className="inline-flex h-[25px] items-center whitespace-nowrap rounded-md border border-border bg-background px-2.5 text-[10px] font-bold uppercase leading-none tracking-[0.02em] text-foreground">
             {post.readTime}
           </span>
         </div>
@@ -87,9 +159,10 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
         className="flex items-start gap-1.5 pt-3.5 font-['Inter',sans-serif] text-[16.5px] font-semibold leading-[1.45] tracking-[-0.02em] text-foreground no-underline transition-colors group-hover:text-primary"
         to={`/blog/${post.slug}`}
       >
-        <span className="inline-block shrink-0 w-0 opacity-0 overflow-hidden translate-x-[-6px] transition-all duration-300 group-hover:w-4 group-hover:opacity-100 group-hover:translate-x-0">
+        <span className="inline-block w-0 shrink-0 translate-x-[-6px] overflow-hidden opacity-0 transition-all duration-300 group-hover:w-4 group-hover:translate-x-0 group-hover:opacity-100">
           ↳
         </span>
+
         <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">
           {post.title}
         </span>
