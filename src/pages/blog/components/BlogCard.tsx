@@ -6,16 +6,25 @@ import type { BlogPostUI } from "../data/blogPostsSupabase";
 export type { BlogPost };
 
 type AnyBlogPost = BlogPost | BlogPostUI;
+type ScreenSize = "mobile" | "tablet" | "desktop";
 
 export function BlogCard({ post }: { post: AnyBlogPost }) {
   const [hovered, setHovered] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [screenSize, setScreenSize] = useState<ScreenSize>("desktop");
 
   const cardId = typeof post.id === "number" ? post.id : post.id.slice(0, 8);
 
   useEffect(() => {
     const checkScreen = () => {
-      setIsSmallScreen(window.innerWidth < 640);
+      const width = window.innerWidth;
+
+      if (width < 640) {
+        setScreenSize("mobile");
+      } else if (width < 1024) {
+        setScreenSize("tablet");
+      } else {
+        setScreenSize("desktop");
+      }
     };
 
     checkScreen();
@@ -24,9 +33,7 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  const clipPathId = isSmallScreen
-    ? `mc-mobile-${cardId}`
-    : `mc-desktop-${cardId}`;
+  const clipPathId = `mc-${screenSize}-${cardId}`;
 
   return (
     <article
@@ -36,7 +43,7 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
     >
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
-          {/* Desktop */}
+          {/* Desktop: large screens */}
           <clipPath
             id={`mc-desktop-${cardId}`}
             clipPathUnits="objectBoundingBox"
@@ -62,7 +69,33 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
             />
           </clipPath>
 
-          {/* Mobile: wider badge shelf + more top spacing above badges */}
+          {/* Tablet: medium screens */}
+          <clipPath
+            id={`mc-tablet-${cardId}`}
+            clipPathUnits="objectBoundingBox"
+          >
+            <path
+              d="
+                M 0.035,0
+                L 0.965,0
+                Q 1,0 1,0.04
+                L 1,0.96
+                Q 1,1 0.965,1
+
+                L 0.82,1
+                C 0.76,1 0.735,0.98 0.72,0.945
+                C 0.705,0.905 0.675,0.88 0.63,0.88
+
+                L 0.035,0.88
+                Q 0,0.88 0,0.84
+                L 0,0.04
+                Q 0,0 0.035,0
+                Z
+              "
+            />
+          </clipPath>
+
+          {/* Mobile: small screens */}
           <clipPath
             id={`mc-mobile-${cardId}`}
             clipPathUnits="objectBoundingBox"
