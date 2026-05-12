@@ -60,6 +60,8 @@ export function ContactPage() {
       const fadeGradient =
         "linear-gradient(to bottom, black 0%, black calc(var(--mask-end, 150) * 1%), transparent calc(var(--mask-end, 150) * 1% + 50px))";
 
+      const isMobile = window.innerWidth < 768;
+
       gsap.fromTo(
         titleContentEl,
         { 
@@ -69,8 +71,8 @@ export function ContactPage() {
         },
         {
           "--mask-end": -30,
-          filter: "blur(6px)",
-          scale: 0.97,
+          filter: isMobile ? "blur(0px)" : "blur(6px)",
+          scale: isMobile ? 1 : 0.97,
           ease: "power1.in",
           force3D: false,
           immediateRender: false,

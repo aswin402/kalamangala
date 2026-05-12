@@ -158,13 +158,15 @@ export const HeroSection = () => {
         "linear-gradient(to bottom, black 0%, black calc(var(--mask-end, 150) * 1%), transparent calc(var(--mask-end, 150) * 1% + 50px))";
 
 
+      const isMobile = window.innerWidth < 768;
+
       gsap.fromTo(
         heroTitle,
         { "--mask-end": 150 },
         {
           "--mask-end": -30,
-          filter: "blur(6px)",
-          scale: 0.97,
+          filter: isMobile ? "blur(0px)" : "blur(6px)",
+          scale: isMobile ? 1 : 0.97,
           ease: "power1.in",
           force3D: true,
           immediateRender: false,
@@ -265,9 +267,10 @@ export const HeroSection = () => {
             max-w-[900px]
             will-change-transform
             pb-10
-            px-10
+            px-4
+            sm:px-10
 
-            left-[24px]
+            left-[12px]
             top-[92px]
 
             sm:left-[46px]
@@ -290,7 +293,8 @@ export const HeroSection = () => {
               leading-[1]
               tracking-[-0.02em]
               text-foreground
-            
+              mt-[20px]
+              sm:mt-0
 
               text-[40px]
               sm:text-[46px]
@@ -305,7 +309,8 @@ export const HeroSection = () => {
           <h1
             ref={line2Ref}
             className="
-              mt-[40px]
+              mt-[16px]
+              sm:mt-[40px]
               font-script
               font-normal
               leading-[0.85]
