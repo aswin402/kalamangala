@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Phone } from "lucide-react";
 import {
   FaInstagram,
@@ -77,6 +77,8 @@ const SocialCard = ({
 };
 
 export const Footer = () => {
+  const location = useLocation();
+
   return (
     <footer
       className="
@@ -243,11 +245,9 @@ export const Footer = () => {
                     whitespace-nowrap text-[16px] font-medium leading-[1.25]
                     max-sm:whitespace-normal max-sm:text-[16px]
                     ${
-                      index === 1
+                      location.pathname === service.href
                         ? "text-primary"
-                        : index === 0
-                          ? "font-semibold text-white"
-                          : "text-white"
+                        : "text-white"
                     }
                   `;
 
@@ -303,7 +303,7 @@ export const Footer = () => {
                     ${footerLinkAnimation}
                     text-[16px] font-medium leading-none
                     max-sm:text-[16px]
-                    ${link.name === "Home" ? "text-primary" : "text-white"}
+                    ${location.pathname === link.href ? "text-primary" : "text-white"}
                   `}
                 >
                   {link.name}
