@@ -103,6 +103,7 @@ export const AboutDarkSection = () => {
       const counterEls = sectionRef.current?.querySelectorAll("[data-counter]");
       counterEls?.forEach((el) => {
         const obj = { value: 0 };
+
         gsap.to(obj, {
           value: 33,
           duration: 2,
@@ -111,7 +112,7 @@ export const AboutDarkSection = () => {
             trigger: el,
             start: "top 85%",
             toggleActions: "play none none none",
-                once: true,
+            once: true,
           },
           onUpdate: () => {
             el.textContent = `${Math.round(obj.value)}+`;
@@ -161,9 +162,12 @@ export const AboutDarkSection = () => {
         `}
       </style>
 
-      <section ref={sectionRef} className="relative z-[2] w-full overflow-hidden text-white">
+      <section
+        ref={sectionRef}
+        className="relative z-[2] w-full overflow-hidden text-white"
+      >
         <div className="w-full rounded-t-[14px] bg-card-green px-[13px] pb-[26px] pt-[30px] sm:px-[18px] sm:pb-[28px] sm:pt-[32px] md:rounded-t-[14px] md:px-[43px] md:pb-[80px] md:pt-[80px] lg:px-[43px] lg:pb-[100px] lg:pt-[85px]">
-          <div className="mx-auto max-w-[1200px] xl:max-w-[1760px] 3xl:max-w-[2100px]">
+          <div className="mx-auto max-w-[1200px] min-[1180px]:max-w-[1760px] 3xl:max-w-[2100px]">
             {/* TEXT TOP AREA */}
             <div className="mb-[52px] md:mb-[70px] lg:mb-[90px]">
               <div className="mb-[21px] md:mb-[23px]" data-anim="fade-up">
@@ -180,22 +184,34 @@ export const AboutDarkSection = () => {
                 <div className="h-px w-full bg-white/75" />
               </div>
 
-              <h2 className="max-w-[1120px] text-[30px] font-medium leading-[1.08] tracking-[-0.065em] text-white md:text-[36px] md:leading-[1.08] lg:text-[38px] xl:text-[40px]" data-anim="fade-up" data-delay="0.1">
+              <h2
+                className="max-w-[1120px] text-[30px] font-medium leading-[1.08] tracking-[-0.065em] text-white md:text-[36px] md:leading-[1.08] lg:text-[38px] xl:text-[40px]"
+                data-anim="fade-up"
+                data-delay="0.1"
+              >
                 Welcome to Kalamangala – Where Quality Meets Legacy.
               </h2>
 
               <div className="mt-[22px] grid grid-cols-1 gap-[48px] md:mt-[24px] md:gap-[50px] lg:grid-cols-[1.55fr_0.78fr] lg:gap-[96px] xl:grid-cols-[1.58fr_0.78fr] xl:gap-[125px]">
-                <p className="max-w-[1210px] text-justify text-[18px] font-semibold leading-[1.32] tracking-[-0.045em] text-white md:text-left md:text-[24px] md:leading-[1.3] md:tracking-[-0.055em] lg:text-[24px] lg:leading-[1.3] xl:text-[24px]" data-anim="fade-left" data-delay="0.2">
+                <p
+                  className="max-w-[1210px] text-justify text-[18px] font-semibold leading-[1.32] tracking-[-0.045em] text-white md:text-left md:text-[24px] md:leading-[1.3] md:tracking-[-0.055em] lg:text-[24px] lg:leading-[1.3] xl:text-[24px]"
+                  data-anim="fade-left"
+                  data-delay="0.2"
+                >
                   With over 33 years of expertise in construction, we craft
                   premium living spaces designed to stand the test of time. Our
                   projects blend superior infrastructure, modern amenities, and
                   lush green landscapes to create thriving communities. At
-                  Kalamangala, we don&apos;t just build homes—we shape lifestyles,
-                  ensuring every detail enhances your comfort, convenience, and
-                  connection with nature.
+                  Kalamangala, we don&apos;t just build homes—we shape
+                  lifestyles, ensuring every detail enhances your comfort,
+                  convenience, and connection with nature.
                 </p>
 
-                <div className="flex items-start lg:items-end lg:pb-[3px] xl:pb-[5px]" data-anim="fade-right" data-delay="0.35">
+                <div
+                  className="flex items-start lg:items-end lg:pb-[3px] xl:pb-[5px]"
+                  data-anim="fade-right"
+                  data-delay="0.35"
+                >
                   <p className="max-w-[550px] text-[18px] font-semibold leading-[1.28] tracking-[-0.045em] text-white md:text-[20px] md:leading-[1.28] lg:text-[20px] xl:text-[20px]">
                     We seamlessly blend nature with modern living, designing
                     communities with lush gardens and green spaces for a serene
@@ -206,9 +222,12 @@ export const AboutDarkSection = () => {
             </div>
 
             {/* IMAGE GRID */}
-            <div className="grid min-h-0 grid-cols-1 gap-[10px] md:grid-cols-2 xl:min-h-[870px] xl:grid-cols-[2.05fr_1fr_1fr]">
+            <div className="grid min-h-0 grid-cols-1 gap-[10px] md:grid-cols-2 min-[1180px]:min-h-[870px] min-[1180px]:grid-cols-[2.05fr_1fr_1fr]">
               {/* LEFT BIG IMAGE */}
-              <div className="relative order-1 h-[420px] overflow-hidden rounded-[10px] md:h-[620px] xl:h-auto" data-anim="scale-in">
+              <div
+                className="relative order-1 h-[420px] overflow-hidden rounded-[10px] md:h-[770px] min-[1180px]:h-auto"
+                data-anim="scale-in"
+              >
                 <img
                   src={img1}
                   alt="Kalamangala aerial community"
@@ -227,11 +246,11 @@ export const AboutDarkSection = () => {
                     <img
                       src={rkrish}
                       alt="R.Krishnamurthy"
-                      className="h-[52px] w-[52px] overflow-hidden rounded-[4px] bg-white/20 md:h-[62px] md:w-[62px] lg:h-[70px] lg:w-[70px]"
+                      className="h-[52px] w-[52px] overflow-hidden rounded-[4px] bg-white/20 object-cover md:h-[62px] md:w-[62px] lg:h-[70px] lg:w-[70px]"
                     />
 
                     <div>
-                      <p className="text-[6px] font-medium leading-none tracking-[-0.035em] text-white md:text-[22px] lg:text-8px]">
+                      <p className="text-[18px] font-medium leading-none tracking-[-0.035em] text-white md:text-[22px] lg:text-[22px]">
                         R.Krishnamurthy
                       </p>
 
@@ -244,9 +263,13 @@ export const AboutDarkSection = () => {
               </div>
 
               {/* MIDDLE STACK */}
-              <div className="order-2 grid gap-[10px] md:grid-rows-[1fr_220px] xl:grid-rows-[1fr_260px]">
-                {/* UPPER CARD */}
-                <div className="relative min-h-[420px] overflow-hidden rounded-[10px] md:min-h-[560px] xl:min-h-0" data-anim="scale-in" data-delay="0.15">
+              <div className="order-2 grid gap-[10px] md:grid-rows-[560px_200px] min-[1180px]:grid-rows-[1fr_260px]">
+                {/* IMAGE CARD */}
+                <div
+                  className="relative min-h-[420px] overflow-hidden rounded-[10px] md:min-h-0"
+                  data-anim="scale-in"
+                  data-delay="0.15"
+                >
                   <img
                     src={img2}
                     alt="Kalamangala green community"
@@ -280,13 +303,16 @@ export const AboutDarkSection = () => {
                   </div>
                 </div>
 
-                {/* DESKTOP 33+ CARD */}
-                <div className="hidden h-[200px] flex-col items-center justify-center rounded-[10px] bg-[#f7f6e9] text-foreground md:flex xl:h-[260px]">
-                  <h3 className="text-[60px] font-bold leading-none tracking-[-0.06em] md:text-[40px] lg:text-[60px]" data-counter>
+                {/* DESKTOP / TABLET 33+ CARD */}
+                <div className="hidden h-full flex-col items-center justify-center rounded-[10px] bg-[#f7f6e9] text-foreground md:flex">
+                  <h3
+                    className="text-[56px] font-bold leading-none tracking-[-0.06em] lg:text-[60px]"
+                    data-counter
+                  >
                     33+
                   </h3>
 
-                  <p className="mt-[8px] text-[17px] font-medium tracking-[-0.03em] text-foreground/80 lg:mt-[12px] lg:text-[18px]">
+                  <p className="mt-[10px] text-[17px] font-medium tracking-[-0.03em] text-foreground/80 lg:text-[18px]">
                     Years of Experience
                   </p>
                 </div>
@@ -297,7 +323,7 @@ export const AboutDarkSection = () => {
                 type="button"
                 onClick={() => setIsVideoOpen(true)}
                 aria-label="Play Kalamangala video"
-                className="group relative order-3 h-[410px] overflow-hidden rounded-[9px] text-left md:h-[560px] xl:h-auto xl:rounded-[10px]"
+                className="group relative order-3 h-[410px] overflow-hidden rounded-[9px] text-left md:col-span-2 md:h-[560px] min-[1180px]:col-span-1 min-[1180px]:h-auto min-[1180px]:rounded-[10px]"
                 data-anim="scale-in"
                 data-delay="0.25"
               >
@@ -326,7 +352,10 @@ export const AboutDarkSection = () => {
 
               {/* MOBILE 33+ CARD */}
               <div className="order-4 flex h-[220px] flex-col items-center justify-center rounded-[9px] bg-white text-foreground md:hidden">
-                <h3 className="text-[100px] font-bold leading-none tracking-[-0.07em]" data-counter>
+                <h3
+                  className="text-[100px] font-bold leading-none tracking-[-0.07em]"
+                  data-counter
+                >
                   33+
                 </h3>
 
