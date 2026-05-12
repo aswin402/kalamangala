@@ -10,7 +10,11 @@ interface Props {
 
 function RelatedBlogCard({ post }: { post: BlogPostUI }) {
   const [hovered, setHovered] = useState(false);
-  const cardId = `related-${post.id.slice(0, 8)}`;
+
+  const shortId = post.id.slice(0, 8);
+  const cardIdMobile = `related-mobile-${shortId}`;
+  const cardIdTablet = `related-tablet-${shortId}`;
+  const cardIdDesktop = `related-desktop-${shortId}`;
 
   return (
     <article
@@ -20,9 +24,68 @@ function RelatedBlogCard({ post }: { post: BlogPostUI }) {
     >
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
-       <clipPath id={cardId} clipPathUnits="objectBoundingBox">
-  <path d="M 0.035,0 L 0.965,0 Q 1,0 1,0.04 L 1,0.96 Q 1,1 0.965,1 L 0.50,1 C 0.465,1 0.45,0.98 0.45,0.955 C 0.45,0.93 0.445,0.91 0.415,0.91 L 0.035,0.91 Q 0,0.91 0,0.87 L 0,0.04 Q 0,0 0.035,0 Z" />
-</clipPath>
+          {/* Mobile */}
+          <clipPath id={cardIdMobile} clipPathUnits="objectBoundingBox">
+            <path
+              d="
+                M 0.035,0
+                L 0.965,0
+                Q 1,0 1,0.04
+                L 1,0.96
+                Q 1,1 0.965,1
+                L 0.70,1
+                C 0.655,1 0.635,0.982 0.625,0.952
+                C 0.615,0.925 0.595,0.895 0.545,0.895
+                L 0.035,0.895
+                Q 0,0.895 0,0.855
+                L 0,0.04
+                Q 0,0 0.035,0
+                Z
+              "
+            />
+          </clipPath>
+
+          {/* Tablet */}
+          <clipPath id={cardIdTablet} clipPathUnits="objectBoundingBox">
+            <path
+              d="
+                M 0.035,0
+                L 0.965,0
+                Q 1,0 1,0.04
+                L 1,0.96
+                Q 1,1 0.965,1
+                L 0.64,1
+                C 0.595,1 0.575,0.982 0.565,0.954
+                C 0.555,0.928 0.535,0.900 0.485,0.900
+                L 0.035,0.900
+                Q 0,0.900 0,0.860
+                L 0,0.04
+                Q 0,0 0.035,0
+                Z
+              "
+            />
+          </clipPath>
+
+          {/* Desktop */}
+          <clipPath id={cardIdDesktop} clipPathUnits="objectBoundingBox">
+            <path
+              d="
+                M 0.035,0
+                L 0.965,0
+                Q 1,0 1,0.04
+                L 1,0.96
+                Q 1,1 0.965,1
+                L 0.585,1
+                C 0.545,1 0.525,0.982 0.515,0.955
+                C 0.505,0.928 0.488,0.902 0.44,0.902
+                L 0.035,0.902
+                Q 0,0.902 0,0.862
+                L 0,0.04
+                Q 0,0 0.035,0
+                Z
+              "
+            />
+          </clipPath>
         </defs>
       </svg>
 
@@ -34,8 +97,14 @@ function RelatedBlogCard({ post }: { post: BlogPostUI }) {
 
       <div className="relative">
         <div
-          className="relative aspect-[4/3] overflow-hidden rounded-xl"
-          style={{ clipPath: `url(#${cardId})` }}
+          className="related-blog-image relative aspect-[4/3] overflow-hidden rounded-xl"
+          style={
+            {
+              "--mobile-clip": `url(#${cardIdMobile})`,
+              "--tablet-clip": `url(#${cardIdTablet})`,
+              "--desktop-clip": `url(#${cardIdDesktop})`,
+            } as React.CSSProperties
+          }
         >
           <img
             src={post.image}
@@ -76,16 +145,16 @@ function RelatedBlogCard({ post }: { post: BlogPostUI }) {
           </div>
         </div>
 
-        <div className="absolute bottom-1.5 left-1.5 z-20 flex gap-1">
-          <span className="inline-flex h-[22px] items-center whitespace-nowrap rounded-[5px] border border-border bg-background px-2 text-[8.5px] font-bold uppercase leading-none tracking-[0.01em] text-foreground">
+        <div className="absolute bottom-[2px] left-[2px] z-20 flex items-center gap-[4px] md:gap-[5px]">
+          <span className="inline-flex h-[21px] items-center whitespace-nowrap rounded-[5px] border border-border bg-background px-[7px] text-[8px] font-bold uppercase leading-none tracking-[0.01em] text-foreground shadow-[0_1px_2px_rgba(0,0,0,0.04)] md:h-[22px] md:px-[8px] md:text-[8.3px] lg:h-[23px] lg:text-[8.5px]">
             {post.date}
           </span>
 
-          <span className="inline-flex h-[22px] items-center whitespace-nowrap rounded-[5px] border border-border bg-background px-2 text-[8.5px] font-bold uppercase leading-none tracking-[0.01em] text-foreground">
+          <span className="inline-flex h-[21px] items-center whitespace-nowrap rounded-[5px] border border-border bg-background px-[7px] text-[8px] font-bold uppercase leading-none tracking-[0.01em] text-foreground shadow-[0_1px_2px_rgba(0,0,0,0.04)] md:h-[22px] md:px-[8px] md:text-[8.3px] lg:h-[23px] lg:text-[8.5px]">
             {post.category}
           </span>
 
-          <span className="inline-flex h-[22px] items-center whitespace-nowrap rounded-[5px] border border-border bg-background px-2 text-[8.5px] font-bold uppercase leading-none tracking-[0.01em] text-foreground">
+          <span className="inline-flex h-[21px] items-center whitespace-nowrap rounded-[5px] border border-border bg-background px-[7px] text-[8px] font-bold uppercase leading-none tracking-[0.01em] text-foreground shadow-[0_1px_2px_rgba(0,0,0,0.04)] md:h-[22px] md:px-[8px] md:text-[8.3px] lg:h-[23px] lg:text-[8.5px]">
             {post.readTime}
           </span>
         </div>
@@ -103,6 +172,24 @@ function RelatedBlogCard({ post }: { post: BlogPostUI }) {
           {post.title}
         </span>
       </Link>
+
+      <style>{`
+        .related-blog-image {
+          clip-path: var(--mobile-clip);
+        }
+
+        @media (min-width: 640px) {
+          .related-blog-image {
+            clip-path: var(--tablet-clip);
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .related-blog-image {
+            clip-path: var(--desktop-clip);
+          }
+        }
+      `}</style>
     </article>
   );
 }

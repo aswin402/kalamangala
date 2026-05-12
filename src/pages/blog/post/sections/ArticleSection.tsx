@@ -22,7 +22,7 @@ export function ArticleSection({ post, sidebar }: Props): JSX.Element {
           data-y="30"
           data-duration="1.0"
           data-delay="0.1"
-          className="blog-content mx-4 lg:ml-20 lg:mr-20 max-w-[1150px] text-[#1d322d]"
+          className="blog-content mx-2 lg:ml-20 lg:mr-20 max-w-[1150px] text-[#1d322d]"
           dangerouslySetInnerHTML={{ __html: post.body || "" }}
         />
       </div>
