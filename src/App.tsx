@@ -60,6 +60,21 @@ const TiruppurVillaPage = lazy(() =>
     (m) => ({ default: m.TiruppurVillaPage })
   )
 );
+const TamilNaduPlotsPage = lazy(() =>
+  import("@/pages/projects/tamilnadu-plots/TamilNaduPlotsPage").then(
+    (m) => ({ default: m.TamilNaduPlotsPage })
+  )
+);
+const ErodeConstructionPage = lazy(() =>
+  import("@/pages/projects/erode-construction/ErodeConstructionPage").then(
+    (m) => ({ default: m.ErodeConstructionPage })
+  )
+);
+const ErodeLuxuryLayoutsPage = lazy(() =>
+  import("@/pages/projects/erode-luxury-layouts/ErodeLuxuryLayoutsPage").then(
+    (m) => ({ default: m.ErodeLuxuryLayoutsPage })
+  )
+);
 const LocationAdvantagePage = lazy(() =>
   import("@/pages/location/LocationAdvantagePage").then((m) => ({
     default: m.LocationAdvantagePage,
@@ -156,6 +171,27 @@ const router = createBrowserRouter(
           path: "tiruppur-villa-gated-community-plots",
           element: withSkeleton(
             <TiruppurVillaPage />,
+            <ProjectPageSkeleton />
+          ),
+        },
+        {
+          path: "real-estate-plots-in-tamilnadu",
+          element: withSkeleton(
+            <TamilNaduPlotsPage />,
+            <ProjectPageSkeleton />
+          ),
+        },
+        {
+          path: "realestate-construction-company-erode",
+          element: withSkeleton(
+            <ErodeConstructionPage />,
+            <ProjectPageSkeleton />
+          ),
+        },
+        {
+          path: "residential-layouts-erode",
+          element: withSkeleton(
+            <ErodeLuxuryLayoutsPage />,
             <ProjectPageSkeleton />
           ),
         },

@@ -13,6 +13,9 @@ export { ConstructionCompanyPage } from "./projects/construction/ConstructionCom
 export { TiruchengodeContractorsPage } from "./projects/tiruchengode-contractors/TiruchengodeContractorsPage";
 export { KarurRealEstatePage } from "./projects/karur-real-estate/KarurRealEstatePage";
 export { TiruppurVillaPage } from "./projects/tiruppur-villa/TiruppurVillaPage";
+export { TamilNaduPlotsPage } from "./projects/tamilnadu-plots/TamilNaduPlotsPage";
+export { ErodeConstructionPage } from "./projects/erode-construction/ErodeConstructionPage";
+export { ErodeLuxuryLayoutsPage } from "./projects/erode-luxury-layouts/ErodeLuxuryLayoutsPage";
 
 // Contact
 export { ContactPage } from "./contact/ContactPage";

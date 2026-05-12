@@ -11,9 +11,9 @@ const servicesList = [
   { name: "Top Real Estate Contractors in Tiruchengode", href: "/top-real-estate-contractors-in-tiruchengode" },
   { name: "House & Plot Layouts in Karur", href: "/real-estate-karur" },
   { name: "Villa & Residential Layouts in Tiruppur", href: "/tiruppur-villa-gated-community-plots" },
-  { name: "Approved Real Estate Layouts & Plots in Tamil Nadu" },
-  { name: "real estate construction companies in Erode" },
-  { name: "luxury layouts in erode" },
+  { name: "Approved Real Estate Layouts & Plots in Tamil Nadu", href: "/real-estate-plots-in-tamilnadu" },
+  { name: "real estate construction companies in Erode", href: "/realestate-construction-company-erode" },
+  { name: "luxury layouts in erode", href: "/residential-layouts-erode" },
 ];
 
 
