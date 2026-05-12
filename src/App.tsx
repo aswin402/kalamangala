@@ -45,6 +45,21 @@ const PremiumResidentialPlotsPage = lazy(() =>
     (m) => ({ default: m.PremiumResidentialPlotsPage })
   )
 );
+const TiruchengodeContractorsPage = lazy(() =>
+  import("@/pages/projects/tiruchengode-contractors/TiruchengodeContractorsPage").then(
+    (m) => ({ default: m.TiruchengodeContractorsPage })
+  )
+);
+const KarurRealEstatePage = lazy(() =>
+  import("@/pages/projects/karur-real-estate/KarurRealEstatePage").then(
+    (m) => ({ default: m.KarurRealEstatePage })
+  )
+);
+const TiruppurVillaPage = lazy(() =>
+  import("@/pages/projects/tiruppur-villa/TiruppurVillaPage").then(
+    (m) => ({ default: m.TiruppurVillaPage })
+  )
+);
 const LocationAdvantagePage = lazy(() =>
   import("@/pages/location/LocationAdvantagePage").then((m) => ({
     default: m.LocationAdvantagePage,
@@ -120,6 +135,27 @@ const router = createBrowserRouter(
           path: "residential-plots-coimbatore",
           element: withSkeleton(
             <PremiumResidentialPlotsPage />,
+            <ProjectPageSkeleton />
+          ),
+        },
+        {
+          path: "top-real-estate-contractors-in-tiruchengode",
+          element: withSkeleton(
+            <TiruchengodeContractorsPage />,
+            <ProjectPageSkeleton />
+          ),
+        },
+        {
+          path: "real-estate-karur",
+          element: withSkeleton(
+            <KarurRealEstatePage />,
+            <ProjectPageSkeleton />
+          ),
+        },
+        {
+          path: "tiruppur-villa-gated-community-plots",
+          element: withSkeleton(
+            <TiruppurVillaPage />,
             <ProjectPageSkeleton />
           ),
         },

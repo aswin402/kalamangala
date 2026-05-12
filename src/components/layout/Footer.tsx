@@ -8,13 +8,15 @@ import {
 } from "react-icons/fa";
 
 const servicesList = [
-  "Top Real Estate Contractors in Tiruchengode",
-  "House & Plot Layouts in Karur",
-  "Villa & Residential Layouts in Tiruppur",
-  "Approved Real Estate Layouts & Plots in Tamil Nadu",
-  "real estate construction companies in Erode",
-  "luxury layouts in erode",
+  { name: "Top Real Estate Contractors in Tiruchengode", href: "/top-real-estate-contractors-in-tiruchengode" },
+  { name: "House & Plot Layouts in Karur", href: "/real-estate-karur" },
+  { name: "Villa & Residential Layouts in Tiruppur", href: "/tiruppur-villa-gated-community-plots" },
+  { name: "Approved Real Estate Layouts & Plots in Tamil Nadu" },
+  { name: "real estate construction companies in Erode" },
+  { name: "luxury layouts in erode" },
 ];
+
+
 
 const menuLinks = [
   { name: "Home", href: "/" },
@@ -235,11 +237,8 @@ export const Footer = () => {
             "
           >
             <div className="flex flex-col items-start gap-[15px] max-sm:gap-[18px]">
-              {servicesList.map((service, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className={`
+              {servicesList.map((service, index) => {
+                const className = `
                     ${footerLinkAnimation}
                     whitespace-nowrap text-[16px] font-medium leading-[1.25]
                     max-sm:whitespace-normal max-sm:text-[16px]
@@ -250,11 +249,30 @@ export const Footer = () => {
                           ? "font-semibold text-white"
                           : "text-white"
                     }
-                  `}
-                >
-                  {service}
-                </a>
-              ))}
+                  `;
+
+                if (service.href) {
+                  return (
+                    <Link
+                      key={index}
+                      to={service.href}
+                      className={className}
+                    >
+                      {service.name}
+                    </Link>
+                  );
+                }
+
+                return (
+                  <a
+                    key={index}
+                    href="#"
+                    className={className}
+                  >
+                    {service.name}
+                  </a>
+                );
+              })}
             </div>
           </div>
 

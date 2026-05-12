@@ -10,6 +10,9 @@ export { AmenitiesPage } from "./projects/amenities/AmenitiesPage";
 export { PremiumResidentialPlotsPage } from "./projects/premium-plots/PremiumResidentialPlotsPage";
 export { TheWaterfrontPage } from "./projects/waterfront/TheWaterfrontPage";
 export { ConstructionCompanyPage } from "./projects/construction/ConstructionCompanyPage";
+export { TiruchengodeContractorsPage } from "./projects/tiruchengode-contractors/TiruchengodeContractorsPage";
+export { KarurRealEstatePage } from "./projects/karur-real-estate/KarurRealEstatePage";
+export { TiruppurVillaPage } from "./projects/tiruppur-villa/TiruppurVillaPage";
 
 // Contact
 export { ContactPage } from "./contact/ContactPage";
