@@ -192,16 +192,16 @@ export const ReviewsSection = () => {
                 review-card
                 rounded-[14px]
                 flex
-                h-[515px]
-                w-[326px]
+                h-[400px]
+                w-[426px]
                 shrink-0
                 flex-col
                 bg-[#f7f6e9]
                 px-[20px]
                 pt-[17px]
 
-                md:h-[515px]
-                md:w-[326px]
+                md:h-[415px]
+                md:w-[426px]
                 md:px-[20px]
                 md:pt-[17px]
               "
@@ -210,7 +210,7 @@ export const ReviewsSection = () => {
                 <h4
                   className="
                     font-sans
-                    text-[17px]
+                    text-[20px]
                     font-bold
                     leading-[1]
                     tracking-[-0.03em]
@@ -224,7 +224,7 @@ export const ReviewsSection = () => {
                   className="
                     mt-[5px]
                     block
-                    text-[12px]
+                    text-[15px]
                     font-medium
                     uppercase
                     leading-none
@@ -240,7 +240,7 @@ export const ReviewsSection = () => {
                 className="
                   max-w-[286px]
                   font-sans
-                  text-[16px]
+                  text-[20px]
                   font-medium
                   leading-[1.35]
                   tracking-[-0.02em]

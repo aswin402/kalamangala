@@ -6,7 +6,8 @@ import type { BlogPostUI } from "../data/blogPostsSupabase";
 export type { BlogPost };
 
 type AnyBlogPost = BlogPost | BlogPostUI;
-type ScreenSize = "mobile" | "tablet" | "desktop";
+
+type ScreenSize = "mobile" | "tablet" | "laptop" | "desktop";
 
 export function BlogCard({ post }: { post: AnyBlogPost }) {
   const [hovered, setHovered] = useState(false);
@@ -22,6 +23,8 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
         setScreenSize("mobile");
       } else if (width < 1024) {
         setScreenSize("tablet");
+      } else if (width < 1536) {
+        setScreenSize("laptop");
       } else {
         setScreenSize("desktop");
       }
@@ -43,7 +46,7 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
     >
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
-          {/* Desktop: large screens */}
+          {/* Desktop: 1536px and above */}
           <clipPath
             id={`mc-desktop-${cardId}`}
             clipPathUnits="objectBoundingBox"
@@ -69,7 +72,33 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
             />
           </clipPath>
 
-          {/* Tablet: medium screens */}
+          {/* Laptop: 1024px - 1535px, including 1420x1080 */}
+          <clipPath
+            id={`mc-laptop-${cardId}`}
+            clipPathUnits="objectBoundingBox"
+          >
+            <path
+              d="
+                M 0.035,0
+                L 0.965,0
+                Q 1,0 1,0.04
+                L 1,0.96
+                Q 1,1 0.965,1
+
+                L 0.82,1
+                C 0.74,1 0.70,0.975 0.70,0.935
+                C 0.70,0.895 0.665,0.87 0.60,0.87
+
+                L 0.035,0.87
+                Q 0,0.87 0,0.83
+                L 0,0.04
+                Q 0,0 0.035,0
+                Z
+              "
+            />
+          </clipPath>
+
+          {/* Tablet: 640px - 1023px */}
           <clipPath
             id={`mc-tablet-${cardId}`}
             clipPathUnits="objectBoundingBox"
@@ -82,12 +111,12 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
                 L 1,0.96
                 Q 1,1 0.965,1
 
-                L 0.82,1
-                C 0.76,1 0.735,0.98 0.72,0.945
-                C 0.705,0.905 0.675,0.88 0.63,0.88
+                L 0.80,1
+                C 0.72,1 0.67,0.97 0.67,0.925
+                C 0.67,0.885 0.63,0.86 0.565,0.86
 
-                L 0.035,0.88
-                Q 0,0.88 0,0.84
+                L 0.035,0.86
+                Q 0,0.86 0,0.82
                 L 0,0.04
                 Q 0,0 0.035,0
                 Z
@@ -95,27 +124,27 @@ export function BlogCard({ post }: { post: AnyBlogPost }) {
             />
           </clipPath>
 
-          {/* Mobile: small screens */}
+          {/* Mobile: below 640px */}
           <clipPath
             id={`mc-mobile-${cardId}`}
             clipPathUnits="objectBoundingBox"
           >
             <path
               d="
-                M 0.035,0
-                L 0.965,0
-                Q 1,0 1,0.04
-                L 1,0.96
-                Q 1,1 0.965,1
+                M 0.045,0
+                L 0.955,0
+                Q 1,0 1,0.055
+                L 1,0.945
+                Q 1,1 0.955,1
 
-                L 0.91,1
-                C 0.855,1 0.83,0.975 0.82,0.94
-                C 0.805,0.885 0.775,0.86 0.725,0.86
+                L 0.78,1
+                C 0.69,1 0.64,0.965 0.64,0.925
+                C 0.64,0.885 0.60,0.855 0.535,0.855
 
-                L 0.035,0.86
-                Q 0,0.86 0,0.82
-                L 0,0.04
-                Q 0,0 0.035,0
+                L 0.045,0.855
+                Q 0,0.855 0,0.81
+                L 0,0.055
+                Q 0,0 0.045,0
                 Z
               "
             />
