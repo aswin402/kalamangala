@@ -14,6 +14,8 @@ const servicesList = [
   { name: "Approved Real Estate Layouts & Plots in Tamil Nadu", href: "/real-estate-plots-in-tamilnadu" },
   { name: "real estate construction companies in Erode", href: "/realestate-construction-company-erode" },
   { name: "luxury layouts in erode", href: "/residential-layouts-erode" },
+  { name: "Construction Company in Tamilnadu", href: "/construction-company" },
+  { name: "Residential Plots in Coimbatore", href: "/residential-plots-coimbatore" },
 ];
 
 

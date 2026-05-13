@@ -28,16 +28,6 @@ const projectsData = [
     sub: "Tamil nadu",
     href: "/location-advantage",
   },
-  {
-    title: "Construction Company",
-    sub: "In Tamilnadu",
-    href: "/construction-company",
-  },
-  {
-    title: "Residential Plots",
-    sub: "In Coimbatore",
-    href: "/residential-plots-coimbatore",
-  },
 ];
 
 export const Navbar = () => {
@@ -305,35 +295,15 @@ export const Navbar = () => {
               onMouseEnter={openDesktopProjects}
               onMouseLeave={closeDesktopProjects}
               className="
-                absolute left-1/2 top-[64px] hidden w-[min(560px,90vw)]
+                absolute left-1/2 top-[64px] hidden w-[min(340px,90vw)]
                 -translate-x-1/2 rounded-[28px]
                 border border-foreground/5 bg-white-text/95 p-8
                 shadow-[0_24px_60px_rgba(0,0,0,0.08)]
-                backdrop-blur-xl md:flex md:gap-10
+                backdrop-blur-xl md:flex
               "
             >
               <div className="flex flex-1 flex-col gap-7">
-                {projectsData.slice(0, 3).map((item) => (
-                  <Link
-                    key={item.title}
-                    to={item.href}
-                    onClick={() => setProjectsOpen(false)}
-                    className="group"
-                  >
-                    <h4 className="text-[15px] font-semibold leading-none text-foreground transition-colors group-hover:text-primary">
-                      {item.title}
-                    </h4>
-                    <p className="mt-1 text-[12px] leading-none text-foreground/45">
-                      {item.sub}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-
-              <div className="w-px bg-card-green/10" />
-
-              <div className="flex flex-1 flex-col gap-7">
-                {projectsData.slice(3).map((item) => (
+                {projectsData.map((item) => (
                   <Link
                     key={item.title}
                     to={item.href}
