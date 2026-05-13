@@ -1,4 +1,4 @@
-import logo from "../../../../assets/thewaterfront/logo.avif";
+import logo from "../../../../assets/thewaterfront/logo.png";
 
 export function WaterfrontHeader() {
   return (
@@ -27,21 +27,21 @@ export function WaterfrontHeader() {
         src={logo}
         alt="The Waterfront"
         className="
-          w-[98vw]
-          max-w-none
+          w-[80vw]
+          max-w-[400px]
           object-contain
           opacity-90
 
-          sm:w-[86vw]
-          sm:max-w-[900px]
+          sm:w-[70vw]
+          sm:max-w-[600px]
 
-          md:w-[78vw]
-          md:max-w-[1150px]
+          md:w-[60vw]
+          md:max-w-[800px]
 
-          lg:w-[74vw]
-          lg:max-w-[1450px]
+          lg:w-[55vw]
+          lg:max-w-[1000px]
 
-          xl:w-[72vw]
+          xl:w-[50vw]
         "
       />
     </section>
