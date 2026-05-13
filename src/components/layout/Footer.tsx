@@ -128,7 +128,7 @@ export const Footer = () => {
             <div className="flex flex-col gap-[10px] max-sm:gap-[11px]">
               <div className="grid grid-cols-2 gap-[10px] max-sm:gap-[11px]">
                 <SocialCard
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/kalamangala_official/"
                   label="Instagram"
                   external
                 >
@@ -139,7 +139,7 @@ export const Footer = () => {
                 </SocialCard>
 
                 <SocialCard
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/people/Kalamangala/61575762724211/"
                   label="Facebook"
                   external
                 >
@@ -151,7 +151,7 @@ export const Footer = () => {
               </div>
 
               <div className="grid grid-cols-3 gap-[10px] max-sm:gap-[10px]">
-                <SocialCard href="tel:+91" label="Call">
+                <SocialCard href="tel:09489780258" label="Call">
                   <Phone
                     size={30}
                     fill="currentColor"
@@ -160,7 +160,11 @@ export const Footer = () => {
                   />
                 </SocialCard>
 
-                <SocialCard href="https://youtube.com" label="Youtube" external>
+                <SocialCard
+                  href="https://www.youtube.com/@kalamangala/videos"
+                  label="Youtube"
+                  external
+                >
                   <FaYoutube
                     size={30}
                     className="text-current transition-colors duration-500 max-sm:size-[31px]"
@@ -168,7 +172,7 @@ export const Footer = () => {
                 </SocialCard>
 
                 <SocialCard
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/kalamangala-official/posts?lipi=urn%3Ali%3Apage%3Ad_flagship3_company_admin%3BJA8LjXwhSQWVo0FRydcCmQ%3D%3D"
                   label="LinkedIn"
                   external
                 >
@@ -204,7 +208,7 @@ export const Footer = () => {
             >
               <input
                 type="email"
-                placeholder="Info@Kalamangala.com"
+                placeholder="info@kalamangala.com"
                 className="
                   h-[38px] w-full rounded-[8px] border border-white/[0.08]
                   bg-white/[0.055] px-[12px] text-[15px] text-white outline-none focus:border-primary
@@ -238,12 +242,13 @@ export const Footer = () => {
               lg:order-3 lg:col-start-2 lg:row-start-1 lg:pt-[3px]
             "
           >
-            <div className="flex flex-col items-start gap-[15px] max-sm:gap-[18px]">
+            <div className="flex flex-col items-start gap-[14px] max-sm:gap-[18px]">
               {servicesList.map((service, index) => {
                 const className = `
                     ${footerLinkAnimation}
-                    whitespace-nowrap text-[16px] font-medium leading-[1.25]
-                    max-sm:whitespace-normal max-sm:text-[16px]
+                    text-[15px] font-medium leading-[1.3]
+                    max-xl:text-[14px]
+                    max-sm:text-[16px] max-sm:leading-[1.25]
                     ${
                       location.pathname === service.href
                         ? "text-primary"
@@ -294,7 +299,7 @@ export const Footer = () => {
               Menu
             </span>
 
-            <div className="flex flex-col items-start gap-[17px] max-sm:gap-[18px]">
+            <div className="flex flex-col items-start gap-[14px] max-sm:gap-[18px]">
               {menuLinks.map((link) => (
                 <Link
                   key={link.name}

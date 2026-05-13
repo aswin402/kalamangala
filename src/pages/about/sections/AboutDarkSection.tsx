@@ -263,7 +263,21 @@ export const AboutDarkSection = () => {
               </div>
 
               {/* MIDDLE STACK */}
-              <div className="order-2 grid gap-[10px] md:grid-rows-[560px_200px] min-[1180px]:grid-rows-[1fr_260px]">
+              <div className="order-2 grid gap-[10px] md:grid-rows-[200px_560px] min-[1180px]:grid-rows-[260px_1fr]">
+                {/* DESKTOP / TABLET 33+ CARD */}
+                <div className="hidden h-full flex-row items-center justify-center gap-[14px] rounded-[10px] bg-[#f7f6e9] text-foreground md:flex">
+                  <h3
+                    className="text-[56px] font-bold leading-none tracking-[-0.06em] lg:text-[60px]"
+                    data-counter
+                  >
+                    33+
+                  </h3>
+
+                  <p className="text-[22px] font-bold tracking-[-0.03em] text-foreground/80 lg:text-[24px]">
+                    Years of Experience
+                  </p>
+                </div>
+
                 {/* IMAGE CARD */}
                 <div
                   className="relative min-h-[420px] overflow-hidden rounded-[10px] md:min-h-0"
@@ -302,20 +316,6 @@ export const AboutDarkSection = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* DESKTOP / TABLET 33+ CARD */}
-                <div className="hidden h-full flex-col items-center justify-center rounded-[10px] bg-[#f7f6e9] text-foreground md:flex">
-                  <h3
-                    className="text-[56px] font-bold leading-none tracking-[-0.06em] lg:text-[60px]"
-                    data-counter
-                  >
-                    33+
-                  </h3>
-
-                  <p className="mt-[10px] text-[17px] font-medium tracking-[-0.03em] text-foreground/80 lg:text-[18px]">
-                    Years of Experience
-                  </p>
-                </div>
               </div>
 
               {/* VIDEO THUMBNAIL */}
@@ -351,7 +351,7 @@ export const AboutDarkSection = () => {
               </button>
 
               {/* MOBILE 33+ CARD */}
-              <div className="order-4 flex h-[220px] flex-col items-center justify-center rounded-[9px] bg-white text-foreground md:hidden">
+              <div className="order-1 flex h-[220px] flex-row items-center justify-center gap-[12px] rounded-[9px] bg-white text-foreground md:hidden">
                 <h3
                   className="text-[100px] font-bold leading-none tracking-[-0.07em]"
                   data-counter
@@ -359,7 +359,7 @@ export const AboutDarkSection = () => {
                   33+
                 </h3>
 
-                <p className="mt-[11px] text-[16px] font-medium tracking-[-0.03em] text-foreground/85">
+                <p className="text-[16px] font-bold tracking-[-0.03em] text-foreground/85">
                   Years of Experience
                 </p>
               </div>
