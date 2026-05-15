@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import herovideo from "@/assets/homepage/herovideo.mp4";
+import brandImage from "@/assets/brand.png";
 
 export const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -328,6 +329,11 @@ export const HeroSection = () => {
           >
             {renderWords("Luxury Living")}
           </h1>
+          <img
+            src={brandImage}
+            alt="Brand"
+            className="mt-0 mb-32 sm:mb-0 max-w-[380px] sm:max-w-[500px] md:max-w-[620px] lg:max-w-[720px] -ml-12 sm:-ml-14 md:-ml-20 lg:-ml-24"
+          />
         </div>
       </div>
 

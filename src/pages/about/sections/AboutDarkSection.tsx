@@ -7,6 +7,7 @@ import img2 from "@/assets/aboutpage/img2.avif";
 import img3 from "@/assets/aboutpage/img3.avif";
 import raj from "@/assets/aboutpage/raj.avif";
 import rkrish from "@/assets/aboutpage/rkrish.avif";
+import logoavif from "@/assets/logo.avif";
 
 export const AboutDarkSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -265,7 +266,9 @@ export const AboutDarkSection = () => {
               {/* MIDDLE STACK */}
               <div className="order-2 grid gap-[10px] md:grid-rows-[200px_560px] min-[1180px]:grid-rows-[260px_1fr]">
                 {/* DESKTOP / TABLET 33+ CARD */}
+                
                 <div className="hidden h-full flex-row items-center justify-center gap-[14px] rounded-[10px] bg-[#f7f6e9] text-foreground md:flex">
+                   
                   <h3
                     className="text-[56px] font-bold leading-none tracking-[-0.06em] lg:text-[60px]"
                     data-counter
@@ -273,9 +276,10 @@ export const AboutDarkSection = () => {
                     33+
                   </h3>
 
-                  <p className="text-[22px] font-bold tracking-[-0.03em] text-foreground/80 lg:text-[24px]">
+                  <p className="text-[28px] mb-5 font-semibold tracking-[-0.03em] text-foreground/80 lg:text-[30px]">
                     Years of Experience
                   </p>
+                 <img src={logoavif} alt="Logo" className="h-[80px] w-auto lg:h-[100px]" />
                 </div>
 
                 {/* IMAGE CARD */}
@@ -359,9 +363,10 @@ export const AboutDarkSection = () => {
                   33+
                 </h3>
 
-                <p className="text-[16px] font-bold tracking-[-0.03em] text-foreground/85">
+                <p className="text-[20px] font-bold tracking-[-0.03em] text-foreground/85">
                   Years of Experience
                 </p>
+                <img src={logoavif} alt="Logo" className="h-[64px] w-auto" />
               </div>
             </div>
           </div>
