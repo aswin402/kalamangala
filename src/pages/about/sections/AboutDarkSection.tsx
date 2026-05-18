@@ -7,7 +7,6 @@ import img2 from "@/assets/aboutpage/img2.avif";
 import img3 from "@/assets/aboutpage/img3.avif";
 import raj from "@/assets/aboutpage/raj.avif";
 import rkrish from "@/assets/aboutpage/rkrish.avif";
-import logoavif from "@/assets/logo.avif";
 
 export const AboutDarkSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
