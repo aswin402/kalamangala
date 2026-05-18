@@ -279,7 +279,6 @@ export const AboutDarkSection = () => {
                   <p className="text-[28px] mb-5 font-semibold tracking-[-0.03em] text-foreground/80 lg:text-[30px]">
                     Years of Experience
                   </p>
-                 <img src={logoavif} alt="Logo" className="h-[80px] w-auto lg:h-[100px]" />
                 </div>
 
                 {/* IMAGE CARD */}
@@ -355,18 +354,16 @@ export const AboutDarkSection = () => {
               </button>
 
               {/* MOBILE 33+ CARD */}
-              <div className="order-1 flex h-[220px] flex-row items-center justify-center gap-[12px] rounded-[9px] bg-white text-foreground md:hidden">
+              <div className="order-1 flex h-[220px] flex-col items-center justify-center gap-[4px] rounded-[9px] bg-white text-foreground md:hidden">
                 <h3
                   className="text-[100px] font-bold leading-none tracking-[-0.07em]"
                   data-counter
                 >
                   33+
                 </h3>
-
                 <p className="text-[20px] font-bold tracking-[-0.03em] text-foreground/85">
                   Years of Experience
                 </p>
-                <img src={logoavif} alt="Logo" className="h-[64px] w-auto" />
               </div>
             </div>
           </div>
