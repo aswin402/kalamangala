@@ -389,11 +389,13 @@ export const AboutDarkSection = () => {
             <div className="aspect-video w-full">
               <iframe
                 className="h-full w-full"
-                src="https://www.youtube.com/embed/S4wGdBpXoNk?autoplay=1&rel=0&modestbranding=1"
-                title="Kalamangala Video"
+                src="https://www.youtube.com/embed/NJ2mARFUvnk?si=oPU_Kw1EGtO4k9Fc&autoplay=1"
+                title="YouTube video player"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
-              />
+              ></iframe>
             </div>
           </div>
         </div>

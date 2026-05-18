@@ -1,132 +1,83 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MarqueeText } from "../../global/components/MarqueeText";
+import { ContactSection } from "./sections/ContactSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TEXT = "Let's Talk. Work with us. Contact. ";
-
 export function ContactPage() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titlePanelRef = useRef<HTMLDivElement>(null);
-  const titleContentRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const titlePanel = titlePanelRef.current;
-    const titleContentEl = titleContentRef.current;
+    const hero = heroRef.current;
+    const heading = headingRef.current;
+    const subtitle = subtitleRef.current;
 
-    if (!section || !titlePanel || !titleContentEl) return;
+    if (!hero || !heading || !subtitle) return;
 
     const ctx = gsap.context(() => {
-      gsap.set(titleContentEl, { opacity: 0, filter: "blur(0px)" });
-
-      gsap.to(titleContentEl, {
-        opacity: 1,
-        duration: 1.0,
-        delay: 0.15,
-        ease: "power3.out",
-      });
-
-      const titleRect = titleContentEl.getBoundingClientRect();
-      const sectionRect = section.getBoundingClientRect();
-      const currentOffsetFromSectionTop = titleRect.top - sectionRect.top;
-      const targetTop = 80;
-      const travelDistance = Math.max(currentOffsetFromSectionTop - targetTop, 60);
-
-      gsap.to(titleContentEl, {
-        y: -travelDistance,
-        ease: "none",
-        force3D: false,
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${travelDistance}`,
-          scrub: 0.6,
-        },
-      });
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.fromTo(heading, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0 });
+      tl.fromTo(subtitle, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, "-=0.4");
 
       ScrollTrigger.create({
-        trigger: titlePanel,
+        trigger: hero,
         start: "top top",
-        end: () => `+=${titlePanel.offsetHeight}`,
-        pin: true,
-        pinSpacing: false,
-      });
-
-      // ── Fade title from bottom-up as the next section overlaps ──
-      const fadeGradient =
-        "linear-gradient(to bottom, black 0%, black calc(var(--mask-end, 150) * 1%), transparent calc(var(--mask-end, 150) * 1% + 50px))";
-
-      const isMobile = window.innerWidth < 768;
-
-      gsap.fromTo(
-        titleContentEl,
-        { 
-          "--mask-end": 150,
-          filter: "blur(0px)",
-          scale: 1 
+        end: "bottom top",
+        scrub: 0.6,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          heading.style.opacity = String(1 - progress);
+          subtitle.style.opacity = String(1 - progress);
+          heading.style.transform = `translateY(${progress * 40}px)`;
+          subtitle.style.transform = `translateY(${progress * 20}px)`;
         },
-        {
-          "--mask-end": -30,
-          filter: isMobile ? "blur(0px)" : "blur(6px)",
-          scale: isMobile ? 1 : 0.97,
-          ease: "power1.in",
-          force3D: false,
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: () => `+=${titlePanel.offsetHeight}`,
-            scrub: 0.6,
-            onEnter: () => {
-              titleContentEl.style.maskImage = fadeGradient;
-              titleContentEl.style.webkitMaskImage = fadeGradient;
-            },
-            onLeaveBack: () => {
-              titleContentEl.style.maskImage = "none";
-              titleContentEl.style.webkitMaskImage = "none";
-              titleContentEl.style.filter = "blur(0px)";
-            },
-          },
-        }
-      );
-    }, section);
+      });
+    }, hero);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative">
-      <div
-        ref={titlePanelRef}
-        className="
-          relative z-[1] w-full overflow-visible
-          h-[250px]
-          sm:h-[300px]
-          md:h-[340px]
-          lg:h-[384px]
-        "
+    <>
+      <section
+        ref={heroRef}
+        className="relative z-[1] flex min-h-[360px] items-center justify-center overflow-hidden bg-background sm:min-h-[420px] md:min-h-[480px] lg:min-h-[540px]"
       >
-        <div
-          ref={titleContentRef}
-        >
-          <MarqueeText
-            text={TEXT}
-            duration={60}
-            className="
-              w-full overflow-hidden
-              pt-[115px] pb-[12px]
-              sm:pt-[120px] sm:pb-[14px]
-              md:pt-[130px] md:pb-[20px]
-              lg:pt-[140px] lg:pb-[24px]
-            "
-            repeatCount={5}
-          />
+        <div className="absolute inset-0 bg-[url('https://framerusercontent.com/images/vaS0nXWH3vvzP1FenR3MFCToc.png?width=1065&height=795')] bg-repeat bg-[length:426px_auto] opacity-[0.15]" />
+
+        <div className="relative z-[2] px-[30px] text-center">
+          {/* Eyebrow label */}
+          <div className="mb-[12px] flex items-center justify-center gap-[7px]">
+            <span className="flex h-[11px] w-[11px] items-center justify-center rounded-full border border-primary">
+              <span className="h-[6px] w-[6px] rounded-full bg-primary" />
+            </span>
+            <span className="whitespace-nowrap text-[12px] font-bold uppercase leading-none tracking-[-0.03em] text-primary">
+              Get in Touch
+            </span>
+          </div>
+
+          {/* Main heading */}
+          <h1
+            ref={headingRef}
+            className="font-pathway text-[clamp(48px,12vw,140px)] font-bold leading-[0.88] tracking-[-0.04em] text-foreground"
+          >
+            Contact Us
+          </h1>
+
+          {/* Subtitle */}
+          <p
+            ref={subtitleRef}
+            className="mx-auto mt-[12px] max-w-[500px] text-[15px] font-medium leading-[1.4] tracking-[-0.01em] text-foreground/70 md:text-[17px]"
+          >
+            We'd love to hear from you. Let's start a conversation about your dream property.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <ContactSection />
+    </>
   );
 }
