@@ -93,11 +93,16 @@ export const ProjectsSection = () => {
       >
         <div
           className="
-            absolute z-30 flex items-center gap-[5px]
-            left-1/2 top-[-13px]
-            -translate-x-1/2
-            md:left-[160px] md:top-[12px] md:translate-x-0
-            lg:left-[160px] lg:top-[6px] 
+            relative z-30 flex justify-center items-center gap-[5px]
+            mb-[8px]
+
+            md:absolute md:block
+            md:left-[160px] md:top-[12px]
+            md:mb-0 md:whitespace-nowrap
+
+            lg:left-auto lg:right-[390px] lg:top-[6px]
+
+            xl:right-auto xl:left-[160px] xl:top-[6px]
           "
         >
           <SectionLabel className="font-semibold">Our Portfolio</SectionLabel>

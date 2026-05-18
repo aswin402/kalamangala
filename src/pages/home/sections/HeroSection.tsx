@@ -346,6 +346,11 @@ export const HeroSection = () => {
           mx-auto
           w-full
 
+          mt-[60px]
+          sm:mt-[80px]
+          md:mt-[100px]
+          lg:mt-[40px]
+
           px-[12px]
           sm:px-[20px]
           md:px-[28px]

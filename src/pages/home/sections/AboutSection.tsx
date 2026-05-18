@@ -90,7 +90,7 @@ export const AboutSection = () => {
 
               max-[1024px]:h-[420px]
               max-[768px]:h-[306px]
-              lg:h-[480px]
+              lg:h-[620px]
               xl:h-[565px]
             "
           >
