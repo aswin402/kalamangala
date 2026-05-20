@@ -2,10 +2,15 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContactSection } from "./sections/ContactSection";
+import { useSEO } from "@/hooks/useSEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function ContactPage() {
+  useSEO(
+    "Contact Kalamangala | Book Premium Plots in Tamil Nadu",
+    "Connect with Kalamangala for premium plots, luxury homes, and construction services in Tamil Nadu. Reach our team for project details and site visits."
+  );
   const heroRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);

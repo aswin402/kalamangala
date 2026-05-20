@@ -8,10 +8,15 @@ import { MapViewSection } from "./sections/MapViewSection";
 import { QuoteSection } from "./sections/QuoteSection";
 import { VideoSection } from "./sections/VideoSection";
 import { ShowcaseGrid } from "./sections/ShowcaseGrid";
+import { useSEO } from "@/hooks/useSEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function TheWaterfrontPage() {
+  useSEO(
+    "The Waterfront Premium Plots in Erode | Kalamangala Living",
+    "Live amidst nature at The Waterfront by Kalamangala, Erode. Premium plots, modern comforts, wide roads, and a secure, green community."
+  );
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

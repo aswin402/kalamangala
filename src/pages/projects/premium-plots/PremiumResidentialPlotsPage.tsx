@@ -10,8 +10,13 @@ import { NeighbourhoodGrowthSection } from "./sections/NeighbourhoodGrowthSectio
 import { AdvantageSection } from "./sections/AdvantageSection";
 import { CTASection } from "../../../components/CTASection";
 import { FooterSection } from "./sections/FooterSection";
+import { useSEO } from "@/hooks/useSEO";
 
 export const PremiumResidentialPlotsPage = () => {
+  useSEO(
+    "Premium Gated Plots in Coimbatore | Build Your Dream Home",
+    "Find premium gated community plots in Coimbatore with excellent connectivity and infrastructure. Build your dream home today!"
+  );
   return (
     <main className="min-h-screen">
       {/* ScrollHero with marquee + image */}

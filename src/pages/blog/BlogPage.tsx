@@ -6,11 +6,17 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { BLOG_POSTS } from "./data/blogPosts";
 import { fetchPublishedPosts, fetchPublishedPostsCount, type BlogPostUI } from "./data/blogPostsSupabase";
 import "./blog-page.css";
+import { useSEO } from "@/hooks/useSEO";
 
 const MARQUEE_TEXT = "Blogs. Articles. Informations. Blogs. Articles. ";
 const PAGE_SIZE = 6;
 
 export function BlogPage() {
+  useSEO(
+    "Real Estate Insights & Lifestyle Tips | Kalamangala Blog",
+    "Choose premium, well-planned residential plots in Tamil Nadu with Kalamangala for secure living and long-term appreciation."
+  );
+
   const sentinelRef = useRef<HTMLDivElement>(null);
 
   const [posts, setPosts] = useState<BlogPostUI[]>([]);
