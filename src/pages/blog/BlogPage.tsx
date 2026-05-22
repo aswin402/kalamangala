@@ -168,7 +168,7 @@ export function BlogPage() {
                   md:gap-[16px]
                 "
               >
-                {posts.map((post, _index) => (
+                {posts.map((post) => (
                   <div
                     key={post.id}
                     className="km-reveal"

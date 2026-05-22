@@ -45,8 +45,8 @@
   "scripts": {
     "predeploy": "npm run build:ghpages",
     "deploy": "gh-pages -d dist",
-    "build": "tsc -b && vite build",
-    "build:ghpages": "VITE_DEPLOY_TARGET=ghpages tsc -b && VITE_DEPLOY_TARGET=ghpages vite build",
+    "build": "tsc -b && bun scripts/generate-sitemap.ts && vite build",
+    "build:ghpages": "VITE_DEPLOY_TARGET=ghpages tsc -b && bun scripts/generate-sitemap.ts && VITE_DEPLOY_TARGET=ghpages vite build",
     "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview"

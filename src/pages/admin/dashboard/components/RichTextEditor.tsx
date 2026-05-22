@@ -256,6 +256,33 @@ function transformPastedHTML(html: string): string {
   return body.innerHTML;
 }
 
+interface ToolbarButtonProps {
+  onClick: () => void;
+  active?: boolean;
+  title: string;
+  children: React.ReactNode;
+}
+
+const ToolbarButton = ({
+  onClick,
+  active,
+  title,
+  children,
+}: ToolbarButtonProps) => (
+  <button
+    type="button"
+    onClick={onClick}
+    title={title}
+    className={`p-2 rounded transition-colors ${
+      active
+        ? 'bg-primary text-primary-foreground'
+        : 'hover:bg-muted text-foreground'
+    }`}
+  >
+    {children}
+  </button>
+);
+
 interface RichTextEditorProps {
   content: string;
   onChange: (html: string) => void;
@@ -305,31 +332,6 @@ export function RichTextEditor({ content, onChange, placeholder = 'Write your co
   }, [editor]);
 
   if (!editor) return <div className="h-[300px] bg-background border border-border rounded-lg animate-pulse" />;
-
-  const ToolbarButton = ({
-    onClick,
-    active,
-    title,
-    children,
-  }: {
-    onClick: () => void;
-    active?: boolean;
-    title: string;
-    children: React.ReactNode;
-  }) => (
-    <button
-      type="button"
-      onClick={onClick}
-      title={title}
-      className={`p-2 rounded transition-colors ${
-        active
-          ? 'bg-primary text-primary-foreground'
-          : 'hover:bg-muted text-foreground'
-      }`}
-    >
-      {children}
-    </button>
-  );
 
   return (
     <div className="border border-border rounded-lg overflow-hidden bg-background">
