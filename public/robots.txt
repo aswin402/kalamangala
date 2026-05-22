@@ -1,0 +1,40 @@
+# Robots.txt for Kalamangala.com
+# Premium Residential Plots and Real Estate in Tamil Nadu
+
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://www.kalamangala.com/sitemap.xml
+
+# Disallow admin dashboard and private areas
+Disallow: /admin-kalamangala
+Disallow: /admin-dashboard
+Disallow: /private/
+Disallow: /tmp/
+
+# Crawl control for search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block bad/scraper bots
+User-agent: HTTrack
+Disallow: /
+
+User-agent: EmailCollector
+Disallow: /
+
+User-agent: EmailSiphon
+Disallow: /
+
+User-agent: WebBandit
+Disallow: /
+
+User-agent: EmailWolf
+Disallow: /
