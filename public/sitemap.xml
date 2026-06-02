@@ -7,104 +7,104 @@
   <!-- Static Pages -->
   <url>
     <loc>https://www.kalamangala.com/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/about</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/the-waterfront</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/amenities</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/location-advantage</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/construction-company</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/residential-plots-coimbatore</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/top-real-estate-contractors-in-tiruchengode</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/real-estate-karur</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/tiruppur-villa-gated-community-plots</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/real-estate-plots-in-tamilnadu</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/realestate-construction-company-erode</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/residential-layouts-erode</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/blog</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.kalamangala.com/contact</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Dynamic Blog Posts -->
   <url>
-    <loc>https://www.kalamangala.com/blog/the-new-standard-of-living-exploring-premium-gated-communities-in-tamil-nadu</loc>
+    <loc>https://www.kalamangala.com/blog/premium-amenities-for-modern-living</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/top-construction-companies-in-erode-how-to-pick-the-right-one</loc>
+    <loc>https://www.kalamangala.com/blog/the-new-standard-of-living-exploring-premium-gated-communities-in-tamil-nadu</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -116,19 +116,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/blog-building-dreams-in-erode</loc>
+    <loc>https://www.kalamangala.com/blog/top-ten-home-builders-erode</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/a-greener-future-the-role-of-sustainability-in-modern-living</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.kalamangala.com/blog/the-rise-of-smart-communities-in-erode</loc>
+    <loc>https://www.kalamangala.com/blog/sustainability-in-modern-living</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -140,31 +134,31 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/the-future-of-premium-community-living-in-erode</loc>
+    <loc>https://www.kalamangala.com/blog/residential-plots-in-coimbatore</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/discover-premium-residential-plots-in-coimbatore-today</loc>
+    <loc>https://www.kalamangala.com/blog/premium-community-living-in-erode</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/build-better-futures-with-trusted-real-estate-developers-in-tamil-nadu</loc>
+    <loc>https://www.kalamangala.com/blog/luxury-home-developer</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/from-concept-to-reality-why-open-floor-plans-are-the-ultimate-trend-in-luxury-living</loc>
+    <loc>https://www.kalamangala.com/blog/real-estate-developers-in-tamil-nadu</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/blog-premium-real-estate-company-with-luxury-living</loc>
+    <loc>https://www.kalamangala.com/blog/smart-communities-in-erode</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -194,6 +188,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.kalamangala.com/blog/premium-real-estate-company</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.kalamangala.com/blog/custom-home-builders-tamil-nadu</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -218,13 +218,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/why-planned-residential-layouts-are-the-future-of-property-investment-in-erode</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.kalamangala.com/blog/redefining-lifestyle-premium-amenities-for-a-modern-living</loc>
+    <loc>https://www.kalamangala.com/blog/residential-layouts-investment-in-erode</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -236,19 +230,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/real-estate-plots---house-construction-erode</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.kalamangala.com/blog/premium-gated-community-homes-tamil-nadu</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/quality-construction-company-in-namakkal-building-trust-with-excellence</loc>
+    <loc>https://www.kalamangala.com/blog/quality-construction-company-in-namakkal</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kalamangala.com/blog/real-estate-plots-erode</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -272,13 +266,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/blog-properties-in-erode-market</loc>
+    <loc>https://www.kalamangala.com/blog/properties-in-erode-market</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.kalamangala.com/blog/trusted-building-firm-in-tiruppur-delivering-strength-style-and-reliability</loc>
+    <loc>https://www.kalamangala.com/blog/trusted-building-firm-in-tiruppur</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kalamangala.com/blog/top-construction-companies-in-erode</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

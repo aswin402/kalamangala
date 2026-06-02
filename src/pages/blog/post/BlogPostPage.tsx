@@ -9,6 +9,7 @@ import { ArticleSection } from "./sections/ArticleSection";
 import { LatestBlogsSidebar } from "./components/LatestBlogsSidebar";
 import { NewsletterCard } from "./components/NewsletterCard";
 import { RelatedBlogsSection } from "./components/RelatedBlogsSection";
+import { useSEO } from "@/hooks/useSEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,7 +21,11 @@ export function BlogPostPage(): JSX.Element {
   const [loading, setLoading] = useState(true);
 
   const pageRef = useRef<HTMLDivElement>(null);
-//new
+
+  const seoTitle = post?.meta_title || post?.title || "Blog | Kalamangala";
+  const seoDesc = post?.meta_description || post?.sub_header || "Read the latest blog post from Kalamangala.";
+  useSEO(seoTitle, seoDesc);
+
   useEffect(() => {
     const loadPost = async () => {
       setLoading(true);
