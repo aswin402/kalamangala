@@ -17,7 +17,7 @@ export function useSEO(title: string, description: string) {
     }
 
     // Update canonical URL
-    const canonicalUrl = `https://kalamangala.com${window.location.pathname}`;
+    const canonicalUrl = `https://www.kalamangala.com${window.location.pathname}`;
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (linkCanonical) {
       linkCanonical.setAttribute('href', canonicalUrl);

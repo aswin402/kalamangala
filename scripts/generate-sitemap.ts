@@ -27,7 +27,7 @@ if (fs.existsSync(envPath)) {
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY;
 
-const SITE_URL = 'https://kalamangala.com';
+const SITE_URL = 'https://www.kalamangala.com';
 const currentDate = new Date().toISOString().split('T')[0];
 
 const staticPages = [
