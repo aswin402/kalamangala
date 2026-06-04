@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://www.kalamangala.com/sitemap.xml
+Sitemap: https://kalamangala.com/sitemap.xml
 
 # Disallow admin dashboard and private areas
 Disallow: /admin-kalamangala
