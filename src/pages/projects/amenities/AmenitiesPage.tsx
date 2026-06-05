@@ -4,7 +4,32 @@ import { VisionSection } from "./sections/VisionSection";
 import { FeatureRows } from "./sections/FeatureRows";
 import { StandApartSection } from "./sections/StandApartSection";
 import { LifestyleSection } from "./sections/LifestyleSection";
+import { FAQSection } from "@/components/FAQSection";
 import { useSEO } from "@/hooks/useSEO";
+
+const amenitiesFAQs = [
+  {
+    question: "What amenities are available at Kalamangala projects?",
+    answer: "Kalamangala offers modern amenities designed for comfortable living.",
+  },
+  {
+    question: "Are CCTV surveillance systems available?",
+    answer: "Yes, 24/7 CCTV security is provided for enhanced safety.",
+  },
+  {
+    question: "Is a gym available for residents?",
+    answer: "Yes, a fully equipped gymnasium is available.",
+  },
+  {
+    question: "Are the play areas safe for children?",
+    answer: "Yes, the park is designed with child safety in mind.",
+  },
+  {
+    question: "What facilities are available in the clubhouse?",
+    answer:
+      "The clubhouse offers spaces for recreation, social gatherings, and community activities.",
+  },
+];
 
 export function AmenitiesPage() {
   useSEO(
@@ -19,6 +44,8 @@ export function AmenitiesPage() {
       <FeatureRows />
       <StandApartSection />
       <LifestyleSection />
+      <FAQSection items={amenitiesFAQs} className="mb-[72px] md:mb-[96px]" />
     </main>
   );
 }
+

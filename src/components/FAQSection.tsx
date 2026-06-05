@@ -1,50 +1,22 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-interface FAQItem {
+export interface FAQItem {
   question: string;
-  answer: string;
+  answer: string | React.ReactNode;
 }
 
-const faqItems: FAQItem[] = [
-  {
-    question: "Are your plots legally approved and documented?",
-    answer:
-      "Yes — we only offer clear-title, DTCP-, RERA-, and document-verified plots for safe buying.",
-  },
-  {
-    question: "Do you provide Custom Home Layouts in Tiruchengode?",
-    answer:
-      "Yes — we design personalized home layouts based on plot measurements, budget, and lifestyle needs.",
-  },
-  {
-    question: "Are plots near town available for sale?",
-    answer:
-      "Absolutely — we develop and offer multiple well-connected residential plot options near town in Tiruchengode.",
-  },
-  {
-    question: "Can you help with bank loan or registration support?",
-    answer:
-      "Yes — we assist with documentation, banking coordination, and end-to-end registration.",
-  },
-  {
-    question: "Do you offer construction services after buying land?",
-    answer:
-      "Yes — we provide turnkey building solutions, including planning, materials, supervision, and finishing.",
-  },
-  {
-    question: "Can NRIs invest in your Tiruchengode layouts?",
-    answer:
-      "Yes — we support NRIs through virtual tours, paperwork, and secure purchase guidance.",
-  },
-  {
-    question: "How soon can construction begin after buying a plot?",
-    answer:
-      "Construction can begin immediately after layout approval, soil evaluation, and planning — and we help with every step.",
-  },
-];
+interface FAQSectionProps {
+  items: FAQItem[];
+  title?: string;
+  className?: string;
+}
 
-function FAQAccordionItem({ item, isOpen, onToggle }: {
+function FAQAccordionItem({
+  item,
+  isOpen,
+  onToggle,
+}: {
   item: FAQItem;
   isOpen: boolean;
   onToggle: () => void;
@@ -117,7 +89,7 @@ function FAQAccordionItem({ item, isOpen, onToggle }: {
           opacity: isOpen ? 1 : 0,
         }}
       >
-        <p
+        <div
           className="
             px-[22px]
             pb-[20px]
@@ -132,19 +104,19 @@ function FAQAccordionItem({ item, isOpen, onToggle }: {
             md:text-[16px]
           "
         >
-          {item.answer}
-        </p>
+          {typeof item.answer === "string" ? <p>{item.answer}</p> : item.answer}
+        </div>
       </div>
     </div>
   );
 }
 
-export function FAQSection() {
+export function FAQSection({ items, title = "Frequently Asked Questions", className = "" }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <section
-      className="
+      className={`
         mx-auto
         mt-[72px]
         w-full
@@ -152,7 +124,8 @@ export function FAQSection() {
         px-5
         md:mt-[96px]
         3xl:max-w-[1400px]
-      "
+        ${className}
+      `}
     >
       <h2
         className="
@@ -169,11 +142,11 @@ export function FAQSection() {
           lg:text-[52px]
         "
       >
-        Frequently Asked Questions
+        {title}
       </h2>
 
       <div className="km-stagger mt-[36px] space-y-[12px] md:mt-[44px]">
-        {faqItems.map((item, index) => (
+        {items.map((item, index) => (
           <FAQAccordionItem
             key={item.question}
             item={item}
