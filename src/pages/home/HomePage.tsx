@@ -1,3 +1,4 @@
+import { useSEO } from "@/hooks/useSEO";
 import { HeroSection } from "./sections/HeroSection";
 import { AboutSection } from "./sections/AboutSection";
 import { ProjectsSection } from "./sections/ProjectsSection";
@@ -34,6 +35,11 @@ const homeFAQs = [
 ];
 
 export function HomePage() {
+  useSEO(
+    "Premium Residential Plots in Tamil Nadu | Kalamangala",
+    "Discover premium residential plots in Tamil Nadu with Kalamangala—secure, well-planned land in prime locations with strong value appreciation."
+  );
+
   return (
     <main className="w-full overflow-x-hidden">
       <HeroSection />
