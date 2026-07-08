@@ -222,8 +222,8 @@
 }
 
 .blog-content p {
-  margin: 2px 0;
-    line-height: 24px;
+  margin: 20px 0;
+  line-height: 26px;
 }
 
 .blog-content li {
@@ -298,6 +298,7 @@
   }
 
   .blog-content p {
+    margin: 16px 0;
     line-height: 22px;
   }
 }
