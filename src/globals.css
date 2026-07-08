@@ -192,7 +192,7 @@
 
 .blog-content h3 {
   font-size: 38px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 30px;
   letter-spacing: -1.2px;
   margin-top: 20px;
@@ -238,6 +238,22 @@
 
 .blog-content a {
   font-weight: 600;
+}
+
+.blog-content strong,
+.blog-content b {
+  font-weight: 700;
+}
+
+.blog-content h1 strong,
+.blog-content h1 b,
+.blog-content h2 strong,
+.blog-content h2 b,
+.blog-content h3 strong,
+.blog-content h3 b,
+.blog-content h4 strong,
+.blog-content h4 b {
+  font-weight: inherit;
 }
 
 .blog-content ul,

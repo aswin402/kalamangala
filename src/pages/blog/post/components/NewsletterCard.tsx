@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
-export function NewsletterCard() {
+export function NewsletterCard({ className = "" }: { className?: string }) {
   const [email, setEmail] = useState("");
 
   return (
-    <div className="bg-card-green rounded-xl overflow-hidden flex flex-col sticky top-[120px]">
+    <div className={`newsletter-card bg-card-green rounded-xl overflow-hidden flex flex-col ${className}`}>
       <div className="p-[30px_26px_0] flex flex-col gap-3.5">
         <p className="font-['Inter',sans-serif] text-[20px] font-extrabold tracking-[-0.03em] text-footer-foreground m-0">
           Join our newsletter list

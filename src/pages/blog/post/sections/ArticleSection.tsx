@@ -12,8 +12,8 @@ export function ArticleSection({ post, sidebar }: Props): JSX.Element {
       className="mx-auto px-[clamp(20px,4vw,64px)] pb-[clamp(40px,5vw,72px)]"
       style={{ maxWidth: '1800px' }}
     >
-      <div className="grid grid-cols-1 gap-02 lg:grid-cols-[420px_1fr] lg:gap-[clamp(40px,4vw,72px)] lg:items-start">
-        <aside data-reveal data-x="-30" data-duration="1.0">
+      <div className="grid grid-cols-1 gap-02 lg:grid-cols-[420px_1fr] lg:gap-[clamp(40px,4vw,72px)]">
+        <aside data-reveal data-x="-30" data-duration="1.0" className="h-full">
           {sidebar}
         </aside>
 

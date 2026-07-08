@@ -31,21 +31,21 @@ const SITE_URL = 'https://www.kalamangala.com';
 const currentDate = new Date().toISOString().split('T')[0];
 
 const staticPages = [
-  { path: '', changefreq: 'weekly', priority: '1.0' },
-  { path: 'about', changefreq: 'weekly', priority: '0.9' },
-  { path: 'the-waterfront', changefreq: 'weekly', priority: '0.9' },
-  { path: 'amenities', changefreq: 'weekly', priority: '0.9' },
-  { path: 'location-advantage', changefreq: 'weekly', priority: '0.9' },
-  { path: 'contact', changefreq: 'weekly', priority: '0.9' },
-  { path: 'top-real-estate-contractors-in-tiruchengode', changefreq: 'weekly', priority: '0.9' },
-  { path: 'real-estate-karur', changefreq: 'weekly', priority: '0.9' },
-  { path: 'tiruppur-villa-gated-community-plots', changefreq: 'weekly', priority: '0.9' },
-  { path: 'real-estate-plots-in-tamilnadu', changefreq: 'weekly', priority: '0.9' },
-  { path: 'realestate-construction-company-erode', changefreq: 'weekly', priority: '0.9' },
-  { path: 'residential-layouts-erode', changefreq: 'weekly', priority: '0.9' },
-  { path: 'construction-company', changefreq: 'weekly', priority: '0.9' },
-  { path: 'residential-plots-coimbatore', changefreq: 'weekly', priority: '0.9' },
-  { path: 'blog', changefreq: 'weekly', priority: '0.9' }
+  { path: '', changefreq: 'daily', priority: '1.0' },
+  { path: 'about', changefreq: 'daily', priority: '0.9' },
+  { path: 'the-waterfront', changefreq: 'daily', priority: '0.9' },
+  { path: 'amenities', changefreq: 'daily', priority: '0.9' },
+  { path: 'location-advantage', changefreq: 'daily', priority: '0.9' },
+  { path: 'contact', changefreq: 'daily', priority: '0.9' },
+  { path: 'top-real-estate-contractors-in-tiruchengode', changefreq: 'daily', priority: '0.9' },
+  { path: 'real-estate-karur', changefreq: 'daily', priority: '0.9' },
+  { path: 'tiruppur-villa-gated-community-plots', changefreq: 'daily', priority: '0.9' },
+  { path: 'real-estate-plots-in-tamilnadu', changefreq: 'daily', priority: '0.9' },
+  { path: 'realestate-construction-company-erode', changefreq: 'daily', priority: '0.9' },
+  { path: 'residential-layouts-erode', changefreq: 'daily', priority: '0.9' },
+  { path: 'construction-company', changefreq: 'daily', priority: '0.9' },
+  { path: 'residential-plots-coimbatore', changefreq: 'daily', priority: '0.9' },
+  { path: 'blog', changefreq: 'daily', priority: '0.6' }
 ];
 
 const fallbackBlogSlugs = [
@@ -153,7 +153,7 @@ async function generateSitemap() {
     xml += `  <url>
     <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>\n`;
   });

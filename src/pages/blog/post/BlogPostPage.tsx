@@ -8,7 +8,7 @@ import { IntroSection } from "./sections/IntroSection";
 import { ArticleSection } from "./sections/ArticleSection";
 import { LatestBlogsSidebar } from "./components/LatestBlogsSidebar";
 import { NewsletterCard } from "./components/NewsletterCard";
-import { RelatedBlogsSection } from "./components/RelatedBlogsSection";
+import { RelatedBlogsSidebar } from "./components/RelatedBlogsSidebar";
 import { useSEO } from "@/hooks/useSEO";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -43,7 +43,7 @@ export function BlogPostPage(): JSX.Element {
 
       if (postData && allPosts.length > 0) {
         const sidebar = allPosts.filter((p) => p.id !== postData.id).slice(0, 5);
-        const related = allPosts.filter((p) => p.id !== postData.id).slice(0, 3);
+        const related = allPosts.filter((p) => p.id !== postData.id);
         setSidebarPosts(sidebar);
         setRelatedPosts(related);
       }
@@ -52,6 +52,56 @@ export function BlogPostPage(): JSX.Element {
     };
     loadPost();
   }, [slug]);
+
+  const [displayCount, setDisplayCount] = useState(3);
+
+  useEffect(() => {
+    if (loading || !post || relatedPosts.length === 0) return;
+
+    const measureHeight = () => {
+      const articleEl = pageRef.current?.querySelector(".blog-content");
+      if (articleEl) {
+        const articleHeight = articleEl.clientHeight;
+
+        // Measure actual heights of other sidebar items dynamically
+        const latestBlogsEl = pageRef.current?.querySelector(".latest-blogs-sidebar");
+        const newsletterEl = pageRef.current?.querySelector(".newsletter-card");
+
+        const latestBlogsHeight = latestBlogsEl?.clientHeight || 0;
+        const newsletterHeight = newsletterEl?.clientHeight || 0;
+
+        // Header, margins, and "Read All" button heights inside RelatedBlogsSidebar
+        const widgetDecorationHeight = 170;
+
+        // Gaps between elements inside the flex column (gap-8 is 32px)
+        const gapsHeight = (latestBlogsHeight > 0 ? 32 : 0) + 32;
+
+        const totalBaseHeight = latestBlogsHeight + newsletterHeight + widgetDecorationHeight + gapsHeight;
+        const cardHeight = 360; // 16:9 card + gap spacing
+
+        const availableHeight = articleHeight - totalBaseHeight;
+
+        // Calculate dynamic count, capped to at least 1 related post
+        const computedCount = Math.max(1, Math.floor(availableHeight / cardHeight));
+        setDisplayCount(computedCount);
+      }
+    };
+
+    const timer = setTimeout(measureHeight, 150);
+
+    const articleEl = pageRef.current?.querySelector(".blog-content");
+    if (!articleEl) return () => clearTimeout(timer);
+
+    const observer = new ResizeObserver(() => {
+      measureHeight();
+    });
+    observer.observe(articleEl);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [loading, post, sidebarPosts, relatedPosts]);
 
   useEffect(() => {
     if (loading || !post) return;
@@ -181,14 +231,13 @@ export function BlogPostPage(): JSX.Element {
       <ArticleSection
         post={post}
         sidebar={
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-8 h-full">
             <LatestBlogsSidebar posts={sidebarPosts} />
             <NewsletterCard />
+            <RelatedBlogsSidebar posts={relatedPosts.slice(0, displayCount)} className="lg:sticky lg:top-[120px]" />
           </div>
         }
       />
-
-      <RelatedBlogsSection posts={relatedPosts} />
     </div>
   );
 }
