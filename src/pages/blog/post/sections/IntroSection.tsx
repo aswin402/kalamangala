@@ -43,7 +43,7 @@ export function IntroSection({ post }: { post: BlogPostUI }): JSX.Element {
         {/* Sub-header — centered below badges */}
         {post.sub_header && (
           <div data-reveal data-y="20" data-duration="1.0" data-delay="0.2" className="w-full max-w-[920px] text-center">
-            <p className="font-['Inter',sans-serif] text-[clamp(16px,1.8vw,24px)] font-semibold leading-[1.3] tracking-[-0.04em] text-[#1d322d]">
+            <p className="font-['Inter',sans-serif] text-[clamp(16px,1.8vw,24px)] font-semibold leading-[1.3] tracking-[-0.04em] text-[#1d322d] whitespace-pre-wrap">
               {post.sub_header}
             </p>
           </div>
