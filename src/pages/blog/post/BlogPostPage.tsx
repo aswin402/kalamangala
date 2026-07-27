@@ -23,7 +23,7 @@ export function BlogPostPage(): JSX.Element {
   const pageRef = useRef<HTMLDivElement>(null);
 
   const seoTitle = post?.meta_title || post?.title || "Blog | Kalamangala";
-  const seoDesc = post?.meta_description || post?.sub_header || "Read the latest blog post from Kalamangala.";
+  const seoDesc = post?.meta_description || (post?.sub_header ? post.sub_header.replace(/<[^>]*>/g, '').trim() : '') || "Read the latest blog post from Kalamangala.";
   useSEO(seoTitle, seoDesc);
 
   useEffect(() => {

@@ -287,18 +287,36 @@ interface RichTextEditorProps {
   content: string;
   onChange: (html: string) => void;
   placeholder?: string;
+  minHeight?: string;
+  minimal?: boolean;
 }
 
-export function RichTextEditor({ content, onChange, placeholder = 'Write your content here...' }: RichTextEditorProps): JSX.Element {
+export function RichTextEditor({
+  content,
+  onChange,
+  placeholder = 'Write your content here...',
+  minHeight = 'min-h-[300px]',
+  minimal = false,
+}: RichTextEditorProps): JSX.Element {
 
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({
-        heading: { levels: [2, 3, 4] },
-      }),
+      StarterKit.configure(
+        minimal
+          ? {
+              heading: false,
+              blockquote: false,
+              bulletList: false,
+              orderedList: false,
+              codeBlock: false,
+            }
+          : {
+              heading: { levels: [2, 3, 4] },
+            }
+      ),
       Link.configure({
         openOnClick: false,
-        HTMLAttributes: { class: 'text-primary underline' },
+        HTMLAttributes: { class: 'text-blue-600 dark:text-blue-400 hover:text-primary underline cursor-pointer' },
       }),
       Placeholder.configure({
         placeholder,
@@ -310,9 +328,10 @@ export function RichTextEditor({ content, onChange, placeholder = 'Write your co
     },
     editorProps: {
       attributes: {
-        class: 'blog-content max-w-none focus:outline-none min-h-[300px] px-4 py-3 text-foreground',
+        class: `blog-content max-w-none focus:outline-none ${minHeight} px-4 py-3 text-foreground`,
       },
       transformPastedHTML(html) {
+        if (minimal) return html;
         return transformPastedHTML(html);
       },
     },
@@ -352,59 +371,65 @@ export function RichTextEditor({ content, onChange, placeholder = 'Write your co
           <Italic className="w-4 h-4" />
         </ToolbarButton>
 
+        {!minimal ? (
+          <>
+            <div className="w-px h-6 bg-border mx-1" />
+
+            <ToolbarButton
+              onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+              active={editor.isActive('heading', { level: 2 })}
+              title="Heading 1"
+            >
+              <Heading1 className="w-4 h-4" />
+            </ToolbarButton>
+
+            <ToolbarButton
+              onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+              active={editor.isActive('heading', { level: 3 })}
+              title="Heading 2"
+            >
+              <Heading2 className="w-4 h-4" />
+            </ToolbarButton>
+
+            <ToolbarButton
+              onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+              active={editor.isActive('heading', { level: 4 })}
+              title="Heading 3"
+            >
+              <Heading3 className="w-4 h-4" />
+            </ToolbarButton>
+
+            <div className="w-px h-6 bg-border mx-1" />
+
+            <ToolbarButton
+              onClick={() => editor.chain().focus().toggleBulletList().run()}
+              active={editor.isActive('bulletList')}
+              title="Bullet List"
+            >
+              <List className="w-4 h-4" />
+            </ToolbarButton>
+
+            <ToolbarButton
+              onClick={() => editor.chain().focus().toggleOrderedList().run()}
+              active={editor.isActive('orderedList')}
+              title="Ordered List"
+            >
+              <ListOrdered className="w-4 h-4" />
+            </ToolbarButton>
+
+            <div className="w-px h-6 bg-border mx-1" />
+
+            <ToolbarButton
+              onClick={() => editor.chain().focus().toggleBlockquote().run()}
+              active={editor.isActive('blockquote')}
+              title="Quote"
+            >
+              <Quote className="w-4 h-4" />
+            </ToolbarButton>
+          </>
+        ) : null}
+
         <div className="w-px h-6 bg-border mx-1" />
-
-        <ToolbarButton
-          onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          active={editor.isActive('heading', { level: 2 })}
-          title="Heading 1"
-        >
-          <Heading1 className="w-4 h-4" />
-        </ToolbarButton>
-
-        <ToolbarButton
-          onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-          active={editor.isActive('heading', { level: 3 })}
-          title="Heading 2"
-        >
-          <Heading2 className="w-4 h-4" />
-        </ToolbarButton>
-
-        <ToolbarButton
-          onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-          active={editor.isActive('heading', { level: 4 })}
-          title="Heading 3"
-        >
-          <Heading3 className="w-4 h-4" />
-        </ToolbarButton>
-
-        <div className="w-px h-6 bg-border mx-1" />
-
-        <ToolbarButton
-          onClick={() => editor.chain().focus().toggleBulletList().run()}
-          active={editor.isActive('bulletList')}
-          title="Bullet List"
-        >
-          <List className="w-4 h-4" />
-        </ToolbarButton>
-
-        <ToolbarButton
-          onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          active={editor.isActive('orderedList')}
-          title="Ordered List"
-        >
-          <ListOrdered className="w-4 h-4" />
-        </ToolbarButton>
-
-        <div className="w-px h-6 bg-border mx-1" />
-
-        <ToolbarButton
-          onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          active={editor.isActive('blockquote')}
-          title="Quote"
-        >
-          <Quote className="w-4 h-4" />
-        </ToolbarButton>
 
         <ToolbarButton
           onClick={setLink}

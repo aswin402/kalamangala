@@ -208,12 +208,12 @@ export function BlogPostForm({ post, onClose, onSuccess }: BlogPostFormProps): J
                 <label className="block text-sm font-medium text-foreground">
                   Sub Header
                 </label>
-                <textarea
-                  value={formData.sub_header}
-                  onChange={(e) => setFormData((p) => ({ ...p, sub_header: e.target.value }))}
+                <RichTextEditor
+                  content={formData.sub_header}
+                  onChange={(html) => setFormData((p) => ({ ...p, sub_header: html }))}
                   placeholder="Optional sub header"
-                  rows={6}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                  minHeight="min-h-[120px]"
+                  minimal={true}
                 />
               </div>
 

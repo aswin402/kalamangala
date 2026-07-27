@@ -91,7 +91,7 @@ function RelatedSidebarCard({ post }: { post: BlogPostUI }) {
         </h4>
         {post.sub_header && (
           <p className="text-[13.5px] leading-[1.5] text-muted-foreground line-clamp-2 m-0">
-            {post.sub_header}
+            {post.sub_header.replace(/<[^>]*>/g, '').trim()}
           </p>
         )}
       </div>
