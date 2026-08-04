@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { toast } from "@/store/useToastStore";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import {
@@ -58,6 +59,63 @@ const socialLinks = [
 
 export const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const key = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    if (!key) {
+      toast.error("Configuration Error", "Web3Forms Access Key is missing in the environment variables.");
+      return;
+    }
+
+    if (!name || !email || !phone || !message) {
+      toast.warning("Validation Error", "Please fill in all the fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: key,
+          name,
+          email,
+          phone,
+          message,
+          subject: `New Gated Community Enquiry from ${name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Enquiry Sent", "Thank you! Your message has been sent successfully.");
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+      } else {
+        toast.error("Submission Failed", result.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Network Error", "Could not connect to the server. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -215,7 +273,7 @@ export const ContactSection = () => {
               </p>
 
               <form
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={handleSubmit}
                 className="flex flex-col gap-[16px] md:gap-[18px]"
               >
                 <div className="grid gap-[16px] md:grid-cols-2 md:gap-[18px]">
@@ -226,6 +284,9 @@ export const ContactSection = () => {
                     <input
                       type="text"
                       placeholder="John Doe"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
                       className="h-[48px] w-full rounded-[8px] border border-white/10 bg-white/5 px-[14px] text-[15px] text-white placeholder:text-white/40 outline-none transition-all duration-300 focus:border-primary focus:bg-white/10 md:h-[52px] md:px-[16px]"
                     />
                   </div>
@@ -237,6 +298,9 @@ export const ContactSection = () => {
                     <input
                       type="email"
                       placeholder="john@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
                       className="h-[48px] w-full rounded-[8px] border border-white/10 bg-white/5 px-[14px] text-[15px] text-white placeholder:text-white/40 outline-none transition-all duration-300 focus:border-primary focus:bg-white/10 md:h-[52px] md:px-[16px]"
                     />
                   </div>
@@ -249,6 +313,9 @@ export const ContactSection = () => {
                   <input
                     type="tel"
                     placeholder="+91 98765 43210"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
                     className="h-[48px] w-full rounded-[8px] border border-white/10 bg-white/5 px-[14px] text-[15px] text-white placeholder:text-white/40 outline-none transition-all duration-300 focus:border-primary focus:bg-white/10 md:h-[52px] md:px-[16px]"
                   />
                 </div>
@@ -260,17 +327,21 @@ export const ContactSection = () => {
                   <textarea
                     rows={4}
                     placeholder="Tell us about your requirements..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
                     className="min-h-[120px] w-full resize-y rounded-[8px] border border-white/10 bg-white/5 px-[14px] py-[14px] text-[15px] text-white placeholder:text-white/40 outline-none transition-all duration-300 focus:border-primary focus:bg-white/10 md:min-h-[140px] md:px-[16px] md:py-[16px]"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="mt-[8px] flex h-[50px] w-full cursor-pointer items-center justify-center gap-[8px] rounded-[8px] border border-primary bg-primary text-[15px] font-semibold text-foreground transition-all duration-300 hover:bg-[#FF894D] hover:border-[#FF894D] hover:text-white md:h-[54px] md:text-[16px]"
+                  disabled={isSubmitting}
+                  className="mt-[8px] flex h-[50px] w-full cursor-pointer items-center justify-center gap-[8px] rounded-[8px] border border-primary bg-primary text-[15px] font-semibold text-foreground transition-all duration-300 hover:bg-[#FF894D] hover:border-[#FF894D] hover:text-white md:h-[54px] md:text-[16px] disabled:opacity-50 disabled:cursor-not-allowed"
                   data-anim="fade-up"
                   data-delay="0.45"
                 >
-                  Send Enquiry
+                  {isSubmitting ? "Sending..." : "Send Enquiry"}
                   <Send size={16} />
                 </button>
               </form>

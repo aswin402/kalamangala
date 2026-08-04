@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
+import { Toaster } from '@/components/ui/Toaster';
 import { initLenis, destroyLenis } from '@/lib/lenis';
 import { initScrollAnimations } from '@/lib/scrollAnimations';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -128,6 +129,7 @@ export function RootLayout() {
         <Outlet />
       </main>
       <Footer />
+      <Toaster />
     </div>
   );
 }

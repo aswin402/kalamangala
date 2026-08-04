@@ -83,8 +83,8 @@ function ToastItem({ toast: t, onDismiss }: { toast: Toast; onDismiss: (id: stri
         transition-all duration-350 ease-out
         ${config.bgClass} ${config.borderClass}
         ${isVisible && !isExiting
-          ? 'translate-x-0 opacity-100 scale-100'
-          : 'translate-x-[120%] opacity-0 scale-95'
+          ? 'translate-y-0 opacity-100 scale-100'
+          : 'translate-y-[20px] opacity-0 scale-95'
         }
       `}
       style={{
@@ -143,7 +143,7 @@ export function Toaster() {
 
   return (
     <div
-      className="fixed top-6 right-6 z-[99999] flex flex-col gap-3 pointer-events-none"
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[99999] flex flex-col-reverse gap-3 pointer-events-none items-center"
       aria-live="polite"
     >
       {toasts.map((t) => (

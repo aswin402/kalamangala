@@ -1,5 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Phone } from "lucide-react";
+import { useState } from "react";
+import { toast } from "@/store/useToastStore";
 import {
   FaInstagram,
   FaFacebookF,
@@ -80,6 +82,55 @@ const SocialCard = ({
 
 export const Footer = () => {
   const location = useLocation();
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const key = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    if (!key) {
+      toast.error("Configuration Error", "Web3Forms Access Key is missing in the environment variables.");
+      return;
+    }
+
+    if (!email) {
+      toast.warning("Validation Error", "Please enter your email address.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: key,
+          email,
+          subject: "New Newsletter Subscription",
+          message: `Please subscribe ${email} to the Kalamangala newsletter.`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Subscribed", "You have successfully subscribed to our newsletter!");
+        setEmail("");
+      } else {
+        toast.error("Subscription Failed", result.message || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error("Newsletter submission error:", error);
+      toast.error("Network Error", "Could not connect to the server.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <footer
@@ -205,12 +256,15 @@ export const Footer = () => {
             </p>
 
             <form
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleNewsletterSubmit}
               className="flex flex-col gap-[10px] max-sm:gap-[10px]"
             >
               <input
                 type="email"
                 placeholder="info@kalamangala.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 className="
                   h-[38px] w-full rounded-[8px] border border-white/[0.08]
                   bg-white/[0.055] px-[12px] text-[15px] text-white outline-none focus:border-primary
@@ -223,6 +277,7 @@ export const Footer = () => {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="
                   h-[38px] w-full cursor-pointer rounded-[8px] border border-primary
                   bg-primary text-[15px] font-semibold text-foreground
@@ -230,9 +285,10 @@ export const Footer = () => {
                   hover:border-[#FF894D] hover:bg-[#FF894D] hover:text-white
 
                   max-sm:h-[40px] max-sm:rounded-[8px] max-sm:text-[16px]
+                  disabled:opacity-50 disabled:cursor-not-allowed
                 "
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </form>
           </div>
